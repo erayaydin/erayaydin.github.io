@@ -28,7 +28,13 @@ sass:
 paginate: 5
 paginate_path: "/:num/"
 markdown: kramdown
-
+defaults:
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      comments: true
 gems:
   - jekyll-paginate
   - jekyll-feed
