@@ -1,2 +1,0 @@
-## Bulma Jekyll Theme
-

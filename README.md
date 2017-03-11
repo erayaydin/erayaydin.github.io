@@ -1,2 +1,3 @@
-## Bulma Jekyll Theme
+## Eray Aydın
 
+Personal Blog
