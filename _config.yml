@@ -20,6 +20,8 @@ author:
   instagram:
   tumblr:
   show_on_post: true
+system:
+  fb_app: "272683263159070"
 permalink: /:categories/:title/
 sass:
   style: compressed
