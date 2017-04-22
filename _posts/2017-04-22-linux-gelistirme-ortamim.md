@@ -13,7 +13,11 @@ slug: linux-gelistirme-ortamim
 
 Bu yazıda hazırladığım geliştirme ortamını araçlar ve dağıtımla birlikte anlattım.
 
+![Empty Screen](/assets/images/posts/arch-linux-empty-screen.jpg)
+
 ## TL;DR
+
+![ranger-irssi-mutt](/assets/images/posts/arch-linux-ranger-irssi-mutt.jpg)
 
 Eğer bütün yazıyı okumaya üşendiyseniz aşağıda özetlenmiş bir tablosu bulunmakta.
 
