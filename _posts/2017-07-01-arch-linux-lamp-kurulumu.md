@@ -22,7 +22,7 @@ slug: arch-linux-lamp-kurulumu
 Öncelike paket yöneticisi yardımı ile `apache` paketinin kurulumunu 
 gerçekleştirelim.
 
-```
+```bash
 pacman -S apache
 ```
 
@@ -34,14 +34,14 @@ Ben profesyonel bir web sunucusunda çalışmadığım, geliştirme ortamında
 çalıştığım için Apache'nin kullandığı `user` olarak kendimi belirtiyorum. 
 İsterseniz siz de bu şekilde belirtip daha rahat çalışabilirsiniz.
 
-```
+```bash
 User eray
 ```
 
 Eğer `80` portunu başka bir yazılımda kullanıyorsanız dilerseniz Apache'nin 
 portunu değiştirebilirsiniz.
 
-```
+```bash
 Listen 80
 ```
 
@@ -61,11 +61,11 @@ yapmak istiyorsanız **AllowOverride** değerini **All** olarak
 değiştirebilirsiniz. Ek olarak bunun çalışması için aşağıdaki satırı bulup 
 önündeki yorum satırını kaldırın.
 
-```
+```bash
 #LoadModule rewrite_module modules/mod_rewrite.so
 ```
 
-```
+```bash
 <Directory "/srv/http">
 ...
 AllowOverride All
@@ -77,7 +77,7 @@ Varsayılan olarak Apache, kullanıcı klasörlerini destekliyor
 (`http://localhost/~eray`). Bu klasörü değiştirmek istiyorsanız 
 `/etc/httpd/conf/extra/httpd-userdir.conf` dosyasından değiştirebilirsiniz.
 
-```
+```bash
 # Settings for user home directories
 #
 # Required module: mod_authz_core, mod_authz_host, mod_userdir
@@ -85,8 +85,7 @@ Varsayılan olarak Apache, kullanıcı klasörlerini destekliyor
 #
 # UserDir: The name of the directory that is appended onto a user's home
 # directory if a ~user request is received.  Note that you must also set
-# the default access control for these directories, as in the example 
-below.
+# the default access control for these directories, as in the example below.
 #
 UserDir Webserver
 
@@ -104,14 +103,14 @@ UserDir Webserver
 Yukarda da belirttiğim gibi klasörünüzün ve üst klasörlerin 
 çalıştırılabilir olması gerekiyor. Bunun için çalıştırma izni vermelisiniz.
 
-```
+```bash
 chmod o+x ~
 chmod -R o+x ~/Webserver
 ```
 
 Değişikliklerin geçerli olması için servisi yeniden başlatalım.
 
-```
+```bash
 systemctl restart httpd
 ```
 
@@ -124,7 +123,7 @@ Daha önceden yazdığım [Otomatik Apache Sanal Sunucu](https://erayaydin.githu
 Paket yöneticisi yardımı ile `php` ve `php-apache` paketlerini sisteme 
 yükleyeceğiz.
 
-```
+```bash
 pacman -S php php-apache
 ```
 
@@ -132,13 +131,13 @@ Apache tarafında `mpm_event` modülü yerine `mpm_prefork` modülünü
 aktifleştirmemiz gerekiyor. Bu sebeple `/etc/httpd/conf/httpd.conf` 
 dosyasındaki **mpm_event** modülünü yorum satırı yapıyoruz.
 
-```
+```bash
 #LoadModule mpm_event_module modules/mod_mpm_event.so
 ```
 
 Ardından **mpm_prefork** modülünün yorum satırını kaldırıyoruz.
 
-```
+```bash
 LoadModule mpm_prefork_module modules/mod_mpm_prefork.so
 ```
 
@@ -147,27 +146,27 @@ Dilerseniz `mpm_prefork` yerine de `proxy_fcgi` kullanabilirsiniz.
 PHP'yi aktif etmek için `/etc/httpd/conf/httpd.conf` içerisindeki 
 `LoadModule` listesinin sonuna aşağıdakini ekliyoruz.
 
-```
+```bash
 LoadModule php7_module modules/libphp7.so
 AddHandler php7-script php
 ```
 
 Aynı şekilde `Include` listesinin sonuna da aşağıdakini ekliyoruz.
 
-```
+```bash
 Include conf/extra/php7_module.conf
 ```
 
 Servisi yeniden başlatıyoruz.
 
-```
+```bash
 systemctl restart httpd
 ```
 
 PHP kurulumunu test etmek için aşağıdaki gibi `test.php` isminde bir dosya 
 oluşturabilirsiniz.
 
-```
+```php
 <?php phpinfo();
 ```
 
@@ -180,7 +179,7 @@ PHP ile ilgili ayarlamaları `/etc/php/php.ini` dosyası üzerinden yapacağız.
 Her scriptin saniye olarak belirli bir **timeout** yani zaman aşımı süresi 
 vardır. Dilerseniz bunu değiştirebilir hatta limitsiz yapabilirsiniz.
 
-```
+```ini
 ; CLI kullanımlarında 0 değeri otomatik olarak verilmektedir. Yani zaman aşımı yoktur
 max_execution_time = 60
 ```
@@ -191,7 +190,7 @@ Bir scriptin çalıştırılmasında harcanabilecek maksimum hafıza
 miktarıdır. Varsayılan olarak 128MB seçili bunu dilerseniz 
 arttırabilirsiniz.
 
-```
+```ini
 memory_limit = 1024M
 ```
 
@@ -201,7 +200,7 @@ Geliştirme ortamında çalışanlar için hataları görmek önemlidir. Bu sebe
 `error_reporting` değerini belirttiğiniz hata türlerine göre 
 değiştirebilirsiniz.
 
-```
+```ini
 error_reporting = E_ALL
 ```
 
@@ -209,7 +208,7 @@ Ek olarak, hata mesajlarını ekrana yazdırmak için de `display_errors`
 değerini kullanabilirsiniz. Geliştirme ortamında bu değeri `On` yapmanız 
 yararlı olacaktır.
 
-```
+```ini
 display_errors = On
 ```
 
@@ -220,7 +219,7 @@ konfigürasyonla ilgili hatalar olduğunda çıkar. Bunların bastırılmaması 
 ekranda gözükmesi için `On` değerini verebilirsiniz. Tabi ki sadece 
 geliştirme ortamında kullanmanız gerekiyor.
 
-```
+```ini
 display_startup_errors = On
 ```
 
@@ -230,7 +229,7 @@ display_startup_errors = On
 `$php_errormsg` değişkeni ile son hata mesajını alabilirsiniz. 
 Kullandığınız çalışma ortamında gerekli olabilir.
 
-```
+```ini
 track_errors = On
 ```
 
@@ -239,7 +238,7 @@ track_errors = On
 PHP'nin kabul edeceği maksimum POST veri büyüklüğüdür. Dilerseniz **0** 
 değeri vererek limiti kaldırabilirsiniz.
 
-```
+```ini
 post_max_size = 50M
 ```
 
@@ -248,7 +247,7 @@ post_max_size = 50M
 Yüklenebilecek dosyalar için maksimum dosya boyutudur. Varsayılan olarak 
 `2M` yer alıyor.
 
-```
+```ini
 upload_max_filesize = 200M
 ```
 
@@ -257,7 +256,7 @@ upload_max_filesize = 200M
 Bir request içerisinde yüklenebilecek maksimum dosya adetidir. Varsayılan 
 olarak `20` yer alıyor.
 
-```
+```ini
 max_file_uploads = 200
 ```
 
@@ -266,7 +265,7 @@ max_file_uploads = 200
 Geçerli bölgenizi ayarlamak için `date.timezone` değerini 
 değiştirebilirsiniz. Önündeki yorum satırını kaldırmayı unutmayınız.
 
-```
+```ini
 date.timezone = Europe/Istanbul
 ```
 
@@ -284,7 +283,7 @@ bzopen, bzread, bzwrite vs.) kullanmak için aktif edebilirsiniz. Aktif hale
 getirmek için `php.ini` dosyasında ilgili satırın başındaki noktalı virgülü 
 kaldırmanız yeterli.
 
-```
+```ini
 extension=bz2.so
 ```
 
@@ -293,7 +292,7 @@ extension=bz2.so
 Script içerisinde FTP işlemleri yapmak için bu modülü aktif hale 
 getirebilirsiniz.
 
-```
+```ini
 extension=ftp.so
 ```
 
@@ -302,13 +301,13 @@ extension=ftp.so
 Resim işleme ve oluşturma yapıyorsanız bu modülü aktif hale 
 getirebilirsiniz.
 
-```
+```ini
 extension=gd.so
 ```
 
 Ek olarak paketi kurmayı unutmayın.
 
-```
+```bash
 pacman -S gd php-gd
 ```
 
@@ -317,7 +316,7 @@ pacman -S gd php-gd
 Genellikle dil desteği amaçlı kullanılan gettext kütüphanesini aktif 
 edebilirsiniz.
 
-```
+```ini
 extension=gettext.so
 ```
 
@@ -325,13 +324,13 @@ extension=gettext.so
 
 Imap fonksiyonlarını kullanmak için aktif hale getirebilirsiniz.
 
-```
+```ini
 extension=imap.so
 ```
 
 Ek olarak paketi kurmayı unutmayın.
 
-```
+```bash
 pacman -S php-imap
 ```
 
@@ -340,13 +339,13 @@ pacman -S php-imap
 Çeşitli kütüphaneler tarafından da kullanılan **mcrypt_** fonksiyonlarına 
 erişmek için aktif hale getirebilirsiniz.
 
-```
+```ini
 extension=mcrypt.so
 ```
 
 Ek olarak paketini de kurun.
 
-```
+```bash
 pacman -S php-mcrypt
 ```
 
@@ -354,7 +353,7 @@ pacman -S php-mcrypt
 
 MySQLi fonksiyonlarını kullanmak istiyorsanız aktif hale getirebilirsiniz.
 
-```
+```ini
 extension=mysqli.so
 ```
 
@@ -364,19 +363,20 @@ PDO ile belirtilen veritabanı yönetim sistemlerini kullanmak için eklentiyi
 aktif hale getirebilirsiniz. Seçtiğiniz veritabanı sistemini de 
 bilgisayarınıza kurmayı unutmayın.
 
-```
+```ini
 extension=pdo_dblib.so
 extension=pdo_mysql.so
 extension=php_odbc.so
 extension=php_pgsql.so
 extension=php_sqlite.so
 ```
+
 #### Imagemagick
 
 Resim işleme için kullanabileceğiniz bir paket.  AUR deposundan 
 indirebilirsiniz.
 
-```
+```bash
 yaourt -S php-imagick
 ```
 
@@ -389,13 +389,13 @@ yok.
 Kurduğunuz PHP modüllerini test etmek için aşağıdaki komutu 
 kullanabilirsiniz.
 
-```
+```bash
 php -m
 ```
 
 Sonuç olarak size eklenen modülleri döndürecektir.
 
-```
+```bash
 [PHP Modules]
 bz2
 Core
@@ -446,7 +446,7 @@ MariaDB'yi öneririm.
 
 Paket yöneticisinden `mariadb` paketini yükleyelim.
 
-```
+```bash
 pacman -S mariadb
 ```
 
@@ -457,13 +457,13 @@ tercih etmeyin. Çünkü `ProtectHome=true` değeri bulunduğu için bu
 klasörlere MariaDB tarafından erişim sağlanamıyor. Ek olarak `datadir` 
 klasör değişimini `/etc/mysql/my.cnf` içerisinde de yapmalısınız.
 
-```
+```bash
 mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
 ```
 
 Artık servisi başlatabilirsiniz.
 
-```
+```bash
 systemctl start mysqld
 ```
 
@@ -472,7 +472,7 @@ systemctl start mysqld
 Veritabanı katmanında birkaç güvenlik önlemi almak ve `root` parolasını da 
 değiştirmek için aşağıdaki scripti çalıştırabilirsiniz.
 
-```
+```bash
 mysql_secure_installation
 ```
 
@@ -495,7 +495,7 @@ Varsayılan olarak MySQL dışardan erişime açıktır. Dışardan erişimleri
 engellemek için `/etc/mysql/my.cnf` dosyasındaki aşağıdaki satırın 
 başındaki yorum simgesini kaldırmanız yeterli.
 
-```
+```bash
 skip-networking
 ```
 
@@ -508,7 +508,7 @@ yapabilirsiniz.
 Unicode desteği sağlamış olursunuz. Bunun için `/etc/mysql/my.cnf` 
 içerisine aşağıdaki satırları eklemeniz yeterli.
 
-```
+```ini
 [client]
 default-character-set = utf8mb4
 
@@ -528,7 +528,7 @@ Web tabanlı olarak MySQL veritabanlarını yönetmek için kullanabilirsiniz.
 
 Öncelikle `phpmyadmin` paketini sistemimize kuralım.
 
-```
+```bash
 pacman -S phpmyadmin
 ```
 
@@ -545,7 +545,7 @@ için birkaç ayarlama yapmamız gerekiyor. Bunun için
 `/etc/httpd/conf/extra/phpmyadmin.conf` dosyası oluşturup içerisine 
 aşağıdakileri ekleyelim.
 
-```
+```bash
 Alias /phpmyadmin "/usr/share/webapps/phpMyAdmin"
 <Directory "/usr/share/webapps/phpMyAdmin">
     DirectoryIndex index.php
@@ -557,7 +557,7 @@ Alias /phpmyadmin "/usr/share/webapps/phpMyAdmin"
 
 Ardından bunu `/etc/httpd/conf/httpd.conf` dosyası içerisinde dahil edelim.
 
-```
+```bash
 # PHPMyAdmin
 Include conf/extra/phpmyadmin.conf
 ```
