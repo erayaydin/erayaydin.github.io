@@ -19,7 +19,7 @@ slug: arch-linux-lamp-kurulumu
 
 ## Apache Kurulumu
 
-Öncelike paket yöneticisi yardımı ile `apache` paketinin kurulumunu 
+Öncelikle paket yöneticisi yardımı ile `apache` paketinin kurulumunu 
 gerçekleştirelim.
 
 ```bash
