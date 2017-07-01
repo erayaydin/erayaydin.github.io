@@ -1,8 +1,8 @@
 ---
-published: false
+published: true
 layout: post
 description: Arch Linux ve i3 için Backlight ayarlaması
-date: 2017-07-01T21:00:00.000Z
+date: 2017-07-01T04:30:00.000Z
 tags:
   - linux
   - php

@@ -1,8 +1,9 @@
 ---
+published: true
 layout: post
 title:  "Arch Linux - LAMP Kurulumu"
 description: Arch Linux için Apache, MySQL, PHP ve PHPMyAdmin kurulumu.
-date: 2017-07-01 21:00:00
+date: 2017-07-01 01:00:00
 tags:
   - linux
   - php
