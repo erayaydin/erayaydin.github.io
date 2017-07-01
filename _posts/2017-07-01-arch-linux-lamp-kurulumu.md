@@ -438,6 +438,21 @@ zip
 zlib
 ```
 
+### Composer
+
+PHP'nin bağımlılık yöneticisi olarak kullanılan **Composer**'ı yüklemek 
+için paket yöneticisini kullanabilirsiniz.
+
+```bash
+pacman -S composer
+```
+
+Kurulumu test etmek için
+
+```bash
+composer --version
+```
+
 ## MySQL (MariaDB) Kurulumu
 
 MariaDB, Arch Linux'un varsayılan MySQL implementasyonudur. Oracle 
