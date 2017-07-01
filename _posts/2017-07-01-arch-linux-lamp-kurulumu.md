@@ -609,8 +609,8 @@ ait çözümler.
 
 ### Türkçe Karakter Dönüşümü Sorunu
 
-Laravel, Symfony veya diğer kütüphanelerde karşılaşabileceğiniz gibi kendi 
-sisteminizin çalışmasında da karşınıza gelebilecek bir sorun. PHP 
+Laravel, Symfony veya diğer kütüphanelerde olduğu gibi kendi 
+sisteminizde de oluşabilecek bir sorun. PHP 
 karakterin büyük harf, küçük harf dönüşümü için sistem dilini kullanmakta. 
 Bu sebeple Arch Linux sisteminize öncelikle `en_US.UTF-8` dilini 
 eklemelisiniz. Bunun için `/etc/locale.gen` dosyasında yer alan aşağıdaki 
