@@ -602,6 +602,42 @@ $cfg['Servers'][$i]['user'] = 'root';
 $cfg['Servers'][$i]['password'] = 'mysql_parolasi'; 
 ```
 
+## Sorun Çözme
+
+Apache, MySQL, PHP ve PHPMyAdmin ile ilgili karşılaşabileceğiniz sorunlara 
+ait çözümler.
+
+### Türkçe Karakter Dönüşümü Sorunu
+
+Laravel, Symfony veya diğer kütüphanelerde karşılaşabileceğiniz gibi kendi 
+sisteminizin çalışmasında da karşınıza gelebilecek bir sorun. PHP 
+karakterin büyük harf, küçük harf dönüşümü için sistem dilini kullanmakta. 
+Bu sebeple Arch Linux sisteminize öncelikle `en_US.UTF-8` dilini 
+eklemelisiniz. Bunun için `/etc/locale.gen` dosyasında yer alan aşağıdaki 
+satırın yorum simgesini(#) kaldırın.
+
+```
+en_US.UTF-8 UTF-8
+```
+
+Ardından bu dil dosyalarının oluşturulmasını sağlayın.
+
+```
+locale-gen
+```
+
+Son olarak `LC_CTYPE` yani PHP'nin dönüşüm için kullandığı dili 
+değiştirmeliyiz. Bunun için de `/etc/locale.conf` içerisine aşağıdaki 
+satırı ekleyin.
+
+```
+LC_CTYPE=en_US.UTF-8
+```
+
+Bu sorunun farkedilmesi ve çözümü ile ilgili yardımlarından dolayı Burak 
+Karahan'a ([@mburakkarahan](https://twitter.com/mburakkarahan)) teşekkür 
+ederim.
+
 ## Bitiş
 
 **LAMP Stack** kurulumunu tamamladık. Dilerseniz geliştirme ortamınızı daha 
