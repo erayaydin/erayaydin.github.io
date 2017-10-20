@@ -196,3 +196,40 @@ Eski sürüm bir Django kurulumu için de şunu kullanabilirsiniz.
 ```
 pip install Django==1.0.4
 ```
+
+## Kurulumun Test Edilmesi
+
+Django'nun başarılı bir şekilde kurulup kurulmadığını test etmek için Python'un interaktif kabuğunu kullanabiliriz.
+
+```
+$ python
+Python 3.6.2 (default, Jul 20 2017, 03:52:27) 
+[GCC 7.1.1 20170630] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> 
+```
+
+İnteraktif kabukta öncelikle django paketinin olup olmadığını deneyelim.
+
+```
+>>> import django
+```
+
+Eğer sonucunda şu şekilde bir çıktı aldıysanız, sistemde django paketi bulunmuyor demektir.
+
+```
+>>> import django
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ModuleNotFoundError: No module named 'django'
+```
+
+Eğer herhangi bir çıktı vermediyse django paketi bulunmuş ve içe aktarılmış demektir. Şimdi kurulu olan django versiyonunu öğrenelim.
+
+```
+>>> import django
+>>> print(django.get_version())
+1.11.6
+```
+
+Bu adımları da tamamladıktan sonra sistemimize Django kurulumu yapmış oluyoruz. Bir sonraki makalede `virtualenv` ile daha sağlıklı bir geliştirme ortamı hazırlamak için gerekli adımları yazmayı düşünüyorum.
