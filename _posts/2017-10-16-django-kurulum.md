@@ -51,13 +51,13 @@ Arch Linux dağıtımında kurulum işlemini `pacman` paket yöneticisi ile yapa
 
 Python 3 son sürümü kurmak için
 
-```
+```bash
 pacman -Sy python
 ```
 
 Python 2 son sürümü kurmak için
 
-```
+```bash
 pacman -Sy python2
 ```
 
@@ -74,7 +74,7 @@ Eski sürümleri kullanacaksanız **AUR** kullanarak aşağıdaki sürümler iç
 | Python 2.5 | [python25](https://aur.archlinux.org/packages/python25/) |
 | Python 1.5 | [python15](https://aur.archlinux.org/packages/python15/) |
 
-```
+```bash
 yaourt -Sy python35
 ```
 
@@ -84,14 +84,14 @@ Ubuntu 16.04 ile Python 3 ve Python 2 kurulu olarak gelmektedir.
 
 Eski versiyonları yüklemek için _deadsnakes_' isimli PPA depoyu aktif edip eski versiyonları yükleyebilirsiniz.
 
-```
+```bash
 add-apt-repository ppa:fkrull/deadsnakes
 apt-get update
 ```
 
 Kurulum işlemi için de aşağıdaki gibi versiyon adını yazarak yükleyebilirsiniz.
 
-```
+```bash
 apt-get install python2.6 python3.3
 ```
 
@@ -114,13 +114,13 @@ python --version
 
 Python 2 için **pip** kurulumu
 
-```
+```bash
 apt-get install python-pip
 ```
 
 Python 3 için **pip** kurulumu
 
-```
+```bash
 apt-get install python3-pip
 ```
 
@@ -128,7 +128,7 @@ apt-get install python3-pip
 
 CentOS ve Red Hat Enterprise Linux için pip kurulumu
 
-```
+```bash
 yum install epel-release
 yum install python-pip
 ```
@@ -137,13 +137,13 @@ yum install python-pip
 
 Python 2 için **pip** kurulumu
 
-```
+```bash
 dnf install python-pip
 ```
 
 Python 3 için **pip** kurulumu
 
-```
+```bash
 dnf install python3-pip
 ```
 
@@ -151,13 +151,13 @@ dnf install python3-pip
 
 Python 2 için **pip** kurulumu
 
-```
+```bash
 pacman -S python2-pip
 ```
 
 Python 3 için **pip** kurulumu
 
-```
+```bash
 pacman -S python-pip
 ```
 
@@ -165,13 +165,13 @@ pacman -S python-pip
 
 Python 2 için **pip** kurulumu
 
-```
+```bash
 zypper install python-pip
 ```
 
 Python 3 için **pip** kurulumu
 
-```
+```bash
 zypper install python3-pip
 ```
 
@@ -179,7 +179,7 @@ zypper install python3-pip
 
 Pip kurulumunu test etmek ve versiyonu öğrenmek için aşağıdaki komutu çalıştırabilirsiniz.
 
-```
+```bash
 pip --version
 ```
 
@@ -187,13 +187,13 @@ pip --version
 
 Pip yardımıyla Django paketini artık sisteme kurabiliriz.
 
-```
+```bash
 pip install Django
 ```
 
 Eski sürüm bir Django kurulumu için de şunu kullanabilirsiniz.
 
-```
+```bash
 pip install Django==1.0.4
 ```
 
@@ -201,7 +201,7 @@ pip install Django==1.0.4
 
 Django'nun başarılı bir şekilde kurulup kurulmadığını test etmek için Python'un interaktif kabuğunu kullanabiliriz.
 
-```
+```bash
 $ python
 Python 3.6.2 (default, Jul 20 2017, 03:52:27) 
 [GCC 7.1.1 20170630] on linux
@@ -211,13 +211,13 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 İnteraktif kabukta öncelikle django paketinin olup olmadığını deneyelim.
 
-```
+```bash
 >>> import django
 ```
 
 Eğer sonucunda şu şekilde bir çıktı aldıysanız, sistemde django paketi bulunmuyor demektir.
 
-```
+```bash
 >>> import django
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
@@ -226,7 +226,7 @@ ModuleNotFoundError: No module named 'django'
 
 Eğer herhangi bir çıktı vermediyse django paketi bulunmuş ve içe aktarılmış demektir. Şimdi kurulu olan django versiyonunu öğrenelim.
 
-```
+```bash
 >>> import django
 >>> print(django.get_version())
 1.11.6
