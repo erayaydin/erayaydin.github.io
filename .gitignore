@@ -21,7 +21,7 @@
 ### Jekyll ###
 _site/
 .jekyll-metadata
-
+/script
 
 ### Ruby ###
 *.gem

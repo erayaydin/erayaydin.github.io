@@ -42,3 +42,11 @@ exclude:
   - LICENSE
   - CNAME
   - vendor
+
+defaults:
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      comments: true
