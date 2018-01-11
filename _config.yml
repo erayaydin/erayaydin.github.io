@@ -22,20 +22,15 @@ author:
   show_on_post: true
 system:
   fb_app: "272683263159070"
+analytics:
+  google: "UA-81189502-3"
 permalink: /:categories/:title/
 sass:
   style: compressed
 paginate: 5
 paginate_path: "/:num/"
 markdown: kramdown
-defaults:
-  -
-    scope:
-      path: ""
-      type: "posts"
-    values:
-      comments: true
-gems:
+plugins:
   - jekyll-paginate
   - jekyll-feed
   - jekyll-gist
