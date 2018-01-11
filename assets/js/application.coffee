@@ -35,3 +35,7 @@ if $("#disqus_thread").length
     s.src = '//aydineray.disqus.com/embed.js'
     s.setAttribute 'data-timestamp', +new Date
     return (d.head or d.body).appendChild s
+
+# Prism Custom Class Plugin
+Prism.plugins.customClass.map
+  number: 'code-number'
