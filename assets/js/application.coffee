@@ -39,3 +39,4 @@ if $("#disqus_thread").length
 # Prism Custom Class Plugin
 Prism.plugins.customClass.map
   number: 'code-number'
+  tag: 'code-tag'
