@@ -23,10 +23,9 @@ Eğer bütün yazıyı okumaya üşendiyseniz aşağıda özetlenmiş bir tablos
 
 | Dağıtım | **Arch Linux** |
 | Dosya Yöneticisi | **ranger** |
-| Display Manager | **lightdm** |
 | Window Manager | **i3** |
 | Bar | **polybar** |
-| Metin Editörü | **vim**, **sublime text** |
+| Metin Editörü | **vim** |
 | IRC İstemcisi | **irssi** |
 | E-Posta İstemcisi | **mutt** |
 | Tarayıcı | **elinks**, **chromium** |
@@ -36,7 +35,7 @@ Eğer bütün yazıyı okumaya üşendiyseniz aşağıda özetlenmiş bir tablos
 | Disk Temizleme Aracı | **bleachbit** |
 | Sistem Kullanımı Aracı | **htop** |
 | Ofis Araçları | **LibreOffice** |
-| Terminal | **terminator** |
+| Terminal | **urxvt** |
 | Sanallaştırma | **virtualbox** |
 | Markdown Editör | **remarkable** |
 | Torrent İstemcisi | **transmission** |
@@ -44,7 +43,7 @@ Eğer bütün yazıyı okumaya üşendiyseniz aşağıda özetlenmiş bir tablos
 | Resim Görüntüleyici | **feh** |
 | Müzik Oynatıcı | **cmus** |
 | Ekran Yönetimi | **arandr** |
-| FTP | **filezilla** |
+| FTP GUI | **filezilla** |
 | Webserver | **LAMP Stack** |
 | API Test Aracı | **postman** |
 | PHP IDE | **PHPStorm** |
@@ -74,8 +73,6 @@ ile yönetilebilir olması ve kat kat **lightweight** olması işlerimi kolayla�
 
 Window Manager olarak _2bwm_, _openbox_, _awesome_ ve _i3_ kullandım. Bunlardan **i3** benim daha çok hoşuma
 gitti. Ayarlamaların tamamen kullanıcı tarafından olması ve ayar dosyasının olabildiğince yalın olması bu tercihe itti.
-
-Display Manager olarak **lightdm** tercihi yaptım. Yakın bir zamanda **CLI** bir display manager kullanmayı düşünüyorum.
 
 ### Bar
 
