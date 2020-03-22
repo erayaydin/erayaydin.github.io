@@ -22,7 +22,7 @@ Bu yazı serisi içerisinde **Kotlin** ve **jMonkeyEngine** ile oyun geliştirme
 
 > Not: **Kotlin** tecrübem hiç denecek kadar azdır, bu sebeple hata yaptığım noktalar olursa şimdiden özür dilerim. Hataları Git reposunda düzelterek PR oluşturabilirsiniz :)
 
-Başlangıç yazısına başlamadan önce **kısaca** jMonkeyEngine, Kotlin, Gradle, Graphic Pipeline ve Scene Graph kavramlarına bakacağız.
+Şimdi **kısaca** jMonkeyEngine, Kotlin, Gradle, Graphic Pipeline ve Scene Graph kavramlarına bakacağız.
 
 ## Kotlin Nedir?
 
