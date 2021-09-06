@@ -147,6 +147,8 @@ Dilerseniz `mpm_prefork` yerine de `proxy_fcgi` kullanabilirsiniz.
 PHP'yi aktif etmek için `/etc/httpd/conf/httpd.conf` içerisindeki 
 `LoadModule` listesinin sonuna aşağıdakini ekliyoruz.
 
+### PHP 7
+
 ```bash
 LoadModule php7_module modules/libphp7.so
 AddHandler php7-script php
@@ -156,6 +158,17 @@ Aynı şekilde `Include` listesinin sonuna da aşağıdakini ekliyoruz.
 
 ```bash
 Include conf/extra/php7_module.conf
+```
+
+### PHP 8
+`LoadModule`
+```bash
+  LoadModule php_module modules/libphp.so
+  AddHandler php-script .php
+```
+`Include`
+```bash
+  Include conf/extra/php_module.conf
 ```
 
 Servisi yeniden başlatıyoruz.
