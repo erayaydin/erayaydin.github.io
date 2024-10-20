@@ -1,0 +1,14 @@
+<nav>
+    {% for item in config.extra.nav %}
+      <a href="{{ item.url | safe }}"{% if (item.url == '/' and current_path == '/') or (item.url != '/' and current_path is starting_with(item.url)) %} class="active"{% endif %}>
+        {{ item['name'] }}
+      </a>
+    {% endfor %}
+    <div>
+      <input type="checkbox" id="themeToggle" style="display: none;">
+      <label for="themeToggle"><svg id="themeIcon" class="icons"><use href="{{ get_url(path='/icons.svg#lightMode', trailing_slash=false) | safe }}"></use></svg></label>
+      <audio id="themeSound">
+        <source src="{{ get_url(path='click.ogg', trailing_slash=false) | safe }}" type="audio/ogg">
+      </audio>
+    </div>
+</nav>

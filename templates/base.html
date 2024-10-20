@@ -1,0 +1,22 @@
+{% import "head_macros.html" as head_macros %}
+<!DOCTYPE html>
+<html lang="{% if page %}{{ page.lang }}{% else %}{{ config.default_language }}{% endif %}">
+<head>
+{% include "head.html" %}
+</head>
+<body>
+      <header>
+          {% include "header.html" %}
+      </header>
+      <main>
+          {% block content %}
+          {% endblock content %}
+      </main>
+      <footer>
+          {% include "footer.html" %}
+      </footer>
+      {% block js %}
+      <script src="{{ get_url(path='app.js', trailing_slash=false) | safe }}" defer></script>
+      {% endblock js %}
+</body>
+</html>
