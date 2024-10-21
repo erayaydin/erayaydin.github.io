@@ -9,6 +9,7 @@ Hello! I'm a full-stack developer with a primary specialization in backend devel
 - **Frontend**: React
 - **Operating Systems**: Linux (especially Arch Linux)
 - **Interests**: Game development, system administration, web development
+
 ## My Blog
 
 I frequently write blog posts about various technical topics, including programming, Linux, and software development. You can explore my posts below:
@@ -37,6 +38,10 @@ Feel free to clone the repo, make your changes, and submit a pull reques
 In addition to technical blog posts, I maintain a personal journal where I share my thoughts, experiences, and more casual reflections. You can find my journal entries here:
 
 - [Journal Entries](/journal)
+
+## My PGP
+
+Check out [My PGP](@/pgp.md) page to retrieve and use my `0x2A0FC5A8` PGP key.
 
 ## Connect with Me
 
