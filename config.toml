@@ -1,0 +1,35 @@
+base_url = "https://era.yayd.in"
+title = "Eray Aydın"
+description = "Scala Developer, Laravel Artisan, Free Software Fan, Archy, Linux Lover, WoW Loremaster, Junior Game Developer"
+compile_sass = true
+build_search_index = true
+generate_feeds = true
+minify_html = true
+taxonomies = [
+  { name = "tags", feed = true},
+  { name = "categories", feed = true},
+]
+
+[markdown]
+highlight_code = true
+render_emoji = true
+external_links_target_blank = true
+smart_punctuation = true
+
+[slugify]
+paths = "on"
+taxonomies = "on"
+anchors = "on"
+
+[link_checker]
+internal_level = "warn"
+
+[extra]
+author = "Eray Aydın"
+nav = [
+  { url = "/", name = "/home" },
+  { url = "/about/", name = "/about" },
+  { url = "/journal/", name = "/journal" },
+  { url = "/blog/", name = "/blog" },
+  { url = "https://github.com/erayaydin/erayaydin.github.io", name = "/download" },
+]

@@ -1,0 +1,38 @@
+{% macro og(image=false) %}
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{ self::get_url() | trim | safe }}">
+<meta property="og:site_name" content="{{ config.title }}">
+<meta property="og:title" content="{{ self::get_title() | trim }}">
+<meta property="og:description" content="{{ self::get_description() | trim | truncate(length=150) }}">
+{% if image %}<meta property="og:image" content="{{ image }}">{% endif %}
+{% endmacro og %}
+
+{% macro get_title() %}
+{% if page.title %}
+{{ page.title}}
+{% elif section.title %}
+{{ section.title }}
+{% elif config.title %}
+{{ config.title }}
+{% endif %}
+{% endmacro get_title %}
+
+{% macro get_url() %}
+{% if page.permalink %}
+{{ page.permalink | safe }}
+{% elif section.permalink %}
+{{ section.permalink | safe }}
+{% elif config.base_url %}
+{{ config.base_url | safe }}
+{% endif %}
+{% endmacro get_url %}
+
+{% macro get_description() %}
+{% if page.description %}
+{{ page.description }}
+{% elif section.description %}
+{{ section.description }}
+{% elif config.description %}
+{{ config.description }}
+{% endif %}
+{% endmacro get_description %}

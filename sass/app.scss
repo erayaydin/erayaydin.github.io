@@ -1,0 +1,66 @@
+@import "_reset";
+@import "_ui";
+
+header > nav {
+  padding: .625rem 0 0 0;
+  display: flex;
+  flex-direction: row;
+  gap: .25rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  align-content: flex-end;
+
+  a.active {
+    background-color: var(--link);
+    color: var(--bg);
+  }
+}
+
+footer > div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.icons {
+  width: 1.3rem;
+  height: 1.3rem;
+  aspect-ratio: 1/1;
+  display: inline-block;
+  vertical-align: middle;
+  color: var(--text);
+  fill: var(--text);
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.icons:hover {
+  background-color: transparent;
+  color: var(--accent);
+}
+
+.no-style {
+  padding: 0;
+  margin: 0;
+  border: none;
+  border-radius: 0;
+
+  &:hover {
+    background-color: transparent;
+    color: var(--accent);
+  }
+}
+
+.theme-transition {
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.accent-color {
+  color: var(--accent);
+}
+
+blockquote > p {
+  margin: 0;
+}

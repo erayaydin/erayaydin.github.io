@@ -1,0 +1,23 @@
+{% import "head_macros.html" as head_macros %}
+<meta charset="UTF-8">
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="text/html; charset=UTF-8" http-equiv="content-type"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+<meta name="robots" content="index, follow">
+<title>{{ head_macros::get_title() | trim }}</title>
+{% block metatags %}
+<meta name="author" content="{% if page.extra.author %}{{ page.extra.author }}{% elif config.extra.author %}{{ config.extra.author }}{% endif %}">
+<meta name="description" content="{{ head_macros::get_description() | trim }}">
+<link rel="canonical" href="{{ head_macros::get_url() | trim | safe }}">
+<link rel="shortcut icon" type="image/x-icon" href="{{ get_url(path="favicon.png", trailing_slash=false) }}">
+{{ head_macros::og() }}
+{% endblock metatags %}
+{% if config.generate_feeds %}
+{% block feed %}
+<link rel="alternate" type="application/atom+xml" title="RSS" href="{{ get_url(path="atom.xml", trailing_slash=false) }}"> 
+{% endblock feed %}
+{% endif %}
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{{ get_url(path='app.css', trailing_slash=false) | safe }}"/>
+<style></style>
+{% endblock css %}
