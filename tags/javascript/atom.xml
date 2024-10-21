@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Eray Aydın - javascript</title>
+    <subtitle>Scala Developer, Laravel Artisan, Free Software Fan, Archy, Linux Lover, WoW Loremaster, Junior Game Developer</subtitle>
+    <link rel="self" type="application/atom+xml" href="https://era.yayd.in/tags/javascript/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://era.yayd.in"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2015-04-06T12:00:00+00:00</updated>
+    <id>https://era.yayd.in/tags/javascript/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Pixi.js - Başlangıç</title>
+        <published>2015-04-06T12:00:00+00:00</published>
+        <updated>2015-04-06T12:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://era.yayd.in/blog/pixi-js-baslangic/"/>
+        <id>https://era.yayd.in/blog/pixi-js-baslangic/</id>
+        
+        <content type="html" xml:base="https://era.yayd.in/blog/pixi-js-baslangic/">&lt;p&gt;Bu makale serisinde Pixi.js ile ilgili anlatımlar yer alacaktır.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;ortamin-hazirlanmasi&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#ortamin-hazirlanmasi&quot; aria-label=&quot;Anchor link for: ortamin-hazirlanmasi&quot;&gt;##&lt;&#x2F;a&gt;
+Ortamın Hazırlanması&lt;&#x2F;h2&gt;
+&lt;p&gt;Öncelikle Pixi.js’yi indirmemiz gerekiyor. Bunun için github’ı kullanacağız. &lt;code&gt;git&lt;&#x2F;code&gt; kurulumunuzu yaptığınızı varsayarak devam ediyorum.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;git&lt;&#x2F;span&gt;&lt;span&gt; clone https:&#x2F;&#x2F;github.com&#x2F;GoodBoyDigital&#x2F;pixi.js.git
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Bize aslında gereken &lt;code&gt;bin&lt;&#x2F;code&gt; klasörü içerisindeki &lt;code&gt;pixi.js&lt;&#x2F;code&gt; dosyası fakat kaynak kodlarını da indirmemiz avantajımıza olacaktır.&lt;&#x2F;p&gt;
+&lt;p&gt;Hemen bir index.html dosyası oluşturalım ve bu &lt;code&gt;pixi.js&lt;&#x2F;code&gt; kütüphanemizi dosyaya ekleyelim.&lt;&#x2F;p&gt;
+&lt;p&gt;Daha sonra karışma olmaması için &lt;code&gt;uygulama&lt;&#x2F;code&gt; isminde bir klasör oluşturuyoruz ve içerisine bu &lt;code&gt;index.html&lt;&#x2F;code&gt; dosyamızı oluşturalım.&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;&amp;lt;!doctype html&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;html lang=&amp;quot;en&amp;quot;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;head&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;	&amp;lt;meta charset=&amp;quot;utf-8&amp;quot;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;	&amp;lt;title&amp;gt;Pixi.js&amp;lt;&#x2F;title&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;	&amp;lt;!--[if lt IE 9]&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;	&amp;lt;script src=&amp;quot;http:&#x2F;&#x2F;html5shiv.googlecode.com&#x2F;svn&#x2F;trunk&#x2F;html5.js&amp;quot;&amp;gt;&amp;lt;&#x2F;script&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;	&amp;lt;![endif]--&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&#x2F;head&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;body&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;!-- Pixi.js --&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;script src=&amp;quot;..&#x2F;bin&#x2F;pixi.js&amp;quot;&amp;gt;&amp;lt;&#x2F;script&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&#x2F;body&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&#x2F;html&amp;gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;stage&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#stage&quot; aria-label=&quot;Anchor link for: stage&quot;&gt;##&lt;&#x2F;a&gt;
+Stage&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;strong&gt;Stage&lt;&#x2F;strong&gt;, görünümün ana kısmıdır. Her nesne &lt;strong&gt;stage&lt;&#x2F;strong&gt;’e bağlanmakta ve görüntülenmektedir. Yani nesnelerimizi, sahnemizi ve bütün ortamı
+&lt;strong&gt;stage&lt;&#x2F;strong&gt; kullanarak yerleştireceğiz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;javascript&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-javascript &quot;&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; PIXI.Stage(backgroundColor);
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;var &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;stage &lt;&#x2F;span&gt;&lt;span&gt;= new PIXI.Stage(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0xFFFFFF&lt;&#x2F;span&gt;&lt;span&gt;); &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; Beyaz arkaplan
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;renderer&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#renderer&quot; aria-label=&quot;Anchor link for: renderer&quot;&gt;##&lt;&#x2F;a&gt;
+Renderer&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;strong&gt;Renderer&lt;&#x2F;strong&gt;, Stage’i ve stage içerisindeki tüm nesneleri ekrana çizer. WebGL ve Canvas seçiminize göre bu çizim işlemi yapılır.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;javascript&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-javascript &quot;&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;*
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt; * Canvas Renderer
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt; * PIXI.CanvasRenderer(uzunluk=800], [yukseklik=600], [ozellikler]);
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt; *&#x2F;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;var &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;canvasRenderer &lt;&#x2F;span&gt;&lt;span&gt;= new PIXI.CanvasRenderer(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;800&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;600&lt;&#x2F;span&gt;&lt;span&gt;);
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;*
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt; * WebGL Renderer
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt; * PIXI.WebGLRenderer([uzunluk=0], [yukseklik=0], [ozellikler]);
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt; *
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt; *&#x2F;
+&lt;&#x2F;span&gt;&lt;span&gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;var &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;webGLRenderer &lt;&#x2F;span&gt;&lt;span&gt;= new PIXI.WebGLRenderer(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;800&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;600&lt;&#x2F;span&gt;&lt;span&gt;);
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;*
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt; * Auto Detect Renderer
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt; * Otomatik olarak uygun olan render seçimini yapar.
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt; * PIXI.autoDetectRenderer([uzunluk=0], [yukseklik=0], [ozellikler]);
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt; *&#x2F;
+&lt;&#x2F;span&gt;&lt;span&gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;var &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;autoDetectRenderer &lt;&#x2F;span&gt;&lt;span&gt;= new PIXI.autoDetectRenderer(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;800&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;600&lt;&#x2F;span&gt;&lt;span&gt;);
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;strong&gt;Auto Detect Renderer&lt;&#x2F;strong&gt; kullanmak daha iyi olacaktır. Eğer tarayıcı WebGL çalıştırıyorsa WebGL, çalıştırmıyorsa Canvas kullanacaktır.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;frame&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#frame&quot; aria-label=&quot;Anchor link for: frame&quot;&gt;##&lt;&#x2F;a&gt;
+Frame&lt;&#x2F;h2&gt;
+&lt;p&gt;Çizimin her karede yapılması gerekiyor, öbür türlü ilk frameden sonra bir çizim gerçekleşmeyecektir. Bunun için bir döngü oluşturacağız ve
+sürekli çizim yapılmasını sağlayacağız.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;javascript&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-javascript &quot;&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span&gt;document.body.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;appendChild&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;renderer&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;view&lt;&#x2F;span&gt;&lt;span&gt;);
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;requestAnimFrame&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;cizimYap&lt;&#x2F;span&gt;&lt;span&gt;);
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;function &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;cizimYap&lt;&#x2F;span&gt;&lt;span&gt;() {
+&lt;&#x2F;span&gt;&lt;span&gt;	&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;requestAnimFrame&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;cizimYap&lt;&#x2F;span&gt;&lt;span&gt;);
+&lt;&#x2F;span&gt;&lt;span&gt;	&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;renderer&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;render&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;stage&lt;&#x2F;span&gt;&lt;span&gt;);
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Farkettiyseniz bizim &lt;strong&gt;renderer&lt;&#x2F;strong&gt; isminde bir değişkenimiz yok. Bu değişkeni seçtiğiniz &lt;strong&gt;renderer&lt;&#x2F;strong&gt;’a göre ayarlamanız gerekiyor.&lt;&#x2F;p&gt;
+&lt;p&gt;Şimdi sonuç olarak oluşturduğumuz script:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;javascript&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-javascript &quot;&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;var &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;stage &lt;&#x2F;span&gt;&lt;span&gt;= new PIXI.Stage(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0xFFFFFF&lt;&#x2F;span&gt;&lt;span&gt;);
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;var &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;renderer &lt;&#x2F;span&gt;&lt;span&gt;= new PIXI.autoDetectRenderer(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;400&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;300&lt;&#x2F;span&gt;&lt;span&gt;);
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;document.body.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;appendChild&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;renderer&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;view&lt;&#x2F;span&gt;&lt;span&gt;);
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;requestAnimFrame&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;cizimYap&lt;&#x2F;span&gt;&lt;span&gt;);
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;function &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;cizimYap&lt;&#x2F;span&gt;&lt;span&gt;() {
+&lt;&#x2F;span&gt;&lt;span&gt;	&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;requestAnimFrame&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;cizimYap&lt;&#x2F;span&gt;&lt;span&gt;);
+&lt;&#x2F;span&gt;&lt;span&gt;	&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;renderer&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;render&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;stage&lt;&#x2F;span&gt;&lt;span&gt;);
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Çalışıp çalışmadığını kontrol etmek isterseniz isterseniz arkaplanı kırmızı yapabilirsiniz.&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;0xFF0303&lt;&#x2F;code&gt; renk kodunu kullanabilirsiniz.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;h2 id=&quot;texture&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#texture&quot; aria-label=&quot;Anchor link for: texture&quot;&gt;##&lt;&#x2F;a&gt;
+Texture&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;strong&gt;Texture&lt;&#x2F;strong&gt; ile resim dosyalarını hafızada tutacağız. Bu sayede &lt;strong&gt;sprite&lt;&#x2F;strong&gt;’da resim kullanmamız gerektiğinde bu &lt;strong&gt;texture&lt;&#x2F;strong&gt; nesnesini
+kullanacağız. Bu sayede resimler tekrar ve tekrar yüklenmeyecek, sadece 1 defa çekilecektir.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;javascript&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-javascript &quot;&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; PIXI.Texture.fromImage(dosyaYolu, orjin, olcek);
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;var &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;texture &lt;&#x2F;span&gt;&lt;span&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;PIXI&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Texture&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;fromImage&lt;&#x2F;span&gt;&lt;span&gt;(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;resim.png&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;);
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;sprite&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#sprite&quot; aria-label=&quot;Anchor link for: sprite&quot;&gt;##&lt;&#x2F;a&gt;
+Sprite&lt;&#x2F;h2&gt;
+&lt;p&gt;Sprite’lar sahnemizdeki nesnelerimiz olacaktır.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;javascript&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-javascript &quot;&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; PIXI.Sprite(PIXI.Texture texture);
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;var &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;sprite &lt;&#x2F;span&gt;&lt;span&gt;= new PIXI.Sprite(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;texture&lt;&#x2F;span&gt;&lt;span&gt;);
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;anchor&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#anchor&quot; aria-label=&quot;Anchor link for: anchor&quot;&gt;###&lt;&#x2F;a&gt;
+Anchor&lt;&#x2F;h3&gt;
+&lt;p&gt;Nesnelerimizin orjin noktası olacaktır. Texture resmi de orjin noktasına göre çizilecektir. Bu sayede objenin tam olarak orta noktasının
+neresi olacağını belirliyoruz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;javascript&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-javascript &quot;&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;* 0-0     =&amp;gt; Sol Üst
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt; * 0.5-0.5 =&amp;gt; Ortala
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt; * 1-1     =&amp;gt; Sağ Alt
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt; *&#x2F;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;sprite&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;anchor&lt;&#x2F;span&gt;&lt;span&gt;.x = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0.5&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;sprite&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;anchor&lt;&#x2F;span&gt;&lt;span&gt;.y = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0.5&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;position&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#position&quot; aria-label=&quot;Anchor link for: position&quot;&gt;###&lt;&#x2F;a&gt;
+Position&lt;&#x2F;h3&gt;
+&lt;p&gt;Sprite nesnesinin sahnede bulunacağı koordinatlardır.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;javascript&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-javascript &quot;&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;sprite&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;position&lt;&#x2F;span&gt;&lt;span&gt;.x = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;200&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;sprite&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;position&lt;&#x2F;span&gt;&lt;span&gt;.y = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;150&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;rotation&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#rotation&quot; aria-label=&quot;Anchor link for: rotation&quot;&gt;###&lt;&#x2F;a&gt;
+Rotation&lt;&#x2F;h3&gt;
+&lt;p&gt;Sprite nesnesini orjin etrafında döndürmenizi sağlar.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;javascript&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-javascript &quot;&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;sprite&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;rotation &lt;&#x2F;span&gt;&lt;span&gt;+= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0.1&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Döndürme kodunu çizim döngüsü dışında yaparsanız sadece 1 seferlik +0.1 artış yapacaktır. Sürekli dönmesi için döngü içerisinde bu kodu
+kullanmanız gerekiyor.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;h3 id=&quot;sahneye-ekleme&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#sahneye-ekleme&quot; aria-label=&quot;Anchor link for: sahneye-ekleme&quot;&gt;###&lt;&#x2F;a&gt;
+Sahneye Ekleme&lt;&#x2F;h3&gt;
+&lt;p&gt;Sprite nesnemizi artık sahneye ekleyelim.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;javascript&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-javascript &quot;&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;stage&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;addChild&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;sprite&lt;&#x2F;span&gt;&lt;span&gt;);
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;tum-kaynak&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#tum-kaynak&quot; aria-label=&quot;Anchor link for: tum-kaynak&quot;&gt;##&lt;&#x2F;a&gt;
+Tüm Kaynak&lt;&#x2F;h2&gt;
+&lt;p&gt;Ders içerisindeki bilgilerle yapılan tüm script kodu&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;javascript&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-javascript &quot;&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;var &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;stage &lt;&#x2F;span&gt;&lt;span&gt;= new PIXI.Stage(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0xFFFFFF&lt;&#x2F;span&gt;&lt;span&gt;);
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;var &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;renderer &lt;&#x2F;span&gt;&lt;span&gt;= new PIXI.autoDetectRenderer(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;400&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;300&lt;&#x2F;span&gt;&lt;span&gt;);
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;var &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;texture &lt;&#x2F;span&gt;&lt;span&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;PIXI&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Texture&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;fromImage&lt;&#x2F;span&gt;&lt;span&gt;(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;resim.png&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;);
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;var &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;sprite  &lt;&#x2F;span&gt;&lt;span&gt;= new PIXI.Sprite(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;texture&lt;&#x2F;span&gt;&lt;span&gt;);
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;sprite&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;anchor&lt;&#x2F;span&gt;&lt;span&gt;.x = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0.5&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;sprite&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;anchor&lt;&#x2F;span&gt;&lt;span&gt;.y = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0.5&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;sprite&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;position&lt;&#x2F;span&gt;&lt;span&gt;.x = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;200&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;sprite&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;position&lt;&#x2F;span&gt;&lt;span&gt;.y = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;150&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;stage&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;addChild&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;sprite&lt;&#x2F;span&gt;&lt;span&gt;);
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;document.body.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;appendChild&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;renderer&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;view&lt;&#x2F;span&gt;&lt;span&gt;);
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;requestAnimFrame&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;cizimYap&lt;&#x2F;span&gt;&lt;span&gt;);
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;function &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;cizimYap&lt;&#x2F;span&gt;&lt;span&gt;() {
+&lt;&#x2F;span&gt;&lt;span&gt;	&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;requestAnimFrame&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;cizimYap&lt;&#x2F;span&gt;&lt;span&gt;);
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;	&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;sprite&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;rotation &lt;&#x2F;span&gt;&lt;span&gt;+= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0.1&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;	&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;renderer&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;render&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;stage&lt;&#x2F;span&gt;&lt;span&gt;);
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+</content>
+        
+    </entry>
+</feed>

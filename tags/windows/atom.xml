@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Eray Aydın - windows</title>
+    <subtitle>Scala Developer, Laravel Artisan, Free Software Fan, Archy, Linux Lover, WoW Loremaster, Junior Game Developer</subtitle>
+    <link rel="self" type="application/atom+xml" href="https://era.yayd.in/tags/windows/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://era.yayd.in"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2015-05-29T16:34:00+00:00</updated>
+    <id>https://era.yayd.in/tags/windows/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Windows için Virtual Host Alias Modülü</title>
+        <published>2015-05-29T16:34:00+00:00</published>
+        <updated>2015-05-29T16:34:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://era.yayd.in/blog/windows-virtual-host-alias/"/>
+        <id>https://era.yayd.in/blog/windows-virtual-host-alias/</id>
+        
+        <content type="html" xml:base="https://era.yayd.in/blog/windows-virtual-host-alias/">&lt;p&gt;Daha önce paylaştığımız mod_vhost_alias’ın Windows ile ilgili ayarlaması.&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Windows 8.1 üzerinde test edilmiştir.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;Öncelikle modülü aktifleştirmek için &lt;code&gt;C:&#x2F;Localhost&#x2F;Apache&#x2F;conf&#x2F;httpd.conf&lt;&#x2F;code&gt; dosyasını düzenliyoruz.&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;#LoadModule vhost_alias_module modules&#x2F;mod_vhost_alias.so
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;satırındaki &lt;code&gt;#&lt;&#x2F;code&gt; işaretini kaldırarak modülü aktifleştiriyoruz.&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;p&gt;Modülü aktifleştirdiğimize göre ayarlamasını yapabiliriz. Bunun için &lt;code&gt;c:&#x2F;Localhost&#x2F;Apache&#x2F;conf&#x2F;alias.conf&lt;&#x2F;code&gt; dosyası oluşturup düzenliyoruz. İçerisine aşağıdaki kod bloğunu giriyoruz.&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;&amp;lt;Virtualhost *:80&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    VirtualDocumentRoot &amp;quot;c:&#x2F;Webserver&#x2F;%-2+&#x2F;public&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;    ServerName vhosts.dev
+&lt;&#x2F;span&gt;&lt;span&gt;    ServerAlias *.dev
+&lt;&#x2F;span&gt;&lt;span&gt;    UseCanonicalName Off
+&lt;&#x2F;span&gt;&lt;span&gt;    LogFormat &amp;quot;%V %h %l %u %t &amp;#39;%r&amp;#39; %s %b&amp;quot; common
+&lt;&#x2F;span&gt;&lt;span&gt;    ErrorLog &amp;quot;c:&#x2F;Webserver&#x2F;vhosts-error_log&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;    &amp;lt;Directory &amp;quot;c:&#x2F;Webserver&#x2F;*&amp;quot;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;        Options Indexes FollowSymLinks MultiViews
+&lt;&#x2F;span&gt;&lt;span&gt;        AllowOverride All
+&lt;&#x2F;span&gt;&lt;span&gt;        Order allow,deny
+&lt;&#x2F;span&gt;&lt;span&gt;        Allow from all
+&lt;&#x2F;span&gt;&lt;span&gt;    &amp;lt;&#x2F;Directory&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&#x2F;Virtualhost&amp;gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Bu ayar dosyamızın çalışması için &lt;code&gt;httpd.conf&lt;&#x2F;code&gt; dosyasının en altına&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;# vHost Alias
+&lt;&#x2F;span&gt;&lt;span&gt;Include conf&#x2F;alias.conf
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;ekliyoruz.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;test&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#test&quot; aria-label=&quot;Anchor link for: test&quot;&gt;##&lt;&#x2F;a&gt;
+Test&lt;&#x2F;h2&gt;
+&lt;p&gt;Test etmek için &lt;code&gt;c:&#x2F;Webserver&lt;&#x2F;code&gt; içerisine &lt;code&gt;deneme&lt;&#x2F;code&gt; ve &lt;code&gt;deneme&#x2F;public&lt;&#x2F;code&gt; klasörlerini oluşturuyoruz. Henüz Windows’a gerekli ayarı yapmadığımız için &lt;code&gt;deneme.dev&lt;&#x2F;code&gt; bağlantısını &lt;code&gt;127.0.0.1&lt;&#x2F;code&gt; adresine yönlendirmemiz gerekiyor. Bunun için de &lt;code&gt;%windir%&#x2F;system32&#x2F;drivers&#x2F;etc&#x2F;hosts&lt;&#x2F;code&gt; dosyasını düzenliyoruz ve en alt satıra aşağıdakini ekliyoruz.&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;127.0.0.1 deneme.dev
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Test etmek için &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;http:&#x2F;&#x2F;deneme.dev&quot;&gt;http:&#x2F;&#x2F;deneme.dev&lt;&#x2F;a&gt; adresini kullanacağız.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;dns-server&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#dns-server&quot; aria-label=&quot;Anchor link for: dns-server&quot;&gt;##&lt;&#x2F;a&gt;
+DNS Server&lt;&#x2F;h2&gt;
+&lt;p&gt;Linux ve Mac için aslında bu işlem oldukça kolay ve rahat.&lt;&#x2F;p&gt;
+&lt;p&gt;Local DNS Server olarak &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;http:&#x2F;&#x2F;sourceforge.net&#x2F;projects&#x2F;acrylic&#x2F;&quot;&gt;Acrylic&lt;&#x2F;a&gt; programını kullanacağız. Kurulumu yaptıktan sonra &lt;code&gt;AcrylicHosts.txt&lt;&#x2F;code&gt; dosyasını düzenlememiz gerekiyor. Dosyayı &lt;code&gt;C:\Program Files (x86)\Acrylic DNS Proxy&lt;&#x2F;code&gt; dizininde bulabilirsiniz.&lt;&#x2F;p&gt;
+&lt;p&gt;En alt satıra&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;127.0.0.1 *.dev
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;ekliyoruz.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Denetim Masası&lt;&#x2F;strong&gt; &amp;gt; &lt;strong&gt;Ağ Ve İnternet&lt;&#x2F;strong&gt; &amp;gt; &lt;strong&gt;Ağ Bağlantıları&lt;&#x2F;strong&gt; kısmından bağdaştırıcınıza sağ tıklayın ve &lt;strong&gt;Özellikler&lt;&#x2F;strong&gt; kısmına girin. &lt;strong&gt;Internet Protokolü sürüm 4(TCP&#x2F;IPv4)&lt;&#x2F;strong&gt;’e tıklayın ve &lt;strong&gt;Özellikler&lt;&#x2F;strong&gt; deyin.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Aşağıdaki DNS sunucu adreslerini kullan&lt;&#x2F;strong&gt; kısmına &lt;code&gt;127.0.0.1&lt;&#x2F;code&gt; adresini girin.&lt;&#x2F;p&gt;
+&lt;p&gt;Artık local bir DNS Proxy sunucunuz oluştu.&lt;&#x2F;p&gt;
+&lt;p&gt;Size önerim &lt;code&gt;Acrylic&lt;&#x2F;code&gt; hizmetini sadece geliştirme yaparken açmanız. Diğer zamanlarda DNS cache yüzünden sorunlar yaşayabilirsiniz.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Windows&#x27;a Apache, Mysql, PHP ve PHPMyAdmin Kurulumu</title>
+        <published>2015-05-29T16:30:00+00:00</published>
+        <updated>2015-05-29T16:30:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://era.yayd.in/blog/windows-apache-mysql-php-phpmyadmin-kurulumu/"/>
+        <id>https://era.yayd.in/blog/windows-apache-mysql-php-phpmyadmin-kurulumu/</id>
+        
+        <content type="html" xml:base="https://era.yayd.in/blog/windows-apache-mysql-php-phpmyadmin-kurulumu/">&lt;p&gt;Apache, Mysql ve PHP’yi manuel olarak kurmak için bu makaleyi inceleyebilirsiniz.&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Windows 8.1 üzerinde test edilmiştir.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;h2 id=&quot;apache-kurulumu&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#apache-kurulumu&quot; aria-label=&quot;Anchor link for: apache-kurulumu&quot;&gt;##&lt;&#x2F;a&gt;
+Apache Kurulumu&lt;&#x2F;h2&gt;
+&lt;p&gt;Apache kurulumu için, Windows XP ve 2003 kullanıcıları &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;http:&#x2F;&#x2F;www.microsoft.com&#x2F;download&#x2F;en&#x2F;details.aspx?id=13523&quot;&gt;VC10_x64&lt;&#x2F;a&gt;&#x2F;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;http:&#x2F;&#x2F;www.microsoft.com&#x2F;download&#x2F;en&#x2F;details.aspx?id=8328&quot;&gt;VC10_x86&lt;&#x2F;a&gt;  kurmalı, diğer versiyonlar için &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;http:&#x2F;&#x2F;www.microsoft.com&#x2F;en-us&#x2F;download&#x2F;details.aspx?id=30679&quot;&gt;VC11&lt;&#x2F;a&gt; kurulmalıdır.&lt;&#x2F;p&gt;
+&lt;p&gt;Apache kurulumu için &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;http:&#x2F;&#x2F;www.apachelounge.com&#x2F;&quot;&gt;Apache Lounge&lt;&#x2F;a&gt; sitesini kullanacağız.&lt;&#x2F;p&gt;
+&lt;p&gt;Visual C++ Redistributable for Visual Studio 2012 kurulumunu yaptıysanız  &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;http:&#x2F;&#x2F;www.apachelounge.com&#x2F;download&#x2F;&quot;&gt;Download&lt;&#x2F;a&gt; kısmından bize uygun olan versiyon ve sistemi indirin.&lt;&#x2F;p&gt;
+&lt;p&gt;x64 bir sistem kullandığım için &lt;code&gt;httpd-2.4.12-win64-VC11.zip&lt;&#x2F;code&gt; dosyasını indireceğim.&lt;&#x2F;p&gt;
+&lt;p&gt;İndirdiğimiz &lt;strong&gt;zip&lt;&#x2F;strong&gt; dosyasını &lt;code&gt;C:&#x2F;Localhost&#x2F;Apache&lt;&#x2F;code&gt; klasörüne çıkartın.&lt;&#x2F;p&gt;
+&lt;p&gt;Artık tek yapmamız gereken ayar dosyasını düzenlemek. Bunun için &lt;code&gt;C:&#x2F;Localhost&#x2F;Apache&#x2F;conf&#x2F;httpd.conf&lt;&#x2F;code&gt; dosyasını editör ile açıyoruz.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;ServerRoot&lt;&#x2F;strong&gt; parametresine &lt;strong&gt;c:&#x2F;Localhost&#x2F;Apache&lt;&#x2F;strong&gt; değerini veriyoruz. Port olarak &lt;strong&gt;80&lt;&#x2F;strong&gt; kullanacağımız için &lt;strong&gt;Listen&lt;&#x2F;strong&gt; parametresini değiştirmemize gerek yok. Eğer başka bir porttan kullanmak istiyorsanız bu parametreyi değiştirebilirsiniz.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;LoadModule&lt;&#x2F;strong&gt; listesinde yer alan &lt;code&gt;LoadModule rewrite_module modules&#x2F;mod_rewrite.so&lt;&#x2F;code&gt; satırının başındaki &lt;code&gt;#&lt;&#x2F;code&gt; yorum satırını kaldırıyoruz. Bu sayede .htaccess ile apache’ye yeniden yazım işlemi tanımlayabileceğiz.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;DocumentRoot&lt;&#x2F;strong&gt; parametresine de sunucu dosyalarımızı tutacağımız dizini tanımlayacağız. Çalışma amaçlı ben &lt;code&gt;C:&#x2F;Webserver&lt;&#x2F;code&gt; dizinini kullanacağım. Aynı şekilde &lt;strong&gt;&amp;lt;Directory “”&amp;gt;&lt;&#x2F;strong&gt; parametresini de düzenliyoruz.&lt;&#x2F;p&gt;
+&lt;p&gt;Dosyayı kaydedip, konfigürasyon dosyamızı test etmek için &lt;code&gt;C:&#x2F;Localhost&#x2F;Apache&#x2F;bin&#x2F;httpd.exe&lt;&#x2F;code&gt; dosyasını &lt;strong&gt;cmd.exe&lt;&#x2F;strong&gt; ile açıyoruz. Eğer herhangi bir hata alıp &lt;strong&gt;httpd.exe&lt;&#x2F;strong&gt; kapatılmamışsa sorunumuz yok demektir. Ctrl+C ile httpd.exe’yi sonlandırabilirsiniz.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;php-kurulumu&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#php-kurulumu&quot; aria-label=&quot;Anchor link for: php-kurulumu&quot;&gt;##&lt;&#x2F;a&gt;
+PHP Kurulumu&lt;&#x2F;h2&gt;
+&lt;p&gt;PHP kurulumu için de &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;http:&#x2F;&#x2F;windows.php.net&quot;&gt;PHP Windows&lt;&#x2F;a&gt; sitesini kullanacağız. &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;http:&#x2F;&#x2F;windows.php.net&#x2F;download&#x2F;&quot;&gt;Download&lt;&#x2F;a&gt; kısmından VC ve sistemimize uygun PHP’yi indiriyoruz. VC11 ve x64 kullandığım için &lt;strong&gt;VC11 x64 Thread Safe&lt;&#x2F;strong&gt; seçtim. Apache modulü olarak kurulum yapacağımız için &lt;strong&gt;Thread Safe&lt;&#x2F;strong&gt; olanları indirmeniz gerekiyor.&lt;&#x2F;p&gt;
+&lt;p&gt;İndirdiğiniz php &lt;strong&gt;zip&lt;&#x2F;strong&gt; dosyasını &lt;code&gt;C:&#x2F;PHP&#x2F;&lt;&#x2F;code&gt; içerisine çıkartıyoruz. Ayarlamaları yapmak için de &lt;code&gt;php.ini-development&lt;&#x2F;code&gt; dosyasını &lt;code&gt;php.ini&lt;&#x2F;code&gt; olarak değiştirip açıyoruz.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;max_execution_time&lt;&#x2F;strong&gt; parametresini isteğinize göre arttırın. PHP dosyalarınızın maksimum çalıştırma süresini bu sayede arttırabilirsiniz. Ben 30’dan 60 saniyeye arttırdım.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;memory_limit&lt;&#x2F;strong&gt; parametresini de sahip olduğunuz RAM’e göre arttırabilirsiniz. Varsayılan olarak &lt;strong&gt;128MB&lt;&#x2F;strong&gt; seçilidir. &lt;strong&gt;512&lt;&#x2F;strong&gt;’nin ideal olacağını düşünüyorum.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;post_max_size&lt;&#x2F;strong&gt; parametresini de &lt;strong&gt;0&lt;&#x2F;strong&gt; olarak değiştirebilirsiniz. Bu sayede POST değerlerinin maksimum büyüklüğünü kaldırabilirsiniz.&lt;&#x2F;p&gt;
+&lt;p&gt;Yorum halinde bulunan &lt;strong&gt;extension_dir&lt;&#x2F;strong&gt; parametresine de &lt;code&gt;C:&#x2F;Localhost&#x2F;PHP&#x2F;ext&lt;&#x2F;code&gt; yolunu veriyoruz.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;upload_max_filesize&lt;&#x2F;strong&gt; parametresini de &lt;strong&gt;2M&lt;&#x2F;strong&gt;’den &lt;strong&gt;20M&lt;&#x2F;strong&gt;’a çıkartabiliriz. Bu sayede daha büyük boyutlu dosyaları yükleyebiliriz.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Dynamic Extensions&lt;&#x2F;strong&gt; bölümünde aşağıda yer alan modüllerin başlarındaki yorum satırlarını kaldırarak aktif edebilirsiniz.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;php_bz2&lt;&#x2F;li&gt;
+&lt;li&gt;php_curl&lt;&#x2F;li&gt;
+&lt;li&gt;php_fileinfo&lt;&#x2F;li&gt;
+&lt;li&gt;php_gd2&lt;&#x2F;li&gt;
+&lt;li&gt;php_gettext&lt;&#x2F;li&gt;
+&lt;li&gt;php_imap&lt;&#x2F;li&gt;
+&lt;li&gt;php_mbstring&lt;&#x2F;li&gt;
+&lt;li&gt;php_mysql&lt;&#x2F;li&gt;
+&lt;li&gt;php_mysqli&lt;&#x2F;li&gt;
+&lt;li&gt;php_pdo_mysql&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Gerekli düzenlemeleri yaptığımıza göre kaydedebiliriz. Test etmek amaçlı &lt;code&gt;C:&#x2F;Localhost&#x2F;PHP&lt;&#x2F;code&gt; dizininde &lt;code&gt;php.exe -i&lt;&#x2F;code&gt; komutunu çalıştırabilirsiniz.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;apache-php-entegresi&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#apache-php-entegresi&quot; aria-label=&quot;Anchor link for: apache-php-entegresi&quot;&gt;##&lt;&#x2F;a&gt;
+Apache - PHP Entegresi&lt;&#x2F;h2&gt;
+&lt;p&gt;Apache’ye modül olarak PHP eklemek için birkaç ayar yapmamız gerekiyor. &lt;code&gt;C:&#x2F;Localhost&#x2F;Apache&#x2F;conf&#x2F;httpd.conf&lt;&#x2F;code&gt; dosyasını düzenlemek için açıyoruz.&lt;&#x2F;p&gt;
+&lt;p&gt;En alt satıra aşağıdaki kodları giriyoruz.&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;#PHP5
+&lt;&#x2F;span&gt;&lt;span&gt;LoadModule php5_module &amp;quot;C:&#x2F;Localhost&#x2F;PHP&#x2F;php5apache2_4.dll&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;PHPIniDir &amp;quot;C:&#x2F;Localhost&#x2F;PHP&amp;quot;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;php5apache2_4.dll&lt;&#x2F;strong&gt; dosyasının olup olmadığını kontrol etmekte yarar var.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;IfModule mime_module&amp;gt;&lt;&#x2F;code&gt; kısmının içinde yer alan &lt;strong&gt;AddType&lt;&#x2F;strong&gt; listesine aşağıdaki eklemeleri yapıyoruz.&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;AddType application&#x2F;x-httpd-php .php
+&lt;&#x2F;span&gt;&lt;span&gt;AddType application&#x2F;x-httpd-php-source .phps
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Dizinde şuan &lt;strong&gt;index.html&lt;&#x2F;strong&gt; dosyası ilk olarak açılıyor. Buna ayrıca &lt;strong&gt;index.php&lt;&#x2F;strong&gt; eklemek için, &lt;strong&gt;DirectoryIndex&lt;&#x2F;strong&gt; parametresine &lt;code&gt;index.php&lt;&#x2F;code&gt; ekliyoruz.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;apache-nin-servis-olarak-eklenmesi&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#apache-nin-servis-olarak-eklenmesi&quot; aria-label=&quot;Anchor link for: apache-nin-servis-olarak-eklenmesi&quot;&gt;##&lt;&#x2F;a&gt;
+Apache’nin Servis Olarak Eklenmesi&lt;&#x2F;h2&gt;
+&lt;p&gt;Windows başlatıldığında ayrıca Apache de başlatılması için &lt;strong&gt;Apache&lt;&#x2F;strong&gt;’yi hizmet olarak eklememiz gerekiyor. &lt;code&gt;cmd.exe&lt;&#x2F;code&gt;’yi yönetici haklarıyla çalıştırın. &lt;code&gt;C:&#x2F;Localhost&#x2F;Apache&#x2F;bin&lt;&#x2F;code&gt; klasörüne ulaşarak ``httpd.exe -k install` komutunu gerçekleştirin.&lt;&#x2F;p&gt;
+&lt;p&gt;Görev Yöneticisini açarak Hizmetler kısmından Apache’yi çalıştırın.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;php-test&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#php-test&quot; aria-label=&quot;Anchor link for: php-test&quot;&gt;##&lt;&#x2F;a&gt;
+PHP Test&lt;&#x2F;h2&gt;
+&lt;p&gt;PHP’yi test etmek için &lt;code&gt;C:&#x2F;Webserver&#x2F;phpinfo.php&lt;&#x2F;code&gt; dosyası oluşturun ve içerisine &lt;code&gt;&amp;lt;?php phpinfo();&lt;&#x2F;code&gt; ekleyin. Denemek için &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;http:&#x2F;&#x2F;localhost&#x2F;phpinfo.php&quot;&gt;http:&#x2F;&#x2F;localhost&#x2F;phpinfo.php&lt;&#x2F;a&gt; bağlantısını kullanabilirsiniz.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;mysql-kurulumu&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#mysql-kurulumu&quot; aria-label=&quot;Anchor link for: mysql-kurulumu&quot;&gt;##&lt;&#x2F;a&gt;
+MySQL Kurulumu&lt;&#x2F;h2&gt;
+&lt;p&gt;MySQL kurulum işlemi için &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;dev.mysql.com&#x2F;downloads&#x2F;installer&#x2F;&quot;&gt;Mysql Installer&lt;&#x2F;a&gt; kullanacağız. Daha hızlı bir kurulum için &lt;strong&gt;web installer&lt;&#x2F;strong&gt;(mysql-installer-web-community-X.Y.Z.T.msi) indirebilirsiniz.&lt;&#x2F;p&gt;
+&lt;p&gt;Sözleşme kurallarını kabul ettikten sonra kurulum türünü seçmemiz gerekiyor. Sadece &lt;strong&gt;Server&lt;&#x2F;strong&gt; bizim için yeterli. &lt;strong&gt;Server Only&lt;&#x2F;strong&gt; seçerek devam ediyoruz. İndirme işleminden sonraki ayar kısmında &lt;strong&gt;Development Machine&lt;&#x2F;strong&gt; seçimiyle geliştirme ortamını seçmiş oluyoruz. &lt;strong&gt;Show Advanced Options&lt;&#x2F;strong&gt; kısmını seçiyoruz ve ilerliyoruz.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;MySQL Root Password&lt;&#x2F;strong&gt; kısmında mysql için kullanacağımız şifreyi tanımlıyoruz.&lt;&#x2F;p&gt;
+&lt;p&gt;Diğer kısımları varsayılan bırakıp son aşamaya geçiyoruz ve ayarları uyguluyoruz.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;phpmyadmin-kurulumu&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#phpmyadmin-kurulumu&quot; aria-label=&quot;Anchor link for: phpmyadmin-kurulumu&quot;&gt;##&lt;&#x2F;a&gt;
+PHPMyAdmin Kurulumu&lt;&#x2F;h2&gt;
+&lt;p&gt;PHPMyAdmin kurulumda varsayılandan farklı olarak &lt;strong&gt;Alias&lt;&#x2F;strong&gt; kurulumu yapacağız. Bu sayede ileride oluşturacağımız &lt;strong&gt;sanal sunucularda&lt;&#x2F;strong&gt; da rahatlıkla PHPMyAdmin kullanabileceğiniz.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;http:&#x2F;&#x2F;www.phpmyadmin.net&#x2F;home_page&#x2F;index.php&quot;&gt;PHPMyAdmin&lt;&#x2F;a&gt; sitesinden son versiyonu indiriyoruz ve &lt;code&gt;c:&#x2F;Localhost&#x2F;PHPMyAdmin&lt;&#x2F;code&gt; içerisine çıkartıyoruz.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;code&gt;config.sample.inc.php&lt;&#x2F;code&gt; dosyasının ismini &lt;code&gt;config.inc.php&lt;&#x2F;code&gt; olarak değiştirip açıyoruz. İçindekileri silip aşağıdaki kodu kullanabilir veya gerekli düzenlemeleri teker teker yapabilirsiniz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;php&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-php &quot;&gt;&lt;code class=&quot;language-php&quot; data-lang=&quot;php&quot;&gt;&lt;span style=&quot;color:#ab7967;&quot;&gt;&amp;lt;?php
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;i &lt;&#x2F;span&gt;&lt;span&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;*
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;* First server
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;*&#x2F;
+&lt;&#x2F;span&gt;&lt;span&gt;$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;i&lt;&#x2F;span&gt;&lt;span&gt;++;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;* Authentication type *&#x2F;
+&lt;&#x2F;span&gt;&lt;span&gt;$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;cfg&lt;&#x2F;span&gt;&lt;span&gt;[&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Servers&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;][$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;i&lt;&#x2F;span&gt;&lt;span&gt;][&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;auth_type&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;] = &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;config&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;* Server parameters *&#x2F;
+&lt;&#x2F;span&gt;&lt;span&gt;$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;cfg&lt;&#x2F;span&gt;&lt;span&gt;[&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Servers&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;][$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;i&lt;&#x2F;span&gt;&lt;span&gt;][&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;host&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;] = &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;localhost&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;;
+&lt;&#x2F;span&gt;&lt;span&gt;$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;cfg&lt;&#x2F;span&gt;&lt;span&gt;[&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Servers&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;][$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;i&lt;&#x2F;span&gt;&lt;span&gt;][&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;port&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;] = &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;3306&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;;
+&lt;&#x2F;span&gt;&lt;span&gt;$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;cfg&lt;&#x2F;span&gt;&lt;span&gt;[&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Servers&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;][$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;i&lt;&#x2F;span&gt;&lt;span&gt;][&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;connect_type&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;] = &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;tcp&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;;
+&lt;&#x2F;span&gt;&lt;span&gt;$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;cfg&lt;&#x2F;span&gt;&lt;span&gt;[&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Servers&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;][$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;i&lt;&#x2F;span&gt;&lt;span&gt;][&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;compress&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;] = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;false&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;* Select mysqli if your server has it *&#x2F;
+&lt;&#x2F;span&gt;&lt;span&gt;$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;cfg&lt;&#x2F;span&gt;&lt;span&gt;[&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Servers&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;][$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;i&lt;&#x2F;span&gt;&lt;span&gt;][&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;extension&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;] = &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;mysqli&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;* User for advanced features *&#x2F;
+&lt;&#x2F;span&gt;&lt;span&gt;$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;cfg&lt;&#x2F;span&gt;&lt;span&gt;[&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Servers&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;][$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;i&lt;&#x2F;span&gt;&lt;span&gt;][&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;user&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;] = &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;root&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;;
+&lt;&#x2F;span&gt;&lt;span&gt;$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;cfg&lt;&#x2F;span&gt;&lt;span&gt;[&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Servers&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;][$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;i&lt;&#x2F;span&gt;&lt;span&gt;][&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;password&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;] = &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;MYSQLSIFRE&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ab7967;&quot;&gt;?&amp;gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Buradaki &lt;strong&gt;MYSQLSIFRE&lt;&#x2F;strong&gt; alanına MySQL kurulumu yaparken girdiğiniz şifreyi girmeniz gerekiyor.&lt;&#x2F;p&gt;
+&lt;p&gt;PHPMyAdmin için gerekli ayarlamaları yaptık. Dosyayı kaydedip &lt;code&gt;c:&#x2F;Localhost&#x2F;Apache&#x2F;conf&#x2F;httpd.conf&lt;&#x2F;code&gt; dosyasına geçiyoruz. En alt satıra aşağıdaki kodları giriyoruz.&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;#PHPMyAdmin
+&lt;&#x2F;span&gt;&lt;span&gt;Alias &#x2F;phpmyadmin &amp;quot;c:&#x2F;Localhost&#x2F;PHPMyAdmin&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;Directory &amp;quot;c:&#x2F;Localhost&#x2F;PHPMyAdmin&amp;quot;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    Options Indexes FollowSymLinks
+&lt;&#x2F;span&gt;&lt;span&gt;    AllowOverride All
+&lt;&#x2F;span&gt;&lt;span&gt;    Require all granted
+&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&#x2F;Directory&amp;gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Hangi sunucu olursa olsun sonuna &lt;code&gt;&#x2F;phpmyadmin&lt;&#x2F;code&gt; eklendiğinde &lt;code&gt;c:&#x2F;Localhost&#x2F;PHPMyAdmin&lt;&#x2F;code&gt; çalışacak şekilde ayarladık.&lt;&#x2F;p&gt;
+&lt;p&gt;PHPMyAdmin ve MySQL testi için &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;http:&#x2F;&#x2F;localhost&#x2F;phpmyadmin&quot;&gt;http:&#x2F;&#x2F;localhost&#x2F;phpmyadmin&lt;&#x2F;a&gt; deneyebilirsiniz.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+</feed>

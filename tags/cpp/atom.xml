@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Eray Aydın - cpp</title>
+    <subtitle>Scala Developer, Laravel Artisan, Free Software Fan, Archy, Linux Lover, WoW Loremaster, Junior Game Developer</subtitle>
+    <link rel="self" type="application/atom+xml" href="https://era.yayd.in/tags/cpp/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://era.yayd.in"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2015-09-25T17:52:00+00:00</updated>
+    <id>https://era.yayd.in/tags/cpp/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Basit Bir SDL Projesi Oluşturma</title>
+        <published>2015-09-25T17:52:00+00:00</published>
+        <updated>2015-09-25T17:52:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://era.yayd.in/blog/basit-bir-sdl-projesi-olusturma/"/>
+        <id>https://era.yayd.in/blog/basit-bir-sdl-projesi-olusturma/</id>
+        
+        <content type="html" xml:base="https://era.yayd.in/blog/basit-bir-sdl-projesi-olusturma/">&lt;p&gt;Öncelikle C++ ile basit bir SDL kodu yazmamız gerekiyor.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;c++&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-c++ &quot;&gt;&lt;code class=&quot;language-c++&quot; data-lang=&quot;c++&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;#include &lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;SDL2&#x2F;SDL.h&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;#include &lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;stdio.h&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;int &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;main&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;int &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;argc&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;char&lt;&#x2F;span&gt;&lt;span&gt;* &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;args&lt;&#x2F;span&gt;&lt;span&gt;[])
+&lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;if&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;SDL_Init&lt;&#x2F;span&gt;&lt;span&gt;(SDL_INIT_VIDEO) &amp;lt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;){
+&lt;&#x2F;span&gt;&lt;span&gt;		&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;printf&lt;&#x2F;span&gt;&lt;span&gt;(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;SDL baslatilamadi! SDL Hatasi: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;%s&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\n&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;SDL_GetError&lt;&#x2F;span&gt;&lt;span&gt;());
+&lt;&#x2F;span&gt;&lt;span&gt;	} &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;else &lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;		&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;printf&lt;&#x2F;span&gt;&lt;span&gt;(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;SDL baslatildi!&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\n&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;);
+&lt;&#x2F;span&gt;&lt;span&gt;	}
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Projemizi derlemede  kullanacağım bir &lt;code&gt;Makefile&lt;&#x2F;code&gt; dosyası oluşturalım.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;make&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-make &quot;&gt;&lt;code class=&quot;language-make&quot; data-lang=&quot;make&quot;&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;#OBJS derlenecek dosyalar
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;OBJS &lt;&#x2F;span&gt;&lt;span&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;main.cpp
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;#CC kullanacağımız derleyici
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;CC &lt;&#x2F;span&gt;&lt;span&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;g++
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;#CFLAGS derleyiciye özel değerlerimiz, -w = Uyarıları gizle
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;CFLAGS &lt;&#x2F;span&gt;&lt;span&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;-w -Wall
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;#LFLAGS kütüphane linkleyicileri
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;LFLAGS &lt;&#x2F;span&gt;&lt;span&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;-lSDL2
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;#OBJ çalıştırılabilir dosyamızın adı olacak
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;OBJ &lt;&#x2F;span&gt;&lt;span&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;main
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;#sadece `make` kullanıldığında çalışacak olan komutumuz
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;all &lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;$(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;OBJS&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;)
+&lt;&#x2F;span&gt;&lt;span&gt;	&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;$(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;CC&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;) $(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;OBJS&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;) $(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;CFLAGS&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;) $(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;LFLAGS&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;) &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;-o &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;$(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;OBJ&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Projemizi &lt;code&gt;Make&lt;&#x2F;code&gt; ile derleyelim.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;make
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Projemizi çalıştıralım.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;.&#x2F;main
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>C++ 2D Game Frameworks</title>
+        <published>2015-04-20T12:00:00+00:00</published>
+        <updated>2015-04-20T12:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://era.yayd.in/blog/cpp-2d-game-frameworks/"/>
+        <id>https://era.yayd.in/blog/cpp-2d-game-frameworks/</id>
+        
+        <content type="html" xml:base="https://era.yayd.in/blog/cpp-2d-game-frameworks/">&lt;p&gt;Bu yazıda C++ 2D oyun kütüphaneleri hakkında bilgiler vereceğim. Avantajlarını ve eksikliklerini, artı ve eksi yönlerini öğrenebilirsiniz.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;oxygine&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#oxygine&quot; aria-label=&quot;Anchor link for: oxygine&quot;&gt;##&lt;&#x2F;a&gt;
+Oxygine&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Açık kaynak&lt;&#x2F;li&gt;
+&lt;li&gt;Çoklu-platform (MacOSX, iOS, Android, Windows, Linux, HTML5-Web-WebGL)&lt;&#x2F;li&gt;
+&lt;li&gt;Saf C++ (Basit API desteği ile yazımı çok rahat, jQuery sloganı gibi &lt;code&gt;do more with less code&lt;&#x2F;code&gt;)&lt;&#x2F;li&gt;
+&lt;li&gt;Hata ayıklama modu, FPS ve performans kontrolü&lt;&#x2F;li&gt;
+&lt;li&gt;SDL2 (Çok rahat olduğunu söyleyebilirim)&lt;&#x2F;li&gt;
+&lt;li&gt;Yetersiz döküman, sadece API bilgisi&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;angel2d&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#angel2d&quot; aria-label=&quot;Anchor link for: angel2d&quot;&gt;##&lt;&#x2F;a&gt;
+Angel2D&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Açık kaynak&lt;&#x2F;li&gt;
+&lt;li&gt;Çoklu-platform (Mac, iOS, Windows, Linux)&lt;&#x2F;li&gt;
+&lt;li&gt;Oxygine’e göre daha zorlu bir yazımı var API desteği çok yeterli değil fakat öğrendikten sonra sistemleri hazırlamak daha kolay. (low-level)&lt;&#x2F;li&gt;
+&lt;li&gt;OpenGL (SDL2’ye göre biraz daha zor elbette)&lt;&#x2F;li&gt;
+&lt;li&gt;Yetersiz döküman, sadece API bilgisi&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;torque-2d&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#torque-2d&quot; aria-label=&quot;Anchor link for: torque-2d&quot;&gt;##&lt;&#x2F;a&gt;
+Torque 2D&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Açık kaynak&lt;&#x2F;li&gt;
+&lt;li&gt;Çoklu-platform (Mac, Windows, iOS, Linux, Android)&lt;&#x2F;li&gt;
+&lt;li&gt;OOP’a yatkın olanlar için çok iyi bir yazımı var.&lt;&#x2F;li&gt;
+&lt;li&gt;End-user tarzı bir kütüphane&lt;&#x2F;li&gt;
+&lt;li&gt;OpenGL (Angel2D’de belirttiğim gibi…)&lt;&#x2F;li&gt;
+&lt;li&gt;Büyük döküman kaynağı&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;poly-code&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#poly-code&quot; aria-label=&quot;Anchor link for: poly-code&quot;&gt;##&lt;&#x2F;a&gt;
+Poly Code&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Açık kaynak&lt;&#x2F;li&gt;
+&lt;li&gt;Saf C++&lt;&#x2F;li&gt;
+&lt;li&gt;LUA desteği (çok büyük bir artı)&lt;&#x2F;li&gt;
+&lt;li&gt;Sloganı Oxygine ile aynı &lt;code&gt;do more with less code&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;IDE desteği var (end-user)&lt;&#x2F;li&gt;
+&lt;li&gt;Kolay yayınlama (GUI ile platformlara çıkış)&lt;&#x2F;li&gt;
+&lt;li&gt;2D&#x2F;3D desteği&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;sonuc&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#sonuc&quot; aria-label=&quot;Anchor link for: sonuc&quot;&gt;##&lt;&#x2F;a&gt;
+Sonuç&lt;&#x2F;h2&gt;
+&lt;p&gt;Eğer mobil merkezli bir oyun yapmayı düşünüyorsanız hiç durmayın &lt;code&gt;Oxygine&lt;&#x2F;code&gt; kullanın.&lt;&#x2F;p&gt;
+&lt;p&gt;Eğer platform bağımsız ve işi tabandan almak istiyorsanız &lt;code&gt;Torque2D&lt;&#x2F;code&gt; kullanın.&lt;&#x2F;p&gt;
+&lt;p&gt;Eğer kolay ve hızlı bir şekilde bir projeyi çıkarmak, rahat olmak istiyorsanız &lt;code&gt;Poly Code&lt;&#x2F;code&gt; kullanın.&lt;&#x2F;p&gt;
+&lt;p&gt;Angel2D ve Oxygine kullandım ve pek yeterli bulduğumu söyleyemem. &lt;strong&gt;Poly Code&lt;&#x2F;strong&gt; ile şansımızı deneyelim :)&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Linux Oxygine C++ Game Framework Kurulumu</title>
+        <published>2015-04-08T12:00:00+00:00</published>
+        <updated>2015-04-08T12:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://era.yayd.in/blog/oxygine-framework/"/>
+        <id>https://era.yayd.in/blog/oxygine-framework/</id>
+        
+        <content type="html" xml:base="https://era.yayd.in/blog/oxygine-framework/">&lt;p&gt;Linux ortamı için Oxygine C++ Game Framework’un kurulumu ile ilgili bir makaledir. Kurulum adımlarını takip ederek bir geliştirme ortamına
+sahip olacağız.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;proje-dizinini-olusturma&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#proje-dizinini-olusturma&quot; aria-label=&quot;Anchor link for: proje-dizinini-olusturma&quot;&gt;##&lt;&#x2F;a&gt;
+Proje Dizinini Oluşturma&lt;&#x2F;h2&gt;
+&lt;p&gt;Öncelikle kendimize bir çalışma ortamı oluşturmamız gerekiyor. İstediğiniz bir dizinde uygulama klasörü açın. Makalede bu oluşturduğunuz dizine
+&lt;code&gt;root&lt;&#x2F;code&gt; diyeceğiz.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;oxygine-framework-indirme&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#oxygine-framework-indirme&quot; aria-label=&quot;Anchor link for: oxygine-framework-indirme&quot;&gt;##&lt;&#x2F;a&gt;
+Oxygine Framework İndirme&lt;&#x2F;h2&gt;
+&lt;p&gt;C++ ile 2D oyun geliştirirken kullanacağımız Oxygine Framework’u &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;http:&#x2F;&#x2F;oxygine.org&#x2F;download.php&quot;&gt;buradan&lt;&#x2F;a&gt; indirebilirsiniz.&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Sayfada bize lazım olacak link &lt;code&gt;Download stable snaphot. Oxygine framework only.&lt;&#x2F;code&gt; kısmıdır. Yani sadece framework’u indirseniz yeterli. Diğer
+linklerde önceden derlenmiş &lt;code&gt;binary&lt;&#x2F;code&gt; dosyaları bulunur. Bunlara ihtiyacımız yok.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;İndirdiğiniz sıkıştırılmış dosyayı açın. &lt;code&gt;oxygine-framework&lt;&#x2F;code&gt; klasörünü &lt;code&gt;root&lt;&#x2F;code&gt; klasörü içerisine yapıştırın.&lt;&#x2F;p&gt;
+&lt;p&gt;Yeni klasör yapımız şu şekilde oldu.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├─root
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├─└&lt;&#x2F;span&gt;&lt;span&gt; oxygine-framework
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├───└&lt;&#x2F;span&gt;&lt;span&gt; 3rdPartyTools
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├───└&lt;&#x2F;span&gt;&lt;span&gt; cmake
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├───└&lt;&#x2F;span&gt;&lt;span&gt; libs
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├───└&lt;&#x2F;span&gt;&lt;span&gt; ...
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;sdl-kurulumu&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#sdl-kurulumu&quot; aria-label=&quot;Anchor link for: sdl-kurulumu&quot;&gt;##&lt;&#x2F;a&gt;
+SDL Kurulumu&lt;&#x2F;h2&gt;
+&lt;p&gt;Oxygine, &lt;strong&gt;SDL&lt;&#x2F;strong&gt; kütüphanesini kullandığı için mecburen onu da yüklememiz gerekiyor.&lt;&#x2F;p&gt;
+&lt;p&gt;SDL’in &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;http:&#x2F;&#x2F;libsdl.org&#x2F;hg.php&quot;&gt;yükleme sayfasında&lt;&#x2F;a&gt; en alt kısmında bulunan &lt;code&gt;.tar.gz&lt;&#x2F;code&gt; uzantılı sıkıştırılmış dosya işimize yarayacaktır.&lt;&#x2F;p&gt;
+&lt;p&gt;İndirdiğiniz sıkıştırılmış dosyayı açın ve &lt;code&gt;SDL-X.X.X-XXXX&lt;&#x2F;code&gt; isimli klasörü &lt;code&gt;root&lt;&#x2F;code&gt; klasörü içerisine yapıştırın. Klasör ismini &lt;code&gt;SDL&lt;&#x2F;code&gt; olarak
+değiştirin.&lt;&#x2F;p&gt;
+&lt;p&gt;Terminal ile &lt;code&gt;root&#x2F;SDL&lt;&#x2F;code&gt; klasörüne erişin ve şu komutları gerçekleştirin.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;.&#x2F;configure
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;mkdir&lt;&#x2F;span&gt;&lt;span&gt; build
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;cd&lt;&#x2F;span&gt;&lt;span&gt; build
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;cmake&lt;&#x2F;span&gt;&lt;span&gt; ..&#x2F;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;make
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; make install
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;oxygine-framework-a-sdl-entegre-etme&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#oxygine-framework-a-sdl-entegre-etme&quot; aria-label=&quot;Anchor link for: oxygine-framework-a-sdl-entegre-etme&quot;&gt;##&lt;&#x2F;a&gt;
+Oxygine Framework’a SDL Entegre Etme&lt;&#x2F;h2&gt;
+&lt;p&gt;Oxygine Framework’un SDL’i kullanabilmesi için kütüphane dosyalarını Oxygine Framework içerisine yerleştirmemiz gerekiyor.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;code&gt;root&#x2F;SDL&#x2F;build&lt;&#x2F;code&gt; içerisindeki&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;libSDL2-2.0.so&lt;&#x2F;li&gt;
+&lt;li&gt;libSDL2-2.0.so.0&lt;&#x2F;li&gt;
+&lt;li&gt;libSDL2-2.0.so.0.4.0&lt;&#x2F;li&gt;
+&lt;li&gt;libSDL2.so&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;dosyalarını &lt;code&gt;root&#x2F;oxygine-framework&#x2F;libs&lt;&#x2F;code&gt; klasörüne taşıyın&#x2F;kopyalayın.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;kurulum-testi&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#kurulum-testi&quot; aria-label=&quot;Anchor link for: kurulum-testi&quot;&gt;##&lt;&#x2F;a&gt;
+Kurulum Testi&lt;&#x2F;h2&gt;
+&lt;p&gt;Kurulumu başarıyla yapıp yapmadığımızı kontrol etmek için &lt;code&gt;root&#x2F;oxygine-framework&#x2F;examples&#x2F;Demo&#x2F;proj.cmake&#x2F;&lt;&#x2F;code&gt; klasörüne gelin ve şu komutu
+çalıştırın.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; chmod +x run.sh
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; .&#x2F;run.sh
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+</content>
+        
+    </entry>
+</feed>

@@ -1,0 +1,94 @@
+<!doctype html><html lang=en><head><meta charset=UTF-8><meta content="IE=edge" http-equiv=X-UA-Compatible><meta content="text/html; charset=UTF-8" http-equiv=content-type><meta content="width=device-width,initial-scale=1,user-scalable=no" name=viewport><meta content="index, follow" name=robots><title>Pixi.js - Başlangıç</title><meta content="Eray Aydın" name=author><meta content="Bu makale serisinde Pixi.js ile ilgili anlatımlar yer alacaktır" name=description><link href=https://era.yayd.in/blog/pixi-js-baslangic/ rel=canonical><link rel="shortcut icon" href=https://era.yayd.in/favicon.png type=image/x-icon><meta content=website property=og:type><meta content=https://era.yayd.in/blog/pixi-js-baslangic/ property=og:url><meta content="Eray Aydın" property=og:site_name><meta content="Pixi.js - Başlangıç" property=og:title><meta content="Bu makale serisinde Pixi.js ile ilgili anlatımlar yer alacaktır" property=og:description><link href=https://era.yayd.in/atom.xml rel=alternate title=RSS type=application/atom+xml><link href=https://era.yayd.in/app.css rel=stylesheet><style></style><body><header><nav><a href=/> /home </a><a href=/about/> /about </a><a href=/journal/> /journal </a><a class=active href=/blog/> /blog </a><a href=https://github.com/erayaydin/erayaydin.github.io> /download </a><div><input id=themeToggle style=display:none type=checkbox><label for=themeToggle><svg class=icons id=themeIcon><use href=https://era.yayd.in/icons.svg#lightMode></use></svg></label><audio id=themeSound><source src=https://era.yayd.in/click.ogg type=audio/ogg></audio></div></nav></header><main><div><a href=..>..</a>/<span class=accent-data>pixi-js-baslangic</span></div><time datetime=2015-04-06T12:00:00>Published on: <span class=accent-data>2015-04-06T12:00:00</span></time><address rel=author>By <span class=accent-data>Eray Aydın</span></address><h1>Pixi.js - Başlangıç</h1><hr><blockquote><p>You are reading an article that is more than a year old. The content might be outdated.</blockquote><hr><h2 id=toc>Table of contents</h2><ul><li><a href=https://era.yayd.in/blog/pixi-js-baslangic/#ortamin-hazirlanmasi>Ortamın Hazırlanması</a><li><a href=https://era.yayd.in/blog/pixi-js-baslangic/#stage>Stage</a><li><a href=https://era.yayd.in/blog/pixi-js-baslangic/#renderer>Renderer</a><li><a href=https://era.yayd.in/blog/pixi-js-baslangic/#frame>Frame</a><li><a href=https://era.yayd.in/blog/pixi-js-baslangic/#texture>Texture</a><li><a href=https://era.yayd.in/blog/pixi-js-baslangic/#sprite>Sprite</a> <ul><li><a href=https://era.yayd.in/blog/pixi-js-baslangic/#anchor>Anchor</a> <ul></ul><li><a href=https://era.yayd.in/blog/pixi-js-baslangic/#position>Position</a> <ul></ul><li><a href=https://era.yayd.in/blog/pixi-js-baslangic/#rotation>Rotation</a> <ul></ul><li><a href=https://era.yayd.in/blog/pixi-js-baslangic/#sahneye-ekleme>Sahneye Ekleme</a> <ul></ul></ul><li><a href=https://era.yayd.in/blog/pixi-js-baslangic/#tum-kaynak>Tüm Kaynak</a></ul><hr><div class=page-content><p>Bu makale serisinde Pixi.js ile ilgili anlatımlar yer alacaktır.<h2 id=ortamin-hazirlanmasi><a aria-label="Anchor link for: ortamin-hazirlanmasi" class=no-style href=#ortamin-hazirlanmasi>##</a> Ortamın Hazırlanması</h2><p>Öncelikle Pixi.js’yi indirmemiz gerekiyor. Bunun için github’ı kullanacağız. <code>git</code> kurulumunuzu yaptığınızı varsayarak devam ediyorum.<pre class=language-bash data-lang=bash style=color:#c0c5ce;background-color:#2b303b><code class=language-bash data-lang=bash><span style=color:#bf616a>git</span><span> clone https://github.com/GoodBoyDigital/pixi.js.git
+</span></code></pre><p>Bize aslında gereken <code>bin</code> klasörü içerisindeki <code>pixi.js</code> dosyası fakat kaynak kodlarını da indirmemiz avantajımıza olacaktır.<p>Hemen bir index.html dosyası oluşturalım ve bu <code>pixi.js</code> kütüphanemizi dosyaya ekleyelim.<p>Daha sonra karışma olmaması için <code>uygulama</code> isminde bir klasör oluşturuyoruz ve içerisine bu <code>index.html</code> dosyamızı oluşturalım.<pre style=color:#c0c5ce;background-color:#2b303b><code><span>&LT!doctype html>
+</span><span>&LThtml lang="en">
+</span><span>&LThead>
+</span><span>	&LTmeta charset="utf-8">
+</span><span>
+</span><span>	&LTtitle>Pixi.js&LT/title>
+</span><span>
+</span><span>	&LT!--[if lt IE 9]>
+</span><span>	&LTscript src="http://html5shiv.googlecode.com/svn/trunk/html5.js">&LT/script>
+</span><span>	&LT![endif]-->
+</span><span>&LT/head>
+</span><span>&LTbody>
+</span><span>
+</span><span>&LT!-- Pixi.js -->
+</span><span>&LTscript src="../bin/pixi.js">&LT/script>
+</span><span>&LT/body>
+</span><span>&LT/html>
+</span></code></pre><h2 id=stage><a aria-label="Anchor link for: stage" class=no-style href=#stage>##</a> Stage</h2><p><strong>Stage</strong>, görünümün ana kısmıdır. Her nesne <strong>stage</strong>’e bağlanmakta ve görüntülenmektedir. Yani nesnelerimizi, sahnemizi ve bütün ortamı <strong>stage</strong> kullanarak yerleştireceğiz.<pre class=language-javascript data-lang=javascript style=color:#c0c5ce;background-color:#2b303b><code class=language-javascript data-lang=javascript><span style=color:#65737e>// PIXI.Stage(backgroundColor);
+</span><span style=color:#b48ead>var </span><span style=color:#bf616a>stage </span><span>= new PIXI.Stage(</span><span style=color:#d08770>0xFFFFFF</span><span>); </span><span style=color:#65737e>// Beyaz arkaplan
+</span></code></pre><h2 id=renderer><a aria-label="Anchor link for: renderer" class=no-style href=#renderer>##</a> Renderer</h2><p><strong>Renderer</strong>, Stage’i ve stage içerisindeki tüm nesneleri ekrana çizer. WebGL ve Canvas seçiminize göre bu çizim işlemi yapılır.<pre class=language-javascript data-lang=javascript style=color:#c0c5ce;background-color:#2b303b><code class=language-javascript data-lang=javascript><span style=color:#65737e>/*
+</span><span style=color:#65737e> * Canvas Renderer
+</span><span style=color:#65737e> * PIXI.CanvasRenderer(uzunluk=800], [yukseklik=600], [ozellikler]);
+</span><span style=color:#65737e> */
+</span><span style=color:#b48ead>var </span><span style=color:#bf616a>canvasRenderer </span><span>= new PIXI.CanvasRenderer(</span><span style=color:#d08770>800</span><span>, </span><span style=color:#d08770>600</span><span>);
+</span><span>
+</span><span style=color:#65737e>/*
+</span><span style=color:#65737e> * WebGL Renderer
+</span><span style=color:#65737e> * PIXI.WebGLRenderer([uzunluk=0], [yukseklik=0], [ozellikler]);
+</span><span style=color:#65737e> *
+</span><span style=color:#65737e> */
+</span><span> </span><span style=color:#b48ead>var </span><span style=color:#bf616a>webGLRenderer </span><span>= new PIXI.WebGLRenderer(</span><span style=color:#d08770>800</span><span>, </span><span style=color:#d08770>600</span><span>);
+</span><span>
+</span><span style=color:#65737e>/*
+</span><span style=color:#65737e> * Auto Detect Renderer
+</span><span style=color:#65737e> * Otomatik olarak uygun olan render seçimini yapar.
+</span><span style=color:#65737e> * PIXI.autoDetectRenderer([uzunluk=0], [yukseklik=0], [ozellikler]);
+</span><span style=color:#65737e> */
+</span><span> </span><span style=color:#b48ead>var </span><span style=color:#bf616a>autoDetectRenderer </span><span>= new PIXI.autoDetectRenderer(</span><span style=color:#d08770>800</span><span>, </span><span style=color:#d08770>600</span><span>);
+</span></code></pre><p><strong>Auto Detect Renderer</strong> kullanmak daha iyi olacaktır. Eğer tarayıcı WebGL çalıştırıyorsa WebGL, çalıştırmıyorsa Canvas kullanacaktır.<h2 id=frame><a aria-label="Anchor link for: frame" class=no-style href=#frame>##</a> Frame</h2><p>Çizimin her karede yapılması gerekiyor, öbür türlü ilk frameden sonra bir çizim gerçekleşmeyecektir. Bunun için bir döngü oluşturacağız ve sürekli çizim yapılmasını sağlayacağız.<pre class=language-javascript data-lang=javascript style=color:#c0c5ce;background-color:#2b303b><code class=language-javascript data-lang=javascript><span>document.body.</span><span style=color:#96b5b4>appendChild</span><span>(</span><span style=color:#bf616a>renderer</span><span>.</span><span style=color:#bf616a>view</span><span>);
+</span><span style=color:#8fa1b3>requestAnimFrame</span><span>(</span><span style=color:#bf616a>cizimYap</span><span>);
+</span><span style=color:#b48ead>function </span><span style=color:#8fa1b3>cizimYap</span><span>() {
+</span><span>	</span><span style=color:#8fa1b3>requestAnimFrame</span><span>(</span><span style=color:#bf616a>cizimYap</span><span>);
+</span><span>	</span><span style=color:#bf616a>renderer</span><span>.</span><span style=color:#8fa1b3>render</span><span>(</span><span style=color:#bf616a>stage</span><span>);
+</span><span>}
+</span></code></pre><p>Farkettiyseniz bizim <strong>renderer</strong> isminde bir değişkenimiz yok. Bu değişkeni seçtiğiniz <strong>renderer</strong>’a göre ayarlamanız gerekiyor.<p>Şimdi sonuç olarak oluşturduğumuz script:<pre class=language-javascript data-lang=javascript style=color:#c0c5ce;background-color:#2b303b><code class=language-javascript data-lang=javascript><span style=color:#b48ead>var </span><span style=color:#bf616a>stage </span><span>= new PIXI.Stage(</span><span style=color:#d08770>0xFFFFFF</span><span>);
+</span><span style=color:#b48ead>var </span><span style=color:#bf616a>renderer </span><span>= new PIXI.autoDetectRenderer(</span><span style=color:#d08770>400</span><span>, </span><span style=color:#d08770>300</span><span>);
+</span><span>
+</span><span>document.body.</span><span style=color:#96b5b4>appendChild</span><span>(</span><span style=color:#bf616a>renderer</span><span>.</span><span style=color:#bf616a>view</span><span>);
+</span><span style=color:#8fa1b3>requestAnimFrame</span><span>(</span><span style=color:#bf616a>cizimYap</span><span>);
+</span><span style=color:#b48ead>function </span><span style=color:#8fa1b3>cizimYap</span><span>() {
+</span><span>	</span><span style=color:#8fa1b3>requestAnimFrame</span><span>(</span><span style=color:#bf616a>cizimYap</span><span>);
+</span><span>	</span><span style=color:#bf616a>renderer</span><span>.</span><span style=color:#8fa1b3>render</span><span>(</span><span style=color:#bf616a>stage</span><span>);
+</span><span>}
+</span></code></pre><p>Çalışıp çalışmadığını kontrol etmek isterseniz isterseniz arkaplanı kırmızı yapabilirsiniz.<blockquote><p><code>0xFF0303</code> renk kodunu kullanabilirsiniz.</blockquote><h2 id=texture><a aria-label="Anchor link for: texture" class=no-style href=#texture>##</a> Texture</h2><p><strong>Texture</strong> ile resim dosyalarını hafızada tutacağız. Bu sayede <strong>sprite</strong>’da resim kullanmamız gerektiğinde bu <strong>texture</strong> nesnesini kullanacağız. Bu sayede resimler tekrar ve tekrar yüklenmeyecek, sadece 1 defa çekilecektir.<pre class=language-javascript data-lang=javascript style=color:#c0c5ce;background-color:#2b303b><code class=language-javascript data-lang=javascript><span style=color:#65737e>// PIXI.Texture.fromImage(dosyaYolu, orjin, olcek);
+</span><span style=color:#b48ead>var </span><span style=color:#bf616a>texture </span><span>= </span><span style=color:#bf616a>PIXI</span><span>.</span><span style=color:#bf616a>Texture</span><span>.</span><span style=color:#8fa1b3>fromImage</span><span>("</span><span style=color:#a3be8c>resim.png</span><span>");
+</span></code></pre><h2 id=sprite><a aria-label="Anchor link for: sprite" class=no-style href=#sprite>##</a> Sprite</h2><p>Sprite’lar sahnemizdeki nesnelerimiz olacaktır.<pre class=language-javascript data-lang=javascript style=color:#c0c5ce;background-color:#2b303b><code class=language-javascript data-lang=javascript><span style=color:#65737e>// PIXI.Sprite(PIXI.Texture texture);
+</span><span style=color:#b48ead>var </span><span style=color:#bf616a>sprite </span><span>= new PIXI.Sprite(</span><span style=color:#bf616a>texture</span><span>);
+</span></code></pre><h3 id=anchor><a aria-label="Anchor link for: anchor" class=no-style href=#anchor>###</a> Anchor</h3><p>Nesnelerimizin orjin noktası olacaktır. Texture resmi de orjin noktasına göre çizilecektir. Bu sayede objenin tam olarak orta noktasının neresi olacağını belirliyoruz.<pre class=language-javascript data-lang=javascript style=color:#c0c5ce;background-color:#2b303b><code class=language-javascript data-lang=javascript><span style=color:#65737e>/* 0-0     => Sol Üst
+</span><span style=color:#65737e> * 0.5-0.5 => Ortala
+</span><span style=color:#65737e> * 1-1     => Sağ Alt
+</span><span style=color:#65737e> */
+</span><span style=color:#bf616a>sprite</span><span>.</span><span style=color:#bf616a>anchor</span><span>.x = </span><span style=color:#d08770>0.5</span><span>;
+</span><span style=color:#bf616a>sprite</span><span>.</span><span style=color:#bf616a>anchor</span><span>.y = </span><span style=color:#d08770>0.5</span><span>;
+</span></code></pre><h3 id=position><a aria-label="Anchor link for: position" class=no-style href=#position>###</a> Position</h3><p>Sprite nesnesinin sahnede bulunacağı koordinatlardır.<pre class=language-javascript data-lang=javascript style=color:#c0c5ce;background-color:#2b303b><code class=language-javascript data-lang=javascript><span style=color:#bf616a>sprite</span><span>.</span><span style=color:#bf616a>position</span><span>.x = </span><span style=color:#d08770>200</span><span>;
+</span><span style=color:#bf616a>sprite</span><span>.</span><span style=color:#bf616a>position</span><span>.y = </span><span style=color:#d08770>150</span><span>;
+</span></code></pre><h3 id=rotation><a aria-label="Anchor link for: rotation" class=no-style href=#rotation>###</a> Rotation</h3><p>Sprite nesnesini orjin etrafında döndürmenizi sağlar.<pre class=language-javascript data-lang=javascript style=color:#c0c5ce;background-color:#2b303b><code class=language-javascript data-lang=javascript><span style=color:#bf616a>sprite</span><span>.</span><span style=color:#bf616a>rotation </span><span>+= </span><span style=color:#d08770>0.1</span><span>;
+</span></code></pre><blockquote><p>Döndürme kodunu çizim döngüsü dışında yaparsanız sadece 1 seferlik +0.1 artış yapacaktır. Sürekli dönmesi için döngü içerisinde bu kodu kullanmanız gerekiyor.</blockquote><h3 id=sahneye-ekleme><a aria-label="Anchor link for: sahneye-ekleme" class=no-style href=#sahneye-ekleme>###</a> Sahneye Ekleme</h3><p>Sprite nesnemizi artık sahneye ekleyelim.<pre class=language-javascript data-lang=javascript style=color:#c0c5ce;background-color:#2b303b><code class=language-javascript data-lang=javascript><span style=color:#bf616a>stage</span><span>.</span><span style=color:#8fa1b3>addChild</span><span>(</span><span style=color:#bf616a>sprite</span><span>);
+</span></code></pre><h2 id=tum-kaynak><a aria-label="Anchor link for: tum-kaynak" class=no-style href=#tum-kaynak>##</a> Tüm Kaynak</h2><p>Ders içerisindeki bilgilerle yapılan tüm script kodu<pre class=language-javascript data-lang=javascript style=color:#c0c5ce;background-color:#2b303b><code class=language-javascript data-lang=javascript><span>
+</span><span style=color:#b48ead>var </span><span style=color:#bf616a>stage </span><span>= new PIXI.Stage(</span><span style=color:#d08770>0xFFFFFF</span><span>);
+</span><span style=color:#b48ead>var </span><span style=color:#bf616a>renderer </span><span>= new PIXI.autoDetectRenderer(</span><span style=color:#d08770>400</span><span>, </span><span style=color:#d08770>300</span><span>);
+</span><span>
+</span><span style=color:#b48ead>var </span><span style=color:#bf616a>texture </span><span>= </span><span style=color:#bf616a>PIXI</span><span>.</span><span style=color:#bf616a>Texture</span><span>.</span><span style=color:#8fa1b3>fromImage</span><span>("</span><span style=color:#a3be8c>resim.png</span><span>");
+</span><span style=color:#b48ead>var </span><span style=color:#bf616a>sprite  </span><span>= new PIXI.Sprite(</span><span style=color:#bf616a>texture</span><span>);
+</span><span>
+</span><span style=color:#bf616a>sprite</span><span>.</span><span style=color:#bf616a>anchor</span><span>.x = </span><span style=color:#d08770>0.5</span><span>;
+</span><span style=color:#bf616a>sprite</span><span>.</span><span style=color:#bf616a>anchor</span><span>.y = </span><span style=color:#d08770>0.5</span><span>;
+</span><span>
+</span><span style=color:#bf616a>sprite</span><span>.</span><span style=color:#bf616a>position</span><span>.x = </span><span style=color:#d08770>200</span><span>;
+</span><span style=color:#bf616a>sprite</span><span>.</span><span style=color:#bf616a>position</span><span>.y = </span><span style=color:#d08770>150</span><span>;
+</span><span>
+</span><span style=color:#bf616a>stage</span><span>.</span><span style=color:#8fa1b3>addChild</span><span>(</span><span style=color:#bf616a>sprite</span><span>);
+</span><span>
+</span><span>document.body.</span><span style=color:#96b5b4>appendChild</span><span>(</span><span style=color:#bf616a>renderer</span><span>.</span><span style=color:#bf616a>view</span><span>);
+</span><span style=color:#8fa1b3>requestAnimFrame</span><span>(</span><span style=color:#bf616a>cizimYap</span><span>);
+</span><span style=color:#b48ead>function </span><span style=color:#8fa1b3>cizimYap</span><span>() {
+</span><span>	</span><span style=color:#8fa1b3>requestAnimFrame</span><span>(</span><span style=color:#bf616a>cizimYap</span><span>);
+</span><span>
+</span><span>	</span><span style=color:#bf616a>sprite</span><span>.</span><span style=color:#bf616a>rotation </span><span>+= </span><span style=color:#d08770>0.1</span><span>;
+</span><span>
+</span><span>	</span><span style=color:#bf616a>renderer</span><span>.</span><span style=color:#8fa1b3>render</span><span>(</span><span style=color:#bf616a>stage</span><span>);
+</span><span>}
+</span><span>
+</span></code></pre></div><br><a class=button href=https://github.com/erayaydin/zola-personal-blog/blob/main/content/blog/2015-04-06-pixi-js-baslangic.md>Contribute to this post</a><hr><script async crossorigin issue-term=pathname label=💬 repo=erayaydin/erayaydin.github.io src=https://utteranc.es/client.js theme=preferred-color-scheme></script></main><footer><hr><div><div><p>Built with <a rel="noopener noreferrer" href=https://www.getzola.org target=_blank>Zola</a>, theme inspired from <a rel="noopener noreferrer" href=https://github.com/Speyll/anemone target=_blank>anemone</a>.</div><div><a rel="noopener noreferrer" title="Subscribe via RSS for updates." class=no-style href=https://era.yayd.in/atom.xml target=_blank><svg class=icons><use href=https://era.yayd.in/icons.svg#rss></use></svg></a></div></div></footer><script defer src=https://era.yayd.in/app.js></script>

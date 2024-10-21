@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Eray Aydın - python</title>
+    <subtitle>Scala Developer, Laravel Artisan, Free Software Fan, Archy, Linux Lover, WoW Loremaster, Junior Game Developer</subtitle>
+    <link rel="self" type="application/atom+xml" href="https://era.yayd.in/tags/python/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://era.yayd.in"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2017-10-20T20:33:00+00:00</updated>
+    <id>https://era.yayd.in/tags/python/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Django Kurulumu</title>
+        <published>2017-10-20T20:33:00+00:00</published>
+        <updated>2017-10-20T20:33:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://era.yayd.in/blog/python-django-kurulumu/"/>
+        <id>https://era.yayd.in/blog/python-django-kurulumu/</id>
+        
+        <content type="html" xml:base="https://era.yayd.in/blog/python-django-kurulumu/">&lt;h1 id=&quot;django-kurulum&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#django-kurulum&quot; aria-label=&quot;Anchor link for: django-kurulum&quot;&gt;#&lt;&#x2F;a&gt;
+Django Kurulum&lt;&#x2F;h1&gt;
+&lt;p&gt;Bu makale, &lt;code&gt;Django&lt;&#x2F;code&gt; kurulumu ve çalıştırılmasını kapsar.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;python-kurulumu&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#python-kurulumu&quot; aria-label=&quot;Anchor link for: python-kurulumu&quot;&gt;##&lt;&#x2F;a&gt;
+Python Kurulumu&lt;&#x2F;h2&gt;
+&lt;p&gt;Django’nun bir &lt;strong&gt;Python Web Framework&lt;&#x2F;strong&gt; olmasından dolayı; Django, Python’un kurulu olmasını ister. Bildiğiniz gibi Python’un bir çok versiyonu var. Aktif olarak
+hem &lt;strong&gt;Python 2&lt;&#x2F;strong&gt; hem de &lt;strong&gt;Python 3&lt;&#x2F;strong&gt; kullanılıyor.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;hangi-python-versiyonu&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#hangi-python-versiyonu&quot; aria-label=&quot;Anchor link for: hangi-python-versiyonu&quot;&gt;###&lt;&#x2F;a&gt;
+Hangi Python Versiyonu?&lt;&#x2F;h3&gt;
+&lt;p&gt;Her Django versiyonu her sürümü desteklemiyor. Bu sebeple, kullanacağınız &lt;strong&gt;Python&lt;&#x2F;strong&gt; ve &lt;strong&gt;Django&lt;&#x2F;strong&gt; sürümüne göre aşağıdaki tablodan karar verebilirsiniz.&lt;&#x2F;p&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;Django Versiyon&lt;&#x2F;th&gt;&lt;th&gt;Python Versiyon&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;1.8&lt;&#x2F;td&gt;&lt;td&gt;2.7, 3.3, 3.4, 3.5&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;1.9, 1.10&lt;&#x2F;td&gt;&lt;td&gt;2.7, 3.4, 3.5&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;1.11&lt;&#x2F;td&gt;&lt;td&gt;2.7, 3.4, 3.5, 3.6&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;2.0&lt;&#x2F;td&gt;&lt;td&gt;3.4, 3.5, 3.6&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;2.1&lt;&#x2F;td&gt;&lt;td&gt;3.5, 3.6, 3.7&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;&#x2F;tbody&gt;&lt;&#x2F;table&gt;
+&lt;h3 id=&quot;python-in-kurulmasi&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#python-in-kurulmasi&quot; aria-label=&quot;Anchor link for: python-in-kurulmasi&quot;&gt;###&lt;&#x2F;a&gt;
+Python’ın Kurulması&lt;&#x2F;h3&gt;
+&lt;p&gt;Kurulacak &lt;strong&gt;Python&lt;&#x2F;strong&gt; sürümünü belirledikten sonra artık python kurulumuna geçelim.&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;windows&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#windows&quot; aria-label=&quot;Anchor link for: windows&quot;&gt;####&lt;&#x2F;a&gt;
+Windows&lt;&#x2F;h4&gt;
+&lt;p&gt;Windows :( ortamı için kurulum gerçekleştireceksiniz &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.python.org&#x2F;downloads&#x2F;windows&#x2F;&quot;&gt;Python Releases for Windows&lt;&#x2F;a&gt; sayfasından kurmak istediğiniz Python sürümüne göre kurulum sihirbazını indirebilirsiniz.&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;linux-unix&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#linux-unix&quot; aria-label=&quot;Anchor link for: linux-unix&quot;&gt;####&lt;&#x2F;a&gt;
+Linux&#x2F;UNIX&lt;&#x2F;h4&gt;
+&lt;h5 id=&quot;arch-linux&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#arch-linux&quot; aria-label=&quot;Anchor link for: arch-linux&quot;&gt;#####&lt;&#x2F;a&gt;
+Arch Linux&lt;&#x2F;h5&gt;
+&lt;p&gt;Arch Linux dağıtımında kurulum işlemini &lt;code&gt;pacman&lt;&#x2F;code&gt; paket yöneticisi ile yapabilirsiniz.&lt;&#x2F;p&gt;
+&lt;p&gt;Python 3 son sürümü kurmak için&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;pacman -Sy&lt;&#x2F;span&gt;&lt;span&gt; python
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Python 2 son sürümü kurmak için&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;pacman -Sy&lt;&#x2F;span&gt;&lt;span&gt; python2
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Eski sürümleri kullanacaksanız &lt;strong&gt;AUR&lt;&#x2F;strong&gt; kullanarak aşağıdaki sürümler için kurulum yapabilirsiniz.&lt;&#x2F;p&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;Python Versiyon&lt;&#x2F;th&gt;&lt;th&gt;AUR Paket Adı&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;Python 3.5&lt;&#x2F;td&gt;&lt;td&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;aur.archlinux.org&#x2F;packages&#x2F;python35&#x2F;&quot;&gt;python35&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;Python 3.4&lt;&#x2F;td&gt;&lt;td&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;aur.archlinux.org&#x2F;packages&#x2F;python34&#x2F;&quot;&gt;python34&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;Python 3.3&lt;&#x2F;td&gt;&lt;td&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;aur.archlinux.org&#x2F;packages&#x2F;python33&#x2F;&quot;&gt;python33&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;Python 3.2&lt;&#x2F;td&gt;&lt;td&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;aur.archlinux.org&#x2F;packages&#x2F;python32&#x2F;&quot;&gt;python32&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;Python 3.0&lt;&#x2F;td&gt;&lt;td&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;aur.archlinux.org&#x2F;packages&#x2F;python30&#x2F;&quot;&gt;python30&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;Python 2.6&lt;&#x2F;td&gt;&lt;td&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;aur.archlinux.org&#x2F;packages&#x2F;python26&#x2F;&quot;&gt;python26&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;Python 2.5&lt;&#x2F;td&gt;&lt;td&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;aur.archlinux.org&#x2F;packages&#x2F;python25&#x2F;&quot;&gt;python25&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;Python 1.5&lt;&#x2F;td&gt;&lt;td&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;aur.archlinux.org&#x2F;packages&#x2F;python15&#x2F;&quot;&gt;python15&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;&#x2F;tbody&gt;&lt;&#x2F;table&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;yaourt -Sy&lt;&#x2F;span&gt;&lt;span&gt; python35
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h5 id=&quot;ubuntu&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#ubuntu&quot; aria-label=&quot;Anchor link for: ubuntu&quot;&gt;#####&lt;&#x2F;a&gt;
+Ubuntu&lt;&#x2F;h5&gt;
+&lt;p&gt;Ubuntu 16.04 ile Python 3 ve Python 2 kurulu olarak gelmektedir.&lt;&#x2F;p&gt;
+&lt;p&gt;Eski versiyonları yüklemek için &lt;em&gt;deadsnakes&lt;&#x2F;em&gt;’ isimli PPA depoyu aktif edip eski versiyonları yükleyebilirsiniz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;add-apt-repository&lt;&#x2F;span&gt;&lt;span&gt; ppa:fkrull&#x2F;deadsnakes
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;apt-get&lt;&#x2F;span&gt;&lt;span&gt; update
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Kurulum işlemi için de aşağıdaki gibi versiyon adını yazarak yükleyebilirsiniz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;apt-get&lt;&#x2F;span&gt;&lt;span&gt; install python2.6 python3.3
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h5 id=&quot;fedora&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#fedora&quot; aria-label=&quot;Anchor link for: fedora&quot;&gt;#####&lt;&#x2F;a&gt;
+Fedora&lt;&#x2F;h5&gt;
+&lt;p&gt;Fedora ile Python 3 ve Python 2 kurulu olarak gelmektedir.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;python-kurulumunun-test-edilmesi&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#python-kurulumunun-test-edilmesi&quot; aria-label=&quot;Anchor link for: python-kurulumunun-test-edilmesi&quot;&gt;###&lt;&#x2F;a&gt;
+Python Kurulumunun Test Edilmesi&lt;&#x2F;h3&gt;
+&lt;p&gt;Python’ın kurulumunu test etmek ve kurulu olan versiyon sürümünü öğrenmek için &lt;code&gt;python&lt;&#x2F;code&gt; çalıştırabilirsiniz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;python --version
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;pip-kurulumu&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#pip-kurulumu&quot; aria-label=&quot;Anchor link for: pip-kurulumu&quot;&gt;##&lt;&#x2F;a&gt;
+Pip Kurulumu&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;ubuntu-1&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#ubuntu-1&quot; aria-label=&quot;Anchor link for: ubuntu-1&quot;&gt;###&lt;&#x2F;a&gt;
+Ubuntu&lt;&#x2F;h3&gt;
+&lt;p&gt;Python 2 için &lt;strong&gt;pip&lt;&#x2F;strong&gt; kurulumu&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;apt-get&lt;&#x2F;span&gt;&lt;span&gt; install python-pip
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Python 3 için &lt;strong&gt;pip&lt;&#x2F;strong&gt; kurulumu&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;apt-get&lt;&#x2F;span&gt;&lt;span&gt; install python3-pip
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;centos-ve-rhel&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#centos-ve-rhel&quot; aria-label=&quot;Anchor link for: centos-ve-rhel&quot;&gt;###&lt;&#x2F;a&gt;
+CentOS ve RHEL&lt;&#x2F;h3&gt;
+&lt;p&gt;CentOS ve Red Hat Enterprise Linux için pip kurulumu&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;yum&lt;&#x2F;span&gt;&lt;span&gt; install epel-release
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;yum&lt;&#x2F;span&gt;&lt;span&gt; install python-pip
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;fedora-1&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#fedora-1&quot; aria-label=&quot;Anchor link for: fedora-1&quot;&gt;###&lt;&#x2F;a&gt;
+Fedora&lt;&#x2F;h3&gt;
+&lt;p&gt;Python 2 için &lt;strong&gt;pip&lt;&#x2F;strong&gt; kurulumu&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;dnf&lt;&#x2F;span&gt;&lt;span&gt; install python-pip
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Python 3 için &lt;strong&gt;pip&lt;&#x2F;strong&gt; kurulumu&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;dnf&lt;&#x2F;span&gt;&lt;span&gt; install python3-pip
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;arch-linux-1&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#arch-linux-1&quot; aria-label=&quot;Anchor link for: arch-linux-1&quot;&gt;###&lt;&#x2F;a&gt;
+Arch Linux&lt;&#x2F;h3&gt;
+&lt;p&gt;Python 2 için &lt;strong&gt;pip&lt;&#x2F;strong&gt; kurulumu&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;pacman -S&lt;&#x2F;span&gt;&lt;span&gt; python2-pip
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Python 3 için &lt;strong&gt;pip&lt;&#x2F;strong&gt; kurulumu&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;pacman -S&lt;&#x2F;span&gt;&lt;span&gt; python-pip
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;opensuse&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#opensuse&quot; aria-label=&quot;Anchor link for: opensuse&quot;&gt;###&lt;&#x2F;a&gt;
+openSUSE&lt;&#x2F;h3&gt;
+&lt;p&gt;Python 2 için &lt;strong&gt;pip&lt;&#x2F;strong&gt; kurulumu&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;zypper&lt;&#x2F;span&gt;&lt;span&gt; install python-pip
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Python 3 için &lt;strong&gt;pip&lt;&#x2F;strong&gt; kurulumu&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;zypper&lt;&#x2F;span&gt;&lt;span&gt; install python3-pip
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;kurulumun-test-edilmesi&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#kurulumun-test-edilmesi&quot; aria-label=&quot;Anchor link for: kurulumun-test-edilmesi&quot;&gt;###&lt;&#x2F;a&gt;
+Kurulumun Test Edilmesi&lt;&#x2F;h3&gt;
+&lt;p&gt;Pip kurulumunu test etmek ve versiyonu öğrenmek için aşağıdaki komutu çalıştırabilirsiniz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;pip --version
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;django-nun-pip-yardimiyla-kurulumu&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#django-nun-pip-yardimiyla-kurulumu&quot; aria-label=&quot;Anchor link for: django-nun-pip-yardimiyla-kurulumu&quot;&gt;##&lt;&#x2F;a&gt;
+Django’nun Pip Yardımıyla Kurulumu&lt;&#x2F;h2&gt;
+&lt;p&gt;Pip yardımıyla Django paketini artık sisteme kurabiliriz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;pip&lt;&#x2F;span&gt;&lt;span&gt; install Django
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Eski sürüm bir Django kurulumu için de şunu kullanabilirsiniz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;pip&lt;&#x2F;span&gt;&lt;span&gt; install Django==1.0.4
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;kurulumun-test-edilmesi-1&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#kurulumun-test-edilmesi-1&quot; aria-label=&quot;Anchor link for: kurulumun-test-edilmesi-1&quot;&gt;##&lt;&#x2F;a&gt;
+Kurulumun Test Edilmesi&lt;&#x2F;h2&gt;
+&lt;p&gt;Django’nun başarılı bir şekilde kurulup kurulmadığını test etmek için Python’un interaktif kabuğunu kullanabiliriz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span&gt; python
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Python&lt;&#x2F;span&gt;&lt;span&gt; 3.6.2 (default, Jul 20 2017, 03:52:27) 
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;[GCC&lt;&#x2F;span&gt;&lt;span&gt; 7.1.1 20170630] on linux
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Type &lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;help&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;, &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;copyright&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;, &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;credits&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; or &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;license&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; for more information.
+&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;&amp;gt;&amp;gt; 
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;İnteraktif kabukta öncelikle django paketinin olup olmadığını deneyelim.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span&gt;&amp;gt;&amp;gt;&amp;gt; import &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;django
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Eğer sonucunda şu şekilde bir çıktı aldıysanız, sistemde django paketi bulunmuyor demektir.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span&gt;&amp;gt;&amp;gt;&amp;gt; import &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;django
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Traceback&lt;&#x2F;span&gt;&lt;span&gt; (most recent call last)&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;:
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;File &lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;&amp;lt;stdin&amp;gt;&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;, line 1, in &amp;lt;module&amp;gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;ModuleNotFoundError:&lt;&#x2F;span&gt;&lt;span&gt; No module named &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;django&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Eğer herhangi bir çıktı vermediyse django paketi bulunmuş ve içe aktarılmış demektir. Şimdi kurulu olan django versiyonunu öğrenelim.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span&gt;&amp;gt;&amp;gt;&amp;gt; import &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;django
+&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;&amp;gt;&amp;gt; print(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;django.get_version&lt;&#x2F;span&gt;&lt;span&gt;())
+&lt;&#x2F;span&gt;&lt;span&gt;1.11.6
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Bu adımları da tamamladıktan sonra sistemimize Django kurulumu yapmış oluyoruz. Bir sonraki makalede &lt;code&gt;virtualenv&lt;&#x2F;code&gt; ile daha sağlıklı bir geliştirme ortamı hazırlamak için gerekli adımları yazmayı düşünüyorum.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+</feed>

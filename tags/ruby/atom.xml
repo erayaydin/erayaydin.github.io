@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Eray Aydın - ruby</title>
+    <subtitle>Scala Developer, Laravel Artisan, Free Software Fan, Archy, Linux Lover, WoW Loremaster, Junior Game Developer</subtitle>
+    <link rel="self" type="application/atom+xml" href="https://era.yayd.in/tags/ruby/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://era.yayd.in"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2016-01-14T02:26:00+00:00</updated>
+    <id>https://era.yayd.in/tags/ruby/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Linux Mint - Ruby 2 Kurulumu</title>
+        <published>2016-01-14T02:26:00+00:00</published>
+        <updated>2016-01-14T02:26:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://era.yayd.in/blog/linux-mint-ruby-2-kurulum/"/>
+        <id>https://era.yayd.in/blog/linux-mint-ruby-2-kurulum/</id>
+        
+        <content type="html" xml:base="https://era.yayd.in/blog/linux-mint-ruby-2-kurulum/">&lt;blockquote&gt;
+&lt;p&gt;Kurulumdan önce, sisteminizdeki ruby paketini kaldırın.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;Öncelikle Ruby için gerekli bağımlılıkları kuralım.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; apt-get update
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; apt-get install git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Ardından &lt;code&gt;rbenv&lt;&#x2F;code&gt; ve &lt;code&gt;ruby-build&lt;&#x2F;code&gt; kurulumlarını yapalım.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;cd
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;git&lt;&#x2F;span&gt;&lt;span&gt; clone git:&#x2F;&#x2F;github.com&#x2F;sstephenson&#x2F;rbenv.git .rbenv
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;echo &lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;export PATH=&amp;quot;$HOME&#x2F;.rbenv&#x2F;bin:$PATH&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39; &amp;gt;&amp;gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;~&lt;&#x2F;span&gt;&lt;span&gt;&#x2F;.bashrc
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;echo &lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;eval &amp;quot;$(rbenv init -)&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39; &amp;gt;&amp;gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;~&lt;&#x2F;span&gt;&lt;span&gt;&#x2F;.bashrc
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;exec &lt;&#x2F;span&gt;&lt;span&gt;$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;SHELL
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;git&lt;&#x2F;span&gt;&lt;span&gt; clone git:&#x2F;&#x2F;github.com&#x2F;sstephenson&#x2F;ruby-build.git &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;~&lt;&#x2F;span&gt;&lt;span&gt;&#x2F;.rbenv&#x2F;plugins&#x2F;ruby-build
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;echo &lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;export PATH=&amp;quot;$HOME&#x2F;.rbenv&#x2F;plugins&#x2F;ruby-build&#x2F;bin:$PATH&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39; &amp;gt;&amp;gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;~&lt;&#x2F;span&gt;&lt;span&gt;&#x2F;.bashrc
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;exec &lt;&#x2F;span&gt;&lt;span&gt;$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;SHELL
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;git&lt;&#x2F;span&gt;&lt;span&gt; clone https:&#x2F;&#x2F;github.com&#x2F;sstephenson&#x2F;rbenv-gem-rehash.git &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;~&lt;&#x2F;span&gt;&lt;span&gt;&#x2F;.rbenv&#x2F;plugins&#x2F;rbenv-gem-rehash
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;rbenv&lt;&#x2F;span&gt;&lt;span&gt; install 2.2.3
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;rbenv&lt;&#x2F;span&gt;&lt;span&gt; global 2.2.3
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;ruby -v
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Eğer &lt;code&gt;rbenv install 2.2.3&lt;&#x2F;code&gt; sırasında hata alıyorsanız, ilgili log dosyasını kontrol edin.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;SSLv3_method undeclared&lt;&#x2F;strong&gt; hatası için aşağıdaki şekilde rbenv install kurulumu yapın.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;curl -fsSL&lt;&#x2F;span&gt;&lt;span&gt; https:&#x2F;&#x2F;gist.github.com&#x2F;mislav&#x2F;055441129184a1512bb5.txt | &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;rbenv&lt;&#x2F;span&gt;&lt;span&gt; install&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; --patch&lt;&#x2F;span&gt;&lt;span&gt; 2.2.3
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;RubyGems’e dökümanları indirmemesi gerektiğini söyleyip, &lt;code&gt;Bundler&lt;&#x2F;code&gt; kurulumu yapalım.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;echo &lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;gem: --no-ri --no-rdoc&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; &amp;gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;~&lt;&#x2F;span&gt;&lt;span&gt;&#x2F;.gemrc
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;gem&lt;&#x2F;span&gt;&lt;span&gt; install bundler
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+</content>
+        
+    </entry>
+</feed>

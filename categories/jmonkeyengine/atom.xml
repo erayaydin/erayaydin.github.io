@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Eray Aydın - jmonkeyengine</title>
+    <subtitle>Scala Developer, Laravel Artisan, Free Software Fan, Archy, Linux Lover, WoW Loremaster, Junior Game Developer</subtitle>
+    <link rel="self" type="application/atom+xml" href="https://era.yayd.in/categories/jmonkeyengine/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://era.yayd.in"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2020-03-22T05:01:53+00:00</updated>
+    <id>https://era.yayd.in/categories/jmonkeyengine/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Kotlin ve jMonkeyEngine ile Oyun Geliştirme - Tanımlar</title>
+        <published>2020-03-22T05:01:53+00:00</published>
+        <updated>2020-03-22T05:01:53+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://era.yayd.in/blog/kotlin-jmonkeyengine-oyun-gelistirme-tanimlar/"/>
+        <id>https://era.yayd.in/blog/kotlin-jmonkeyengine-oyun-gelistirme-tanimlar/</id>
+        
+        <content type="html" xml:base="https://era.yayd.in/blog/kotlin-jmonkeyengine-oyun-gelistirme-tanimlar/">&lt;h1 id=&quot;kotlin-ve-jmonkeyengine-ile-oyun-gelistirme-tanimlar&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#kotlin-ve-jmonkeyengine-ile-oyun-gelistirme-tanimlar&quot; aria-label=&quot;Anchor link for: kotlin-ve-jmonkeyengine-ile-oyun-gelistirme-tanimlar&quot;&gt;#&lt;&#x2F;a&gt;
+Kotlin ve jMonkeyEngine ile Oyun Geliştirme - Tanımlar&lt;&#x2F;h1&gt;
+&lt;p&gt;Merhaba,
+Bu yazı serisi içerisinde &lt;strong&gt;Kotlin&lt;&#x2F;strong&gt; ve &lt;strong&gt;jMonkeyEngine&lt;&#x2F;strong&gt; ile oyun geliştirme yöntemine bakacağız. Seri içerisinde sorunuz olursa sormaktan çekinmeyin. Sorularınızı issue olarak Github üzerinden açabilirsiniz.&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Not: &lt;strong&gt;Kotlin&lt;&#x2F;strong&gt; tecrübem hiç denecek kadar azdır, bu sebeple hata yaptığım noktalar olursa şimdiden özür dilerim. Hataları Git reposunda düzelterek PR oluşturabilirsiniz :)&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;Şimdi &lt;strong&gt;kısaca&lt;&#x2F;strong&gt; jMonkeyEngine, Kotlin, Gradle, Graphic Pipeline ve Scene Graph kavramlarına bakacağız.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;kotlin-nedir&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#kotlin-nedir&quot; aria-label=&quot;Anchor link for: kotlin-nedir&quot;&gt;##&lt;&#x2F;a&gt;
+Kotlin Nedir?&lt;&#x2F;h2&gt;
+&lt;p&gt;Kotlin; statik, nesneye yönelimli özgür bir fonksiyonel programlama dilidir. Java ile birlikte çalışacak şekilde geliştirilmiştir lakin çok daha “hoş” bir syntax yapısı ile geliştirme yapmanıza olanak sağlamakta. Konsept olarak JVM için kullanılmakta olsa da artık LLVM ile mobil native ve JS için de geliştirmede kullanılmakta. Birden çok platformu desteklemesine rağmen jMonkeyEngine ile oyun geliştirirken bu seride Kotlin JVM’i kullanarak ilerleyeceğiz bu sebeple Kotlin ile gelen cross-platform özelliğini kullanmayacağız. JVM ile çalıştırdığımız için JVM’in cross-platform özelliği seri içerisinde devam etmekte.&lt;&#x2F;p&gt;
+&lt;p&gt;Yararlanabileceğiniz kaynaklar:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;kotlinlang.org&#x2F;&quot;&gt;Kotlin Website&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;kotlinlang.org&#x2F;docs&#x2F;tutorials&#x2F;kotlin-for-py&#x2F;introduction.html&quot;&gt;Python tecrübesi olanlar için resmi Kotlin dersleri&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;medium.com&#x2F;@halilozel1903&#x2F;kotlin-nedir-43e312d2dca6&quot;&gt;Halil Özel’den Kotlin Nedir?&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.mobilhanem.com&#x2F;kotlin-egitimleri&#x2F;&quot;&gt;Mobil Hanem - Kotlin Eğitimi&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;jmonkeyengine-nedir&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#jmonkeyengine-nedir&quot; aria-label=&quot;Anchor link for: jmonkeyengine-nedir&quot;&gt;##&lt;&#x2F;a&gt;
+jMonkeyEngine Nedir?&lt;&#x2F;h2&gt;
+&lt;p&gt;jMonkeyEngine, Java ile yazılmış bir modern 3D geliştirme sağlayan bir oyun motorudur. Varsayılan olarak &lt;em&gt;LWJGL(Lightweight Java Game Library)&lt;&#x2F;em&gt; renderer paketini kullanmaktadır. Elbetteki kendi renderer paketinizi veya birbaşka 3. parti renderer paketini de kolayca enjekte edebilirsiniz. &lt;em&gt;LWJGL&lt;&#x2F;em&gt; ile OpenGL2+ sürümleri desteklenmektedir. Bu da oldukça geniş bir yelpaze demek. Alt başlıklar halinde; &lt;em&gt;jMonkeyEngineSDK&lt;&#x2F;em&gt;,  &lt;em&gt;LWJGL&lt;&#x2F;em&gt;, &lt;em&gt;Bullet Physics&lt;&#x2F;em&gt;, &lt;em&gt;NiftyGUI&lt;&#x2F;em&gt; parçalarını inceleyeceğiz.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;jMonkeyEngine&#x2F;jmonkeyengine&#x2F;releases&quot;&gt;jMonkeyEngine sürümleri ve indirme&lt;&#x2F;a&gt; (İndirme yapmanıza gerek yok, jMonkeyEngine 3 SDK ile devam edecekseniz zaten kurulu gelecektir. Bir sonraki yazıda Gradle ile inşa mekanizmasını hazırlarken de jMonkeyEngine paketini indirteceğiz.)&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Yararlanabileceğiniz kaynaklar:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;jmonkeyengine.org&#x2F;&quot;&gt;jMonkeyEngine Website&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;wiki.jmonkeyengine.org&#x2F;&quot;&gt;jMonkeyEngine Wiki&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;javadoc.jmonkeyengine.org&#x2F;v3.x&#x2F;index.html&quot;&gt;JavaDoc&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;hub.jmonkeyengine.org&#x2F;&quot;&gt;Forum&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;jmonkeyengine-3-sdk-jmonkeyplatform&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#jmonkeyengine-3-sdk-jmonkeyplatform&quot; aria-label=&quot;Anchor link for: jmonkeyengine-3-sdk-jmonkeyplatform&quot;&gt;###&lt;&#x2F;a&gt;
+jMonkeyEngine 3 SDK (jMonkeyPlatform)&lt;&#x2F;h3&gt;
+&lt;p&gt;jMonkeyEngine 3 sürümü ile gelen &lt;code&gt;jMonkeyEngine 3 SDK&lt;&#x2F;code&gt;, Netbeans tabanlı olan bu geliştirme ortamı eklenti desteği ve grafiksel geliştirme sağlamaktadır. İçerisinde, Sahne Editörü (Scene Editor), Materyal Editörü (Material Editor), Filtreleme Editörü (Filter Editor), dahili Blender ve dahili JDK bulunmaktadır.&lt;&#x2F;p&gt;
+&lt;p&gt;Seri içerisinde olabildiğince &lt;code&gt;Intellij IDEA&lt;&#x2F;code&gt; ve &lt;code&gt;jMonkeyEngine 3 SDK&lt;&#x2F;code&gt; için anlatım yapmaya çalışacağım lakin sorun oluşturabilecek noktalarda &lt;code&gt;Intellij IDEA&lt;&#x2F;code&gt; üzerinden geliştirmeye devam edeceğim. Bu seri içerisindeki anlatımları bu IDE’lerden birinden veya beğendiğiniz başka bir IDE veya metin editörü ile uygulayabilirsiniz.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;jMonkeyEngine&#x2F;sdk&#x2F;releases&#x2F;&quot;&gt;SDK Versiyonları ve İndirme (GNU&#x2F;Linux, Windows, OSX ve Kaynak&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;lwjgl-lightweight-java-game-library&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#lwjgl-lightweight-java-game-library&quot; aria-label=&quot;Anchor link for: lwjgl-lightweight-java-game-library&quot;&gt;###&lt;&#x2F;a&gt;
+LWJGL (Lightweight Java Game Library)&lt;&#x2F;h3&gt;
+&lt;p&gt;LWJGL, Java ile yazılmış bir oyun kütüphanesidir. Cross-platform olarak grafik (OpenGL, Vulkan), ses(OpenAL) ve paralel hesaplama(OpenCL) uygulamaları geliştirmenize yardımcı olmaktadır.&lt;&#x2F;p&gt;
+&lt;p&gt;Dilerseniz geliştirmenizi LWJGL ve 3. parti yardımcı olacak paketlerle (GUI, Physic paketleri, Networking paketleri vs) yaparak daha low-level devam edebilirsiniz. Bu seri içerisindeki anlatımlar jMonkeyEngine odaklı olacağı için pek faydası olmayacaktır lakin göz atıp fikir almak da faydalı olur elbette :)&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.lwjgl.org&#x2F;&quot;&gt;Website&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.lwjgl.org&#x2F;guide&quot;&gt;Guide&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;LWJGL&#x2F;lwjgl3&#x2F;tree&#x2F;master&#x2F;modules&#x2F;samples&#x2F;src&#x2F;test&#x2F;java&#x2F;org&#x2F;lwjgl&#x2F;demo&quot;&gt;Örnekler&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;bullet-physics&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#bullet-physics&quot; aria-label=&quot;Anchor link for: bullet-physics&quot;&gt;###&lt;&#x2F;a&gt;
+Bullet Physics&lt;&#x2F;h3&gt;
+&lt;p&gt;Bullet, C&amp;amp;C++ ile geliştirilmiş bir fizik motorudur. Çarpışma hesaplama (collision detection), hareket ve diğer fizik işlemlerini sağlayan bir pakettir.&lt;&#x2F;p&gt;
+&lt;p&gt;jMonkeyEngine, jBullet (Bullet’in Java’ya göre yazılmış hali) kullanarak fizik mekaniği sağlamaktadır.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;bulletphysics&#x2F;bullet3&quot;&gt;Bullet Physics SDK&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;http:&#x2F;&#x2F;jbullet.advel.cz&#x2F;&quot;&gt;jBullet&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;nifty-gui&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#nifty-gui&quot; aria-label=&quot;Anchor link for: nifty-gui&quot;&gt;###&lt;&#x2F;a&gt;
+Nifty GUI&lt;&#x2F;h3&gt;
+&lt;p&gt;Nifty GUI, Java ile yazılmış bir GUI geliştirme paketidir. Çizim kısmında OpenGL kullanmaktadır lakin elbette bu render kısmına müdahale edip başka bir renderer wrapper yazarak injekte edebilirsiniz.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;nifty-gui&#x2F;nifty-gui&quot;&gt;Git Depo&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;gradle&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#gradle&quot; aria-label=&quot;Anchor link for: gradle&quot;&gt;##&lt;&#x2F;a&gt;
+Gradle&lt;&#x2F;h2&gt;
+&lt;p&gt;Java, Groovy ve Kotlin ile yazılmış bir build mekanizmasıdır. Maven’deki gibi XML yazım biçimi yerine Groovy tarzında build otomasyonu oluşturmanızı sağlar. Paketlerimizi Gradle ile belirleyip, inşa mekanizmasını kullanacağız.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gradle.org&#x2F;&quot;&gt;Website&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;gradle&#x2F;gradle&quot;&gt;Git Depo&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;graphic-pipeline&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#graphic-pipeline&quot; aria-label=&quot;Anchor link for: graphic-pipeline&quot;&gt;##&lt;&#x2F;a&gt;
+Graphic Pipeline&lt;&#x2F;h2&gt;
+&lt;p&gt;3 Boyutlu bir ortamın, 2 boyutlu ekrana getirilmesindeki süreci özetleyen kavrama “Graphic Pipeline” denmektedir. Oyunumuzu 3 boyutlu ortamda geliştireceğimiz için, grafiğin hazırlanma süreci hakkında bilgi sahibi olmak da önemlidir. Özellikle daha düşük seviyeli ortamlarda (LWJGL veya direk bir grafik API kullanarak) geliştirme yapanların muhakkak bilgi sahibi olması gereken bir kavramdır. Hem yazılımsal hem de donanımsal bir süreç gerektiren bu yolculuk için herkes tarafından benimsenmiş bir yol bulunmamaktadır. Lakin, Direct3D ve OpenGL gibi grafik kütüphaneleri, donanım hızlandırması sağlamak amaçlı bu süreçlerdeki benzer adımları ortaklaştırmıştır. Yani, geliştiricinin grafik hızlandırmayı kullanması için donanıma direk müdahalesi yerine bunu soyutlayarak kullanmasını amaçlamaktadır.&lt;&#x2F;p&gt;
+&lt;p&gt;Bu konuda, şu videoyu izlemenizi tavsiye ederim: &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=bgckX62f4EA&quot;&gt;thebennybox - Intro to Modern OpenGL Tutorial: Graphics Pipeline&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;genel-yapi&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#genel-yapi&quot; aria-label=&quot;Anchor link for: genel-yapi&quot;&gt;###&lt;&#x2F;a&gt;
+Genel Yapı&lt;&#x2F;h3&gt;
+&lt;p&gt;Genel yapıda çizimin oluşması ve ekrana gelmesi için 3 adım bulunmaktadır:&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;Application (Uygulama)&lt;&#x2F;li&gt;
+&lt;li&gt;Geometry (Geometri)&lt;&#x2F;li&gt;
+&lt;li&gt;Rasterization (Pikselleştirme)&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;h4 id=&quot;1-application-uygulama&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#1-application-uygulama&quot; aria-label=&quot;Anchor link for: 1-application-uygulama&quot;&gt;####&lt;&#x2F;a&gt;
+1. Application (Uygulama)&lt;&#x2F;h4&gt;
+&lt;p&gt;Uygulama tarafından hesaplanan çizimin (bütün collision hesaplaması, çizilecek nesnelerin noktası, üçgenleri vs) belirlenip pipeline’da bir sonraki adıma iletilmesidir.&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;2-geometry-geometri&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#2-geometry-geometri&quot; aria-label=&quot;Anchor link for: 2-geometry-geometri&quot;&gt;####&lt;&#x2F;a&gt;
+2. Geometry (Geometri)&lt;&#x2F;h4&gt;
+&lt;p&gt;Geometri adımında, Model &amp;amp; Camera’nin yerleştirilmesi, ışıklandırmanın hesaplanması, projeksiyonun hesaplanması, clipping (uzak&#x2F;yakın) ve pencereye göre konumlandırılması adımları yer almaktadır.&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;3-rasterization-piksellestirme&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#3-rasterization-piksellestirme&quot; aria-label=&quot;Anchor link for: 3-rasterization-piksellestirme&quot;&gt;####&lt;&#x2F;a&gt;
+3. Rasterization (Pikselleştirme)&lt;&#x2F;h4&gt;
+&lt;p&gt;Piksel içerisindeki rengi belirleyen adımdır. Çizilecek nesnenin her bir noktası için bu pikselleştirme yapılmaktadır (eğer varsa; Fragment Shader bu adım içerisinde devreye alınmaktadır).&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;opengl-rendering-pipeline&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#opengl-rendering-pipeline&quot; aria-label=&quot;Anchor link for: opengl-rendering-pipeline&quot;&gt;####&lt;&#x2F;a&gt;
+OpenGL Rendering Pipeline&lt;&#x2F;h4&gt;
+&lt;p&gt;Örnek olarak, OpenGL’in Rendering Pipeline’ı açıklamak gerekirse;&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;Vertex Spec (OpenGL)&lt;&#x2F;li&gt;
+&lt;li&gt;Vertex Shader (Programcı tarafından müdahale edilebilir)&lt;&#x2F;li&gt;
+&lt;li&gt;Tessellation (Opsiyonel olarak, programcı tarafından müdahale edilebilir)&lt;&#x2F;li&gt;
+&lt;li&gt;Geometry Shader (Opsiyonel olarak, programcı tarafından müdahale edilebilir)&lt;&#x2F;li&gt;
+&lt;li&gt;Vertex Post-Processing (OpenGL)&lt;&#x2F;li&gt;
+&lt;li&gt;Primitive Assembly (OpenGL)&lt;&#x2F;li&gt;
+&lt;li&gt;Rasterization (OpenGL)&lt;&#x2F;li&gt;
+&lt;li&gt;Fragment Shader (Opsiyonel olarak, programcı tarafından müdahale edilebilir)&lt;&#x2F;li&gt;
+&lt;li&gt;Per-Sample Ops (OpenGL)&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;Burada programcının çizimin donanımsal hızlandırma kullanması için müdahale etmesini sağlamaktadır. Vertex Shader, Geometry Shader ve Fragment Shader’ı GLSL dili ile yazarak donanıma yapması gereken işlevi söyleme işidir.&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Bu konuda, şu videoyu izlemenizi tavsiye ederim: &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=bgckX62f4EA&quot;&gt;thebennybox - Intro to Modern OpenGL Tutorial: Graphics Pipeline&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;h2 id=&quot;scene-graph&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#scene-graph&quot; aria-label=&quot;Anchor link for: scene-graph&quot;&gt;##&lt;&#x2F;a&gt;
+Scene Graph&lt;&#x2F;h2&gt;
+&lt;p&gt;jMonkeyEngine ile oyun geliştirirken bu kavramı sıkça duyacağız.  Oyunumuzu geliştirirken kurguladığımız sanal ortama &lt;strong&gt;scene graph&lt;&#x2F;strong&gt; denmektedir. Bu sanal sahnemizdeki her bir objemize de &lt;strong&gt;Spatial&lt;&#x2F;strong&gt; diyeceğiz. Bu &lt;em&gt;spatial&lt;&#x2F;em&gt; nesnelerimizin her birinde de &lt;strong&gt;translation&lt;&#x2F;strong&gt;(konum), &lt;strong&gt;rotation&lt;&#x2F;strong&gt;(baktığı yön) ve &lt;strong&gt;scale&lt;&#x2F;strong&gt;(büyüklük) bilgisi bulunacaktır. Buradaki &lt;strong&gt;translation&lt;&#x2F;strong&gt; konum, 3 boyuttan aşina olduğumuz X,Y ve Z kavramları ile belirtilmektedir.&lt;&#x2F;p&gt;
+&lt;p&gt;Bu sahnemizi kurgularken farklı obje türüne ihtiyacımız olacaktır. Tahmin edebileceğiniz gibi, sahnemiz içerisinde görünmesini istediğimiz objeler olacağı gibi görünmesini istemediğimiz ve konum&#x2F;baktığı yön&#x2F;büyüklük gibi değerlerini kullanacağımız objeler de yer alacaktır. Varsayılan olarak oluşturduğumuz bi &lt;strong&gt;spatial&lt;&#x2F;strong&gt; nesneler görünmez durumdadır ve sadece bu bahsettiğim bilgileri tutmaktadır. Lakin &lt;strong&gt;Geometry&lt;&#x2F;strong&gt; türünde olan &lt;strong&gt;spatial&lt;&#x2F;strong&gt; nesneler ise, şekli olan ve görülebilir nesnelerdir. Şekillerini &lt;strong&gt;mesh&lt;&#x2F;strong&gt; ler belirtmekte ve &lt;strong&gt;material&lt;&#x2F;strong&gt; ler ile de görüntüsünü almaktadır.&lt;&#x2F;p&gt;
+&lt;p&gt;Bir diğer husus da &lt;strong&gt;spatial&lt;&#x2F;strong&gt; nesnelerin yönetimi. Kurgu hazırladığımız için bir süre sonra bu nesnelerin yönetiminde zorlanabiliriz. Bu sebeple, &lt;strong&gt;node&lt;&#x2F;strong&gt; türündeki &lt;strong&gt;spatial&lt;&#x2F;strong&gt; ları kullanacağız. Hatırlarsanız, &lt;strong&gt;spatial&lt;&#x2F;strong&gt; ların belirli bir konumu oluyordu, diğer nesnelerimizi bu &lt;strong&gt;node&lt;&#x2F;strong&gt; lara yerleştireceğiz. &lt;strong&gt;node&lt;&#x2F;strong&gt; spatial’ları nested özelliğine sahip yani &lt;strong&gt;parent&lt;&#x2F;strong&gt; ve &lt;strong&gt;child&lt;&#x2F;strong&gt; node lar tanımlayabilirsiniz. Varsayılan olarak bu kurgumuzda &lt;strong&gt;base node&lt;&#x2F;strong&gt; üzerine diğer node ları ve spatial ları ekleyeceğiz.&lt;&#x2F;p&gt;
+&lt;p&gt;Örnek vermek gerekirse;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;rootNode
+&lt;ul&gt;
+&lt;li&gt;playerNode
+&lt;ul&gt;
+&lt;li&gt;aimNode&lt;&#x2F;li&gt;
+&lt;li&gt;armNode&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;envNode
+&lt;ul&gt;
+&lt;li&gt;houseNode&lt;&#x2F;li&gt;
+&lt;li&gt;marketNode&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Bu konuda hazırlanan şu slayt da oldukça bilgi verici: &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;wiki.jmonkeyengine.org&#x2F;tutorials&#x2F;scenegraph&#x2F;assets&#x2F;fallback&#x2F;index.html&quot;&gt;3D Scene Graph for Dummies&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+</feed>

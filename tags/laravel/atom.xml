@@ -1,0 +1,687 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Eray Aydın - laravel</title>
+    <subtitle>Scala Developer, Laravel Artisan, Free Software Fan, Archy, Linux Lover, WoW Loremaster, Junior Game Developer</subtitle>
+    <link rel="self" type="application/atom+xml" href="https://era.yayd.in/tags/laravel/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://era.yayd.in"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2018-02-09T11:00:00+00:00</updated>
+    <id>https://era.yayd.in/tags/laravel/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Büyük Ölçekli Projelerde Laravel Uygulaması</title>
+        <published>2018-02-09T11:00:00+00:00</published>
+        <updated>2018-02-09T11:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://era.yayd.in/blog/buyuk-olcekli-projelerde-laravel-uygulamasi/"/>
+        <id>https://era.yayd.in/blog/buyuk-olcekli-projelerde-laravel-uygulamasi/</id>
+        
+        <content type="html" xml:base="https://era.yayd.in/blog/buyuk-olcekli-projelerde-laravel-uygulamasi/">&lt;p&gt;Laravel Framework ile birçok proje geliştiriyoruz. Lakin büyük çaplı yani
+kalabalık projelerde Laravel üzerine geliştirmeler yapılması oldukça zor.&lt;&#x2F;p&gt;
+&lt;p&gt;Birçok kesimden şu sözü duymuşsunuzdur: “&lt;strong&gt;Laravel kendi yapınızı uygulamanıza
+imkan vermiyor&lt;&#x2F;strong&gt;”. Lakin durum o şekilde değil. Tasarım desenleri ile
+profesyonel bir sistem geliştirdiğinizde &lt;strong&gt;Laravel&lt;&#x2F;strong&gt;’in aksine daha büyük
+imkan sağladığını görüyorsunuz. Diğer bir şekilde ifade etmek gerekirse,
+&lt;strong&gt;spagetti&lt;&#x2F;strong&gt; kodlamayla zaten &lt;strong&gt;tasarım desenlerine sahip&lt;&#x2F;strong&gt; bir yapı üzerine
+kendi yapınızı inşa etmek mümkün değil.&lt;&#x2F;p&gt;
+&lt;p&gt;Lafı daha fazla uzatmadan konuya geçmek istiyorum yalnız şu hatırlatmayı
+yapmamda yarar var. Burada bahsedilen &lt;strong&gt;büyük ölçek&lt;&#x2F;strong&gt; 60-70’ten fazla &lt;em&gt;model&lt;&#x2F;em&gt;
+sınıflarının olması ve yapının bir çok küçük parçadan oluşmasıdır. Yaptığınız
+proje eğer &lt;strong&gt;küçük&lt;&#x2F;strong&gt; veya &lt;strong&gt;orta&lt;&#x2F;strong&gt; ölçekli ise Laravel’in kendi yapısının
+üzerine çıkmanıza gerek yok. Bu sizin &lt;strong&gt;üretkenliğinizi&lt;&#x2F;strong&gt; oldukça düşürecektir.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;laravel-in-kendi-yapisi&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#laravel-in-kendi-yapisi&quot; aria-label=&quot;Anchor link for: laravel-in-kendi-yapisi&quot;&gt;#&lt;&#x2F;a&gt;
+Laravel’in Kendi Yapısı&lt;&#x2F;h1&gt;
+&lt;p&gt;Büyük ölçekli yapıda kullanabileceğimiz desenlere geçmeden önce Laravel’in
+kendi yapısını tekrar gözden geçirelim. Aşağıdaki yapı &lt;strong&gt;Laravel 5.6&lt;&#x2F;strong&gt;
+sürümünden. Bu yapı hakkında kafanıza takılan bir kısım yoksa diğer konu
+başlığına hızlıca geçiş yapabilirsiniz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;.
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; app
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   ├── Broadcasting
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   ├── Console
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   ├── Events
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   ├── Exceptions
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   ├── Http
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   ├── Jobs
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   ├── Listeners
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   ├── Mail
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   ├── Notifications
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   ├── Policies
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   ├── Providers
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   ├── Rules
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   └── User.php
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; bootstrap
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   ├── app.php
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   └── cache
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; config
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; database
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   ├── factories
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   ├── migrations
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   └── seeds
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; public
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; resources
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   ├── assets
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   ├── lang
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   └── views
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; routes
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   ├── api.php
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   ├── channels.php
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   ├── console.php
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   └── web.php
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; storage
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; vendor 
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;└──&lt;&#x2F;span&gt;&lt;span&gt; tests
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;strong&gt;&#x2F;app Dizini&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Burada belirtilen &lt;code&gt;app&lt;&#x2F;code&gt; klasörü uygulama kodlarımızın bulunduğu dizindir.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;&#x2F;bootstrap Dizini&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Çatımızın asıl başlangıç noktasıdır. Laravel Framework’ün kendi yapısını
+başlattığı ve &lt;em&gt;cache&lt;&#x2F;em&gt; klasörünü oluşturduğu kısımdır.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;&#x2F;config Dizini&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;İsminden de anlaşıldığı gibi ayarların tutulduğu dizindir. Ayar bilgileri bu
+dizindeki dosyalardan elde edilmektedir. Gizli(Secret) bilgileri de &lt;code&gt;dotenv&lt;&#x2F;code&gt;
+aracılığıyla burada sisteme dahil edilmektedir.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;&#x2F;database Dizini&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Veritabanı yapısı ile ilgili işlemlerin tutulduğu dizindir. &lt;strong&gt;migrations&lt;&#x2F;strong&gt;,
+&lt;strong&gt;factories&lt;&#x2F;strong&gt; ve &lt;strong&gt;seeds&lt;&#x2F;strong&gt; burada bulunmaktadır.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;&#x2F;public Dizini&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Dış isteklerin yapıldığı başlangıç noktasıdır. Ek olarak isteklerde servis
+edilecek &lt;strong&gt;asset&lt;&#x2F;strong&gt; dosyaları (hazırlanmış &lt;em&gt;css&lt;&#x2F;em&gt;, &lt;em&gt;js&lt;&#x2F;em&gt;, &lt;em&gt;resim&lt;&#x2F;em&gt; dosyaları gibi)
+burada tutuyoruz.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;&#x2F;resources Dizini&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;code&gt;resources&lt;&#x2F;code&gt; dizini &lt;strong&gt;presentation&lt;&#x2F;strong&gt; yani ön tarafta kullanıcıya göstereceğimiz
+verileri hazırladığımız kısımdır. &lt;strong&gt;views&lt;&#x2F;strong&gt;, &lt;strong&gt;derlenecek asset dosyaları&lt;&#x2F;strong&gt; ve
+dil dosyaları örneğin burada tutulur.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;&#x2F;routes Dizini&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;code&gt;routes&lt;&#x2F;code&gt; dizini içerisinde herhangi bir ortamdan gelen isteğin nerede
+karşılık bulunduracağını belirtiriz. Burada ortamdan kasıt, &lt;strong&gt;web&lt;&#x2F;strong&gt; isteği
+olabildiği gibi &lt;strong&gt;websocket&lt;&#x2F;strong&gt; istekleri de olabilir.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;&#x2F;storage Dizini&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;code&gt;storage&lt;&#x2F;code&gt; dizini içerisinde isminden de anlaşılabildiği gibi saklamak
+istediğimiz dosyaları tutmaktayız. Bunların içerisinde &lt;strong&gt;framework&lt;&#x2F;strong&gt; tarafından
+hazırlanan dosyalar(örneğin &lt;em&gt;log&lt;&#x2F;em&gt;) olduğu gibi kendimizin de tutmak istediği
+dosyalar(örneğin bir müzik sitesi için &lt;em&gt;müzik dosyaları&lt;&#x2F;em&gt;) da olabilir.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;&#x2F;tests Dizini&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;PHPUnit ile çalıştırmak istediğimiz testleri bu dizin içerisinde oluşturuyoruz.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;&#x2F;vendor Dizini&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Composer bağımlılıklarımızın tutulduğu dizin.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;&#x2F;app&#x2F;Broadcasting Dizini&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Örneğin &lt;strong&gt;Websocket&lt;&#x2F;strong&gt; üzerinden yaptığımız gerçek zamanlı istekler&#x2F;etkinlikler
+burada kontrol altında tutulmaktadır.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;&#x2F;app&#x2F;Console Dizini&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Artisan için oluşturduğunuz komutların tutulduğu dizindir. Bu komutlar tek
+seferlik işlemlerde kullanılabileceği gibi &lt;strong&gt;schedule&lt;&#x2F;strong&gt; hazırladığınız zamanlı
+görevler de olabilir.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;&#x2F;app&#x2F;Events Dizini&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Herhangi bir olay durumunda yaptırmak istediğiniz işlemleri tanımladığınız
+sınıfları tutan dizindir.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;&#x2F;app&#x2F;Exceptions Dizini&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Uygulamaya özel oluşturduğunuz hata sınıflarını oluşturduğunuz dizindir.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;&#x2F;app&#x2F;Http Dizini&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;HTTP istekleriyle ilgili yapılması gerekenleri tutan dizindir. &lt;strong&gt;Controller&lt;&#x2F;strong&gt;,
+&lt;strong&gt;Middleware&lt;&#x2F;strong&gt; ve &lt;strong&gt;Requests&lt;&#x2F;strong&gt; burada tutulur.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;&#x2F;app&#x2F;Jobs Dizini&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Senkron veya Asenkron olarak tanımladığımız &lt;strong&gt;iş&lt;&#x2F;strong&gt;leri burada tutmaktayız.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;&#x2F;app&#x2F;Listeners Dizini&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Oluşturduğunuz &lt;strong&gt;Event&lt;&#x2F;strong&gt;ler sonucunda yapılması gereken işlemleri burada
+tanımlamaktasınız. Örneğin &lt;code&gt;UserLicenseFinished&lt;&#x2F;code&gt; etkinliği(event) sonucunda
+&lt;code&gt;TerminateUser&lt;&#x2F;code&gt; ve &lt;code&gt;SendTerminatedUserEmail&lt;&#x2F;code&gt; listenerlarını burada
+oluşturabilirsiniz.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;&#x2F;app&#x2F;Mail Dizini&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Uygulama tarafından gönderilecek e-postaları inşa edecek sınıfları bu dizinde
+tutmaktayız.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;&#x2F;app&#x2F;Notifications Dizini&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Çeşitli bildirim gönderme ortamları(SMS, E-Posta ve Slack gibi) için
+bildirimleri inşa ettiğimiz sınıfları oluşturduğumuz dizindir.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;&#x2F;app&#x2F;Policies Dizini&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Herhangi bir işlem için (Örneğin giriş veya api isteği) izin kontrol
+sınıflarını oluşturduğunuz dizindir.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;&#x2F;app&#x2F;Providers Dizini&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;ServiceProvider&lt;&#x2F;strong&gt;ları tanımladığınız dizindir.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;&#x2F;app&#x2F;Rules Dizini&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Validate etmek istediğiniz veriler için oluşturduğunuz sınıfları tutan
+dizindir.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;biraz-daha-serbest&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#biraz-daha-serbest&quot; aria-label=&quot;Anchor link for: biraz-daha-serbest&quot;&gt;#&lt;&#x2F;a&gt;
+Biraz Daha Serbest&lt;&#x2F;h1&gt;
+&lt;p&gt;Orta ölçekli bir projede bu yapının üzerine ufak değişiklikler elbetteki
+yapıyoruz. Örneğin &lt;strong&gt;Models&lt;&#x2F;strong&gt; isminde bir &lt;strong&gt;namespace&lt;&#x2F;strong&gt; üzerinde model
+sınıfları ayrı bir şekilde tutuyoruz. Ek olarak &lt;strong&gt;Repositories&lt;&#x2F;strong&gt; ve
+&lt;strong&gt;Services&lt;&#x2F;strong&gt; de ekliyoruz.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Repository Pattern&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Repository desenini tek bir makalede incelemek haksızlık olacaktır. Temel
+anlamda &lt;strong&gt;veri üzerinde işlem yapan kısım&lt;&#x2F;strong&gt; ile &lt;strong&gt;veriye erişen kısmın&lt;&#x2F;strong&gt;
+ayrılması diyebiliriz.&lt;&#x2F;p&gt;
+&lt;p&gt;Buradaki &lt;strong&gt;Services&lt;&#x2F;strong&gt; kısmı ise &lt;strong&gt;Repository&lt;&#x2F;strong&gt; ile haberleşen kısmın da
+&lt;strong&gt;uygulama katmanından&lt;&#x2F;strong&gt; ayıran kısımdır. Bir örnek ile ilerlemek daha iyi
+olacaktır.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;php&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-php &quot;&gt;&lt;code class=&quot;language-php&quot; data-lang=&quot;php&quot;&gt;&lt;span&gt;namespace App&#x2F;Repositories;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;interface UserInterface {
+&lt;&#x2F;span&gt;&lt;span&gt;  public function getUserById($userId);
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;  public function getUserByUsername($username);
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;pre data-lang=&quot;php&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-php &quot;&gt;&lt;code class=&quot;language-php&quot; data-lang=&quot;php&quot;&gt;&lt;span&gt;namespace App&#x2F;Repositories;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;class UserRepository implements UserInterface {
+&lt;&#x2F;span&gt;&lt;span&gt;  protected $model;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;  public function __construct(Model $model) {
+&lt;&#x2F;span&gt;&lt;span&gt;    $this-&amp;gt;model = $model;
+&lt;&#x2F;span&gt;&lt;span&gt;  }
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;  public function getUserById($userId) {
+&lt;&#x2F;span&gt;&lt;span&gt;    return $this-&amp;gt;model-&amp;gt;find($userId);
+&lt;&#x2F;span&gt;&lt;span&gt;  }
+&lt;&#x2F;span&gt;&lt;span&gt;  
+&lt;&#x2F;span&gt;&lt;span&gt;  public function getUserByUsername($username) {
+&lt;&#x2F;span&gt;&lt;span&gt;    return $this-&amp;gt;model-&amp;gt;where(&amp;#39;username&amp;#39;, strtolower($username))-&amp;gt;first();
+&lt;&#x2F;span&gt;&lt;span&gt;  }
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;pre data-lang=&quot;php&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-php &quot;&gt;&lt;code class=&quot;language-php&quot; data-lang=&quot;php&quot;&gt;&lt;span&gt;namespace App&#x2F;Services;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;class UserService {
+&lt;&#x2F;span&gt;&lt;span&gt;  protected $repository;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;  public function __construct(UserInterface $repository){
+&lt;&#x2F;span&gt;&lt;span&gt;    $this-&amp;gt;repository = $repository;
+&lt;&#x2F;span&gt;&lt;span&gt;  }
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;  public function getUser($user) {
+&lt;&#x2F;span&gt;&lt;span&gt;    if(is_numeric($user))
+&lt;&#x2F;span&gt;&lt;span&gt;       return $this-&amp;gt;repository-&amp;gt;getUserById($user);
+&lt;&#x2F;span&gt;&lt;span&gt;    else
+&lt;&#x2F;span&gt;&lt;span&gt;       return $this-&amp;gt;repository-&amp;gt;getUserByUsername($user); 
+&lt;&#x2F;span&gt;&lt;span&gt;  }
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Bu örnek yapıda &lt;strong&gt;Service&lt;&#x2F;strong&gt; ve &lt;strong&gt;Repository&lt;&#x2F;strong&gt; kullanmış olduk. (Yapının
+çalışması için iki yapı için de &lt;strong&gt;ServiceProvider&lt;&#x2F;strong&gt; sınıflarını hazırlamanız
+gerekmektedir.)&lt;&#x2F;p&gt;
+&lt;p&gt;Bu yapıda hiçbir sorun yok. Oldukça organize ve güzel bir yapı çıkmış oluyor.
+Lakin belirttiğim gibi &lt;strong&gt;orta&lt;&#x2F;strong&gt; ölçekli proje için uygun olacaktır. &lt;strong&gt;Büyük&lt;&#x2F;strong&gt;
+ölçekli projede bu yapı hayat kurtarmayacaktır.&lt;&#x2F;p&gt;
+&lt;p&gt;Örneğin bu yapının sonunda &lt;strong&gt;Models&lt;&#x2F;strong&gt; dizinimize bakalım:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;.
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; AklimaBaskaModelGelmedi.php
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; AnotherAnotherModel.php
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; AnotherModel.php
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; Comment.php
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; Gallery.php
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; Like.php
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; Note.php
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; Photo.php
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; Profile.php
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; Transaction.php
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;└──&lt;&#x2F;span&gt;&lt;span&gt; User.php
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Uygulamamız üzerine eklediğimiz modüllerle bu Models dizini oldukça
+büyüyecektir. Bir alternatif olarak bu modülleri ayrı &lt;strong&gt;namespace&lt;&#x2F;strong&gt; üzerinde
+tutabilirsiniz. Lakin bir süre sonra bu da kurtarmayacaktır.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;aklima-bir-seyler-geliyor-ama&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#aklima-bir-seyler-geliyor-ama&quot; aria-label=&quot;Anchor link for: aklima-bir-seyler-geliyor-ama&quot;&gt;#&lt;&#x2F;a&gt;
+Aklıma Bir Şeyler Geliyor Ama?&lt;&#x2F;h1&gt;
+&lt;p&gt;Bu aşamada aklınıza gelen yol büyük ihtimal, “&lt;strong&gt;Hadi o zaman projeyi
+microservislere ayıralım&lt;&#x2F;strong&gt;” olacaktır. Lakin bu iş o kadar kolay değil.
+Oluşturduğumuz büyük ölçekli yapıyı küçük küçük parçalara ayırmak oldukça
+zahmetli olacaktır. Temel olarak uygulayacağınız yol şu olur büyük ihtimal;
+Bir parçayı al ufak bir mikroservis uygulaması haline getir (apayrı bir proje
+olmuş oldu) ve uygulama üzerindeki projede gelen isteği bu mikroservise
+yönlendir. Bütün bu uğraş sonucunda da kazandığınız (!) sorunlar:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Herhangi bir değişiklikte hata yapmanız muhtemel&lt;&#x2F;li&gt;
+&lt;li&gt;Yeni bir geliştirici anlamakta çok fazla zorlanacak ve ayrı ayrı parçalara
+bakmak zorunda kalacak.&lt;&#x2F;li&gt;
+&lt;li&gt;Çok fazla dosya&lt;&#x2F;li&gt;
+&lt;li&gt;Yeniden bir çözüm arayışı&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h1 id=&quot;bir-secenek-daha-var-o-da-domain-driven-design-mi-dersin&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#bir-secenek-daha-var-o-da-domain-driven-design-mi-dersin&quot; aria-label=&quot;Anchor link for: bir-secenek-daha-var-o-da-domain-driven-design-mi-dersin&quot;&gt;#&lt;&#x2F;a&gt;
+Bir Seçenek Daha Var O da “Domain Driven Design” Mı Dersin?&lt;&#x2F;h1&gt;
+&lt;p&gt;Elbette tek bir çözüm yolu yok. Yukarda bahsettiğim yapıları daha da
+geliştirebilir veya &lt;strong&gt;HMVC&lt;&#x2F;strong&gt; yapısına geçiş yapabilirsiniz. Her desenin
+&lt;strong&gt;+&lt;&#x2F;strong&gt; ve &lt;strong&gt;-&lt;&#x2F;strong&gt; leri var.&lt;&#x2F;p&gt;
+&lt;p&gt;DDD’yi özetlemek gerekirse:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Application&lt;&#x2F;strong&gt; yani uygulama: Controller, Middleware, Route&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Domain&lt;&#x2F;strong&gt; yani ana işi yapan işlev: Model, Repository, Policy vs.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Infrastructure&lt;&#x2F;strong&gt; yani servisler: Email, Notification, Logging vs.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Interface&lt;&#x2F;strong&gt; yani görünüş, gözüken kısım: Views, Lang, Assets nam-ı diğer
+Resources&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Peki bu yapıda örnek Laravel dizini nasıl olabilir:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;.
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; app 
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   ├── Account (Domain)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   │   ├── AccessControlLists.php
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   │   ├── Auth.php
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   │   ├── Console
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   │   ├── Jobs
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   │   ├── Listeners
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   │   ├── Repositories
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   │   ├── Models
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   │   └── Validators
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   ├── Http (Application)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   ├── Infrastructure
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   │   ├── Events
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   │   └── Exceptions
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   ├── Gallery (Domain)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   └── Post (Domain)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; bootstrap
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   ├── app.php
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   └── cache
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; config
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; database
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   ├── factories
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   ├── migrations
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   └── seeds
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; public
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; resources (Interface) 
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   ├── assets
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   ├── lang
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   └── views
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; routes
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   ├── api.php
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   ├── channels.php
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   ├── console.php
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   └── web.php
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; storage
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; vendor 
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;└──&lt;&#x2F;span&gt;&lt;span&gt; tests
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Fark edebileceğiniz üzere DDD’de sadece &lt;strong&gt;namespace&lt;&#x2F;strong&gt; eklemekten başka bir
+durum yok.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;sen-pala-vere-birak-sonuc-goster&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#sen-pala-vere-birak-sonuc-goster&quot; aria-label=&quot;Anchor link for: sen-pala-vere-birak-sonuc-goster&quot;&gt;#&lt;&#x2F;a&gt;
+Sen Pala Vere Bırak Sonuç Göster&lt;&#x2F;h1&gt;
+&lt;p&gt;Sonuç yapıyı göstermek istersek şöyle bir yapı uygun olacaktır:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;.
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; app
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   ├── Account
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   │   ├── AccessControlLists.php
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   │   ├── Auth.php
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   │   ├── Console
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   │   ├── Events
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   │   ├── Exceptions
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   │   ├── Jobs
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   │   ├── Listeners
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   │   ├── Models
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   │   ├── Repositories
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   │   └── Validators
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   ├── Gallery
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   ├── Http
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   │   ├── Controllers
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   │   └── Middleware
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   ├── Post
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   └── Providers
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; bootstrap
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   ├── app.php
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   └── cache
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; config
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; database
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   ├── factories
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   ├── migrations
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   └── seeds
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; public
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; resources
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   ├── assets
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   ├── lang
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   └── views
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; routes
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   ├── api.php
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   ├── channels.php
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   ├── console.php
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   └── web.php
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; storage
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; vendor 
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;└──&lt;&#x2F;span&gt;&lt;span&gt; tests
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Elbette çok büyük ölçekte bir Laravel Uygulamasında bu yapı da yeterli
+olmayacaktır.&lt;&#x2F;p&gt;
+&lt;p&gt;Şimdi bir senaryo kuralım. Projemizde &lt;strong&gt;Authentication&lt;&#x2F;strong&gt; kısmı &lt;em&gt;mikroservis&lt;&#x2F;em&gt;
+yapılması gerektiği ile ilgili bir karar alındı. Bu durumda bu yapıdaki bir
+projede tek yapılması gereken &lt;code&gt;Account&lt;&#x2F;code&gt; (domain) dizininin mikroservis olarak
+ayrılması. Komple bir değişiklik yapmaya gerek kalmadan sadece o modülü
+mikroservis çok rahat yapabiliriz. Çünkü domain dışındaki diğer tüm sınıflar
+&lt;code&gt;AccessControlLists&lt;&#x2F;code&gt; ve &lt;code&gt;Auth&lt;&#x2F;code&gt; sınıflarını biliyor ve kullanıyor. Bunları
+tutmak yeterli olacaktır. Mikroservisi hazırladıktan sonra ana projemizdeki
+dizin yapısı şu şekilde olacaktır:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;.
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; app
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   ├── Account
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   │   ├── AccessControlLists.php
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   │   └── Auth.php
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   ├── Gallery
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   ├── Http
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   │   ├── Controllers
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   │   └── Middleware
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   ├── Post
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   └── Providers
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; bootstrap
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   ├── app.php
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   └── cache
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; config
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; database
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   ├── factories
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   ├── migrations
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   └── seeds
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; public
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; resources
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   ├── assets
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   ├── lang
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   └── views
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; routes
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   ├── api.php
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   ├── channels.php
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   ├── console.php
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;│&lt;&#x2F;span&gt;&lt;span&gt;   └── web.php
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; storage
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; vendor 
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;└──&lt;&#x2F;span&gt;&lt;span&gt; tests
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Gördüğünüz gibi &lt;strong&gt;uygulama kodlarımız&lt;&#x2F;strong&gt; içerisinde bir değişiklik yapmadan
+modül olarak ayırmış ve mikroservis haline getirmiş olduk. Buradaki
+&lt;code&gt;AccessControlLists&lt;&#x2F;code&gt; ve &lt;code&gt;Auth&lt;&#x2F;code&gt; mikroservisimizle haberleşecektir.&lt;&#x2F;p&gt;
+&lt;p&gt;Dikkat edilmesi gereken kısım ise, bu gibi senaryolara sahip olabileceğimiz
+için &lt;strong&gt;Domain&lt;&#x2F;strong&gt; içerisindeki haberleşen &lt;code&gt;Service&lt;&#x2F;code&gt; sınıflarımızın temel veri
+türlerini kullanması gerektiğidir. Örneğin, &lt;code&gt;array&lt;&#x2F;code&gt;, &lt;code&gt;string&lt;&#x2F;code&gt;, &lt;code&gt;int&lt;&#x2F;code&gt; ve
+&lt;code&gt;boolean&lt;&#x2F;code&gt; gibi. Herhangi bir sınıf belirtmeniz ayırma işlemi sonucunda sorun
+çıkartacaktır. Çünkü o sınıfı tanımıyor ve bilmiyor olacaktır.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;bitis&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#bitis&quot; aria-label=&quot;Anchor link for: bitis&quot;&gt;#&lt;&#x2F;a&gt;
+Bitiş&lt;&#x2F;h1&gt;
+&lt;p&gt;Yazı içerisinde elbetteki yanlışlarım olmuş olabilir. Yazıyı düzenleyerek
+hataları gidererek daha iyi bir makale haline getirebiliriz. Eklenmesini
+istediğiniz kısımları da yine aynı şekilde düzenleyerek &lt;strong&gt;pull request&lt;&#x2F;strong&gt;
+atabilirsiniz.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Laravel - Elixir</title>
+        <published>2016-05-21T19:22:00+00:00</published>
+        <updated>2016-05-21T19:22:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://era.yayd.in/blog/laravel-elixir/"/>
+        <id>https://era.yayd.in/blog/laravel-elixir/</id>
+        
+        <content type="html" xml:base="https://era.yayd.in/blog/laravel-elixir/">&lt;p&gt;Laravel &lt;strong&gt;Elixir&lt;&#x2F;strong&gt;, Gulp görevlerinizi kolay bir şekilde yönetmenizi sağlar. CSS ve Javascript derleyicileriyle birlikte test araçlarını da kullanmanıza imkan verir. Eğer daha önce Gulp ve asset yönetimi yaptıysanız Elixir işinize çok yarayacaktır.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;kurulum&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#kurulum&quot; aria-label=&quot;Anchor link for: kurulum&quot;&gt;##&lt;&#x2F;a&gt;
+Kurulum&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;node-kurulumu&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#node-kurulumu&quot; aria-label=&quot;Anchor link for: node-kurulumu&quot;&gt;###&lt;&#x2F;a&gt;
+Node Kurulumu&lt;&#x2F;h3&gt;
+&lt;p&gt;Elixir’i kullanmak için geliştirme yaptığınız sistemde &lt;strong&gt;Node.js&lt;&#x2F;strong&gt;’nin kurulu olması gerekmektedir.&lt;&#x2F;p&gt;
+&lt;p&gt;Node.js’nin kurulu olup olmadığını görmek için aşağıdaki komutla versiyon kontrolü yapabilirsiniz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;node -v
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Windows ve OS X için Node.js kurulumunu &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;nodejs.org&#x2F;en&#x2F;download&#x2F;&quot;&gt;nodejs.org&lt;&#x2F;a&gt; adresinden yapabilirsiniz.&lt;&#x2F;p&gt;
+&lt;p&gt;Arch Linux kullanıcıları da &lt;code&gt;pacman -S nodejs&lt;&#x2F;code&gt; ile kurulum yapabilir.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;gulp&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#gulp&quot; aria-label=&quot;Anchor link for: gulp&quot;&gt;###&lt;&#x2F;a&gt;
+Gulp&lt;&#x2F;h3&gt;
+&lt;p&gt;NodeJS kurulumundan sonra &lt;strong&gt;Gulp&lt;&#x2F;strong&gt; kurulumu yapmamız gerekiyor.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;npm&lt;&#x2F;span&gt;&lt;span&gt; install&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; -g&lt;&#x2F;span&gt;&lt;span&gt; gulp
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;laravel-elixir&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#laravel-elixir&quot; aria-label=&quot;Anchor link for: laravel-elixir&quot;&gt;###&lt;&#x2F;a&gt;
+Laravel Elixir&lt;&#x2F;h3&gt;
+&lt;p&gt;Gulp ve NodeJS kurulumundan sonra geriye kalan Elixir kurulumunu yapmak. Bunun için Laravel projenizin olduğu klasöre ulaşıp &lt;code&gt;package.json&lt;&#x2F;code&gt; dosyasındaki NPM paketlerini kurmanız gerekiyor.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;npm&lt;&#x2F;span&gt;&lt;span&gt; install
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;calistirma&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#calistirma&quot; aria-label=&quot;Anchor link for: calistirma&quot;&gt;##&lt;&#x2F;a&gt;
+Çalıştırma&lt;&#x2F;h2&gt;
+&lt;p&gt;Elixir’i çalıştırmak için özel bir komuta ihtiyacınız yok. Normal bir şekilde &lt;code&gt;gulp&lt;&#x2F;code&gt; çalıştırmanız yeterli. &lt;strong&gt;Production&lt;&#x2F;strong&gt; ortamında &lt;code&gt;--production&lt;&#x2F;code&gt; parametresi ekleyerek Elixir’in CSS ve JS dosyalarını küçültmesini isteyebilirsiniz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# Tüm gulp görevlerini çalıştır
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;gulp
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# Tüm gulp görevlerini çalıştır ve CSS&#x2F;JS dosyalarını küçült
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;gulp --production
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;strong&gt;Dosya Değişimlerini Kontrol Etmek&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Her değişiklikten sonra &lt;code&gt;gulp&lt;&#x2F;code&gt; komutunu çalıştırmak zor olacaktır. Bu nedenle dosya değişikliğinde otomatik olarak &lt;code&gt;gulp&lt;&#x2F;code&gt; çalışmasını istiyorsanız &lt;code&gt;watch&lt;&#x2F;code&gt; görevini çalıştırabilirsiniz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;gulp&lt;&#x2F;span&gt;&lt;span&gt; watch
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;stil-dosyalariyla-calismak&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#stil-dosyalariyla-calismak&quot; aria-label=&quot;Anchor link for: stil-dosyalariyla-calismak&quot;&gt;##&lt;&#x2F;a&gt;
+Stil Dosyalarıyla Çalışmak&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;code&gt;gulpfile.js&lt;&#x2F;code&gt; dosyası yazdığınız tüm Elixir görevlerini barındırmaktadır. Bu dosya üzerinden elixir işlemlerini belirteceğiz.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;less&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#less&quot; aria-label=&quot;Anchor link for: less&quot;&gt;###&lt;&#x2F;a&gt;
+Less&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;http:&#x2F;&#x2F;lesscss.org&#x2F;&quot;&gt;Less&lt;&#x2F;a&gt; dosyalarını CSS olarak derlemek için &lt;code&gt;less&lt;&#x2F;code&gt; metodunu kullanacağız. &lt;code&gt;less&lt;&#x2F;code&gt; metodu parametre olarak derlemek istediğiniz less dosyasının yerini istemektedir. Varsayılan olarak, derlenen CSS &lt;code&gt;public&#x2F;css&#x2F;app.css&lt;&#x2F;code&gt; olarak çıktı verecektir.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;js&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-js &quot;&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;elixir&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;function&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;mix&lt;&#x2F;span&gt;&lt;span&gt;){
+&lt;&#x2F;span&gt;&lt;span&gt;	&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;mix&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;less&lt;&#x2F;span&gt;&lt;span&gt;(&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;app.less&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;);
+&lt;&#x2F;span&gt;&lt;span&gt;});
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Dilerseniz birden çok Less dosyasını tek bir CSS dosyası da yapabilirsiniz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;js&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-js &quot;&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;elixir&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;function&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;mix&lt;&#x2F;span&gt;&lt;span&gt;){
+&lt;&#x2F;span&gt;&lt;span&gt;	&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;mix&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;less&lt;&#x2F;span&gt;&lt;span&gt;([
+&lt;&#x2F;span&gt;&lt;span&gt;    	&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;app.less&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;,
+&lt;&#x2F;span&gt;&lt;span&gt;        &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;arayuz.less&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;
+&lt;&#x2F;span&gt;&lt;span&gt;    ]);
+&lt;&#x2F;span&gt;&lt;span&gt;});
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Eğer &lt;code&gt;public&#x2F;css&#x2F;app.css&lt;&#x2F;code&gt; yerine farklı bir dizine farklı dosya adı ile kaydetmek istiyorsanız ikinci parametre olarak verebilirsiniz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;js&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-js &quot;&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;elixir&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;function&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;mix&lt;&#x2F;span&gt;&lt;span&gt;){
+&lt;&#x2F;span&gt;&lt;span&gt;	&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;mix&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;less&lt;&#x2F;span&gt;&lt;span&gt;(&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;app.less&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;, &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;public&#x2F;stylesheets&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;); &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; public&#x2F;stylesheets&#x2F;app.css çıktısı verecektir
+&lt;&#x2F;span&gt;&lt;span&gt;});
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;elixir&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;function&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;mix&lt;&#x2F;span&gt;&lt;span&gt;){
+&lt;&#x2F;span&gt;&lt;span&gt;	&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;mix&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;less&lt;&#x2F;span&gt;&lt;span&gt;(&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;app.less&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;, &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;public&#x2F;stylesheets&#x2F;style.css&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;); &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; public&#x2F;stylesheets&#x2F;style.css çıktısı verecektir
+&lt;&#x2F;span&gt;&lt;span&gt;});
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;sass&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#sass&quot; aria-label=&quot;Anchor link for: sass&quot;&gt;###&lt;&#x2F;a&gt;
+Sass&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;code&gt;sass&lt;&#x2F;code&gt; metodu ile &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;http:&#x2F;&#x2F;sass-lang.com&#x2F;&quot;&gt;Sass&lt;&#x2F;a&gt; dosyalarınızı CSS’e derleyebilirsiniz. Sass dosyaları &lt;code&gt;resources&#x2F;assets&#x2F;sass&lt;&#x2F;code&gt; klasöründe yer almalıdır.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;js&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-js &quot;&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;elixir&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;function&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;mix&lt;&#x2F;span&gt;&lt;span&gt;){
+&lt;&#x2F;span&gt;&lt;span&gt;	&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;mix&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;sass&lt;&#x2F;span&gt;&lt;span&gt;(&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;app.scss&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;);
+&lt;&#x2F;span&gt;&lt;span&gt;});
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;code&gt;less&lt;&#x2F;code&gt; metoduna benzer olarak birden çok Sass dosyasını tek bir CSS dosyası yapabilirsiniz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;js&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-js &quot;&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;elixir&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;function&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;mix&lt;&#x2F;span&gt;&lt;span&gt;){
+&lt;&#x2F;span&gt;&lt;span&gt;	&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;mix&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;sass&lt;&#x2F;span&gt;&lt;span&gt;([
+&lt;&#x2F;span&gt;&lt;span&gt;    	&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;app.scss&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;,
+&lt;&#x2F;span&gt;&lt;span&gt;        &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;arayuz.scss&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;
+&lt;&#x2F;span&gt;&lt;span&gt;    ], &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;public&#x2F;assets&#x2F;css&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;);
+&lt;&#x2F;span&gt;&lt;span&gt;});
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;duz-css&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#duz-css&quot; aria-label=&quot;Anchor link for: duz-css&quot;&gt;###&lt;&#x2F;a&gt;
+Düz CSS&lt;&#x2F;h3&gt;
+&lt;p&gt;Birden çok CSS dosyasını tek bir CSS dosyası yapmak istiyorsanız &lt;code&gt;styles&lt;&#x2F;code&gt; metodunu kullanabilirsiniz. Belirttiğiniz CSS dosyası isimleri &lt;code&gt;resources&#x2F;assets&#x2F;css&lt;&#x2F;code&gt; klasöründe aranacaktır.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;js&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-js &quot;&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;elixir&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;function&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;mix&lt;&#x2F;span&gt;&lt;span&gt;){
+&lt;&#x2F;span&gt;&lt;span&gt;	&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;mix&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;styles&lt;&#x2F;span&gt;&lt;span&gt;([
+&lt;&#x2F;span&gt;&lt;span&gt;    	&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;normalize.css&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;,
+&lt;&#x2F;span&gt;&lt;span&gt;        &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;main.css&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;
+&lt;&#x2F;span&gt;&lt;span&gt;    ]);
+&lt;&#x2F;span&gt;&lt;span&gt;});
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Sass ve Less’te olduğu gibi çıktı dizinini ikinci parametre ile değiştirebilirsiniz.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;kaynak-haritasi&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#kaynak-haritasi&quot; aria-label=&quot;Anchor link for: kaynak-haritasi&quot;&gt;###&lt;&#x2F;a&gt;
+Kaynak Haritası&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;strong&gt;Source Map&lt;&#x2F;strong&gt; dosyaları derleme işlemi hakkında bilgileri saklamaktadır. Tarayıcılar bu sayede debugta hangi satırın nerede olduğunu gösterebilmektedir.&lt;&#x2F;p&gt;
+&lt;p&gt;Eğer &lt;strong&gt;source maps&lt;&#x2F;strong&gt; dosyalarının derlenmesini istemiyorsanız bunu Elixir’e belirtebilirsiniz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;js&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-js &quot;&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;elixir&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;config&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;sourcemaps &lt;&#x2F;span&gt;&lt;span&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;false&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;elixir&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;function&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;mix&lt;&#x2F;span&gt;&lt;span&gt;) {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;mix&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;sass&lt;&#x2F;span&gt;&lt;span&gt;(&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;app.scss&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;);
+&lt;&#x2F;span&gt;&lt;span&gt;});
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;script-dosyalariyla-calismak&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#script-dosyalariyla-calismak&quot; aria-label=&quot;Anchor link for: script-dosyalariyla-calismak&quot;&gt;##&lt;&#x2F;a&gt;
+Script Dosyalarıyla Çalışmak&lt;&#x2F;h2&gt;
+&lt;p&gt;Elixir ayrıca Javascript çalışmalarınız için de birçok fonksiyon sağlamakta. ECMAScript 6 derlemesi, Coffeescript, Browserify, küçültme(minify) ve basit concat işlemi yapmak gibi.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;coffeescript&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#coffeescript&quot; aria-label=&quot;Anchor link for: coffeescript&quot;&gt;###&lt;&#x2F;a&gt;
+CoffeeScript&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;code&gt;coffee&lt;&#x2F;code&gt; metodu ile &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;http:&#x2F;&#x2F;coffeescript.org&#x2F;&quot;&gt;CoffeeScript&lt;&#x2F;a&gt; dosyalarınızı JS’ye derleyebilirsiniz. &lt;code&gt;coffee&lt;&#x2F;code&gt; metodu ilk parametre olarak CoffeeScript dosyalarının  yollarını alır. Çıktıyı &lt;code&gt;app.js&lt;&#x2F;code&gt; olarak &lt;code&gt;public&#x2F;js&lt;&#x2F;code&gt; klasörüne oluşturur.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;js&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-js &quot;&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;elixir&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;function&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;mix&lt;&#x2F;span&gt;&lt;span&gt;){
+&lt;&#x2F;span&gt;&lt;span&gt;	&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;mix&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;coffee&lt;&#x2F;span&gt;&lt;span&gt;([&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;app.coffee&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;, &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;arayuz.coffee&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;]);
+&lt;&#x2F;span&gt;&lt;span&gt;});
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;browserify&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#browserify&quot; aria-label=&quot;Anchor link for: browserify&quot;&gt;###&lt;&#x2F;a&gt;
+Browserify&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;code&gt;browserify&lt;&#x2F;code&gt; metodu ile &lt;strong&gt;require&lt;&#x2F;strong&gt; işlemi, &lt;strong&gt;JSX&lt;&#x2F;strong&gt; ve &lt;strong&gt;ECMAScript 6&lt;&#x2F;strong&gt; kullanımı  gibi özellikler sağlar.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;code&gt;browserify&lt;&#x2F;code&gt;’da script dosyaları &lt;code&gt;resources&#x2F;assets&#x2F;js&lt;&#x2F;code&gt; içerisinde aranır ve çıktı olarak &lt;code&gt;public&#x2F;js&#x2F;main.js&lt;&#x2F;code&gt; çıktısı verir. Dilerseniz ikinci parametre ile çıktı dizinini değiştirebilirsiniz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;js&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-js &quot;&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;elixir&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;function&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;mix&lt;&#x2F;span&gt;&lt;span&gt;){
+&lt;&#x2F;span&gt;&lt;span&gt;	&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;mix&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;browserify&lt;&#x2F;span&gt;&lt;span&gt;(&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;main.js&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;);
+&lt;&#x2F;span&gt;&lt;span&gt;});
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;elixir&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;function&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;mix&lt;&#x2F;span&gt;&lt;span&gt;){
+&lt;&#x2F;span&gt;&lt;span&gt;	&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;mix&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;browserify&lt;&#x2F;span&gt;&lt;span&gt;(&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;main.js&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;, &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;public&#x2F;javascripts&#x2F;main.js&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;);
+&lt;&#x2F;span&gt;&lt;span&gt;});
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;babel&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#babel&quot; aria-label=&quot;Anchor link for: babel&quot;&gt;###&lt;&#x2F;a&gt;
+Babel&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;code&gt;babel&lt;&#x2F;code&gt; metodu Javascript’te &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;babeljs.io&#x2F;docs&#x2F;learn-es2015&#x2F;&quot;&gt;ECMAScript 6 ve 7&lt;&#x2F;a&gt; ve &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;facebook.github.io&#x2F;react&#x2F;docs&#x2F;jsx-in-depth.html&quot;&gt;JSX&lt;&#x2F;a&gt; kullanmanızı sağlar. İlk parametre olarak &lt;code&gt;resources&#x2F;assets&#x2F;js&lt;&#x2F;code&gt; klasöründe yer alan dosya listesini ister ve çıktı olarak &lt;code&gt;public&#x2F;js&#x2F;all.js&lt;&#x2F;code&gt; çıktısı verir.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;js&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-js &quot;&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;elixir&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;function&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;mix&lt;&#x2F;span&gt;&lt;span&gt;){
+&lt;&#x2F;span&gt;&lt;span&gt;	&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;mix&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;babel&lt;&#x2F;span&gt;&lt;span&gt;([
+&lt;&#x2F;span&gt;&lt;span&gt;    	&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;odeme.js&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;,
+&lt;&#x2F;span&gt;&lt;span&gt;        &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;urun.js&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;,
+&lt;&#x2F;span&gt;&lt;span&gt;        &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;react-component.jsx&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;
+&lt;&#x2F;span&gt;&lt;span&gt;    ]);
+&lt;&#x2F;span&gt;&lt;span&gt;});
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Çıktı dizinini ve dosya ismini değiştirmek için ikinci parametre ile belirtmeniz yeterlidir.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;scriptler&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#scriptler&quot; aria-label=&quot;Anchor link for: scriptler&quot;&gt;###&lt;&#x2F;a&gt;
+Scriptler&lt;&#x2F;h3&gt;
+&lt;p&gt;Birden çok JS dosyanız var ve bunları tek bir JS dosyası yapmak istiyorsanız &lt;code&gt;scripts&lt;&#x2F;code&gt; metodunu kullanabilirsiniz.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;code&gt;scripts&lt;&#x2F;code&gt; metodu ilk parametre olarak &lt;code&gt;resources&#x2F;assets&#x2F;js&lt;&#x2F;code&gt; içerisindeki dosya isimlerini alır, çıktı olarak &lt;code&gt;public&#x2F;js&#x2F;all.js&lt;&#x2F;code&gt; verir.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;js&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-js &quot;&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;elixir&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;function&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;mix&lt;&#x2F;span&gt;&lt;span&gt;) {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;mix&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;scripts&lt;&#x2F;span&gt;&lt;span&gt;([
+&lt;&#x2F;span&gt;&lt;span&gt;        &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;jquery.js&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;,
+&lt;&#x2F;span&gt;&lt;span&gt;        &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;app.js&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;
+&lt;&#x2F;span&gt;&lt;span&gt;    ]);
+&lt;&#x2F;span&gt;&lt;span&gt;});
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Eğer bir klasör içerisindeki tüm JS dosyaları için bu işlemi yapmak istiyorsanız &lt;code&gt;scriptsIn&lt;&#x2F;code&gt; metodunu kullanabilirsiniz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;js&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-js &quot;&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;elixir&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;function&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;mix&lt;&#x2F;span&gt;&lt;span&gt;) {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;mix&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;scriptsIn&lt;&#x2F;span&gt;&lt;span&gt;(&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;public&#x2F;js&#x2F;klasor&#x2F;yolu&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;);
+&lt;&#x2F;span&gt;&lt;span&gt;});
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;dosyalari-klasorleri-kopyalama&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#dosyalari-klasorleri-kopyalama&quot; aria-label=&quot;Anchor link for: dosyalari-klasorleri-kopyalama&quot;&gt;##&lt;&#x2F;a&gt;
+Dosyaları &amp;amp; Klasörleri Kopyalama&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;code&gt;copy&lt;&#x2F;code&gt; metodu ile belirli dosya ve klasörleri istediğiniz yere kopyalayabilirsiniz. Bu metotda verdiğiniz yollar projenin ana dizinine göre çalışır.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;js&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-js &quot;&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;elixir&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;function&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;mix&lt;&#x2F;span&gt;&lt;span&gt;) {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;mix&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;copy&lt;&#x2F;span&gt;&lt;span&gt;(&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;vendor&#x2F;foo&#x2F;bar.css&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;, &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;public&#x2F;css&#x2F;bar.css&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;);
+&lt;&#x2F;span&gt;&lt;span&gt;});
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;elixir&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;function&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;mix&lt;&#x2F;span&gt;&lt;span&gt;) {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;mix&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;copy&lt;&#x2F;span&gt;&lt;span&gt;(&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;bower_components&#x2F;font-awesome&#x2F;icons&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;, &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;public&#x2F;icons&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;);
+&lt;&#x2F;span&gt;&lt;span&gt;});
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;versiyonlama&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#versiyonlama&quot; aria-label=&quot;Anchor link for: versiyonlama&quot;&gt;##&lt;&#x2F;a&gt;
+Versiyonlama&lt;&#x2F;h2&gt;
+&lt;p&gt;Birçok geliştirici derlediği assetlerin tarayıcıda önbelleğe takılmaması için benzersiz bir kodla veya tarih ile asset dosyalarını çağırır. Bu işlemi Elixir &lt;code&gt;version&lt;&#x2F;code&gt; metodu ile yapabilirsiniz.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;code&gt;version&lt;&#x2F;code&gt; metodu ilk parametre olarak &lt;code&gt;public&lt;&#x2F;code&gt; içerisindeki dosyanın ismini alır. Sonuna benzersiz bir kod koyarak versiyonlama yapmanızı sağlar. Örneğin &lt;code&gt;all-16d570a7.css&lt;&#x2F;code&gt; gibi.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;js&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-js &quot;&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;elixir&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;function&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;mix&lt;&#x2F;span&gt;&lt;span&gt;) {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;mix&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;version&lt;&#x2F;span&gt;&lt;span&gt;(&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;css&#x2F;all.css&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;);
+&lt;&#x2F;span&gt;&lt;span&gt;});
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Versiyonlamadan sonra bu CSS dosyasını ön tarafta çağırmanız için PHP &lt;code&gt;elixir&lt;&#x2F;code&gt; yardımcı fonksiyonunu kullanmanız gerekiyor. &lt;code&gt;elixir&lt;&#x2F;code&gt; fonksiyonu otomatik olarak kodlu dosyanın ismini getirecektir.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;html&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-html &quot;&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span&gt;{% raw %}
+&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;link &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;rel&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;stylesheet&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;href&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;{{ elixir(&amp;#39;css&#x2F;all.css&amp;#39;) }}&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;{% endraw %}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Dilerseniz elixir’e dizi olarak değer gönderip çoklu dosya versiyonlaması yapabilirsiniz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;js&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-js &quot;&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;elixir&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;function&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;mix&lt;&#x2F;span&gt;&lt;span&gt;) {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;mix&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;version&lt;&#x2F;span&gt;&lt;span&gt;([&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;css&#x2F;all.css&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;, &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;js&#x2F;app.js&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;]);
+&lt;&#x2F;span&gt;&lt;span&gt;});
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;browsersync&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#browsersync&quot; aria-label=&quot;Anchor link for: browsersync&quot;&gt;##&lt;&#x2F;a&gt;
+BrowserSync&lt;&#x2F;h2&gt;
+&lt;p&gt;BrowserSync, frontenddeki yaptığınız değişikliklerde web tarayıcısının otomatik yenilenmesini sağlar. &lt;code&gt;browserSync&lt;&#x2F;code&gt; metodu ile &lt;strong&gt;BrowserSync&lt;&#x2F;strong&gt; sunucusu çalıştırabilirsiniz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;js&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-js &quot;&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;elixir&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;function&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;mix&lt;&#x2F;span&gt;&lt;span&gt;) {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;mix&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;browserSync&lt;&#x2F;span&gt;&lt;span&gt;();
+&lt;&#x2F;span&gt;&lt;span&gt;});
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;code&gt;gulp watch&lt;&#x2F;code&gt; komutu çalıştırdığınızda &lt;strong&gt;3000&lt;&#x2F;strong&gt; portu üzerinden web uygulamanıza bağlantıyı sağlayabilirsiniz. [http:&#x2F;&#x2F;homestead.app:3000] adresinden BrowserSync’e ulaşabileceksiniz. Fakat &lt;strong&gt;homestead.app&lt;&#x2F;strong&gt; dışında bir domain üzerinden geliştirme yapıyorsanız bunu da değiştirebilirsiniz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;js&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-js &quot;&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;elixir&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;function&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;mix&lt;&#x2F;span&gt;&lt;span&gt;) {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;mix&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;browserSync&lt;&#x2F;span&gt;&lt;span&gt;({
+&lt;&#x2F;span&gt;&lt;span&gt;        proxy: &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;proje.app&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;
+&lt;&#x2F;span&gt;&lt;span&gt;    });
+&lt;&#x2F;span&gt;&lt;span&gt;});
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Laravel - Hataları Viewde Gösterme</title>
+        <published>2016-04-12T19:20:00+00:00</published>
+        <updated>2016-04-12T19:20:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://era.yayd.in/blog/laravel-hatalari-viewde-gosterme/"/>
+        <id>https://era.yayd.in/blog/laravel-hatalari-viewde-gosterme/</id>
+        
+        <content type="html" xml:base="https://era.yayd.in/blog/laravel-hatalari-viewde-gosterme/">&lt;p&gt;Laravel’de &lt;code&gt;withError()&lt;&#x2F;code&gt; ile veya &lt;em&gt;Request Validation&lt;&#x2F;em&gt; sonucu döndürdüğünüz hataları göstermek için aşağıdaki kodu kullanabilirsiniz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;php&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-php &quot;&gt;&lt;code class=&quot;language-php&quot; data-lang=&quot;php&quot;&gt;&lt;span&gt;{% raw %}
+&lt;&#x2F;span&gt;&lt;span&gt;@if($errors-&amp;gt;has())
+&lt;&#x2F;span&gt;&lt;span&gt;	@foreach ($errors-&amp;gt;all() as $error)
+&lt;&#x2F;span&gt;&lt;span&gt;		&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;div&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;{{ $error }}&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;div&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;	@endforeach
+&lt;&#x2F;span&gt;&lt;span&gt;@endif
+&lt;&#x2F;span&gt;&lt;span&gt;{% endraw %}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;strong&gt;Bootstrap Framework&lt;&#x2F;strong&gt; kullanıyorsanız aşağıdaki &lt;em&gt;snippet&lt;&#x2F;em&gt;’i kullanabilirsiniz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;php&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-php &quot;&gt;&lt;code class=&quot;language-php&quot; data-lang=&quot;php&quot;&gt;&lt;span&gt;{% raw %}
+&lt;&#x2F;span&gt;&lt;span&gt;@if($errors-&amp;gt;has())
+&lt;&#x2F;span&gt;&lt;span&gt;	&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;div &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;class&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;alert alert-danger&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;	@foreach ($errors-&amp;gt;all() as $error)
+&lt;&#x2F;span&gt;&lt;span&gt;		&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;p&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;{{ $error }}&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;p&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;	@endforeach
+&lt;&#x2F;span&gt;&lt;span&gt;	&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;div&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;@endif
+&lt;&#x2F;span&gt;&lt;span&gt;{% endraw %}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;strong&gt;Zurb Foundation Framework&lt;&#x2F;strong&gt; kullanıyorsanız aşağıdaki &lt;em&gt;snippet&lt;&#x2F;em&gt;’i kullanabilirsiniz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;php&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-php &quot;&gt;&lt;code class=&quot;language-php&quot; data-lang=&quot;php&quot;&gt;&lt;span&gt;{% raw %}
+&lt;&#x2F;span&gt;&lt;span&gt;@if($errors-&amp;gt;has())
+&lt;&#x2F;span&gt;&lt;span&gt;	&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;div &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;class&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;callout alert&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;	@foreach ($errors-&amp;gt;all() as $error)
+&lt;&#x2F;span&gt;&lt;span&gt;		&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;p&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;{{ $error }}&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;p&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;	@endforeach
+&lt;&#x2F;span&gt;&lt;span&gt;	&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;div&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;@endif
+&lt;&#x2F;span&gt;&lt;span&gt;{% endraw %}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;strong&gt;Semantic UI&lt;&#x2F;strong&gt; kullanıyorsanız aşağıdaki &lt;em&gt;snippet&lt;&#x2F;em&gt;’i kullanabilirsiniz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;php&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-php &quot;&gt;&lt;code class=&quot;language-php&quot; data-lang=&quot;php&quot;&gt;&lt;span&gt;{% raw %}
+&lt;&#x2F;span&gt;&lt;span&gt;@if($errors-&amp;gt;has())
+&lt;&#x2F;span&gt;&lt;span&gt;	&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;div &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;class&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;ui negative message&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;	@foreach ($errors-&amp;gt;all() as $error)
+&lt;&#x2F;span&gt;&lt;span&gt;		&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;p&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;{{ $error }}&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;p&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;	@endforeach
+&lt;&#x2F;span&gt;&lt;span&gt;	&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;div&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;@endif
+&lt;&#x2F;span&gt;&lt;span&gt;{% endraw %}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;strong&gt;UIKit&lt;&#x2F;strong&gt; kullanıyorsanız aşağıdaki &lt;em&gt;snippet&lt;&#x2F;em&gt;’i kullanabilirsiniz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;php&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-php &quot;&gt;&lt;code class=&quot;language-php&quot; data-lang=&quot;php&quot;&gt;&lt;span&gt;{% raw %}
+&lt;&#x2F;span&gt;&lt;span&gt;@if($errors-&amp;gt;has())
+&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;div &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;class&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;uk-alert uk-alert-danger&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;	@foreach ($errors-&amp;gt;all() as $error)
+&lt;&#x2F;span&gt;&lt;span&gt;		&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;p&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;{{ $error }}&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;p&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;	@endforeach
+&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;div&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;@endif
+&lt;&#x2F;span&gt;&lt;span&gt;{% endraw %}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Yukarıdaki snippetleri olduğu gibi kullanabilirsiniz.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+</feed>

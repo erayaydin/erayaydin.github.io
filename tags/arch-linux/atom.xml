@@ -1,0 +1,1174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Eray Aydın - arch-linux</title>
+    <subtitle>Scala Developer, Laravel Artisan, Free Software Fan, Archy, Linux Lover, WoW Loremaster, Junior Game Developer</subtitle>
+    <link rel="self" type="application/atom+xml" href="https://era.yayd.in/tags/arch-linux/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://era.yayd.in"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2018-02-09T09:00:00+00:00</updated>
+    <id>https://era.yayd.in/tags/arch-linux/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Pass ile Kendinize Özel Parola Yöneticinizi Yapın</title>
+        <published>2018-02-09T09:00:00+00:00</published>
+        <updated>2018-02-09T09:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://era.yayd.in/blog/pass-kendinize-ozel-parola-yoneticisi/"/>
+        <id>https://era.yayd.in/blog/pass-kendinize-ozel-parola-yoneticisi/</id>
+        
+        <content type="html" xml:base="https://era.yayd.in/blog/pass-kendinize-ozel-parola-yoneticisi/">&lt;h1 id=&quot;pass-nedir&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#pass-nedir&quot; aria-label=&quot;Anchor link for: pass-nedir&quot;&gt;#&lt;&#x2F;a&gt;
+Pass Nedir?&lt;&#x2F;h1&gt;
+&lt;p&gt;&lt;code&gt;pass&lt;&#x2F;code&gt; yazılımı komut arayüzünde çalışan basit bir parola yöneticisidir. &lt;code&gt;git&lt;&#x2F;code&gt;
+ve &lt;code&gt;tree&lt;&#x2F;code&gt; araçlarını kullanarak yazılmış bir &lt;code&gt;shell&lt;&#x2F;code&gt; kodlamasıdır. Bu sebeple
+kullanımı ve geliştirilmesi oldukça kolaydır.&lt;&#x2F;p&gt;
+&lt;p&gt;Bu yazı içerisinde &lt;strong&gt;Arch Linux&lt;&#x2F;strong&gt;, &lt;strong&gt;Android&lt;&#x2F;strong&gt; ve &lt;strong&gt;Windows&lt;&#x2F;strong&gt; ortamlarında
+nasıl kurulumu yapıldığını ek olarak &lt;strong&gt;Chromium&lt;&#x2F;strong&gt;, &lt;strong&gt;Chrome&lt;&#x2F;strong&gt; ve &lt;strong&gt;Firefox&lt;&#x2F;strong&gt;
+üzerinde nasıl entegrasyonu yapılabileceğini örnekledim.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;arch-linux-uzerinde-pass-kurulumu&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#arch-linux-uzerinde-pass-kurulumu&quot; aria-label=&quot;Anchor link for: arch-linux-uzerinde-pass-kurulumu&quot;&gt;#&lt;&#x2F;a&gt;
+Arch Linux Üzerinde Pass Kurulumu&lt;&#x2F;h1&gt;
+&lt;p&gt;Arch Linux üzerinde kurulumu yapmak için &lt;code&gt;pass&lt;&#x2F;code&gt; paketini yüklemeniz yeterlidir.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span&gt; pacman&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; -Sy&lt;&#x2F;span&gt;&lt;span&gt; pass
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Ek olarak, grafik arayüzü istiyorsanız &lt;code&gt;qtpass&lt;&#x2F;code&gt; paketini de yükleyebilirsiniz.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;kullanimi&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#kullanimi&quot; aria-label=&quot;Anchor link for: kullanimi&quot;&gt;#&lt;&#x2F;a&gt;
+Kullanımı&lt;&#x2F;h1&gt;
+&lt;p&gt;Bir parola yöneticisi kullanacağımız için güvenliğinin sağlanması gerekiyor. Bu
+sebeple &lt;strong&gt;GnuPG&lt;&#x2F;strong&gt; ile kendinize bir anahtar dizisi oluşturmanız gerekli.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;gnupg-kurulumu&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#gnupg-kurulumu&quot; aria-label=&quot;Anchor link for: gnupg-kurulumu&quot;&gt;##&lt;&#x2F;a&gt;
+GnuPG Kurulumu&lt;&#x2F;h2&gt;
+&lt;p&gt;Arch Linux üzerinde &lt;code&gt;gnupg&lt;&#x2F;code&gt; paketini yüklemeniz gereklidir.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span&gt; pacman&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; -Sy&lt;&#x2F;span&gt;&lt;span&gt; gnupg
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Ardından kendinize bir anahtar dizisi oluşturmalısınız.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span&gt; gpg&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; --full-gen-key
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;password-store-olusturulmasi&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#password-store-olusturulmasi&quot; aria-label=&quot;Anchor link for: password-store-olusturulmasi&quot;&gt;##&lt;&#x2F;a&gt;
+Password Store Oluşturulması&lt;&#x2F;h2&gt;
+&lt;p&gt;Arch Linux üzerinde &lt;code&gt;pass&lt;&#x2F;code&gt; kullanarak kendimize ait bir dizin oluşturacağız.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span&gt; pass init &amp;lt;gpg-id&amp;gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Artık &lt;code&gt;pass&lt;&#x2F;code&gt; üzerinde parolalarımızı tutabiliriz.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;yeni-bir-parola-kayit-etme&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#yeni-bir-parola-kayit-etme&quot; aria-label=&quot;Anchor link for: yeni-bir-parola-kayit-etme&quot;&gt;##&lt;&#x2F;a&gt;
+Yeni Bir Parola Kayıt Etme&lt;&#x2F;h2&gt;
+&lt;p&gt;Burada hali hazırda olan bir parolayı kayıt olarak eklemek için kullanıyoruz.
+Yani program otomatik olarak parola üretmek yerine sizden parola girişi
+bekleyecektir.&lt;&#x2F;p&gt;
+&lt;p&gt;Bir kayıt girerken hiyerarşik olarak isimlendirme yapmalısınız. Örneğin
+gmail.com üzerinde pass@gmail.com isimli bir kayıt oluşturacaksınız. Bu kayıtın
+ismi &lt;code&gt;gmail.com&#x2F;pass@gmail.com&lt;&#x2F;code&gt; olmalıdır.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span&gt; pass insert gmail.com&#x2F;pass@gmail.com
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;yeni-bir-parola-olusturma&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#yeni-bir-parola-olusturma&quot; aria-label=&quot;Anchor link for: yeni-bir-parola-olusturma&quot;&gt;##&lt;&#x2F;a&gt;
+Yeni Bir Parola Oluşturma&lt;&#x2F;h2&gt;
+&lt;p&gt;Burada ise parola &lt;code&gt;pass&lt;&#x2F;code&gt; tarafından otomatik oluşturulacaktır.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span&gt; pass generate gmail.com&#x2F;pass2@gmail.com
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;The&lt;&#x2F;span&gt;&lt;span&gt; generated password for pass2@gmail.com is:
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;0iV1!?{4u&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;8I#F&amp;amp;8=34!JS{S]
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Otomatik parola oluştururken dilerseniz uzunluk da verebilirsiniz. Bunun için
+kayıt isminden sonra sayıyı girmeniz yeterli.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span&gt; pass generate gmail.com&#x2F;pass3@gmail.com 6
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;The&lt;&#x2F;span&gt;&lt;span&gt; generated password for gmail.com&#x2F;pass3@gmail.com is:
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;D0&#x2F;+qh
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Ek olarak, bazı website ve yazılımlarda semboller kabul edilmemekte. Bu
+sebeple oluştururken dilerseniz sembol kullanmamasını isteyebilirsiniz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span&gt; pass generate&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; --no-symbols&lt;&#x2F;span&gt;&lt;span&gt; gmail.com&#x2F;pass4@gmail.com
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;The&lt;&#x2F;span&gt;&lt;span&gt; generated password for gmail.com&#x2F;pass4@gmail.com is:
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;zyT0XpJkmA0k7KfmdN4gVorY5
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;kayitli-parola-listesini-goruntuleme&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#kayitli-parola-listesini-goruntuleme&quot; aria-label=&quot;Anchor link for: kayitli-parola-listesini-goruntuleme&quot;&gt;##&lt;&#x2F;a&gt;
+Kayıtlı Parola Listesini Görüntüleme&lt;&#x2F;h2&gt;
+&lt;p&gt;Kayıtlı parolarınızı görüntülemek için &lt;strong&gt;GPG&lt;&#x2F;strong&gt; anahtarınızı girmenize gerek
+yoktur. Lakin bu kayıttaki parolayı görmek için bu anahtara ihtiyacımız olacak.
+Bu konu bir sonraki başlıkta.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span&gt; pass
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Password&lt;&#x2F;span&gt;&lt;span&gt; Store
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;└──&lt;&#x2F;span&gt;&lt;span&gt; gmail.com
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;└──&lt;&#x2F;span&gt;&lt;span&gt; pass@gmail.com
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;bir-kayittaki-parolayi-alma&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#bir-kayittaki-parolayi-alma&quot; aria-label=&quot;Anchor link for: bir-kayittaki-parolayi-alma&quot;&gt;##&lt;&#x2F;a&gt;
+Bir Kayıttaki Parolayı Alma&lt;&#x2F;h2&gt;
+&lt;p&gt;Kayıttaki parolayı almak için kayıt ismini girmeniz yeterli. Komut sonrası
+sizden &lt;strong&gt;GnuPG&lt;&#x2F;strong&gt; parola isteyecektir.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span&gt; pass gmail.com&#x2F;pass@gmail.com
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;0iV1!?{4u&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;8I#F&amp;amp;8=34!JS{S]
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Bu parolayı komut kısmından almak yerine &lt;code&gt;xclip&lt;&#x2F;code&gt; yüklüyse direk kopyalanmış
+olarak alabilirsiniz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span&gt; pass&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; -c&lt;&#x2F;span&gt;&lt;span&gt; gmail.com&#x2F;pass@gmail.com
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Copied&lt;&#x2F;span&gt;&lt;span&gt; gmail.com&#x2F;pass@gmail.com to clipboard. Will clear in 45 seconds.
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;kayit-menusu&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#kayit-menusu&quot; aria-label=&quot;Anchor link for: kayit-menusu&quot;&gt;##&lt;&#x2F;a&gt;
+Kayıt Menüsü&lt;&#x2F;h2&gt;
+&lt;p&gt;Sisteminizde &lt;code&gt;dmenu&lt;&#x2F;code&gt; kuruluysa kayıtlara ekranda menü aracılığıyla da
+ulaşabilirsiniz. Bunun için &lt;code&gt;passmenu&lt;&#x2F;code&gt; çalıştırmanız yeterlidir.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span&gt; passmenu
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;git-entegrasyonu&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#git-entegrasyonu&quot; aria-label=&quot;Anchor link for: git-entegrasyonu&quot;&gt;##&lt;&#x2F;a&gt;
+Git Entegrasyonu&lt;&#x2F;h2&gt;
+&lt;p&gt;Parola kayıtlarınızı diğer cihazlarınızla paylaşmak için ve versiyon kontrolü
+ile güvenli bir şekilde tutmak için &lt;strong&gt;git&lt;&#x2F;strong&gt; kullanabilirsiniz. &lt;code&gt;pass git&lt;&#x2F;code&gt;
+komutundan sonra verdiğiniz tüm komutlar &lt;code&gt;git&lt;&#x2F;code&gt; ile &lt;code&gt;pass&lt;&#x2F;code&gt; ın bulunduğu dizinde
+gerçekleşecektir.&lt;&#x2F;p&gt;
+&lt;p&gt;Öncelike depoyu oluşturalım.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span&gt; pass git init
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Ardından oluşturduğumuz bir &lt;code&gt;git&lt;&#x2F;code&gt; deposunu origin olarak ekleyelim.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span&gt; pass git remote add origin &amp;lt;git-adres&amp;gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Sistemdeki değişiklikleri iletmek istediğinizde de &lt;code&gt;push&lt;&#x2F;code&gt; yapmanız yeterli.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span&gt; git push&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; -u --all
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Başka bir sistemde yaptığınız ve gönderdiğiniz değişiklikleri &lt;code&gt;pull&lt;&#x2F;code&gt; ile
+alabilirsiniz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span&gt; git pull
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h1 id=&quot;android-cihazinizda-kayitlara-erisin&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#android-cihazinizda-kayitlara-erisin&quot; aria-label=&quot;Anchor link for: android-cihazinizda-kayitlara-erisin&quot;&gt;#&lt;&#x2F;a&gt;
+Android Cihazınızda Kayıtlara Erişin&lt;&#x2F;h1&gt;
+&lt;h2 id=&quot;openkeychain&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#openkeychain&quot; aria-label=&quot;Anchor link for: openkeychain&quot;&gt;##&lt;&#x2F;a&gt;
+OpenKeychain&lt;&#x2F;h2&gt;
+&lt;p&gt;Android cihazınızda parolalara erişmek için öncelikle &lt;strong&gt;GnuPG&lt;&#x2F;strong&gt; anahtarınızı
+kullanabiliyor olmanız gerekiyor. Bunun için &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;play.google.com&#x2F;store&#x2F;apps&#x2F;details?id=org.sufficientlysecure.keychain&amp;amp;hl=en&quot;&gt;&lt;strong&gt;OpenKeychain&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt; isimli Android
+programını kullanabilirsiniz.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;OpenKeychain&lt;&#x2F;strong&gt; uygulamasına ekleyeceğiniz &lt;strong&gt;GPG&lt;&#x2F;strong&gt; anahtarını aşağıdaki komut
+ile kurulumu yaptığınız sistem üzerinde alabilirsiniz.&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;$ gpg --export-secret-key &amp;lt;gpg-id&amp;gt; &amp;gt; keys.asc
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Ardından bu dosyayı &lt;strong&gt;android&lt;&#x2F;strong&gt; cihazınıza taşıyarak &lt;strong&gt;OpenKeychain&lt;&#x2F;strong&gt; üzerinde
+ekleyin.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;password-store&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#password-store&quot; aria-label=&quot;Anchor link for: password-store&quot;&gt;##&lt;&#x2F;a&gt;
+Password Store&lt;&#x2F;h2&gt;
+&lt;p&gt;Password Store android uygulamasına dilerseniz &lt;em&gt;play store&lt;&#x2F;em&gt; üzerinden
+erişebilirsiniz lakin &lt;strong&gt;F-Droid&lt;&#x2F;strong&gt; üzerinden kurulum daha sağlıklı ve güncel
+olacaktır.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;f-droid.org&#x2F;FDroid.apk&quot;&gt;F-Droid&lt;&#x2F;a&gt; apk dosyasını android cihazınıza
+yükleyin. Ardından &lt;strong&gt;F-Droid&lt;&#x2F;strong&gt; üzerinden &lt;strong&gt;Password Store&lt;&#x2F;strong&gt; uygulamasını
+yükleyin.&lt;&#x2F;p&gt;
+&lt;p&gt;Dilerseniz &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;f-droid.org&#x2F;repo&#x2F;com.zeapo.pwdstore_93.apk&quot;&gt;buradan&lt;&#x2F;a&gt; da
+direk Password Store apk dosyasını indirebilirsiniz.&lt;&#x2F;p&gt;
+&lt;p&gt;Password Store uygulamasında ayarlar kısmında &lt;strong&gt;Select OpenPGP Provider&lt;&#x2F;strong&gt; bölümünde &lt;strong&gt;OpenKeychain&lt;&#x2F;strong&gt;’in seçili olduğundan emin olun.&lt;&#x2F;p&gt;
+&lt;p&gt;Password Store uygulamasındaki ayarlar kısmından öncelike &lt;strong&gt;Generate SSH key pair&lt;&#x2F;strong&gt; ile bir SSH anahtarı üretmeniz gerekmekte. Ardından yine aynı menüde bulunan &lt;strong&gt;View generated public SSH key&lt;&#x2F;strong&gt; ile oluşturduğunuz anahtarın public anahtarını alın. Bu anahtarı &lt;strong&gt;git&lt;&#x2F;strong&gt; sunucunuzda yetki vermek için kullanmalısınız.&lt;&#x2F;p&gt;
+&lt;p&gt;Son olarak &lt;strong&gt;git server settings&lt;&#x2F;strong&gt; kısmından git sunucunuzu tanımlayın ve senkronizasyon işlemi yapın.&lt;&#x2F;p&gt;
+&lt;p&gt;Artık uygulama üzerinde &lt;code&gt;pull&lt;&#x2F;code&gt; ve &lt;code&gt;push&lt;&#x2F;code&gt; yapabilirsiniz. Yani iki ortamda da
+kayıtlara erişebilir ve yeni kayıt ekleyebilirsiniz.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;firefox-uzerinde-pass&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#firefox-uzerinde-pass&quot; aria-label=&quot;Anchor link for: firefox-uzerinde-pass&quot;&gt;##&lt;&#x2F;a&gt;
+Firefox Üzerinde Pass&lt;&#x2F;h2&gt;
+&lt;p&gt;Firefox tarayıcısını kullanmadığım için detaylı bilgim yok. İşlemi yapan arkadaşlar yazıyı &lt;strong&gt;github&lt;&#x2F;strong&gt; üzerinde düzenleyerek &lt;strong&gt;pull request&lt;&#x2F;strong&gt; gönderirse sevinirim.&lt;&#x2F;p&gt;
+&lt;p&gt;Kullanılması gereken &lt;strong&gt;extension&lt;&#x2F;strong&gt; &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;jvenant&#x2F;passff#readme&quot;&gt;burada&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;chrome-chromium&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#chrome-chromium&quot; aria-label=&quot;Anchor link for: chrome-chromium&quot;&gt;##&lt;&#x2F;a&gt;
+Chrome &#x2F; Chromium&lt;&#x2F;h2&gt;
+&lt;p&gt;Chromium üzerinde parolanıza erişmek için &lt;code&gt;browserpass&lt;&#x2F;code&gt; eklentisini kullanabilirsiniz.&lt;&#x2F;p&gt;
+&lt;p&gt;Arch Linux üzerinde kurulumu için aşağıdaki komutu kullanabilirsiniz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span&gt; yaourt&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; -Sy&lt;&#x2F;span&gt;&lt;span&gt; browserpass
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;OSX,Linux ve Windows ortamları için &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;dannyvankooten&#x2F;browserpass&#x2F;releases&quot;&gt;buradan&lt;&#x2F;a&gt; indirebilirsiniz.&lt;&#x2F;p&gt;
+&lt;p&gt;Chrome eklentisine &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;chrome.google.com&#x2F;webstore&#x2F;detail&#x2F;browserpass&#x2F;naepdomgkenhinolocfifgehidddafch&quot;&gt;buradan&lt;&#x2F;a&gt; ulaşabilirsiniz.&lt;&#x2F;p&gt;
+&lt;p&gt;Bulunduğunuz sitede otomatik doldurmasını istediğinizde &lt;code&gt;Ctrl+Shift+L&lt;&#x2F;code&gt; yapabilirsiniz yada tarayıcıda eklenen kilit ikonunu kullanabilirsiniz.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;windows&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#windows&quot; aria-label=&quot;Anchor link for: windows&quot;&gt;##&lt;&#x2F;a&gt;
+Windows&lt;&#x2F;h2&gt;
+&lt;p&gt;Windows ortamında kurulumunu yapmadım. Yapan arkadaşlar anlatımını yapıp bu yazıyı düzenlerse sevinirim.&lt;&#x2F;p&gt;
+&lt;p&gt;Kullanılabilecek programa &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;mbos&#x2F;Pass4Win#readme&quot;&gt;buradan&lt;&#x2F;a&gt; ulaşabilirsiniz.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;contributors&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#contributors&quot; aria-label=&quot;Anchor link for: contributors&quot;&gt;#&lt;&#x2F;a&gt;
+Contributors&lt;&#x2F;h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;erayaydin.github.io&quot;&gt;Eray Aydın&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Arch Linux ve i3 için Backlight Ayarlaması</title>
+        <published>2017-07-01T04:30:00+00:00</published>
+        <updated>2017-07-01T04:30:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://era.yayd.in/blog/arch-backlight-i3/"/>
+        <id>https://era.yayd.in/blog/arch-backlight-i3/</id>
+        
+        <content type="html" xml:base="https://era.yayd.in/blog/arch-backlight-i3/">&lt;h2 id=&quot;acpi-test&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#acpi-test&quot; aria-label=&quot;Anchor link for: acpi-test&quot;&gt;##&lt;&#x2F;a&gt;
+ACPI Test&lt;&#x2F;h2&gt;
+&lt;p&gt;Backlight ayarlamasından önce backlightı kontrol eden driverı öğrenmeliyiz. Bunun için &lt;code&gt;&#x2F;sys&#x2F;class&#x2F;backlight&lt;&#x2F;code&gt; klasöründen yararlanacağız.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span&gt; ls &#x2F;sys&#x2F;class&#x2F;backlight
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;intel_backlight
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Benim çıktıda görüldüğü üzere &lt;code&gt;intel_backlight&lt;&#x2F;code&gt; tarafından kullanılıyormuş. Bu klasörün içerisindekileri kontrol edelim.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span&gt; ls &#x2F;sys&#x2F;class&#x2F;backlight&#x2F;intel_backlight
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;actual_brightness
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;brightness
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;max_brightness
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;subsystem
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;uevent
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;bl_power
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;device
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;power
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;type
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Burada yer alan dosyaları ve klasörleri açıklayalım.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;actual_brightness&lt;&#x2F;strong&gt; - Donanımsal olarak gerçek aydınlatma miktarını alır.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;brightness&lt;&#x2F;strong&gt; - Aydınlatma miktarını belirler. 0 ile &lt;strong&gt;maksimum aydınlık&lt;&#x2F;strong&gt; miktarı arasında bir değer alır. Driver tarafındaki aydınlatma miktarını da gösterir. (Donanımsal olarak gerçek aydınlatma miktarı olmayabilir, actual_brightness bu yüzden var)&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;max_brightness&lt;&#x2F;strong&gt; - Maksimum tanımlanabilecek aydınlatma miktarıdır.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;subsystem&lt;&#x2F;strong&gt; - Hangi sisteme ait olduğunu gösterir.  (&lt;code&gt;&#x2F;sys&#x2F;class&#x2F;backlight&lt;&#x2F;code&gt;)&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;uevent&lt;&#x2F;strong&gt; - Her sistem dosyasında (&lt;code&gt;&#x2F;sys&#x2F;devices&lt;&#x2F;code&gt;) bulunan bir dosyadır.&lt;code&gt;udev&lt;&#x2F;code&gt; için tanımlanacak &lt;em&gt;ekleme&lt;&#x2F;em&gt;, &lt;em&gt;silme&lt;&#x2F;em&gt; veya diğer işlemleri tanımlamanızı sağlar.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;bl_power&lt;&#x2F;strong&gt; - Aydınlatma gücünü kontrol etmenizi sağlar. &lt;em&gt;FB_BLANK_UNBLANK&lt;&#x2F;em&gt; veya &lt;em&gt;FB_BLANK_POWERDOWN&lt;&#x2F;em&gt; değerlerinden birini alır. İlki gücü açar, ikincisi gücü kapatır(karanlık).&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;device&lt;&#x2F;strong&gt; - Genellikle geriye dönük uyum için kullanılmakta. Cihazın hangi karta ait olduğunu gösterir.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;power&lt;&#x2F;strong&gt; - Her cihaz için güç tüketimi ile ilgili ayarların bulunduğu klasördür.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;type&lt;&#x2F;strong&gt; - Arka ışığın hangi arayüz türü ile kontrol edildiğini belirler. &lt;em&gt;firmware&lt;&#x2F;em&gt; (standart arayüz kütüphanesi), &lt;em&gt;platform&lt;&#x2F;em&gt; (platform tarafından belirli arayüz) ve &lt;em&gt;raw&lt;&#x2F;em&gt; (direk donanımsal kayıtları kullanarak) değerlerini alabilir.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Yukarda açıkladığımız dosyalardan &lt;strong&gt;max_brightness&lt;&#x2F;strong&gt;’ı inceleyelim.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span&gt; cat max_brightness
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;937
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Gördüğümüz gibi maksimum verebileceğimiz ışık değeri &lt;strong&gt;937&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Bir de tanımlanan ışık değerini &lt;strong&gt;brightness&lt;&#x2F;strong&gt; dosyası ile inceleyelim.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span&gt; cat brightness
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;700
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Bu dosyayı değiştirerek parlaklığı da değiştirebiliriz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span&gt; echo 600 &amp;gt; brightness
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Tabi ki parlaklığı ayarlamak için sürekli bu dosyayı değiştirmekle uğraşmayacağız.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;xbacklight&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#xbacklight&quot; aria-label=&quot;Anchor link for: xbacklight&quot;&gt;##&lt;&#x2F;a&gt;
+XBacklight&lt;&#x2F;h2&gt;
+&lt;p&gt;Xorg tarafından hazırlanan &lt;code&gt;xbacklight&lt;&#x2F;code&gt; ile parlaklığı ayarlayabiliriz.&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Not:&lt;&#x2F;strong&gt; Xbacklight sadece &lt;code&gt;intel&lt;&#x2F;code&gt; ile çalışmaktadır ve &lt;strong&gt;modesetting&lt;&#x2F;strong&gt; sürücüsü ile çalışmamaktadır. Yani Xorg’unuz &lt;strong&gt;modesetting&lt;&#x2F;strong&gt; driverını kullanıyorsa &lt;code&gt;xbacklight&lt;&#x2F;code&gt; çalışmayacaktır.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Pacman ile xbacklight kurulumu&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;pacman -S&lt;&#x2F;span&gt;&lt;span&gt; xorg-xbacklight
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;strong&gt;Belirli bir % değeri ile parlaklığı belirlemek için&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# %50 tanımlamak için
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;xbacklight -set&lt;&#x2F;span&gt;&lt;span&gt; 50
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;strong&gt;Belirli bir % değeri ile parlaklığı arttırmak için&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# %10 arttırmak için
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;xbacklight -inc&lt;&#x2F;span&gt;&lt;span&gt; 10
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;strong&gt;Belirli bir % değeri ile parlaklığı kısmak için&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# %10 azaltmak için
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;xbacklight -dec&lt;&#x2F;span&gt;&lt;span&gt; 10
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;light&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#light&quot; aria-label=&quot;Anchor link for: light&quot;&gt;##&lt;&#x2F;a&gt;
+Light&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;code&gt;xbacklight&lt;&#x2F;code&gt; yazılımının çalışmaması durumlarında kullanabileceğiniz bir başka yardımcı yazılım. &lt;em&gt;LightScript&lt;&#x2F;em&gt;’in C ile yazılmış hali. Malesef resmi depoda bulunmuyor bu sebeple AUR üzerinden kurmanız gerekiyor.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;yaourt -S --noconfirm&lt;&#x2F;span&gt;&lt;span&gt; light
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;strong&gt;Şuanki parlaklığı almak için&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;light -G
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;strong&gt;Belirli bir % değeri ile parlaklığı tanımlamak için&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# Parlaklığı %50 yap
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;light -S&lt;&#x2F;span&gt;&lt;span&gt; 50
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;strong&gt;Belirli bir % değeri ile parlaklığı arttırmak için&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# %5 arttırmak için
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;light -A&lt;&#x2F;span&gt;&lt;span&gt; 5
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;strong&gt;Belirli bir % değeri ile parlaklığı azaltmak için&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# % 5 azaltmak için
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;light -U&lt;&#x2F;span&gt;&lt;span&gt; 5
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;i3-klavye-kisayol&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#i3-klavye-kisayol&quot; aria-label=&quot;Anchor link for: i3-klavye-kisayol&quot;&gt;##&lt;&#x2F;a&gt;
+i3 Klavye Kısayol&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;code&gt;i3&lt;&#x2F;code&gt; üzerinde klavye kısayol belirlemek için &lt;code&gt;~&#x2F;.config&#x2F;i3&#x2F;config&lt;&#x2F;code&gt; dosyasına aşağıdaki kısayolu ekleyeceğiz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;bindsym&lt;&#x2F;span&gt;&lt;span&gt; XF86MonBrightnessDown exec light&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; -U&lt;&#x2F;span&gt;&lt;span&gt; 5
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;bindsym&lt;&#x2F;span&gt;&lt;span&gt; XF86MonBrightnessUp exec light&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; -A&lt;&#x2F;span&gt;&lt;span&gt; 5
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;tabi ki dilerseniz buradaki &lt;strong&gt;XF86MonBrightnessDown&lt;&#x2F;strong&gt; ve &lt;strong&gt;XF86MonBrightnessUp&lt;&#x2F;strong&gt; değerini değiştirerek başka bir kısayol atayabilirsiniz.&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Bu işlemi kullandığınız DE&#x2F;WM’deki kısayol ayarlamasını uygulayarak da tanımlayabilirsiniz.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Arch Linux - LAMP Kurulumu</title>
+        <published>2017-07-01T01:00:00+00:00</published>
+        <updated>2017-07-01T01:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://era.yayd.in/blog/arch-linux-lamp-kurulumu/"/>
+        <id>https://era.yayd.in/blog/arch-linux-lamp-kurulumu/</id>
+        
+        <content type="html" xml:base="https://era.yayd.in/blog/arch-linux-lamp-kurulumu/">&lt;h2 id=&quot;apache-kurulumu&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#apache-kurulumu&quot; aria-label=&quot;Anchor link for: apache-kurulumu&quot;&gt;##&lt;&#x2F;a&gt;
+Apache Kurulumu&lt;&#x2F;h2&gt;
+&lt;p&gt;Öncelikle paket yöneticisi yardımı ile &lt;code&gt;apache&lt;&#x2F;code&gt; paketinin kurulumunu
+gerçekleştirelim.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;pacman -S&lt;&#x2F;span&gt;&lt;span&gt; apache
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;apache-konfigurasyonu&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#apache-konfigurasyonu&quot; aria-label=&quot;Anchor link for: apache-konfigurasyonu&quot;&gt;###&lt;&#x2F;a&gt;
+Apache Konfigürasyonu&lt;&#x2F;h3&gt;
+&lt;p&gt;Gerekli apache ayarlaması yapmak için konfigürasyon dosyasında değişiklik yapacağız. Apache konfigürasyonu &lt;code&gt;&#x2F;etc&#x2F;httpd&#x2F;conf&#x2F;httpd.conf&lt;&#x2F;code&gt; dosyasında yer alıyor.&lt;&#x2F;p&gt;
+&lt;p&gt;Ben profesyonel bir web sunucusunda çalışmadığım, geliştirme ortamında
+çalıştığım için Apache’nin kullandığı &lt;code&gt;user&lt;&#x2F;code&gt; olarak kendimi belirtiyorum.
+İsterseniz siz de bu şekilde belirtip daha rahat çalışabilirsiniz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;User&lt;&#x2F;span&gt;&lt;span&gt; eray
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Eğer &lt;code&gt;80&lt;&#x2F;code&gt; portunu başka bir yazılımda kullanıyorsanız dilerseniz Apache’nin
+portunu değiştirebilirsiniz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Listen&lt;&#x2F;span&gt;&lt;span&gt; 80
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Dışardan sizin web sunucunuza erişim olmamasını istiyorsanız &lt;code&gt;Listen&lt;&#x2F;code&gt;
+parametresini &lt;code&gt;Listen 127.0.0.1:80&lt;&#x2F;code&gt; olarak değiştirebilirsiniz.&lt;&#x2F;p&gt;
+&lt;p&gt;Varsayılan olarak &lt;code&gt;&#x2F;srv&#x2F;http&lt;&#x2F;code&gt; klasörü &lt;code&gt;DocumentRoot&lt;&#x2F;code&gt; olarak tanımlı.
+Belirttiğiniz klasör web olarak servis edilmekte. Dilerseniz bu klasörü
+değiştirebilirsiniz. Fakat değiştirdikten sonra &lt;code&gt;&amp;lt;Directory &quot;&#x2F;srv&#x2F;http&quot;&amp;gt;&lt;&#x2F;code&gt;
+kısmını da değiştirmeyi unutmayın. Aksi takdirde &lt;strong&gt;403 Hatası&lt;&#x2F;strong&gt; alırsınız.&lt;&#x2F;p&gt;
+&lt;p&gt;Ek olarak &lt;code&gt;DocumentRoot&lt;&#x2F;code&gt; klasörü olarak belirtiğiniz klasör ve üst
+klasörleri &lt;strong&gt;executable&lt;&#x2F;strong&gt; yani çalıştırılabilir olmalıdır.&lt;&#x2F;p&gt;
+&lt;p&gt;Klasörleriniz içerisinde &lt;code&gt;.htaccess&lt;&#x2F;code&gt; ile Apache üzerinde klasör bazlı ayar
+yapmak istiyorsanız &lt;strong&gt;AllowOverride&lt;&#x2F;strong&gt; değerini &lt;strong&gt;All&lt;&#x2F;strong&gt; olarak
+değiştirebilirsiniz. Ek olarak bunun çalışması için aşağıdaki satırı bulup
+önündeki yorum satırını kaldırın.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;#LoadModule rewrite_module modules&#x2F;mod_rewrite.so
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span&gt;&amp;lt;Directory &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;&#x2F;srv&#x2F;http&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;...
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;AllowOverride&lt;&#x2F;span&gt;&lt;span&gt; All
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;...
+&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&#x2F;Directory&amp;gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Varsayılan olarak Apache, kullanıcı klasörlerini destekliyor
+(&lt;code&gt;http:&#x2F;&#x2F;localhost&#x2F;~eray&lt;&#x2F;code&gt;). Bu klasörü değiştirmek istiyorsanız
+&lt;code&gt;&#x2F;etc&#x2F;httpd&#x2F;conf&#x2F;extra&#x2F;httpd-userdir.conf&lt;&#x2F;code&gt; dosyasından değiştirebilirsiniz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# Settings for user home directories
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;#
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# Required module: mod_authz_core, mod_authz_host, mod_userdir
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;#
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# UserDir: The name of the directory that is appended onto a user&amp;#39;s home
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# directory if a ~user request is received.  Note that you must also set
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# the default access control for these directories, as in the example below.
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;#
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;UserDir&lt;&#x2F;span&gt;&lt;span&gt; Webserver
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;#
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# Control access to UserDir directories.  The following is an example
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# for a site where these directories are restricted to read-only.
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;#
+&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;Directory &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;&#x2F;home&#x2F;*&#x2F;Webserver&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;AllowOverride&lt;&#x2F;span&gt;&lt;span&gt; FileInfo AuthConfig Limit Indexes
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Options&lt;&#x2F;span&gt;&lt;span&gt; MultiViews Indexes SymLinksIfOwnerMatch IncludesNoExec
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Require&lt;&#x2F;span&gt;&lt;span&gt; method GET POST OPTIONS
+&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&#x2F;Directory&amp;gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Yukarda da belirttiğim gibi klasörünüzün ve üst klasörlerin
+çalıştırılabilir olması gerekiyor. Bunun için çalıştırma izni vermelisiniz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;chmod&lt;&#x2F;span&gt;&lt;span&gt; o+x &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;~
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;chmod -R&lt;&#x2F;span&gt;&lt;span&gt; o+x &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;~&lt;&#x2F;span&gt;&lt;span&gt;&#x2F;Webserver
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Değişikliklerin geçerli olması için servisi yeniden başlatalım.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;systemctl&lt;&#x2F;span&gt;&lt;span&gt; restart httpd
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;otomatik-sanal-sunucu&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#otomatik-sanal-sunucu&quot; aria-label=&quot;Anchor link for: otomatik-sanal-sunucu&quot;&gt;###&lt;&#x2F;a&gt;
+Otomatik Sanal Sunucu&lt;&#x2F;h3&gt;
+&lt;p&gt;Daha önceden yazdığım &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;erayaydin.github.io&#x2F;linux&#x2F;apache&#x2F;otomatik-apache-sanal-sunucu&#x2F;&quot;&gt;Otomatik Apache Sanal Sunucu&lt;&#x2F;a&gt; adımlarını takip ederek klasör klasör sanal sunucu oluşturabilirsiniz.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;php-kurulumu&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#php-kurulumu&quot; aria-label=&quot;Anchor link for: php-kurulumu&quot;&gt;##&lt;&#x2F;a&gt;
+PHP Kurulumu&lt;&#x2F;h2&gt;
+&lt;p&gt;Paket yöneticisi yardımı ile &lt;code&gt;php&lt;&#x2F;code&gt; ve &lt;code&gt;php-apache&lt;&#x2F;code&gt; paketlerini sisteme
+yükleyeceğiz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;pacman -S&lt;&#x2F;span&gt;&lt;span&gt; php php-apache
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Apache tarafında &lt;code&gt;mpm_event&lt;&#x2F;code&gt; modülü yerine &lt;code&gt;mpm_prefork&lt;&#x2F;code&gt; modülünü
+aktifleştirmemiz gerekiyor. Bu sebeple &lt;code&gt;&#x2F;etc&#x2F;httpd&#x2F;conf&#x2F;httpd.conf&lt;&#x2F;code&gt;
+dosyasındaki &lt;strong&gt;mpm_event&lt;&#x2F;strong&gt; modülünü yorum satırı yapıyoruz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;#LoadModule mpm_event_module modules&#x2F;mod_mpm_event.so
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Ardından &lt;strong&gt;mpm_prefork&lt;&#x2F;strong&gt; modülünün yorum satırını kaldırıyoruz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;LoadModule&lt;&#x2F;span&gt;&lt;span&gt; mpm_prefork_module modules&#x2F;mod_mpm_prefork.so
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Dilerseniz &lt;code&gt;mpm_prefork&lt;&#x2F;code&gt; yerine de &lt;code&gt;proxy_fcgi&lt;&#x2F;code&gt; kullanabilirsiniz.&lt;&#x2F;p&gt;
+&lt;p&gt;PHP’yi aktif etmek için &lt;code&gt;&#x2F;etc&#x2F;httpd&#x2F;conf&#x2F;httpd.conf&lt;&#x2F;code&gt; içerisindeki
+&lt;code&gt;LoadModule&lt;&#x2F;code&gt; listesinin sonuna aşağıdakini ekliyoruz.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;php-7&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#php-7&quot; aria-label=&quot;Anchor link for: php-7&quot;&gt;###&lt;&#x2F;a&gt;
+PHP 7&lt;&#x2F;h3&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;LoadModule&lt;&#x2F;span&gt;&lt;span&gt; php7_module modules&#x2F;libphp7.so
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;AddHandler&lt;&#x2F;span&gt;&lt;span&gt; php7-script php
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Aynı şekilde &lt;code&gt;Include&lt;&#x2F;code&gt; listesinin sonuna da aşağıdakini ekliyoruz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Include&lt;&#x2F;span&gt;&lt;span&gt; conf&#x2F;extra&#x2F;php7_module.conf
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;php-8&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#php-8&quot; aria-label=&quot;Anchor link for: php-8&quot;&gt;###&lt;&#x2F;a&gt;
+PHP 8&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;code&gt;LoadModule&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;LoadModule&lt;&#x2F;span&gt;&lt;span&gt; php_module modules&#x2F;libphp.so
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;AddHandler&lt;&#x2F;span&gt;&lt;span&gt; php-script .php
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;code&gt;Include&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Include&lt;&#x2F;span&gt;&lt;span&gt; conf&#x2F;extra&#x2F;php_module.conf
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Servisi yeniden başlatıyoruz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;systemctl&lt;&#x2F;span&gt;&lt;span&gt; restart httpd
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;PHP kurulumunu test etmek için aşağıdaki gibi &lt;code&gt;test.php&lt;&#x2F;code&gt; isminde bir dosya
+oluşturabilirsiniz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;php&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-php &quot;&gt;&lt;code class=&quot;language-php&quot; data-lang=&quot;php&quot;&gt;&lt;span style=&quot;color:#ab7967;&quot;&gt;&amp;lt;?php &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;phpinfo&lt;&#x2F;span&gt;&lt;span&gt;();
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;php-konfigurasyonu&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#php-konfigurasyonu&quot; aria-label=&quot;Anchor link for: php-konfigurasyonu&quot;&gt;###&lt;&#x2F;a&gt;
+PHP Konfigürasyonu&lt;&#x2F;h3&gt;
+&lt;p&gt;PHP ile ilgili ayarlamaları &lt;code&gt;&#x2F;etc&#x2F;php&#x2F;php.ini&lt;&#x2F;code&gt; dosyası üzerinden yapacağız.&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;maksimum-calistirma-suresi&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#maksimum-calistirma-suresi&quot; aria-label=&quot;Anchor link for: maksimum-calistirma-suresi&quot;&gt;####&lt;&#x2F;a&gt;
+Maksimum Çalıştırma Süresi&lt;&#x2F;h4&gt;
+&lt;p&gt;Her scriptin saniye olarak belirli bir &lt;strong&gt;timeout&lt;&#x2F;strong&gt; yani zaman aşımı süresi
+vardır. Dilerseniz bunu değiştirebilir hatta limitsiz yapabilirsiniz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;ini&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-ini &quot;&gt;&lt;code class=&quot;language-ini&quot; data-lang=&quot;ini&quot;&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;; CLI kullanımlarında 0 değeri otomatik olarak verilmektedir. Yani zaman aşımı yoktur
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;max_execution_time &lt;&#x2F;span&gt;&lt;span&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;60
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h4 id=&quot;hafiza-limiti&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#hafiza-limiti&quot; aria-label=&quot;Anchor link for: hafiza-limiti&quot;&gt;####&lt;&#x2F;a&gt;
+Hafıza Limiti&lt;&#x2F;h4&gt;
+&lt;p&gt;Bir scriptin çalıştırılmasında harcanabilecek maksimum hafıza
+miktarıdır. Varsayılan olarak 128MB seçili bunu dilerseniz
+arttırabilirsiniz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;ini&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-ini &quot;&gt;&lt;code class=&quot;language-ini&quot; data-lang=&quot;ini&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;memory_limit &lt;&#x2F;span&gt;&lt;span&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1024M
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h4 id=&quot;hatalari-gosterme&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#hatalari-gosterme&quot; aria-label=&quot;Anchor link for: hatalari-gosterme&quot;&gt;####&lt;&#x2F;a&gt;
+Hataları Gösterme&lt;&#x2F;h4&gt;
+&lt;p&gt;Geliştirme ortamında çalışanlar için hataları görmek önemlidir. Bu sebeple
+&lt;code&gt;error_reporting&lt;&#x2F;code&gt; değerini belirttiğiniz hata türlerine göre
+değiştirebilirsiniz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;ini&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-ini &quot;&gt;&lt;code class=&quot;language-ini&quot; data-lang=&quot;ini&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;error_reporting &lt;&#x2F;span&gt;&lt;span&gt;= E_ALL
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Ek olarak, hata mesajlarını ekrana yazdırmak için de &lt;code&gt;display_errors&lt;&#x2F;code&gt;
+değerini kullanabilirsiniz. Geliştirme ortamında bu değeri &lt;code&gt;On&lt;&#x2F;code&gt; yapmanız
+yararlı olacaktır.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;ini&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-ini &quot;&gt;&lt;code class=&quot;language-ini&quot; data-lang=&quot;ini&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;display_errors &lt;&#x2F;span&gt;&lt;span&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;On
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h4 id=&quot;acilis-hata-mesajlari&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#acilis-hata-mesajlari&quot; aria-label=&quot;Anchor link for: acilis-hata-mesajlari&quot;&gt;####&lt;&#x2F;a&gt;
+Açılış Hata Mesajları&lt;&#x2F;h4&gt;
+&lt;p&gt;PHP’nin kendisini çalıştırmaya başladığınızda çıkan sorunlardır. Genellikle
+konfigürasyonla ilgili hatalar olduğunda çıkar. Bunların bastırılmaması ve
+ekranda gözükmesi için &lt;code&gt;On&lt;&#x2F;code&gt; değerini verebilirsiniz. Tabi ki sadece
+geliştirme ortamında kullanmanız gerekiyor.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;ini&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-ini &quot;&gt;&lt;code class=&quot;language-ini&quot; data-lang=&quot;ini&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;display_startup_errors &lt;&#x2F;span&gt;&lt;span&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;On
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h4 id=&quot;hatalari-izleme&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#hatalari-izleme&quot; aria-label=&quot;Anchor link for: hatalari-izleme&quot;&gt;####&lt;&#x2F;a&gt;
+Hataları İzleme&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;code&gt;track_errors&lt;&#x2F;code&gt; değerini aktif hale getirerek script içerisinde
+&lt;code&gt;$php_errormsg&lt;&#x2F;code&gt; değişkeni ile son hata mesajını alabilirsiniz.
+Kullandığınız çalışma ortamında gerekli olabilir.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;ini&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-ini &quot;&gt;&lt;code class=&quot;language-ini&quot; data-lang=&quot;ini&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;track_errors &lt;&#x2F;span&gt;&lt;span&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;On
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h4 id=&quot;maksimum-post-buyuklugu&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#maksimum-post-buyuklugu&quot; aria-label=&quot;Anchor link for: maksimum-post-buyuklugu&quot;&gt;####&lt;&#x2F;a&gt;
+Maksimum POST Büyüklüğü&lt;&#x2F;h4&gt;
+&lt;p&gt;PHP’nin kabul edeceği maksimum POST veri büyüklüğüdür. Dilerseniz &lt;strong&gt;0&lt;&#x2F;strong&gt;
+değeri vererek limiti kaldırabilirsiniz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;ini&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-ini &quot;&gt;&lt;code class=&quot;language-ini&quot; data-lang=&quot;ini&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;post_max_size &lt;&#x2F;span&gt;&lt;span&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;50M
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h4 id=&quot;maksimum-dosya-buyuklugu&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#maksimum-dosya-buyuklugu&quot; aria-label=&quot;Anchor link for: maksimum-dosya-buyuklugu&quot;&gt;####&lt;&#x2F;a&gt;
+Maksimum Dosya Büyüklüğü&lt;&#x2F;h4&gt;
+&lt;p&gt;Yüklenebilecek dosyalar için maksimum dosya boyutudur. Varsayılan olarak
+&lt;code&gt;2M&lt;&#x2F;code&gt; yer alıyor.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;ini&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-ini &quot;&gt;&lt;code class=&quot;language-ini&quot; data-lang=&quot;ini&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;upload_max_filesize &lt;&#x2F;span&gt;&lt;span&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;200M
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h4 id=&quot;maksimum-dosya-adeti&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#maksimum-dosya-adeti&quot; aria-label=&quot;Anchor link for: maksimum-dosya-adeti&quot;&gt;####&lt;&#x2F;a&gt;
+Maksimum Dosya Adeti&lt;&#x2F;h4&gt;
+&lt;p&gt;Bir request içerisinde yüklenebilecek maksimum dosya adetidir. Varsayılan
+olarak &lt;code&gt;20&lt;&#x2F;code&gt; yer alıyor.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;ini&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-ini &quot;&gt;&lt;code class=&quot;language-ini&quot; data-lang=&quot;ini&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;max_file_uploads &lt;&#x2F;span&gt;&lt;span&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;200
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h4 id=&quot;timezone&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#timezone&quot; aria-label=&quot;Anchor link for: timezone&quot;&gt;####&lt;&#x2F;a&gt;
+Timezone&lt;&#x2F;h4&gt;
+&lt;p&gt;Geçerli bölgenizi ayarlamak için &lt;code&gt;date.timezone&lt;&#x2F;code&gt; değerini
+değiştirebilirsiniz. Önündeki yorum satırını kaldırmayı unutmayınız.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;ini&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-ini &quot;&gt;&lt;code class=&quot;language-ini&quot; data-lang=&quot;ini&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;date&lt;&#x2F;span&gt;&lt;span&gt;.timezone = Europe&#x2F;Istanbul
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;php-modulleri&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#php-modulleri&quot; aria-label=&quot;Anchor link for: php-modulleri&quot;&gt;###&lt;&#x2F;a&gt;
+PHP Modülleri&lt;&#x2F;h3&gt;
+&lt;p&gt;Çeşitli php eklentilerini aktif etmek için öncelikle paket yöneticisi
+yardımı ile eklentiyi yüklemeli ardından &lt;code&gt;php.ini&lt;&#x2F;code&gt; dosyasında yüklediğiniz
+eklentiyi aktif hale getirmelisiniz. Bunun için basşındaki yorum satırını
+kaldırabilirsiniz.&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;bz2-bzip2&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#bz2-bzip2&quot; aria-label=&quot;Anchor link for: bz2-bzip2&quot;&gt;####&lt;&#x2F;a&gt;
+BZ2 (Bzip2)&lt;&#x2F;h4&gt;
+&lt;p&gt;Script içerisinde Bzip fonksiyonlarını(bzclose, bzcompress, bzdecompress,
+bzopen, bzread, bzwrite vs.) kullanmak için aktif edebilirsiniz. Aktif hale
+getirmek için &lt;code&gt;php.ini&lt;&#x2F;code&gt; dosyasında ilgili satırın başındaki noktalı virgülü
+kaldırmanız yeterli.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;ini&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-ini &quot;&gt;&lt;code class=&quot;language-ini&quot; data-lang=&quot;ini&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;extension&lt;&#x2F;span&gt;&lt;span&gt;=bz2.so
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h4 id=&quot;ftp&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#ftp&quot; aria-label=&quot;Anchor link for: ftp&quot;&gt;####&lt;&#x2F;a&gt;
+FTP&lt;&#x2F;h4&gt;
+&lt;p&gt;Script içerisinde FTP işlemleri yapmak için bu modülü aktif hale
+getirebilirsiniz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;ini&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-ini &quot;&gt;&lt;code class=&quot;language-ini&quot; data-lang=&quot;ini&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;extension&lt;&#x2F;span&gt;&lt;span&gt;=ftp.so
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h4 id=&quot;gd-kutuphanesi&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#gd-kutuphanesi&quot; aria-label=&quot;Anchor link for: gd-kutuphanesi&quot;&gt;####&lt;&#x2F;a&gt;
+GD Kütüphanesi&lt;&#x2F;h4&gt;
+&lt;p&gt;Resim işleme ve oluşturma yapıyorsanız bu modülü aktif hale
+getirebilirsiniz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;ini&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-ini &quot;&gt;&lt;code class=&quot;language-ini&quot; data-lang=&quot;ini&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;extension&lt;&#x2F;span&gt;&lt;span&gt;=gd.so
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Ek olarak paketi kurmayı unutmayın.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;pacman -S&lt;&#x2F;span&gt;&lt;span&gt; gd php-gd
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h4 id=&quot;gettext&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#gettext&quot; aria-label=&quot;Anchor link for: gettext&quot;&gt;####&lt;&#x2F;a&gt;
+Gettext&lt;&#x2F;h4&gt;
+&lt;p&gt;Genellikle dil desteği amaçlı kullanılan gettext kütüphanesini aktif
+edebilirsiniz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;ini&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-ini &quot;&gt;&lt;code class=&quot;language-ini&quot; data-lang=&quot;ini&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;extension&lt;&#x2F;span&gt;&lt;span&gt;=gettext.so
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h4 id=&quot;imap-pop3-ve-nntp&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#imap-pop3-ve-nntp&quot; aria-label=&quot;Anchor link for: imap-pop3-ve-nntp&quot;&gt;####&lt;&#x2F;a&gt;
+IMAP, POP3 ve NNTP&lt;&#x2F;h4&gt;
+&lt;p&gt;Imap fonksiyonlarını kullanmak için aktif hale getirebilirsiniz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;ini&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-ini &quot;&gt;&lt;code class=&quot;language-ini&quot; data-lang=&quot;ini&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;extension&lt;&#x2F;span&gt;&lt;span&gt;=imap.so
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Ek olarak paketi kurmayı unutmayın.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;pacman -S&lt;&#x2F;span&gt;&lt;span&gt; php-imap
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h4 id=&quot;mcrypt&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#mcrypt&quot; aria-label=&quot;Anchor link for: mcrypt&quot;&gt;####&lt;&#x2F;a&gt;
+MCrypt&lt;&#x2F;h4&gt;
+&lt;p&gt;Çeşitli kütüphaneler tarafından da kullanılan &lt;strong&gt;mcrypt_&lt;&#x2F;strong&gt; fonksiyonlarına
+erişmek için aktif hale getirebilirsiniz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;ini&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-ini &quot;&gt;&lt;code class=&quot;language-ini&quot; data-lang=&quot;ini&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;extension&lt;&#x2F;span&gt;&lt;span&gt;=mcrypt.so
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Ek olarak paketini de kurun.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;pacman -S&lt;&#x2F;span&gt;&lt;span&gt; php-mcrypt
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h4 id=&quot;mysqli&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#mysqli&quot; aria-label=&quot;Anchor link for: mysqli&quot;&gt;####&lt;&#x2F;a&gt;
+MySQLi&lt;&#x2F;h4&gt;
+&lt;p&gt;MySQLi fonksiyonlarını kullanmak istiyorsanız aktif hale getirebilirsiniz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;ini&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-ini &quot;&gt;&lt;code class=&quot;language-ini&quot; data-lang=&quot;ini&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;extension&lt;&#x2F;span&gt;&lt;span&gt;=mysqli.so
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h4 id=&quot;pdo-mysql-odbc-dblib-postgresql-sqlite&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#pdo-mysql-odbc-dblib-postgresql-sqlite&quot; aria-label=&quot;Anchor link for: pdo-mysql-odbc-dblib-postgresql-sqlite&quot;&gt;####&lt;&#x2F;a&gt;
+PDO MySQL, ODBC, DBLib, PostgreSQL, SQLite&lt;&#x2F;h4&gt;
+&lt;p&gt;PDO ile belirtilen veritabanı yönetim sistemlerini kullanmak için eklentiyi
+aktif hale getirebilirsiniz. Seçtiğiniz veritabanı sistemini de
+bilgisayarınıza kurmayı unutmayın.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;ini&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-ini &quot;&gt;&lt;code class=&quot;language-ini&quot; data-lang=&quot;ini&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;extension&lt;&#x2F;span&gt;&lt;span&gt;=pdo_dblib.so
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;extension&lt;&#x2F;span&gt;&lt;span&gt;=pdo_mysql.so
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;extension&lt;&#x2F;span&gt;&lt;span&gt;=php_odbc.so
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;extension&lt;&#x2F;span&gt;&lt;span&gt;=php_pgsql.so
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;extension&lt;&#x2F;span&gt;&lt;span&gt;=php_sqlite.so
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h4 id=&quot;imagemagick&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#imagemagick&quot; aria-label=&quot;Anchor link for: imagemagick&quot;&gt;####&lt;&#x2F;a&gt;
+Imagemagick&lt;&#x2F;h4&gt;
+&lt;p&gt;Resim işleme için kullanabileceğiniz bir paket.  AUR deposundan
+indirebilirsiniz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;yaourt -S&lt;&#x2F;span&gt;&lt;span&gt; php-imagick
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;code&gt;&#x2F;etc&#x2F;php&#x2F;conf.d&#x2F;&lt;&#x2F;code&gt; klasörü içerisine kendisi dosya attığı için otomatik
+olarak aktif hale geliyor. &lt;code&gt;php.ini&lt;&#x2F;code&gt; üzerinde değişiklik yapmanıza gerek
+yok.&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;modul-kontrolu&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#modul-kontrolu&quot; aria-label=&quot;Anchor link for: modul-kontrolu&quot;&gt;####&lt;&#x2F;a&gt;
+Modül Kontrolü&lt;&#x2F;h4&gt;
+&lt;p&gt;Kurduğunuz PHP modüllerini test etmek için aşağıdaki komutu
+kullanabilirsiniz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;php -m
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Sonuç olarak size eklenen modülleri döndürecektir.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;[PHP&lt;&#x2F;span&gt;&lt;span&gt; Modules]
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;bz2
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Core
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;ctype
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;curl
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;date
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;dom
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;fileinfo
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;filter
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;ftp
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;gd
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;gettext
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;hash
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;imap
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;json
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;libxml
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;mbstring
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;mcrypt
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;mysqli
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;mysqlnd
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;openssl
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;pcntl
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;pcre
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;PDO
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;pdo_mysql
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;pdo_sqlite
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Phar
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;posix
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;readline
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Reflection
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;session
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;SimpleXML
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;SPL
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;standard
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;tokenizer
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;xml
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;xmlreader
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;xmlwriter
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;zip
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;zlib
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;composer&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#composer&quot; aria-label=&quot;Anchor link for: composer&quot;&gt;###&lt;&#x2F;a&gt;
+Composer&lt;&#x2F;h3&gt;
+&lt;p&gt;PHP’nin bağımlılık yöneticisi olarak kullanılan &lt;strong&gt;Composer&lt;&#x2F;strong&gt;’ı yüklemek
+için paket yöneticisini kullanabilirsiniz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;pacman -S&lt;&#x2F;span&gt;&lt;span&gt; composer
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Kurulumu test etmek için&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;composer --version
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;mysql-mariadb-kurulumu&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#mysql-mariadb-kurulumu&quot; aria-label=&quot;Anchor link for: mysql-mariadb-kurulumu&quot;&gt;##&lt;&#x2F;a&gt;
+MySQL (MariaDB) Kurulumu&lt;&#x2F;h2&gt;
+&lt;p&gt;MariaDB, Arch Linux’un varsayılan MySQL implementasyonudur. Oracle
+firmasının MySQL’ini kullanmak için AUR’u kullanabilirsiniz fakat
+MariaDB’yi öneririm.&lt;&#x2F;p&gt;
+&lt;p&gt;Paket yöneticisinden &lt;code&gt;mariadb&lt;&#x2F;code&gt; paketini yükleyelim.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;pacman -S&lt;&#x2F;span&gt;&lt;span&gt; mariadb
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;MariaDB servisini başlatmadan önce birkaç ayarlama yapacak olan
+&lt;code&gt;mysql_install_db&lt;&#x2F;code&gt;’yi çalıştırıyoruz. Kurulum yerini dilerseniz
+değiştirebilirsiniz fakat &lt;code&gt;&#x2F;home&lt;&#x2F;code&gt; &lt;code&gt;&#x2F;root&lt;&#x2F;code&gt; ve &lt;code&gt;&#x2F;run&#x2F;user&lt;&#x2F;code&gt; klasörlerini
+tercih etmeyin. Çünkü &lt;code&gt;ProtectHome=true&lt;&#x2F;code&gt; değeri bulunduğu için bu
+klasörlere MariaDB tarafından erişim sağlanamıyor. Ek olarak &lt;code&gt;datadir&lt;&#x2F;code&gt;
+klasör değişimini &lt;code&gt;&#x2F;etc&#x2F;mysql&#x2F;my.cnf&lt;&#x2F;code&gt; içerisinde de yapmalısınız.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;mysql_install_db --user&lt;&#x2F;span&gt;&lt;span&gt;=mysql&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; --basedir&lt;&#x2F;span&gt;&lt;span&gt;=&#x2F;usr&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; --datadir&lt;&#x2F;span&gt;&lt;span&gt;=&#x2F;var&#x2F;lib&#x2F;mysql
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Artık servisi başlatabilirsiniz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;systemctl&lt;&#x2F;span&gt;&lt;span&gt; start mysqld
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;guvenlik-ayarlamasi&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#guvenlik-ayarlamasi&quot; aria-label=&quot;Anchor link for: guvenlik-ayarlamasi&quot;&gt;###&lt;&#x2F;a&gt;
+Güvenlik Ayarlaması&lt;&#x2F;h3&gt;
+&lt;p&gt;Veritabanı katmanında birkaç güvenlik önlemi almak ve &lt;code&gt;root&lt;&#x2F;code&gt; parolasını da
+değiştirmek için aşağıdaki scripti çalıştırabilirsiniz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;mysql_secure_installation
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Çalıştırma sırasında sorulan sorular şu şekilde:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Set root password?&lt;&#x2F;strong&gt; &lt;code&gt;root&lt;&#x2F;code&gt; parolasını değiştirmek istiyorsanız &lt;code&gt;Y&lt;&#x2F;code&gt;
+seçeneğini seçin.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Remove anonymous users?&lt;&#x2F;strong&gt; Genellikle test amaçlı olarak gizli
+kullanıcılara izin veriliyor Dilerseniz bunları silebilirsiniz.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Disallow root login remotely?&lt;&#x2F;strong&gt; &lt;code&gt;root&lt;&#x2F;code&gt; kullanıcısına &lt;code&gt;localhost&lt;&#x2F;code&gt;
+haricinde erğişimi kapatmak için &lt;code&gt;Y&lt;&#x2F;code&gt; seçeneğini seçebilirsiniz.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Remove test database and access to it?&lt;&#x2F;strong&gt; Test veritabanını ve ona
+erişimi kaldırmak istiyorsanız &lt;code&gt;Y&lt;&#x2F;code&gt; seçeneğini seçebilirsiniz.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Reload privilege tables now?&lt;&#x2F;strong&gt; Değişikliklerin hemen geçerli olmasını
+istiyorsanız &lt;code&gt;Y&lt;&#x2F;code&gt; seçebilirsiniz.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;disardan-erisimi-iptal-etmek&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#disardan-erisimi-iptal-etmek&quot; aria-label=&quot;Anchor link for: disardan-erisimi-iptal-etmek&quot;&gt;###&lt;&#x2F;a&gt;
+Dışardan Erişimi İptal Etmek&lt;&#x2F;h3&gt;
+&lt;p&gt;Varsayılan olarak MySQL dışardan erişime açıktır. Dışardan erişimleri
+engellemek için &lt;code&gt;&#x2F;etc&#x2F;mysql&#x2F;my.cnf&lt;&#x2F;code&gt; dosyasındaki aşağıdaki satırın
+başındaki yorum simgesini kaldırmanız yeterli.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;skip-networking
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Dışardan erişim kapatılsa dahi &lt;strong&gt;localhost&lt;&#x2F;strong&gt; üzerinden giriş
+yapabilirsiniz.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;utf8mb4-kullanimi&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#utf8mb4-kullanimi&quot; aria-label=&quot;Anchor link for: utf8mb4-kullanimi&quot;&gt;###&lt;&#x2F;a&gt;
+UTF8MB4 Kullanımı&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;strong&gt;UTF-8&lt;&#x2F;strong&gt; yerine &lt;strong&gt;UTF8MB4&lt;&#x2F;strong&gt; kullanmanızı tavsiye ederim. Tam anlamıyla
+Unicode desteği sağlamış olursunuz. Bunun için &lt;code&gt;&#x2F;etc&#x2F;mysql&#x2F;my.cnf&lt;&#x2F;code&gt;
+içerisine aşağıdaki satırları eklemeniz yeterli.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;ini&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-ini &quot;&gt;&lt;code class=&quot;language-ini&quot; data-lang=&quot;ini&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;[client]
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;default-character-set &lt;&#x2F;span&gt;&lt;span&gt;= utf8mb4
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;[mysqld]
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;collation_server &lt;&#x2F;span&gt;&lt;span&gt;= utf8mb4_unicode_ci
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;character_set_client &lt;&#x2F;span&gt;&lt;span&gt;= utf8mb4
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;character_set_server &lt;&#x2F;span&gt;&lt;span&gt;= utf8mb4
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;skip-character-set-client-handshake
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;[mysql]
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;default-character-set &lt;&#x2F;span&gt;&lt;span&gt;= utf8mb4
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;phpmyadmin-kurulumu&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#phpmyadmin-kurulumu&quot; aria-label=&quot;Anchor link for: phpmyadmin-kurulumu&quot;&gt;##&lt;&#x2F;a&gt;
+PHPMyAdmin Kurulumu&lt;&#x2F;h2&gt;
+&lt;p&gt;Web tabanlı olarak MySQL veritabanlarını yönetmek için kullanabilirsiniz.&lt;&#x2F;p&gt;
+&lt;p&gt;Öncelikle &lt;code&gt;phpmyadmin&lt;&#x2F;code&gt; paketini sistemimize kuralım.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;pacman -S&lt;&#x2F;span&gt;&lt;span&gt; phpmyadmin
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;PHP tarafında &lt;code&gt;mysqli&lt;&#x2F;code&gt; modülünü aktif etmemiz gerekiyor, bunu PHP kısmında
+anlattık.&lt;&#x2F;p&gt;
+&lt;p&gt;Ek olarak &lt;code&gt;bz2&lt;&#x2F;code&gt; ve &lt;code&gt;zip&lt;&#x2F;code&gt; modüllerini de aktif hale getirerek sıkıştırılmış
+dosya desteği de ekleyebilirsiniz.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;phpmyadmin-apache-ayarlamasi&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#phpmyadmin-apache-ayarlamasi&quot; aria-label=&quot;Anchor link for: phpmyadmin-apache-ayarlamasi&quot;&gt;###&lt;&#x2F;a&gt;
+PHPMyAdmin-Apache Ayarlaması&lt;&#x2F;h3&gt;
+&lt;p&gt;Apache tarafında &lt;code&gt;...&#x2F;phpmyadmin&lt;&#x2F;code&gt; olarak girildiğinde PHPMyAdmin gözükmesi
+için birkaç ayarlama yapmamız gerekiyor. Bunun için
+&lt;code&gt;&#x2F;etc&#x2F;httpd&#x2F;conf&#x2F;extra&#x2F;phpmyadmin.conf&lt;&#x2F;code&gt; dosyası oluşturup içerisine
+aşağıdakileri ekleyelim.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Alias&lt;&#x2F;span&gt;&lt;span&gt; &#x2F;phpmyadmin &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;&#x2F;usr&#x2F;share&#x2F;webapps&#x2F;phpMyAdmin&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;Directory &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;&#x2F;usr&#x2F;share&#x2F;webapps&#x2F;phpMyAdmin&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;DirectoryIndex&lt;&#x2F;span&gt;&lt;span&gt; index.php
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;AllowOverride&lt;&#x2F;span&gt;&lt;span&gt; All
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Options&lt;&#x2F;span&gt;&lt;span&gt; FollowSymlinks
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Require&lt;&#x2F;span&gt;&lt;span&gt; all granted
+&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&#x2F;Directory&amp;gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Ardından bunu &lt;code&gt;&#x2F;etc&#x2F;httpd&#x2F;conf&#x2F;httpd.conf&lt;&#x2F;code&gt; dosyası içerisinde dahil edelim.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# PHPMyAdmin
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Include&lt;&#x2F;span&gt;&lt;span&gt; conf&#x2F;extra&#x2F;phpmyadmin.conf
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;phpmyadmin-disardan-erisimi-kapatma&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#phpmyadmin-disardan-erisimi-kapatma&quot; aria-label=&quot;Anchor link for: phpmyadmin-disardan-erisimi-kapatma&quot;&gt;###&lt;&#x2F;a&gt;
+PHPMyAdmin Dışardan Erişimi Kapatma&lt;&#x2F;h3&gt;
+&lt;p&gt;Varsayılan olarak web servis dosyalarımızı görebilen herkes PHPMyAdmin
+arayüzüne de erişebilmekte. Bunu devredışı bırakmak için
+&lt;code&gt;&#x2F;etc&#x2F;httpd&#x2F;conf&#x2F;extra&#x2F;phpmyadmin.conf&lt;&#x2F;code&gt; dosyasında yer alan &lt;code&gt;Require all  granted&lt;&#x2F;code&gt; parametresini &lt;code&gt;Require local&lt;&#x2F;code&gt; olarak değiştirmemiz yeterli.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;otomatik-giris&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#otomatik-giris&quot; aria-label=&quot;Anchor link for: otomatik-giris&quot;&gt;###&lt;&#x2F;a&gt;
+Otomatik Giriş&lt;&#x2F;h3&gt;
+&lt;p&gt;PHPMyAdmin kısmında veritabanı kullanıcı bilgilerini girmenize gerek
+kalmadan otomatik olarak giriş yapmak için
+&lt;code&gt;&#x2F;etc&#x2F;webapps&#x2F;phpmyadmin&#x2F;config.inc.php&lt;&#x2F;code&gt;
+dosyasındaki &lt;code&gt;auth_type&lt;&#x2F;code&gt; değerini &lt;code&gt;config&lt;&#x2F;code&gt; olarak değiştirin.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;php&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-php &quot;&gt;&lt;code class=&quot;language-php&quot; data-lang=&quot;php&quot;&gt;&lt;span&gt;$cfg[&amp;#39;Servers&amp;#39;][$i][&amp;#39;auth_type&amp;#39;] = &amp;#39;config&amp;#39;;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Ardından alt satıra aşağıdaki eklemeleri yapın.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;php&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-php &quot;&gt;&lt;code class=&quot;language-php&quot; data-lang=&quot;php&quot;&gt;&lt;span&gt;$cfg[&amp;#39;Servers&amp;#39;][$i][&amp;#39;user&amp;#39;] = &amp;#39;root&amp;#39;;
+&lt;&#x2F;span&gt;&lt;span&gt;$cfg[&amp;#39;Servers&amp;#39;][$i][&amp;#39;password&amp;#39;] = &amp;#39;mysql_parolasi&amp;#39;; 
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;sorun-cozme&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#sorun-cozme&quot; aria-label=&quot;Anchor link for: sorun-cozme&quot;&gt;##&lt;&#x2F;a&gt;
+Sorun Çözme&lt;&#x2F;h2&gt;
+&lt;p&gt;Apache, MySQL, PHP ve PHPMyAdmin ile ilgili karşılaşabileceğiniz sorunlara
+ait çözümler.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;turkce-karakter-donusumu-sorunu&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#turkce-karakter-donusumu-sorunu&quot; aria-label=&quot;Anchor link for: turkce-karakter-donusumu-sorunu&quot;&gt;###&lt;&#x2F;a&gt;
+Türkçe Karakter Dönüşümü Sorunu&lt;&#x2F;h3&gt;
+&lt;p&gt;Laravel, Symfony veya diğer kütüphanelerde olduğu gibi kendi
+sisteminizde de oluşabilecek bir sorun. PHP
+karakterin büyük harf, küçük harf dönüşümü için sistem dilini kullanmakta.
+Bu sebeple Arch Linux sisteminize öncelikle &lt;code&gt;en_US.UTF-8&lt;&#x2F;code&gt; dilini
+eklemelisiniz. Bunun için &lt;code&gt;&#x2F;etc&#x2F;locale.gen&lt;&#x2F;code&gt; dosyasında yer alan aşağıdaki
+satırın yorum simgesini(#) kaldırın.&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;en_US.UTF-8 UTF-8
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Ardından bu dil dosyalarının oluşturulmasını sağlayın.&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;locale-gen
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Son olarak &lt;code&gt;LC_CTYPE&lt;&#x2F;code&gt; yani PHP’nin dönüşüm için kullandığı dili
+değiştirmeliyiz. Bunun için de &lt;code&gt;&#x2F;etc&#x2F;locale.conf&lt;&#x2F;code&gt; içerisine aşağıdaki
+satırı ekleyin.&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;LC_CTYPE=en_US.UTF-8
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Bu sorunun farkedilmesi ve çözümü ile ilgili yardımlarından dolayı Burak
+Karahan’a (&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;twitter.com&#x2F;mburakkarahan&quot;&gt;@mburakkarahan&lt;&#x2F;a&gt;) teşekkür
+ederim.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;bitis&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#bitis&quot; aria-label=&quot;Anchor link for: bitis&quot;&gt;##&lt;&#x2F;a&gt;
+Bitiş&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;strong&gt;LAMP Stack&lt;&#x2F;strong&gt; kurulumunu tamamladık. Dilerseniz geliştirme ortamınızı daha
+da iyi hale getirebilirsiniz. Makalede hata veya eksik varsa özür dilerim,
+bunları bana iletirseniz gerekli eklemeleri yapacağım. Teşekkürler.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;contributors&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#contributors&quot; aria-label=&quot;Anchor link for: contributors&quot;&gt;#&lt;&#x2F;a&gt;
+Contributors&lt;&#x2F;h1&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;Github&lt;&#x2F;th&gt;&lt;th&gt;Email&lt;&#x2F;th&gt;&lt;th&gt;Website&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;ahmetbarut&quot;&gt;ahmetbarut&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;&lt;td&gt;ahmetbarut588@gmail.com&lt;&#x2F;td&gt;&lt;td&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;ahmetbarut.net&quot;&gt;ahmetbarut.net&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;&#x2F;tbody&gt;&lt;&#x2F;table&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Geliştirme Ortamım</title>
+        <published>2016-05-21T19:22:00+00:00</published>
+        <updated>2016-05-21T19:22:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://era.yayd.in/blog/linux-gelistirme-ortamim/"/>
+        <id>https://era.yayd.in/blog/linux-gelistirme-ortamim/</id>
+        
+        <content type="html" xml:base="https://era.yayd.in/blog/linux-gelistirme-ortamim/">&lt;p&gt;Bu yazıda hazırladığım geliştirme ortamını araçlar ve dağıtımla birlikte anlattım.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;post-images&#x2F;arch-linux-empty-screen.jpg&quot; alt=&quot;Empty Screen&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;tl-dr&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#tl-dr&quot; aria-label=&quot;Anchor link for: tl-dr&quot;&gt;##&lt;&#x2F;a&gt;
+TL;DR&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;post-images&#x2F;arch-linux-ranger-irssi-mutt.jpg&quot; alt=&quot;ranger-irssi-mutt&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Eğer bütün yazıyı okumaya üşendiyseniz aşağıda özetlenmiş bir tablosu bulunmakta.&lt;&#x2F;p&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;&lt;&#x2F;th&gt;&lt;th&gt;&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;Dağıtım&lt;&#x2F;td&gt;&lt;td&gt;&lt;strong&gt;Arch Linux&lt;&#x2F;strong&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;Dosya Yöneticisi&lt;&#x2F;td&gt;&lt;td&gt;&lt;strong&gt;ranger&lt;&#x2F;strong&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;Window Manager&lt;&#x2F;td&gt;&lt;td&gt;&lt;strong&gt;i3&lt;&#x2F;strong&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;Bar&lt;&#x2F;td&gt;&lt;td&gt;&lt;strong&gt;polybar&lt;&#x2F;strong&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;Metin Editörü&lt;&#x2F;td&gt;&lt;td&gt;&lt;strong&gt;vim&lt;&#x2F;strong&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;IRC İstemcisi&lt;&#x2F;td&gt;&lt;td&gt;&lt;strong&gt;irssi&lt;&#x2F;strong&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;E-Posta İstemcisi&lt;&#x2F;td&gt;&lt;td&gt;&lt;strong&gt;mutt&lt;&#x2F;strong&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;Tarayıcı&lt;&#x2F;td&gt;&lt;td&gt;&lt;strong&gt;elinks&lt;&#x2F;strong&gt;, &lt;strong&gt;chromium&lt;&#x2F;strong&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;Video Oynatıcı&lt;&#x2F;td&gt;&lt;td&gt;&lt;strong&gt;vlc&lt;&#x2F;strong&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;CD&#x2F;DVD Aracı&lt;&#x2F;td&gt;&lt;td&gt;&lt;strong&gt;brasero&lt;&#x2F;strong&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;Disk Kullanım Analizi&lt;&#x2F;td&gt;&lt;td&gt;&lt;strong&gt;baobab&lt;&#x2F;strong&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;Disk Temizleme Aracı&lt;&#x2F;td&gt;&lt;td&gt;&lt;strong&gt;bleachbit&lt;&#x2F;strong&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;Sistem Kullanımı Aracı&lt;&#x2F;td&gt;&lt;td&gt;&lt;strong&gt;htop&lt;&#x2F;strong&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;Ofis Araçları&lt;&#x2F;td&gt;&lt;td&gt;&lt;strong&gt;LibreOffice&lt;&#x2F;strong&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;Terminal&lt;&#x2F;td&gt;&lt;td&gt;&lt;strong&gt;urxvt&lt;&#x2F;strong&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;Sanallaştırma&lt;&#x2F;td&gt;&lt;td&gt;&lt;strong&gt;virtualbox&lt;&#x2F;strong&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;Markdown Editör&lt;&#x2F;td&gt;&lt;td&gt;&lt;strong&gt;remarkable&lt;&#x2F;strong&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;Torrent İstemcisi&lt;&#x2F;td&gt;&lt;td&gt;&lt;strong&gt;transmission&lt;&#x2F;strong&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;Yayın&lt;&#x2F;td&gt;&lt;td&gt;&lt;strong&gt;OBS&lt;&#x2F;strong&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;Resim Görüntüleyici&lt;&#x2F;td&gt;&lt;td&gt;&lt;strong&gt;feh&lt;&#x2F;strong&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;Müzik Oynatıcı&lt;&#x2F;td&gt;&lt;td&gt;&lt;strong&gt;cmus&lt;&#x2F;strong&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;Ekran Yönetimi&lt;&#x2F;td&gt;&lt;td&gt;&lt;strong&gt;arandr&lt;&#x2F;strong&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;FTP GUI&lt;&#x2F;td&gt;&lt;td&gt;&lt;strong&gt;filezilla&lt;&#x2F;strong&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;Webserver&lt;&#x2F;td&gt;&lt;td&gt;&lt;strong&gt;LAMP Stack&lt;&#x2F;strong&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;API Test Aracı&lt;&#x2F;td&gt;&lt;td&gt;&lt;strong&gt;postman&lt;&#x2F;strong&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;PHP IDE&lt;&#x2F;td&gt;&lt;td&gt;&lt;strong&gt;PHPStorm&lt;&#x2F;strong&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;C&#x2F;C++ IDE&lt;&#x2F;td&gt;&lt;td&gt;&lt;strong&gt;CLion&lt;&#x2F;strong&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;Python IDE&lt;&#x2F;td&gt;&lt;td&gt;&lt;strong&gt;PyCharm&lt;&#x2F;strong&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;&#x2F;tbody&gt;&lt;&#x2F;table&gt;
+&lt;h2 id=&quot;isletim-sistemi&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#isletim-sistemi&quot; aria-label=&quot;Anchor link for: isletim-sistemi&quot;&gt;##&lt;&#x2F;a&gt;
+İşletim Sistemi&lt;&#x2F;h2&gt;
+&lt;p&gt;Geliştirme ortamımda işletim sistemi olarak &lt;strong&gt;GNU&#x2F;Linux&lt;&#x2F;strong&gt; ve &lt;strong&gt;Arch Linux&lt;&#x2F;strong&gt; dağıtımını kullandım. Arch Linux dağıtımını
+seçmemdeki sebepler şu şekilde.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Lightweight&lt;&#x2F;strong&gt; - Olabildiğince hafifletilmiş bir halde. Gereksiz paket ve program bolluğu yok.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Topluluk ve Wiki&lt;&#x2F;strong&gt; - Her türlü sorunda kolayca çözüm bulabileceğiniz bir wikiye sahip ve IRC&#x2F;Mailing ile diğer
+geliştiricilere ulaşıp sorununuzun çözümü hakkında yardım alabiliyorsunuz.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;AUR&lt;&#x2F;strong&gt; - Resmi depolarda paket bulunmadığı zaman diğer kullanıcıların oluşturduğu &lt;em&gt;PKGBUILD&lt;&#x2F;em&gt; üzerinden programların
+kurulumunu sağlayabiliyorsunuz. NPM veya Pip gibi paketleri de içerisinde bulundurduğu için tek sistem üzerinden tüm
+paketlerinizi güncelleyebiliyorsunuz.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Trusted User&lt;&#x2F;strong&gt; - &lt;em&gt;AUR&lt;&#x2F;em&gt; üzerinden sizin açtığınız paketler yeterli kullanıma ulaştığında resmi depolara da
+ulaşabiliyor ve dağıtımın geliştirilmesine katkı sağlayabiliyorsunuz. Bu da yükselme imkanı demek oluyor.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Rolling Release&lt;&#x2F;strong&gt; - Full Rolling olarak dağıtımını gerçekleştiren &lt;em&gt;Arch Linux&lt;&#x2F;em&gt;, paketlerin dağıtımını ikiye
+ayırmadan ufak düzenlemeler dahi olsa sürekli güncel tutmanızı sağlıyor.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;grafiksel-arayuz&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#grafiksel-arayuz&quot; aria-label=&quot;Anchor link for: grafiksel-arayuz&quot;&gt;##&lt;&#x2F;a&gt;
+Grafiksel Arayüz&lt;&#x2F;h2&gt;
+&lt;p&gt;İstenilen masaüstü veya pencere yönetim sistemi kullanılabiliyor. Benim tercihim &lt;strong&gt;Window Manager&lt;&#x2F;strong&gt; oldu. Tamamen klavye
+ile yönetilebilir olması ve kat kat &lt;strong&gt;lightweight&lt;&#x2F;strong&gt; olması işlerimi kolaylaştırıyor.&lt;&#x2F;p&gt;
+&lt;p&gt;Window Manager olarak &lt;em&gt;2bwm&lt;&#x2F;em&gt;, &lt;em&gt;openbox&lt;&#x2F;em&gt;, &lt;em&gt;awesome&lt;&#x2F;em&gt; ve &lt;em&gt;i3&lt;&#x2F;em&gt; kullandım. Bunlardan &lt;strong&gt;i3&lt;&#x2F;strong&gt; benim daha çok hoşuma
+gitti. Ayarlamaların tamamen kullanıcı tarafından olması ve ayar dosyasının olabildiğince yalın olması bu tercihe itti.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;bar&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#bar&quot; aria-label=&quot;Anchor link for: bar&quot;&gt;###&lt;&#x2F;a&gt;
+Bar&lt;&#x2F;h3&gt;
+&lt;p&gt;Çalışma ortamlarını, sistem değerlerini ve &lt;em&gt;tray&lt;&#x2F;em&gt; ikonları görmek için bir bar yazılımı seçmem gerekti. Daha önce
+&lt;em&gt;xfce4 bar&lt;&#x2F;em&gt;, &lt;em&gt;polybar&lt;&#x2F;em&gt;, &lt;em&gt;i3bar&lt;&#x2F;em&gt; ve &lt;em&gt;i3blocks&lt;&#x2F;em&gt; kullanmıştım. Tercihim ilk başta i3bar olmuştu fakat yeterli
+gelmediği için daha sonra &lt;strong&gt;polybar&lt;&#x2F;strong&gt; kullanımına geçtim. Olabildiğince renkli ve özelleştirilebilir bir yapısı var.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;ag&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#ag&quot; aria-label=&quot;Anchor link for: ag&quot;&gt;###&lt;&#x2F;a&gt;
+Ağ&lt;&#x2F;h3&gt;
+&lt;p&gt;Komut satırından ağa bağlanmayı sevmediğim için &lt;strong&gt;Network Manager&lt;&#x2F;strong&gt; tercih ettim. Polybar üzerinden erişebilmek için
+kendi &lt;em&gt;applet&lt;&#x2F;em&gt; ini kullanıyorum.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;araclar&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#araclar&quot; aria-label=&quot;Anchor link for: araclar&quot;&gt;##&lt;&#x2F;a&gt;
+Araçlar&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;dosya-yoneticisi&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#dosya-yoneticisi&quot; aria-label=&quot;Anchor link for: dosya-yoneticisi&quot;&gt;###&lt;&#x2F;a&gt;
+Dosya Yöneticisi&lt;&#x2F;h3&gt;
+&lt;p&gt;Dosya yöneticisi olarak &lt;strong&gt;ranger&lt;&#x2F;strong&gt; kullanıyorum. Kullanımı &lt;em&gt;vim&lt;&#x2F;em&gt; benzeri olduğu için işlem yapmak ve gezinmek oldukça
+kolay.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;metin-editoru&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#metin-editoru&quot; aria-label=&quot;Anchor link for: metin-editoru&quot;&gt;###&lt;&#x2F;a&gt;
+Metin Editörü&lt;&#x2F;h3&gt;
+&lt;p&gt;Konsoldan yapacağım işler için &lt;strong&gt;vim&lt;&#x2F;strong&gt; kullanıyorum. Eğer yapacağım iş çoklu dosyalarda hakimiyet istiyorsa
+&lt;strong&gt;sublime text&lt;&#x2F;strong&gt; tercih ediyorum.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;irc-client&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#irc-client&quot; aria-label=&quot;Anchor link for: irc-client&quot;&gt;###&lt;&#x2F;a&gt;
+IRC Client&lt;&#x2F;h3&gt;
+&lt;p&gt;IRC sunucularına ve odalarına bağlanmak için &lt;strong&gt;irssi&lt;&#x2F;strong&gt; kullanıyorum. Hafiflik konusunda gerçekten çok iyi.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;mail-client&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#mail-client&quot; aria-label=&quot;Anchor link for: mail-client&quot;&gt;###&lt;&#x2F;a&gt;
+Mail Client&lt;&#x2F;h3&gt;
+&lt;p&gt;E-Postalarımı kontrol etmek için &lt;strong&gt;mutt&lt;&#x2F;strong&gt; kullanıyorum.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;tarayici&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#tarayici&quot; aria-label=&quot;Anchor link for: tarayici&quot;&gt;###&lt;&#x2F;a&gt;
+Tarayıcı&lt;&#x2F;h3&gt;
+&lt;p&gt;Bu konuda malesef lightweight tercihi yapamıyorum. İş gereği webkit bir tarayıcı kullanmam gerekiyor. Bu sebeple
+&lt;strong&gt;chromium&lt;&#x2F;strong&gt; kullanıyorum. Fakat terminalden webe erişmek istediğim durumlar için &lt;strong&gt;elinks&lt;&#x2F;strong&gt; kullanıyorum.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;video-oynatici&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#video-oynatici&quot; aria-label=&quot;Anchor link for: video-oynatici&quot;&gt;###&lt;&#x2F;a&gt;
+Video Oynatıcı&lt;&#x2F;h3&gt;
+&lt;p&gt;Bu konuda da lightweight tercih yapılmasının saçma olduğunu düşünüyorum. Bu sebeple &lt;strong&gt;vlc&lt;&#x2F;strong&gt; kullanıyorum.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;dvd-cd-araci&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#dvd-cd-araci&quot; aria-label=&quot;Anchor link for: dvd-cd-araci&quot;&gt;###&lt;&#x2F;a&gt;
+DVD&#x2F;CD Aracı&lt;&#x2F;h3&gt;
+&lt;p&gt;Disk işlemleri için &lt;strong&gt;Brasero&lt;&#x2F;strong&gt; kullanıyorum.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;disk-kullanim-analizi&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#disk-kullanim-analizi&quot; aria-label=&quot;Anchor link for: disk-kullanim-analizi&quot;&gt;###&lt;&#x2F;a&gt;
+Disk Kullanım Analizi&lt;&#x2F;h3&gt;
+&lt;p&gt;Disk kullanımının analizini yapmak için &lt;strong&gt;baobab&lt;&#x2F;strong&gt; kullanıyorum.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;sistem-kullanimi&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#sistem-kullanimi&quot; aria-label=&quot;Anchor link for: sistem-kullanimi&quot;&gt;###&lt;&#x2F;a&gt;
+Sistem Kullanımı&lt;&#x2F;h3&gt;
+&lt;p&gt;Sistem kullanımının analizi için &lt;strong&gt;htop&lt;&#x2F;strong&gt; kullanıyorum.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;ofis-araclari&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#ofis-araclari&quot; aria-label=&quot;Anchor link for: ofis-araclari&quot;&gt;###&lt;&#x2F;a&gt;
+Ofis Araçları&lt;&#x2F;h3&gt;
+&lt;p&gt;Döküman ve tablolar için &lt;strong&gt;LibreOffice&lt;&#x2F;strong&gt; kullanıyorum.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;sanallastirma&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#sanallastirma&quot; aria-label=&quot;Anchor link for: sanallastirma&quot;&gt;###&lt;&#x2F;a&gt;
+Sanallaştırma&lt;&#x2F;h3&gt;
+&lt;p&gt;Aktif olarak kullandığım bir başka sanal makine yok fakat gerektiğinde kullanmak için &lt;strong&gt;VirtualBox&lt;&#x2F;strong&gt; tercih ediyorum.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;yayin&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#yayin&quot; aria-label=&quot;Anchor link for: yayin&quot;&gt;###&lt;&#x2F;a&gt;
+Yayın&lt;&#x2F;h3&gt;
+&lt;p&gt;Broadcast işlemi için &lt;strong&gt;OBS&lt;&#x2F;strong&gt; kullanıyorum.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;markdown-editor&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#markdown-editor&quot; aria-label=&quot;Anchor link for: markdown-editor&quot;&gt;###&lt;&#x2F;a&gt;
+Markdown Editor&lt;&#x2F;h3&gt;
+&lt;p&gt;Markdown yazıları için &lt;strong&gt;Remarkable&lt;&#x2F;strong&gt; kullanıyorum.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;terminal&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#terminal&quot; aria-label=&quot;Anchor link for: terminal&quot;&gt;###&lt;&#x2F;a&gt;
+Terminal&lt;&#x2F;h3&gt;
+&lt;p&gt;Terminal aracı olarak &lt;strong&gt;terminator&lt;&#x2F;strong&gt; kullanıyorum. Program içerisinde pencere ayırma fonksiyonu oldukça işime yarıyor.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;torrent-istemci&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#torrent-istemci&quot; aria-label=&quot;Anchor link for: torrent-istemci&quot;&gt;###&lt;&#x2F;a&gt;
+Torrent İstemci&lt;&#x2F;h3&gt;
+&lt;p&gt;Torrent client olarak &lt;strong&gt;Transmission&lt;&#x2F;strong&gt; kullanıyorum.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;resim-goruntuleyici&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#resim-goruntuleyici&quot; aria-label=&quot;Anchor link for: resim-goruntuleyici&quot;&gt;###&lt;&#x2F;a&gt;
+Resim Görüntüleyici&lt;&#x2F;h3&gt;
+&lt;p&gt;Resim görüntüleyici olarak &lt;strong&gt;feh&lt;&#x2F;strong&gt; kullanıyorum.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;muzik-oynatici&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#muzik-oynatici&quot; aria-label=&quot;Anchor link for: muzik-oynatici&quot;&gt;###&lt;&#x2F;a&gt;
+Müzik Oynatıcı&lt;&#x2F;h3&gt;
+&lt;p&gt;Müzik oynatıcı olarak &lt;strong&gt;cmus&lt;&#x2F;strong&gt; kullanıyorum. vim benzeri bir kullanımı olması rahatlık veriyor.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;diger-araclar&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#diger-araclar&quot; aria-label=&quot;Anchor link for: diger-araclar&quot;&gt;###&lt;&#x2F;a&gt;
+Diğer Araçlar&lt;&#x2F;h3&gt;
+&lt;p&gt;Ekstra ekranların yönetimi için &lt;strong&gt;arandr&lt;&#x2F;strong&gt;, gereksiz dosyaların temizleme işlemini otomatikleştirmek için &lt;strong&gt;bleachbit&lt;&#x2F;strong&gt;,&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;gelistirici-araclari&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#gelistirici-araclari&quot; aria-label=&quot;Anchor link for: gelistirici-araclari&quot;&gt;##&lt;&#x2F;a&gt;
+Geliştirici Araçları&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;php-ide&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#php-ide&quot; aria-label=&quot;Anchor link for: php-ide&quot;&gt;###&lt;&#x2F;a&gt;
+PHP IDE&lt;&#x2F;h3&gt;
+&lt;p&gt;PHP IDE olarak &lt;strong&gt;PHPStorm&lt;&#x2F;strong&gt; kullanıyorum.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;c-c-ide&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#c-c-ide&quot; aria-label=&quot;Anchor link for: c-c-ide&quot;&gt;###&lt;&#x2F;a&gt;
+C&#x2F;C++ IDE&lt;&#x2F;h3&gt;
+&lt;p&gt;C ve C++ geliştirmeleri için &lt;strong&gt;CLion&lt;&#x2F;strong&gt; kullanıyorum.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;python-ide&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#python-ide&quot; aria-label=&quot;Anchor link for: python-ide&quot;&gt;###&lt;&#x2F;a&gt;
+Python IDE&lt;&#x2F;h3&gt;
+&lt;p&gt;Python geliştirmeleri için &lt;strong&gt;PyCharm&lt;&#x2F;strong&gt; kullanıyorum.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;ftp&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#ftp&quot; aria-label=&quot;Anchor link for: ftp&quot;&gt;###&lt;&#x2F;a&gt;
+FTP&lt;&#x2F;h3&gt;
+&lt;p&gt;FTP için &lt;strong&gt;Filezilla&lt;&#x2F;strong&gt; kullanıyorum. Yakın bir zamanda daha lightweight bir araç tercih edeceğim.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;webserver&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#webserver&quot; aria-label=&quot;Anchor link for: webserver&quot;&gt;###&lt;&#x2F;a&gt;
+Webserver&lt;&#x2F;h3&gt;
+&lt;p&gt;Web server olarak &lt;strong&gt;LAMP Stack&lt;&#x2F;strong&gt; kullanıyorum.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;api&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#api&quot; aria-label=&quot;Anchor link for: api&quot;&gt;###&lt;&#x2F;a&gt;
+API&lt;&#x2F;h3&gt;
+&lt;p&gt;API’leri test etmek için &lt;strong&gt;postman&lt;&#x2F;strong&gt; kullanıyorum.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Sudo Ayarları</title>
+        <published>2015-12-13T16:46:00+00:00</published>
+        <updated>2015-12-13T16:46:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://era.yayd.in/blog/sudo-ayarlari/"/>
+        <id>https://era.yayd.in/blog/sudo-ayarlari/</id>
+        
+        <content type="html" xml:base="https://era.yayd.in/blog/sudo-ayarlari/">&lt;p&gt;Sudo, yani “kullanıcı yerine yapmak”, belirli kullanıcı veya gruplara
+root yetkisiyle komut gerçekleştirmesini sağlar.&lt;&#x2F;p&gt;
+&lt;p&gt;Sudo, &lt;code&gt;su&lt;&#x2F;code&gt; nun alternatifi olarak kullanılıyor. &lt;code&gt;su&lt;&#x2F;code&gt; dan farklı olarak,
+&lt;code&gt;root shell&lt;&#x2F;code&gt; açmak yerine tek komutluk &lt;code&gt;root&lt;&#x2F;code&gt; yetkisi sağlamaktadır.
+Sadece gerektiğinde &lt;code&gt;root&lt;&#x2F;code&gt; yetkisi kullanmanızı sağlar.&lt;&#x2F;p&gt;
+&lt;p&gt;Sudo ayrıca diğer kullanıcılar gibi komut yazmanıza da olanak sağlar. Ek
+olarak kullanılan komutları ve başarısız girişleri kayıt altına
+alır(loglar).&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;kurulum&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#kurulum&quot; aria-label=&quot;Anchor link for: kurulum&quot;&gt;##&lt;&#x2F;a&gt;
+Kurulum&lt;&#x2F;h2&gt;
+&lt;p&gt;Pacman üzerinden kurulum için &lt;code&gt;sudo&lt;&#x2F;code&gt; paketini kurmanız yeterli.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;kullanim&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#kullanim&quot; aria-label=&quot;Anchor link for: kullanim&quot;&gt;##&lt;&#x2F;a&gt;
+Kullanım&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;code&gt;sudo&lt;&#x2F;code&gt; yu kullanmak için öncelikle ayarlamaları yapmalısınız. Aşağıda
+ayarlamaları detaylı bir şekilde anlattım.&lt;&#x2F;p&gt;
+&lt;p&gt;Örnek olarak, pacman i kullanmak için:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span&gt; pacman&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; -Syu
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Detaylı kullanımı öğrenmek için&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;man&lt;&#x2F;span&gt;&lt;span&gt; sudo
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;ayarlamalar&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#ayarlamalar&quot; aria-label=&quot;Anchor link for: ayarlamalar&quot;&gt;##&lt;&#x2F;a&gt;
+Ayarlamalar&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;ayarlari-goruntuleme&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#ayarlari-goruntuleme&quot; aria-label=&quot;Anchor link for: ayarlari-goruntuleme&quot;&gt;###&lt;&#x2F;a&gt;
+Ayarları Görüntüleme&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;code&gt;sudo -ll&lt;&#x2F;code&gt; komutu ile şuanki ayarlamaları görebilirsiniz. Bir kullanıcı
+için ayarlamaları görmek istiyorsanız komutun sonuna kullanıcı adını
+eklemeniz yeterli.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;visudo-kullanimi&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#visudo-kullanimi&quot; aria-label=&quot;Anchor link for: visudo-kullanimi&quot;&gt;###&lt;&#x2F;a&gt;
+Visudo Kullanımı&lt;&#x2F;h3&gt;
+&lt;p&gt;Sudo için ayarlamaları tutan dosya: &lt;code&gt;&#x2F;etc&#x2F;sudoers&lt;&#x2F;code&gt;. &lt;strong&gt;her zaman&lt;&#x2F;strong&gt;
+&lt;code&gt;visudo&lt;&#x2F;code&gt; komutu ile bu dosyayı düzenlemeniz gerekiyor. &lt;code&gt;visudo&lt;&#x2F;code&gt; komutu
+&lt;code&gt;sudoers&lt;&#x2F;code&gt; dosyasını kilitleyip, geçici bir dosyaya kaydedip, ayar
+dosyasının uygun düzende olup olmadığını kontrol edip &lt;code&gt;&#x2F;etc&#x2F;sudoers&lt;&#x2F;code&gt;
+dosyasına kopyalar.&lt;&#x2F;p&gt;
+&lt;p&gt;Visudo için varsayılan editor &lt;code&gt;vi&lt;&#x2F;code&gt;dir. Nano ile &lt;code&gt;visudo&lt;&#x2F;code&gt; kullanmak
+istiyorsanız EDITOR ortam değişkenini güncellemelisiniz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;EDITOR&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;nano &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;visudo
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;ornek-ayarlar&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#ornek-ayarlar&quot; aria-label=&quot;Anchor link for: ornek-ayarlar&quot;&gt;###&lt;&#x2F;a&gt;
+Örnek Ayarlar&lt;&#x2F;h3&gt;
+&lt;p&gt;Bir kullanıcının &lt;code&gt;sudo&lt;&#x2F;code&gt; komutu ile &lt;code&gt;root&lt;&#x2F;code&gt; yetkisine sahip olmasına izin
+vermek için şu satırı eklemelisiniz:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;KULLANICI_ADI ALL=(ALL) ALL
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;code&gt;wheel&lt;&#x2F;code&gt; grubundaki tüm kullanıcıların &lt;code&gt;sudo&lt;&#x2F;code&gt; erişimi olması için:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;%whell ALL=(ALL) ALL
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;code&gt;sudo&lt;&#x2F;code&gt; komutu kullanılırken şifre sormasını istemiyorsanız:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;Defaults:KULLANICI_ADI !authenticate
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Kullanıcının belli başlı komutları kullanabilmesi için:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;KULLANICI_ADI ALL=&#x2F;usr&#x2F;bin&#x2F;halt,&#x2F;usr&#x2F;bin&#x2F;pacman -Syu
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;sudoers-varsayilan-dosya-izinleri&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#sudoers-varsayilan-dosya-izinleri&quot; aria-label=&quot;Anchor link for: sudoers-varsayilan-dosya-izinleri&quot;&gt;###&lt;&#x2F;a&gt;
+Sudoers Varsayılan Dosya İzinleri&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;code&gt;sudoers&lt;&#x2F;code&gt; dosyasının sahibi ve grubu 0 olarak tanımlanmalıdır. Dosya
+izinleri 0440 olarak belirtilmelidir. Bu izinler varsayılan olarak
+ayarlanır. Eğer bir durumdan dolayı bu izinleri değiştirirseniz,
+tekrardan eski haline döndürmelisiniz. Aksi takdirde &lt;code&gt;sudo&lt;&#x2F;code&gt;
+çalışmayacaktır.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;chown -c&lt;&#x2F;span&gt;&lt;span&gt; root:root &#x2F;etc&#x2F;sudoers
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;chmod -c&lt;&#x2F;span&gt;&lt;span&gt; 0440 &#x2F;etc&#x2F;sudoers
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;bazi-ortam-degiskenleri-tutmak&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#bazi-ortam-degiskenleri-tutmak&quot; aria-label=&quot;Anchor link for: bazi-ortam-degiskenleri-tutmak&quot;&gt;###&lt;&#x2F;a&gt;
+Bazı Ortam Değişkenleri Tutmak&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;code&gt;sudo&lt;&#x2F;code&gt; komutu kullanılırken bazı ortam değişkenlerini tutmak
+isteyebilirsiniz. Bunun için &lt;code&gt;sudoers&lt;&#x2F;code&gt; dosyasında:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;Defaults env_keep += &amp;quot;ftp_proxy http_proxy https_proxy no_proxy&amp;quot;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Bu ayarlama ile &lt;code&gt;ftp_proxy&lt;&#x2F;code&gt; &lt;code&gt;http_proxy&lt;&#x2F;code&gt; &lt;code&gt;https_proxy&lt;&#x2F;code&gt; &lt;code&gt;no_proxy&lt;&#x2F;code&gt; ortam değişkenleri
+duracaktır.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Arch Linux - Yaourt Kurulumu</title>
+        <published>2015-10-08T16:46:00+00:00</published>
+        <updated>2015-10-08T16:46:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://era.yayd.in/blog/arch-linux-yaourt-kurulumu/"/>
+        <id>https://era.yayd.in/blog/arch-linux-yaourt-kurulumu/</id>
+        
+        <content type="html" xml:base="https://era.yayd.in/blog/arch-linux-yaourt-kurulumu/">&lt;p&gt;Arch User Repository-diğer adıyla AUR- binlerce paketi barındırmaktadır (Steam da
+dahil). AUR’dan paket kurulumu oldukça basit. Yaourt ile çok daha kolay paket kurulumu
+yapabilirsiniz.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;pacman.conf&lt;&#x2F;strong&gt; dosyasını açın&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;nano&lt;&#x2F;span&gt;&lt;span&gt; &#x2F;etc&#x2F;pacman.conf
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;En alt satıra alttaki depoyu ekleyin.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;[archlinuxfr]
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;SigLevel&lt;&#x2F;span&gt;&lt;span&gt; = Never
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Server&lt;&#x2F;span&gt;&lt;span&gt; = http:&#x2F;&#x2F;repo.archlinux.fr&#x2F;$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;arch
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Depoları güncelleyin ve yaourt paketini kurun.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;pacman -Sy
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;pacman -S&lt;&#x2F;span&gt;&lt;span&gt; yaourt
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Yaourt kurulumunu kontrol edin.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;yaourt --version
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Arch Linux - Ruby ve Jekyll Kurulumu</title>
+        <published>2015-09-24T01:58:00+00:00</published>
+        <updated>2015-09-24T01:58:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://era.yayd.in/blog/arch-linux-ruby-jekyll-kurulumu/"/>
+        <id>https://era.yayd.in/blog/arch-linux-ruby-jekyll-kurulumu/</id>
+        
+        <content type="html" xml:base="https://era.yayd.in/blog/arch-linux-ruby-jekyll-kurulumu/">&lt;h2 id=&quot;ruby-kurulumu&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#ruby-kurulumu&quot; aria-label=&quot;Anchor link for: ruby-kurulumu&quot;&gt;##&lt;&#x2F;a&gt;
+Ruby Kurulumu&lt;&#x2F;h2&gt;
+&lt;p&gt;Ruby ile birlikte artık RubyGems de kuruluyor. O yüzden ayrıca bir RubyGems kurulumu
+yapmayacağız.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;pacman -S&lt;&#x2F;span&gt;&lt;span&gt; ruby
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;rubygems-ayarlamasi&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#rubygems-ayarlamasi&quot; aria-label=&quot;Anchor link for: rubygems-ayarlamasi&quot;&gt;##&lt;&#x2F;a&gt;
+RubyGems Ayarlaması&lt;&#x2F;h2&gt;
+&lt;p&gt;RubyGems kurulu fakat gemlerin içerisindeki çalıştırılabilir dosyaları direk
+çalıştıramıyoruz. Tam yol belirtmemiz gerekiyor. Bu sorunu çözmek için PATH dizinine
+RubyGems yolunu ekleyeceğiz. &lt;code&gt;~&#x2F;.bashrc&lt;&#x2F;code&gt; dosyasına şu eklemeyi yapalım.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;PATH&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;ruby -e &lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;print Gem.user_dir&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;)&#x2F;bin:&lt;&#x2F;span&gt;&lt;span&gt;$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;PATH&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;strong&gt;Kurulu gemleri göster&lt;&#x2F;strong&gt;mek için&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;gem&lt;&#x2F;span&gt;&lt;span&gt; list
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;strong&gt;Bir gem ile ilgili bilgi al&lt;&#x2F;strong&gt;mak için&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;gem&lt;&#x2F;span&gt;&lt;span&gt; spec gem_adi
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Şu ana kadar yaptığımız komutların hepsi &lt;code&gt;--local&lt;&#x2F;code&gt; değeri ile çalışıyor. Yani bizim
+sistemimizdeki &lt;strong&gt;gem&lt;&#x2F;strong&gt;leri tarıyor&#x2F;inceliyor. Eğer uzak sunucudaki gemleri incelemek
+istiyorsak &lt;code&gt;--remote&lt;&#x2F;code&gt; değeri eklememiz yeterli.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;gem&lt;&#x2F;span&gt;&lt;span&gt; spec mysql&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; --remote
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;MySQL &lt;strong&gt;gem&lt;&#x2F;strong&gt;i yüklü olmasada uzak sunucudan bilgisini getirecektir.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Gem yükle&lt;&#x2F;strong&gt;mek için&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;gem&lt;&#x2F;span&gt;&lt;span&gt; install mysql
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Bu komutla beraber &lt;strong&gt;mysql&lt;&#x2F;strong&gt; gem yüklenecektir fakat dökümantasyonları da indirecek.
+Eğer &lt;strong&gt;production&lt;&#x2F;strong&gt; ortamında kurulum yapıyorsanız dökümantasyona ihtiyacınız
+olmayabilir. Dökümantasyon olmadan kurulum yapmak için &lt;code&gt;--no-document&lt;&#x2F;code&gt; yapmanız
+yeterli.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;gem&lt;&#x2F;span&gt;&lt;span&gt; install mysql&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; --no-document
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;strong&gt;Yüklü gemleri güncelleştir&lt;&#x2F;strong&gt;mek için&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;gem&lt;&#x2F;span&gt;&lt;span&gt; update
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;bundler-kurulumu&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#bundler-kurulumu&quot; aria-label=&quot;Anchor link for: bundler-kurulumu&quot;&gt;##&lt;&#x2F;a&gt;
+Bundler Kurulumu&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;strong&gt;Bundler&lt;&#x2F;strong&gt;, &lt;strong&gt;Ruby&lt;&#x2F;strong&gt;’nin paket yönetim amaçlı oluşturulmuş bir &lt;strong&gt;gem&lt;&#x2F;strong&gt;idir.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;gem&lt;&#x2F;span&gt;&lt;span&gt; install bundler
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;jekyll-kurulumu&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#jekyll-kurulumu&quot; aria-label=&quot;Anchor link for: jekyll-kurulumu&quot;&gt;##&lt;&#x2F;a&gt;
+Jekyll Kurulumu&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;strong&gt;Ruby&lt;&#x2F;strong&gt; ve &lt;strong&gt;RubyGems&lt;&#x2F;strong&gt; kurulumu yaptığımıza göre &lt;strong&gt;Jekyll&lt;&#x2F;strong&gt; kurulumu yapabiliriz.&lt;&#x2F;p&gt;
+&lt;p&gt;Kurulumdan önce &lt;strong&gt;gem&lt;&#x2F;strong&gt;leri güncelleyelim.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;gem&lt;&#x2F;span&gt;&lt;span&gt; update
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;code&gt;jekyll&lt;&#x2F;code&gt; &lt;strong&gt;gem&lt;&#x2F;strong&gt;i kuralım.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;gem&lt;&#x2F;span&gt;&lt;span&gt; install jekyll
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;jekyll-baslangic-projesi-olusturma&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#jekyll-baslangic-projesi-olusturma&quot; aria-label=&quot;Anchor link for: jekyll-baslangic-projesi-olusturma&quot;&gt;##&lt;&#x2F;a&gt;
+Jekyll Başlangıç Projesi Oluşturma&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;code&gt;jekyll&lt;&#x2F;code&gt; &lt;strong&gt;gem&lt;&#x2F;strong&gt;i ile birlikte  &lt;code&gt;jekyll&lt;&#x2F;code&gt;  komutumuz geliyor. Örnek bir proje oluşturmak
+için şu komutu kullanmamız yeterli.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;jekyll&lt;&#x2F;span&gt;&lt;span&gt; new proje_ismi
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;jekyll-projesini-calistirma&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#jekyll-projesini-calistirma&quot; aria-label=&quot;Anchor link for: jekyll-projesini-calistirma&quot;&gt;##&lt;&#x2F;a&gt;
+Jekyll Projesini Çalıştırma&lt;&#x2F;h2&gt;
+&lt;p&gt;Oluşturduğumuz projenin dizinine ulaşarak şu komutla jekyll’i çalıştırabiliriz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;jekyll&lt;&#x2F;span&gt;&lt;span&gt; serve
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;code&gt;http:&#x2F;&#x2F;127.0.0.1:4000&lt;&#x2F;code&gt; adresinden Jekyll projemizi inceleyebiliriz.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;github-pages-gemlerini-yukleme&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#github-pages-gemlerini-yukleme&quot; aria-label=&quot;Anchor link for: github-pages-gemlerini-yukleme&quot;&gt;##&lt;&#x2F;a&gt;
+Github Pages Gemlerini Yükleme&lt;&#x2F;h2&gt;
+&lt;p&gt;Jekyll projemizi Github Pages’e göre yapmamız için Github Pages’ın kullandığı
+&lt;strong&gt;gem&lt;&#x2F;strong&gt;leri kullanmamız gerekiyor. (Tabi ki localde oluşturup _site klasörünü
+yükleyebiliriz fakat saçma olmaz mı?)&lt;&#x2F;p&gt;
+&lt;p&gt;Projenin ana dizininde &lt;code&gt;Gemfile&lt;&#x2F;code&gt; isminde bir dosya oluşturun ve içeriğini şu şekilde
+düzenleyin.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;source &lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;https:&#x2F;&#x2F;rubygems.org&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;gem &lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;github-pages&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;code&gt;bundle install&lt;&#x2F;code&gt; komutu ile gerekli gemlerin yüklenmesini sağlayın.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;ekstra-safe-yaml-psych-sorunu&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#ekstra-safe-yaml-psych-sorunu&quot; aria-label=&quot;Anchor link for: ekstra-safe-yaml-psych-sorunu&quot;&gt;##&lt;&#x2F;a&gt;
+Ekstra: safe_yaml Psych sorunu&lt;&#x2F;h2&gt;
+&lt;p&gt;Eğer &lt;code&gt;uninitialized constant Psych::Nodes (NameError)&lt;&#x2F;code&gt; şeklinde bir hata alıyorsanız
+bunun sebebi Github-Pages’in belirli bir Psych versiyonu ile çalışmasından
+kaynaklanıyor. Eski bir psych versiyonunu kullanmanız gerekiyor.&lt;&#x2F;p&gt;
+&lt;p&gt;Github Pages projenizi şu komut ile çalıştırırsanız bir sorun oluşmayacaktır.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;gem&lt;&#x2F;span&gt;&lt;span&gt; cleanup
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;bundle&lt;&#x2F;span&gt;&lt;span&gt; exec jekyll serve
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+</content>
+        
+    </entry>
+</feed>

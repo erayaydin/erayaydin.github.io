@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Eray Aydın - i3</title>
+    <subtitle>Scala Developer, Laravel Artisan, Free Software Fan, Archy, Linux Lover, WoW Loremaster, Junior Game Developer</subtitle>
+    <link rel="self" type="application/atom+xml" href="https://era.yayd.in/categories/i3/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://era.yayd.in"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2017-07-01T04:30:00+00:00</updated>
+    <id>https://era.yayd.in/categories/i3/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Arch Linux ve i3 için Backlight Ayarlaması</title>
+        <published>2017-07-01T04:30:00+00:00</published>
+        <updated>2017-07-01T04:30:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://era.yayd.in/blog/arch-backlight-i3/"/>
+        <id>https://era.yayd.in/blog/arch-backlight-i3/</id>
+        
+        <content type="html" xml:base="https://era.yayd.in/blog/arch-backlight-i3/">&lt;h2 id=&quot;acpi-test&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#acpi-test&quot; aria-label=&quot;Anchor link for: acpi-test&quot;&gt;##&lt;&#x2F;a&gt;
+ACPI Test&lt;&#x2F;h2&gt;
+&lt;p&gt;Backlight ayarlamasından önce backlightı kontrol eden driverı öğrenmeliyiz. Bunun için &lt;code&gt;&#x2F;sys&#x2F;class&#x2F;backlight&lt;&#x2F;code&gt; klasöründen yararlanacağız.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span&gt; ls &#x2F;sys&#x2F;class&#x2F;backlight
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;intel_backlight
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Benim çıktıda görüldüğü üzere &lt;code&gt;intel_backlight&lt;&#x2F;code&gt; tarafından kullanılıyormuş. Bu klasörün içerisindekileri kontrol edelim.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span&gt; ls &#x2F;sys&#x2F;class&#x2F;backlight&#x2F;intel_backlight
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;actual_brightness
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;brightness
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;max_brightness
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;subsystem
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;uevent
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;bl_power
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;device
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;power
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;type
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Burada yer alan dosyaları ve klasörleri açıklayalım.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;actual_brightness&lt;&#x2F;strong&gt; - Donanımsal olarak gerçek aydınlatma miktarını alır.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;brightness&lt;&#x2F;strong&gt; - Aydınlatma miktarını belirler. 0 ile &lt;strong&gt;maksimum aydınlık&lt;&#x2F;strong&gt; miktarı arasında bir değer alır. Driver tarafındaki aydınlatma miktarını da gösterir. (Donanımsal olarak gerçek aydınlatma miktarı olmayabilir, actual_brightness bu yüzden var)&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;max_brightness&lt;&#x2F;strong&gt; - Maksimum tanımlanabilecek aydınlatma miktarıdır.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;subsystem&lt;&#x2F;strong&gt; - Hangi sisteme ait olduğunu gösterir.  (&lt;code&gt;&#x2F;sys&#x2F;class&#x2F;backlight&lt;&#x2F;code&gt;)&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;uevent&lt;&#x2F;strong&gt; - Her sistem dosyasında (&lt;code&gt;&#x2F;sys&#x2F;devices&lt;&#x2F;code&gt;) bulunan bir dosyadır.&lt;code&gt;udev&lt;&#x2F;code&gt; için tanımlanacak &lt;em&gt;ekleme&lt;&#x2F;em&gt;, &lt;em&gt;silme&lt;&#x2F;em&gt; veya diğer işlemleri tanımlamanızı sağlar.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;bl_power&lt;&#x2F;strong&gt; - Aydınlatma gücünü kontrol etmenizi sağlar. &lt;em&gt;FB_BLANK_UNBLANK&lt;&#x2F;em&gt; veya &lt;em&gt;FB_BLANK_POWERDOWN&lt;&#x2F;em&gt; değerlerinden birini alır. İlki gücü açar, ikincisi gücü kapatır(karanlık).&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;device&lt;&#x2F;strong&gt; - Genellikle geriye dönük uyum için kullanılmakta. Cihazın hangi karta ait olduğunu gösterir.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;power&lt;&#x2F;strong&gt; - Her cihaz için güç tüketimi ile ilgili ayarların bulunduğu klasördür.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;type&lt;&#x2F;strong&gt; - Arka ışığın hangi arayüz türü ile kontrol edildiğini belirler. &lt;em&gt;firmware&lt;&#x2F;em&gt; (standart arayüz kütüphanesi), &lt;em&gt;platform&lt;&#x2F;em&gt; (platform tarafından belirli arayüz) ve &lt;em&gt;raw&lt;&#x2F;em&gt; (direk donanımsal kayıtları kullanarak) değerlerini alabilir.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Yukarda açıkladığımız dosyalardan &lt;strong&gt;max_brightness&lt;&#x2F;strong&gt;’ı inceleyelim.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span&gt; cat max_brightness
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;937
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Gördüğümüz gibi maksimum verebileceğimiz ışık değeri &lt;strong&gt;937&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Bir de tanımlanan ışık değerini &lt;strong&gt;brightness&lt;&#x2F;strong&gt; dosyası ile inceleyelim.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span&gt; cat brightness
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;700
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Bu dosyayı değiştirerek parlaklığı da değiştirebiliriz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span&gt; echo 600 &amp;gt; brightness
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Tabi ki parlaklığı ayarlamak için sürekli bu dosyayı değiştirmekle uğraşmayacağız.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;xbacklight&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#xbacklight&quot; aria-label=&quot;Anchor link for: xbacklight&quot;&gt;##&lt;&#x2F;a&gt;
+XBacklight&lt;&#x2F;h2&gt;
+&lt;p&gt;Xorg tarafından hazırlanan &lt;code&gt;xbacklight&lt;&#x2F;code&gt; ile parlaklığı ayarlayabiliriz.&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Not:&lt;&#x2F;strong&gt; Xbacklight sadece &lt;code&gt;intel&lt;&#x2F;code&gt; ile çalışmaktadır ve &lt;strong&gt;modesetting&lt;&#x2F;strong&gt; sürücüsü ile çalışmamaktadır. Yani Xorg’unuz &lt;strong&gt;modesetting&lt;&#x2F;strong&gt; driverını kullanıyorsa &lt;code&gt;xbacklight&lt;&#x2F;code&gt; çalışmayacaktır.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Pacman ile xbacklight kurulumu&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;pacman -S&lt;&#x2F;span&gt;&lt;span&gt; xorg-xbacklight
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;strong&gt;Belirli bir % değeri ile parlaklığı belirlemek için&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# %50 tanımlamak için
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;xbacklight -set&lt;&#x2F;span&gt;&lt;span&gt; 50
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;strong&gt;Belirli bir % değeri ile parlaklığı arttırmak için&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# %10 arttırmak için
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;xbacklight -inc&lt;&#x2F;span&gt;&lt;span&gt; 10
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;strong&gt;Belirli bir % değeri ile parlaklığı kısmak için&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# %10 azaltmak için
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;xbacklight -dec&lt;&#x2F;span&gt;&lt;span&gt; 10
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;light&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#light&quot; aria-label=&quot;Anchor link for: light&quot;&gt;##&lt;&#x2F;a&gt;
+Light&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;code&gt;xbacklight&lt;&#x2F;code&gt; yazılımının çalışmaması durumlarında kullanabileceğiniz bir başka yardımcı yazılım. &lt;em&gt;LightScript&lt;&#x2F;em&gt;’in C ile yazılmış hali. Malesef resmi depoda bulunmuyor bu sebeple AUR üzerinden kurmanız gerekiyor.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;yaourt -S --noconfirm&lt;&#x2F;span&gt;&lt;span&gt; light
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;strong&gt;Şuanki parlaklığı almak için&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;light -G
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;strong&gt;Belirli bir % değeri ile parlaklığı tanımlamak için&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# Parlaklığı %50 yap
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;light -S&lt;&#x2F;span&gt;&lt;span&gt; 50
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;strong&gt;Belirli bir % değeri ile parlaklığı arttırmak için&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# %5 arttırmak için
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;light -A&lt;&#x2F;span&gt;&lt;span&gt; 5
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;strong&gt;Belirli bir % değeri ile parlaklığı azaltmak için&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# % 5 azaltmak için
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;light -U&lt;&#x2F;span&gt;&lt;span&gt; 5
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;i3-klavye-kisayol&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#i3-klavye-kisayol&quot; aria-label=&quot;Anchor link for: i3-klavye-kisayol&quot;&gt;##&lt;&#x2F;a&gt;
+i3 Klavye Kısayol&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;code&gt;i3&lt;&#x2F;code&gt; üzerinde klavye kısayol belirlemek için &lt;code&gt;~&#x2F;.config&#x2F;i3&#x2F;config&lt;&#x2F;code&gt; dosyasına aşağıdaki kısayolu ekleyeceğiz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;bindsym&lt;&#x2F;span&gt;&lt;span&gt; XF86MonBrightnessDown exec light&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; -U&lt;&#x2F;span&gt;&lt;span&gt; 5
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;bindsym&lt;&#x2F;span&gt;&lt;span&gt; XF86MonBrightnessUp exec light&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; -A&lt;&#x2F;span&gt;&lt;span&gt; 5
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;tabi ki dilerseniz buradaki &lt;strong&gt;XF86MonBrightnessDown&lt;&#x2F;strong&gt; ve &lt;strong&gt;XF86MonBrightnessUp&lt;&#x2F;strong&gt; değerini değiştirerek başka bir kısayol atayabilirsiniz.&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Bu işlemi kullandığınız DE&#x2F;WM’deki kısayol ayarlamasını uygulayarak da tanımlayabilirsiniz.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+</content>
+        
+    </entry>
+</feed>

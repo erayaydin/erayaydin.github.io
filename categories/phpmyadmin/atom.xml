@@ -1,0 +1,489 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Eray Aydın - phpmyadmin</title>
+    <subtitle>Scala Developer, Laravel Artisan, Free Software Fan, Archy, Linux Lover, WoW Loremaster, Junior Game Developer</subtitle>
+    <link rel="self" type="application/atom+xml" href="https://era.yayd.in/categories/phpmyadmin/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://era.yayd.in"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2017-07-01T01:00:00+00:00</updated>
+    <id>https://era.yayd.in/categories/phpmyadmin/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Arch Linux - LAMP Kurulumu</title>
+        <published>2017-07-01T01:00:00+00:00</published>
+        <updated>2017-07-01T01:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://era.yayd.in/blog/arch-linux-lamp-kurulumu/"/>
+        <id>https://era.yayd.in/blog/arch-linux-lamp-kurulumu/</id>
+        
+        <content type="html" xml:base="https://era.yayd.in/blog/arch-linux-lamp-kurulumu/">&lt;h2 id=&quot;apache-kurulumu&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#apache-kurulumu&quot; aria-label=&quot;Anchor link for: apache-kurulumu&quot;&gt;##&lt;&#x2F;a&gt;
+Apache Kurulumu&lt;&#x2F;h2&gt;
+&lt;p&gt;Öncelikle paket yöneticisi yardımı ile &lt;code&gt;apache&lt;&#x2F;code&gt; paketinin kurulumunu
+gerçekleştirelim.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;pacman -S&lt;&#x2F;span&gt;&lt;span&gt; apache
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;apache-konfigurasyonu&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#apache-konfigurasyonu&quot; aria-label=&quot;Anchor link for: apache-konfigurasyonu&quot;&gt;###&lt;&#x2F;a&gt;
+Apache Konfigürasyonu&lt;&#x2F;h3&gt;
+&lt;p&gt;Gerekli apache ayarlaması yapmak için konfigürasyon dosyasında değişiklik yapacağız. Apache konfigürasyonu &lt;code&gt;&#x2F;etc&#x2F;httpd&#x2F;conf&#x2F;httpd.conf&lt;&#x2F;code&gt; dosyasında yer alıyor.&lt;&#x2F;p&gt;
+&lt;p&gt;Ben profesyonel bir web sunucusunda çalışmadığım, geliştirme ortamında
+çalıştığım için Apache’nin kullandığı &lt;code&gt;user&lt;&#x2F;code&gt; olarak kendimi belirtiyorum.
+İsterseniz siz de bu şekilde belirtip daha rahat çalışabilirsiniz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;User&lt;&#x2F;span&gt;&lt;span&gt; eray
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Eğer &lt;code&gt;80&lt;&#x2F;code&gt; portunu başka bir yazılımda kullanıyorsanız dilerseniz Apache’nin
+portunu değiştirebilirsiniz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Listen&lt;&#x2F;span&gt;&lt;span&gt; 80
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Dışardan sizin web sunucunuza erişim olmamasını istiyorsanız &lt;code&gt;Listen&lt;&#x2F;code&gt;
+parametresini &lt;code&gt;Listen 127.0.0.1:80&lt;&#x2F;code&gt; olarak değiştirebilirsiniz.&lt;&#x2F;p&gt;
+&lt;p&gt;Varsayılan olarak &lt;code&gt;&#x2F;srv&#x2F;http&lt;&#x2F;code&gt; klasörü &lt;code&gt;DocumentRoot&lt;&#x2F;code&gt; olarak tanımlı.
+Belirttiğiniz klasör web olarak servis edilmekte. Dilerseniz bu klasörü
+değiştirebilirsiniz. Fakat değiştirdikten sonra &lt;code&gt;&amp;lt;Directory &quot;&#x2F;srv&#x2F;http&quot;&amp;gt;&lt;&#x2F;code&gt;
+kısmını da değiştirmeyi unutmayın. Aksi takdirde &lt;strong&gt;403 Hatası&lt;&#x2F;strong&gt; alırsınız.&lt;&#x2F;p&gt;
+&lt;p&gt;Ek olarak &lt;code&gt;DocumentRoot&lt;&#x2F;code&gt; klasörü olarak belirtiğiniz klasör ve üst
+klasörleri &lt;strong&gt;executable&lt;&#x2F;strong&gt; yani çalıştırılabilir olmalıdır.&lt;&#x2F;p&gt;
+&lt;p&gt;Klasörleriniz içerisinde &lt;code&gt;.htaccess&lt;&#x2F;code&gt; ile Apache üzerinde klasör bazlı ayar
+yapmak istiyorsanız &lt;strong&gt;AllowOverride&lt;&#x2F;strong&gt; değerini &lt;strong&gt;All&lt;&#x2F;strong&gt; olarak
+değiştirebilirsiniz. Ek olarak bunun çalışması için aşağıdaki satırı bulup
+önündeki yorum satırını kaldırın.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;#LoadModule rewrite_module modules&#x2F;mod_rewrite.so
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span&gt;&amp;lt;Directory &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;&#x2F;srv&#x2F;http&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;...
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;AllowOverride&lt;&#x2F;span&gt;&lt;span&gt; All
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;...
+&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&#x2F;Directory&amp;gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Varsayılan olarak Apache, kullanıcı klasörlerini destekliyor
+(&lt;code&gt;http:&#x2F;&#x2F;localhost&#x2F;~eray&lt;&#x2F;code&gt;). Bu klasörü değiştirmek istiyorsanız
+&lt;code&gt;&#x2F;etc&#x2F;httpd&#x2F;conf&#x2F;extra&#x2F;httpd-userdir.conf&lt;&#x2F;code&gt; dosyasından değiştirebilirsiniz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# Settings for user home directories
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;#
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# Required module: mod_authz_core, mod_authz_host, mod_userdir
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;#
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# UserDir: The name of the directory that is appended onto a user&amp;#39;s home
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# directory if a ~user request is received.  Note that you must also set
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# the default access control for these directories, as in the example below.
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;#
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;UserDir&lt;&#x2F;span&gt;&lt;span&gt; Webserver
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;#
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# Control access to UserDir directories.  The following is an example
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# for a site where these directories are restricted to read-only.
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;#
+&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;Directory &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;&#x2F;home&#x2F;*&#x2F;Webserver&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;AllowOverride&lt;&#x2F;span&gt;&lt;span&gt; FileInfo AuthConfig Limit Indexes
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Options&lt;&#x2F;span&gt;&lt;span&gt; MultiViews Indexes SymLinksIfOwnerMatch IncludesNoExec
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Require&lt;&#x2F;span&gt;&lt;span&gt; method GET POST OPTIONS
+&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&#x2F;Directory&amp;gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Yukarda da belirttiğim gibi klasörünüzün ve üst klasörlerin
+çalıştırılabilir olması gerekiyor. Bunun için çalıştırma izni vermelisiniz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;chmod&lt;&#x2F;span&gt;&lt;span&gt; o+x &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;~
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;chmod -R&lt;&#x2F;span&gt;&lt;span&gt; o+x &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;~&lt;&#x2F;span&gt;&lt;span&gt;&#x2F;Webserver
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Değişikliklerin geçerli olması için servisi yeniden başlatalım.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;systemctl&lt;&#x2F;span&gt;&lt;span&gt; restart httpd
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;otomatik-sanal-sunucu&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#otomatik-sanal-sunucu&quot; aria-label=&quot;Anchor link for: otomatik-sanal-sunucu&quot;&gt;###&lt;&#x2F;a&gt;
+Otomatik Sanal Sunucu&lt;&#x2F;h3&gt;
+&lt;p&gt;Daha önceden yazdığım &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;erayaydin.github.io&#x2F;linux&#x2F;apache&#x2F;otomatik-apache-sanal-sunucu&#x2F;&quot;&gt;Otomatik Apache Sanal Sunucu&lt;&#x2F;a&gt; adımlarını takip ederek klasör klasör sanal sunucu oluşturabilirsiniz.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;php-kurulumu&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#php-kurulumu&quot; aria-label=&quot;Anchor link for: php-kurulumu&quot;&gt;##&lt;&#x2F;a&gt;
+PHP Kurulumu&lt;&#x2F;h2&gt;
+&lt;p&gt;Paket yöneticisi yardımı ile &lt;code&gt;php&lt;&#x2F;code&gt; ve &lt;code&gt;php-apache&lt;&#x2F;code&gt; paketlerini sisteme
+yükleyeceğiz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;pacman -S&lt;&#x2F;span&gt;&lt;span&gt; php php-apache
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Apache tarafında &lt;code&gt;mpm_event&lt;&#x2F;code&gt; modülü yerine &lt;code&gt;mpm_prefork&lt;&#x2F;code&gt; modülünü
+aktifleştirmemiz gerekiyor. Bu sebeple &lt;code&gt;&#x2F;etc&#x2F;httpd&#x2F;conf&#x2F;httpd.conf&lt;&#x2F;code&gt;
+dosyasındaki &lt;strong&gt;mpm_event&lt;&#x2F;strong&gt; modülünü yorum satırı yapıyoruz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;#LoadModule mpm_event_module modules&#x2F;mod_mpm_event.so
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Ardından &lt;strong&gt;mpm_prefork&lt;&#x2F;strong&gt; modülünün yorum satırını kaldırıyoruz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;LoadModule&lt;&#x2F;span&gt;&lt;span&gt; mpm_prefork_module modules&#x2F;mod_mpm_prefork.so
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Dilerseniz &lt;code&gt;mpm_prefork&lt;&#x2F;code&gt; yerine de &lt;code&gt;proxy_fcgi&lt;&#x2F;code&gt; kullanabilirsiniz.&lt;&#x2F;p&gt;
+&lt;p&gt;PHP’yi aktif etmek için &lt;code&gt;&#x2F;etc&#x2F;httpd&#x2F;conf&#x2F;httpd.conf&lt;&#x2F;code&gt; içerisindeki
+&lt;code&gt;LoadModule&lt;&#x2F;code&gt; listesinin sonuna aşağıdakini ekliyoruz.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;php-7&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#php-7&quot; aria-label=&quot;Anchor link for: php-7&quot;&gt;###&lt;&#x2F;a&gt;
+PHP 7&lt;&#x2F;h3&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;LoadModule&lt;&#x2F;span&gt;&lt;span&gt; php7_module modules&#x2F;libphp7.so
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;AddHandler&lt;&#x2F;span&gt;&lt;span&gt; php7-script php
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Aynı şekilde &lt;code&gt;Include&lt;&#x2F;code&gt; listesinin sonuna da aşağıdakini ekliyoruz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Include&lt;&#x2F;span&gt;&lt;span&gt; conf&#x2F;extra&#x2F;php7_module.conf
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;php-8&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#php-8&quot; aria-label=&quot;Anchor link for: php-8&quot;&gt;###&lt;&#x2F;a&gt;
+PHP 8&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;code&gt;LoadModule&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;LoadModule&lt;&#x2F;span&gt;&lt;span&gt; php_module modules&#x2F;libphp.so
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;AddHandler&lt;&#x2F;span&gt;&lt;span&gt; php-script .php
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;code&gt;Include&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Include&lt;&#x2F;span&gt;&lt;span&gt; conf&#x2F;extra&#x2F;php_module.conf
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Servisi yeniden başlatıyoruz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;systemctl&lt;&#x2F;span&gt;&lt;span&gt; restart httpd
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;PHP kurulumunu test etmek için aşağıdaki gibi &lt;code&gt;test.php&lt;&#x2F;code&gt; isminde bir dosya
+oluşturabilirsiniz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;php&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-php &quot;&gt;&lt;code class=&quot;language-php&quot; data-lang=&quot;php&quot;&gt;&lt;span style=&quot;color:#ab7967;&quot;&gt;&amp;lt;?php &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;phpinfo&lt;&#x2F;span&gt;&lt;span&gt;();
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;php-konfigurasyonu&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#php-konfigurasyonu&quot; aria-label=&quot;Anchor link for: php-konfigurasyonu&quot;&gt;###&lt;&#x2F;a&gt;
+PHP Konfigürasyonu&lt;&#x2F;h3&gt;
+&lt;p&gt;PHP ile ilgili ayarlamaları &lt;code&gt;&#x2F;etc&#x2F;php&#x2F;php.ini&lt;&#x2F;code&gt; dosyası üzerinden yapacağız.&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;maksimum-calistirma-suresi&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#maksimum-calistirma-suresi&quot; aria-label=&quot;Anchor link for: maksimum-calistirma-suresi&quot;&gt;####&lt;&#x2F;a&gt;
+Maksimum Çalıştırma Süresi&lt;&#x2F;h4&gt;
+&lt;p&gt;Her scriptin saniye olarak belirli bir &lt;strong&gt;timeout&lt;&#x2F;strong&gt; yani zaman aşımı süresi
+vardır. Dilerseniz bunu değiştirebilir hatta limitsiz yapabilirsiniz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;ini&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-ini &quot;&gt;&lt;code class=&quot;language-ini&quot; data-lang=&quot;ini&quot;&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;; CLI kullanımlarında 0 değeri otomatik olarak verilmektedir. Yani zaman aşımı yoktur
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;max_execution_time &lt;&#x2F;span&gt;&lt;span&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;60
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h4 id=&quot;hafiza-limiti&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#hafiza-limiti&quot; aria-label=&quot;Anchor link for: hafiza-limiti&quot;&gt;####&lt;&#x2F;a&gt;
+Hafıza Limiti&lt;&#x2F;h4&gt;
+&lt;p&gt;Bir scriptin çalıştırılmasında harcanabilecek maksimum hafıza
+miktarıdır. Varsayılan olarak 128MB seçili bunu dilerseniz
+arttırabilirsiniz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;ini&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-ini &quot;&gt;&lt;code class=&quot;language-ini&quot; data-lang=&quot;ini&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;memory_limit &lt;&#x2F;span&gt;&lt;span&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1024M
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h4 id=&quot;hatalari-gosterme&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#hatalari-gosterme&quot; aria-label=&quot;Anchor link for: hatalari-gosterme&quot;&gt;####&lt;&#x2F;a&gt;
+Hataları Gösterme&lt;&#x2F;h4&gt;
+&lt;p&gt;Geliştirme ortamında çalışanlar için hataları görmek önemlidir. Bu sebeple
+&lt;code&gt;error_reporting&lt;&#x2F;code&gt; değerini belirttiğiniz hata türlerine göre
+değiştirebilirsiniz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;ini&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-ini &quot;&gt;&lt;code class=&quot;language-ini&quot; data-lang=&quot;ini&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;error_reporting &lt;&#x2F;span&gt;&lt;span&gt;= E_ALL
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Ek olarak, hata mesajlarını ekrana yazdırmak için de &lt;code&gt;display_errors&lt;&#x2F;code&gt;
+değerini kullanabilirsiniz. Geliştirme ortamında bu değeri &lt;code&gt;On&lt;&#x2F;code&gt; yapmanız
+yararlı olacaktır.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;ini&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-ini &quot;&gt;&lt;code class=&quot;language-ini&quot; data-lang=&quot;ini&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;display_errors &lt;&#x2F;span&gt;&lt;span&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;On
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h4 id=&quot;acilis-hata-mesajlari&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#acilis-hata-mesajlari&quot; aria-label=&quot;Anchor link for: acilis-hata-mesajlari&quot;&gt;####&lt;&#x2F;a&gt;
+Açılış Hata Mesajları&lt;&#x2F;h4&gt;
+&lt;p&gt;PHP’nin kendisini çalıştırmaya başladığınızda çıkan sorunlardır. Genellikle
+konfigürasyonla ilgili hatalar olduğunda çıkar. Bunların bastırılmaması ve
+ekranda gözükmesi için &lt;code&gt;On&lt;&#x2F;code&gt; değerini verebilirsiniz. Tabi ki sadece
+geliştirme ortamında kullanmanız gerekiyor.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;ini&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-ini &quot;&gt;&lt;code class=&quot;language-ini&quot; data-lang=&quot;ini&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;display_startup_errors &lt;&#x2F;span&gt;&lt;span&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;On
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h4 id=&quot;hatalari-izleme&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#hatalari-izleme&quot; aria-label=&quot;Anchor link for: hatalari-izleme&quot;&gt;####&lt;&#x2F;a&gt;
+Hataları İzleme&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;code&gt;track_errors&lt;&#x2F;code&gt; değerini aktif hale getirerek script içerisinde
+&lt;code&gt;$php_errormsg&lt;&#x2F;code&gt; değişkeni ile son hata mesajını alabilirsiniz.
+Kullandığınız çalışma ortamında gerekli olabilir.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;ini&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-ini &quot;&gt;&lt;code class=&quot;language-ini&quot; data-lang=&quot;ini&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;track_errors &lt;&#x2F;span&gt;&lt;span&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;On
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h4 id=&quot;maksimum-post-buyuklugu&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#maksimum-post-buyuklugu&quot; aria-label=&quot;Anchor link for: maksimum-post-buyuklugu&quot;&gt;####&lt;&#x2F;a&gt;
+Maksimum POST Büyüklüğü&lt;&#x2F;h4&gt;
+&lt;p&gt;PHP’nin kabul edeceği maksimum POST veri büyüklüğüdür. Dilerseniz &lt;strong&gt;0&lt;&#x2F;strong&gt;
+değeri vererek limiti kaldırabilirsiniz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;ini&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-ini &quot;&gt;&lt;code class=&quot;language-ini&quot; data-lang=&quot;ini&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;post_max_size &lt;&#x2F;span&gt;&lt;span&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;50M
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h4 id=&quot;maksimum-dosya-buyuklugu&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#maksimum-dosya-buyuklugu&quot; aria-label=&quot;Anchor link for: maksimum-dosya-buyuklugu&quot;&gt;####&lt;&#x2F;a&gt;
+Maksimum Dosya Büyüklüğü&lt;&#x2F;h4&gt;
+&lt;p&gt;Yüklenebilecek dosyalar için maksimum dosya boyutudur. Varsayılan olarak
+&lt;code&gt;2M&lt;&#x2F;code&gt; yer alıyor.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;ini&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-ini &quot;&gt;&lt;code class=&quot;language-ini&quot; data-lang=&quot;ini&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;upload_max_filesize &lt;&#x2F;span&gt;&lt;span&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;200M
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h4 id=&quot;maksimum-dosya-adeti&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#maksimum-dosya-adeti&quot; aria-label=&quot;Anchor link for: maksimum-dosya-adeti&quot;&gt;####&lt;&#x2F;a&gt;
+Maksimum Dosya Adeti&lt;&#x2F;h4&gt;
+&lt;p&gt;Bir request içerisinde yüklenebilecek maksimum dosya adetidir. Varsayılan
+olarak &lt;code&gt;20&lt;&#x2F;code&gt; yer alıyor.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;ini&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-ini &quot;&gt;&lt;code class=&quot;language-ini&quot; data-lang=&quot;ini&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;max_file_uploads &lt;&#x2F;span&gt;&lt;span&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;200
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h4 id=&quot;timezone&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#timezone&quot; aria-label=&quot;Anchor link for: timezone&quot;&gt;####&lt;&#x2F;a&gt;
+Timezone&lt;&#x2F;h4&gt;
+&lt;p&gt;Geçerli bölgenizi ayarlamak için &lt;code&gt;date.timezone&lt;&#x2F;code&gt; değerini
+değiştirebilirsiniz. Önündeki yorum satırını kaldırmayı unutmayınız.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;ini&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-ini &quot;&gt;&lt;code class=&quot;language-ini&quot; data-lang=&quot;ini&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;date&lt;&#x2F;span&gt;&lt;span&gt;.timezone = Europe&#x2F;Istanbul
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;php-modulleri&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#php-modulleri&quot; aria-label=&quot;Anchor link for: php-modulleri&quot;&gt;###&lt;&#x2F;a&gt;
+PHP Modülleri&lt;&#x2F;h3&gt;
+&lt;p&gt;Çeşitli php eklentilerini aktif etmek için öncelikle paket yöneticisi
+yardımı ile eklentiyi yüklemeli ardından &lt;code&gt;php.ini&lt;&#x2F;code&gt; dosyasında yüklediğiniz
+eklentiyi aktif hale getirmelisiniz. Bunun için basşındaki yorum satırını
+kaldırabilirsiniz.&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;bz2-bzip2&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#bz2-bzip2&quot; aria-label=&quot;Anchor link for: bz2-bzip2&quot;&gt;####&lt;&#x2F;a&gt;
+BZ2 (Bzip2)&lt;&#x2F;h4&gt;
+&lt;p&gt;Script içerisinde Bzip fonksiyonlarını(bzclose, bzcompress, bzdecompress,
+bzopen, bzread, bzwrite vs.) kullanmak için aktif edebilirsiniz. Aktif hale
+getirmek için &lt;code&gt;php.ini&lt;&#x2F;code&gt; dosyasında ilgili satırın başındaki noktalı virgülü
+kaldırmanız yeterli.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;ini&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-ini &quot;&gt;&lt;code class=&quot;language-ini&quot; data-lang=&quot;ini&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;extension&lt;&#x2F;span&gt;&lt;span&gt;=bz2.so
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h4 id=&quot;ftp&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#ftp&quot; aria-label=&quot;Anchor link for: ftp&quot;&gt;####&lt;&#x2F;a&gt;
+FTP&lt;&#x2F;h4&gt;
+&lt;p&gt;Script içerisinde FTP işlemleri yapmak için bu modülü aktif hale
+getirebilirsiniz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;ini&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-ini &quot;&gt;&lt;code class=&quot;language-ini&quot; data-lang=&quot;ini&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;extension&lt;&#x2F;span&gt;&lt;span&gt;=ftp.so
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h4 id=&quot;gd-kutuphanesi&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#gd-kutuphanesi&quot; aria-label=&quot;Anchor link for: gd-kutuphanesi&quot;&gt;####&lt;&#x2F;a&gt;
+GD Kütüphanesi&lt;&#x2F;h4&gt;
+&lt;p&gt;Resim işleme ve oluşturma yapıyorsanız bu modülü aktif hale
+getirebilirsiniz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;ini&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-ini &quot;&gt;&lt;code class=&quot;language-ini&quot; data-lang=&quot;ini&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;extension&lt;&#x2F;span&gt;&lt;span&gt;=gd.so
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Ek olarak paketi kurmayı unutmayın.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;pacman -S&lt;&#x2F;span&gt;&lt;span&gt; gd php-gd
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h4 id=&quot;gettext&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#gettext&quot; aria-label=&quot;Anchor link for: gettext&quot;&gt;####&lt;&#x2F;a&gt;
+Gettext&lt;&#x2F;h4&gt;
+&lt;p&gt;Genellikle dil desteği amaçlı kullanılan gettext kütüphanesini aktif
+edebilirsiniz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;ini&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-ini &quot;&gt;&lt;code class=&quot;language-ini&quot; data-lang=&quot;ini&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;extension&lt;&#x2F;span&gt;&lt;span&gt;=gettext.so
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h4 id=&quot;imap-pop3-ve-nntp&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#imap-pop3-ve-nntp&quot; aria-label=&quot;Anchor link for: imap-pop3-ve-nntp&quot;&gt;####&lt;&#x2F;a&gt;
+IMAP, POP3 ve NNTP&lt;&#x2F;h4&gt;
+&lt;p&gt;Imap fonksiyonlarını kullanmak için aktif hale getirebilirsiniz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;ini&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-ini &quot;&gt;&lt;code class=&quot;language-ini&quot; data-lang=&quot;ini&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;extension&lt;&#x2F;span&gt;&lt;span&gt;=imap.so
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Ek olarak paketi kurmayı unutmayın.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;pacman -S&lt;&#x2F;span&gt;&lt;span&gt; php-imap
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h4 id=&quot;mcrypt&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#mcrypt&quot; aria-label=&quot;Anchor link for: mcrypt&quot;&gt;####&lt;&#x2F;a&gt;
+MCrypt&lt;&#x2F;h4&gt;
+&lt;p&gt;Çeşitli kütüphaneler tarafından da kullanılan &lt;strong&gt;mcrypt_&lt;&#x2F;strong&gt; fonksiyonlarına
+erişmek için aktif hale getirebilirsiniz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;ini&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-ini &quot;&gt;&lt;code class=&quot;language-ini&quot; data-lang=&quot;ini&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;extension&lt;&#x2F;span&gt;&lt;span&gt;=mcrypt.so
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Ek olarak paketini de kurun.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;pacman -S&lt;&#x2F;span&gt;&lt;span&gt; php-mcrypt
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h4 id=&quot;mysqli&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#mysqli&quot; aria-label=&quot;Anchor link for: mysqli&quot;&gt;####&lt;&#x2F;a&gt;
+MySQLi&lt;&#x2F;h4&gt;
+&lt;p&gt;MySQLi fonksiyonlarını kullanmak istiyorsanız aktif hale getirebilirsiniz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;ini&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-ini &quot;&gt;&lt;code class=&quot;language-ini&quot; data-lang=&quot;ini&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;extension&lt;&#x2F;span&gt;&lt;span&gt;=mysqli.so
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h4 id=&quot;pdo-mysql-odbc-dblib-postgresql-sqlite&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#pdo-mysql-odbc-dblib-postgresql-sqlite&quot; aria-label=&quot;Anchor link for: pdo-mysql-odbc-dblib-postgresql-sqlite&quot;&gt;####&lt;&#x2F;a&gt;
+PDO MySQL, ODBC, DBLib, PostgreSQL, SQLite&lt;&#x2F;h4&gt;
+&lt;p&gt;PDO ile belirtilen veritabanı yönetim sistemlerini kullanmak için eklentiyi
+aktif hale getirebilirsiniz. Seçtiğiniz veritabanı sistemini de
+bilgisayarınıza kurmayı unutmayın.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;ini&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-ini &quot;&gt;&lt;code class=&quot;language-ini&quot; data-lang=&quot;ini&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;extension&lt;&#x2F;span&gt;&lt;span&gt;=pdo_dblib.so
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;extension&lt;&#x2F;span&gt;&lt;span&gt;=pdo_mysql.so
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;extension&lt;&#x2F;span&gt;&lt;span&gt;=php_odbc.so
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;extension&lt;&#x2F;span&gt;&lt;span&gt;=php_pgsql.so
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;extension&lt;&#x2F;span&gt;&lt;span&gt;=php_sqlite.so
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h4 id=&quot;imagemagick&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#imagemagick&quot; aria-label=&quot;Anchor link for: imagemagick&quot;&gt;####&lt;&#x2F;a&gt;
+Imagemagick&lt;&#x2F;h4&gt;
+&lt;p&gt;Resim işleme için kullanabileceğiniz bir paket.  AUR deposundan
+indirebilirsiniz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;yaourt -S&lt;&#x2F;span&gt;&lt;span&gt; php-imagick
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;code&gt;&#x2F;etc&#x2F;php&#x2F;conf.d&#x2F;&lt;&#x2F;code&gt; klasörü içerisine kendisi dosya attığı için otomatik
+olarak aktif hale geliyor. &lt;code&gt;php.ini&lt;&#x2F;code&gt; üzerinde değişiklik yapmanıza gerek
+yok.&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;modul-kontrolu&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#modul-kontrolu&quot; aria-label=&quot;Anchor link for: modul-kontrolu&quot;&gt;####&lt;&#x2F;a&gt;
+Modül Kontrolü&lt;&#x2F;h4&gt;
+&lt;p&gt;Kurduğunuz PHP modüllerini test etmek için aşağıdaki komutu
+kullanabilirsiniz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;php -m
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Sonuç olarak size eklenen modülleri döndürecektir.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;[PHP&lt;&#x2F;span&gt;&lt;span&gt; Modules]
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;bz2
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Core
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;ctype
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;curl
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;date
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;dom
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;fileinfo
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;filter
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;ftp
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;gd
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;gettext
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;hash
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;imap
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;json
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;libxml
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;mbstring
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;mcrypt
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;mysqli
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;mysqlnd
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;openssl
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;pcntl
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;pcre
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;PDO
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;pdo_mysql
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;pdo_sqlite
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Phar
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;posix
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;readline
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Reflection
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;session
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;SimpleXML
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;SPL
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;standard
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;tokenizer
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;xml
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;xmlreader
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;xmlwriter
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;zip
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;zlib
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;composer&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#composer&quot; aria-label=&quot;Anchor link for: composer&quot;&gt;###&lt;&#x2F;a&gt;
+Composer&lt;&#x2F;h3&gt;
+&lt;p&gt;PHP’nin bağımlılık yöneticisi olarak kullanılan &lt;strong&gt;Composer&lt;&#x2F;strong&gt;’ı yüklemek
+için paket yöneticisini kullanabilirsiniz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;pacman -S&lt;&#x2F;span&gt;&lt;span&gt; composer
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Kurulumu test etmek için&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;composer --version
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;mysql-mariadb-kurulumu&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#mysql-mariadb-kurulumu&quot; aria-label=&quot;Anchor link for: mysql-mariadb-kurulumu&quot;&gt;##&lt;&#x2F;a&gt;
+MySQL (MariaDB) Kurulumu&lt;&#x2F;h2&gt;
+&lt;p&gt;MariaDB, Arch Linux’un varsayılan MySQL implementasyonudur. Oracle
+firmasının MySQL’ini kullanmak için AUR’u kullanabilirsiniz fakat
+MariaDB’yi öneririm.&lt;&#x2F;p&gt;
+&lt;p&gt;Paket yöneticisinden &lt;code&gt;mariadb&lt;&#x2F;code&gt; paketini yükleyelim.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;pacman -S&lt;&#x2F;span&gt;&lt;span&gt; mariadb
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;MariaDB servisini başlatmadan önce birkaç ayarlama yapacak olan
+&lt;code&gt;mysql_install_db&lt;&#x2F;code&gt;’yi çalıştırıyoruz. Kurulum yerini dilerseniz
+değiştirebilirsiniz fakat &lt;code&gt;&#x2F;home&lt;&#x2F;code&gt; &lt;code&gt;&#x2F;root&lt;&#x2F;code&gt; ve &lt;code&gt;&#x2F;run&#x2F;user&lt;&#x2F;code&gt; klasörlerini
+tercih etmeyin. Çünkü &lt;code&gt;ProtectHome=true&lt;&#x2F;code&gt; değeri bulunduğu için bu
+klasörlere MariaDB tarafından erişim sağlanamıyor. Ek olarak &lt;code&gt;datadir&lt;&#x2F;code&gt;
+klasör değişimini &lt;code&gt;&#x2F;etc&#x2F;mysql&#x2F;my.cnf&lt;&#x2F;code&gt; içerisinde de yapmalısınız.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;mysql_install_db --user&lt;&#x2F;span&gt;&lt;span&gt;=mysql&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; --basedir&lt;&#x2F;span&gt;&lt;span&gt;=&#x2F;usr&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; --datadir&lt;&#x2F;span&gt;&lt;span&gt;=&#x2F;var&#x2F;lib&#x2F;mysql
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Artık servisi başlatabilirsiniz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;systemctl&lt;&#x2F;span&gt;&lt;span&gt; start mysqld
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;guvenlik-ayarlamasi&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#guvenlik-ayarlamasi&quot; aria-label=&quot;Anchor link for: guvenlik-ayarlamasi&quot;&gt;###&lt;&#x2F;a&gt;
+Güvenlik Ayarlaması&lt;&#x2F;h3&gt;
+&lt;p&gt;Veritabanı katmanında birkaç güvenlik önlemi almak ve &lt;code&gt;root&lt;&#x2F;code&gt; parolasını da
+değiştirmek için aşağıdaki scripti çalıştırabilirsiniz.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;mysql_secure_installation
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Çalıştırma sırasında sorulan sorular şu şekilde:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Set root password?&lt;&#x2F;strong&gt; &lt;code&gt;root&lt;&#x2F;code&gt; parolasını değiştirmek istiyorsanız &lt;code&gt;Y&lt;&#x2F;code&gt;
+seçeneğini seçin.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Remove anonymous users?&lt;&#x2F;strong&gt; Genellikle test amaçlı olarak gizli
+kullanıcılara izin veriliyor Dilerseniz bunları silebilirsiniz.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Disallow root login remotely?&lt;&#x2F;strong&gt; &lt;code&gt;root&lt;&#x2F;code&gt; kullanıcısına &lt;code&gt;localhost&lt;&#x2F;code&gt;
+haricinde erğişimi kapatmak için &lt;code&gt;Y&lt;&#x2F;code&gt; seçeneğini seçebilirsiniz.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Remove test database and access to it?&lt;&#x2F;strong&gt; Test veritabanını ve ona
+erişimi kaldırmak istiyorsanız &lt;code&gt;Y&lt;&#x2F;code&gt; seçeneğini seçebilirsiniz.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Reload privilege tables now?&lt;&#x2F;strong&gt; Değişikliklerin hemen geçerli olmasını
+istiyorsanız &lt;code&gt;Y&lt;&#x2F;code&gt; seçebilirsiniz.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;disardan-erisimi-iptal-etmek&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#disardan-erisimi-iptal-etmek&quot; aria-label=&quot;Anchor link for: disardan-erisimi-iptal-etmek&quot;&gt;###&lt;&#x2F;a&gt;
+Dışardan Erişimi İptal Etmek&lt;&#x2F;h3&gt;
+&lt;p&gt;Varsayılan olarak MySQL dışardan erişime açıktır. Dışardan erişimleri
+engellemek için &lt;code&gt;&#x2F;etc&#x2F;mysql&#x2F;my.cnf&lt;&#x2F;code&gt; dosyasındaki aşağıdaki satırın
+başındaki yorum simgesini kaldırmanız yeterli.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;skip-networking
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Dışardan erişim kapatılsa dahi &lt;strong&gt;localhost&lt;&#x2F;strong&gt; üzerinden giriş
+yapabilirsiniz.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;utf8mb4-kullanimi&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#utf8mb4-kullanimi&quot; aria-label=&quot;Anchor link for: utf8mb4-kullanimi&quot;&gt;###&lt;&#x2F;a&gt;
+UTF8MB4 Kullanımı&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;strong&gt;UTF-8&lt;&#x2F;strong&gt; yerine &lt;strong&gt;UTF8MB4&lt;&#x2F;strong&gt; kullanmanızı tavsiye ederim. Tam anlamıyla
+Unicode desteği sağlamış olursunuz. Bunun için &lt;code&gt;&#x2F;etc&#x2F;mysql&#x2F;my.cnf&lt;&#x2F;code&gt;
+içerisine aşağıdaki satırları eklemeniz yeterli.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;ini&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-ini &quot;&gt;&lt;code class=&quot;language-ini&quot; data-lang=&quot;ini&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;[client]
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;default-character-set &lt;&#x2F;span&gt;&lt;span&gt;= utf8mb4
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;[mysqld]
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;collation_server &lt;&#x2F;span&gt;&lt;span&gt;= utf8mb4_unicode_ci
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;character_set_client &lt;&#x2F;span&gt;&lt;span&gt;= utf8mb4
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;character_set_server &lt;&#x2F;span&gt;&lt;span&gt;= utf8mb4
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;skip-character-set-client-handshake
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;[mysql]
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;default-character-set &lt;&#x2F;span&gt;&lt;span&gt;= utf8mb4
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;phpmyadmin-kurulumu&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#phpmyadmin-kurulumu&quot; aria-label=&quot;Anchor link for: phpmyadmin-kurulumu&quot;&gt;##&lt;&#x2F;a&gt;
+PHPMyAdmin Kurulumu&lt;&#x2F;h2&gt;
+&lt;p&gt;Web tabanlı olarak MySQL veritabanlarını yönetmek için kullanabilirsiniz.&lt;&#x2F;p&gt;
+&lt;p&gt;Öncelikle &lt;code&gt;phpmyadmin&lt;&#x2F;code&gt; paketini sistemimize kuralım.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;pacman -S&lt;&#x2F;span&gt;&lt;span&gt; phpmyadmin
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;PHP tarafında &lt;code&gt;mysqli&lt;&#x2F;code&gt; modülünü aktif etmemiz gerekiyor, bunu PHP kısmında
+anlattık.&lt;&#x2F;p&gt;
+&lt;p&gt;Ek olarak &lt;code&gt;bz2&lt;&#x2F;code&gt; ve &lt;code&gt;zip&lt;&#x2F;code&gt; modüllerini de aktif hale getirerek sıkıştırılmış
+dosya desteği de ekleyebilirsiniz.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;phpmyadmin-apache-ayarlamasi&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#phpmyadmin-apache-ayarlamasi&quot; aria-label=&quot;Anchor link for: phpmyadmin-apache-ayarlamasi&quot;&gt;###&lt;&#x2F;a&gt;
+PHPMyAdmin-Apache Ayarlaması&lt;&#x2F;h3&gt;
+&lt;p&gt;Apache tarafında &lt;code&gt;...&#x2F;phpmyadmin&lt;&#x2F;code&gt; olarak girildiğinde PHPMyAdmin gözükmesi
+için birkaç ayarlama yapmamız gerekiyor. Bunun için
+&lt;code&gt;&#x2F;etc&#x2F;httpd&#x2F;conf&#x2F;extra&#x2F;phpmyadmin.conf&lt;&#x2F;code&gt; dosyası oluşturup içerisine
+aşağıdakileri ekleyelim.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Alias&lt;&#x2F;span&gt;&lt;span&gt; &#x2F;phpmyadmin &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;&#x2F;usr&#x2F;share&#x2F;webapps&#x2F;phpMyAdmin&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;Directory &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;&#x2F;usr&#x2F;share&#x2F;webapps&#x2F;phpMyAdmin&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;DirectoryIndex&lt;&#x2F;span&gt;&lt;span&gt; index.php
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;AllowOverride&lt;&#x2F;span&gt;&lt;span&gt; All
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Options&lt;&#x2F;span&gt;&lt;span&gt; FollowSymlinks
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Require&lt;&#x2F;span&gt;&lt;span&gt; all granted
+&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&#x2F;Directory&amp;gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Ardından bunu &lt;code&gt;&#x2F;etc&#x2F;httpd&#x2F;conf&#x2F;httpd.conf&lt;&#x2F;code&gt; dosyası içerisinde dahil edelim.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# PHPMyAdmin
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Include&lt;&#x2F;span&gt;&lt;span&gt; conf&#x2F;extra&#x2F;phpmyadmin.conf
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;phpmyadmin-disardan-erisimi-kapatma&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#phpmyadmin-disardan-erisimi-kapatma&quot; aria-label=&quot;Anchor link for: phpmyadmin-disardan-erisimi-kapatma&quot;&gt;###&lt;&#x2F;a&gt;
+PHPMyAdmin Dışardan Erişimi Kapatma&lt;&#x2F;h3&gt;
+&lt;p&gt;Varsayılan olarak web servis dosyalarımızı görebilen herkes PHPMyAdmin
+arayüzüne de erişebilmekte. Bunu devredışı bırakmak için
+&lt;code&gt;&#x2F;etc&#x2F;httpd&#x2F;conf&#x2F;extra&#x2F;phpmyadmin.conf&lt;&#x2F;code&gt; dosyasında yer alan &lt;code&gt;Require all  granted&lt;&#x2F;code&gt; parametresini &lt;code&gt;Require local&lt;&#x2F;code&gt; olarak değiştirmemiz yeterli.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;otomatik-giris&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#otomatik-giris&quot; aria-label=&quot;Anchor link for: otomatik-giris&quot;&gt;###&lt;&#x2F;a&gt;
+Otomatik Giriş&lt;&#x2F;h3&gt;
+&lt;p&gt;PHPMyAdmin kısmında veritabanı kullanıcı bilgilerini girmenize gerek
+kalmadan otomatik olarak giriş yapmak için
+&lt;code&gt;&#x2F;etc&#x2F;webapps&#x2F;phpmyadmin&#x2F;config.inc.php&lt;&#x2F;code&gt;
+dosyasındaki &lt;code&gt;auth_type&lt;&#x2F;code&gt; değerini &lt;code&gt;config&lt;&#x2F;code&gt; olarak değiştirin.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;php&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-php &quot;&gt;&lt;code class=&quot;language-php&quot; data-lang=&quot;php&quot;&gt;&lt;span&gt;$cfg[&amp;#39;Servers&amp;#39;][$i][&amp;#39;auth_type&amp;#39;] = &amp;#39;config&amp;#39;;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Ardından alt satıra aşağıdaki eklemeleri yapın.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;php&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-php &quot;&gt;&lt;code class=&quot;language-php&quot; data-lang=&quot;php&quot;&gt;&lt;span&gt;$cfg[&amp;#39;Servers&amp;#39;][$i][&amp;#39;user&amp;#39;] = &amp;#39;root&amp;#39;;
+&lt;&#x2F;span&gt;&lt;span&gt;$cfg[&amp;#39;Servers&amp;#39;][$i][&amp;#39;password&amp;#39;] = &amp;#39;mysql_parolasi&amp;#39;; 
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;sorun-cozme&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#sorun-cozme&quot; aria-label=&quot;Anchor link for: sorun-cozme&quot;&gt;##&lt;&#x2F;a&gt;
+Sorun Çözme&lt;&#x2F;h2&gt;
+&lt;p&gt;Apache, MySQL, PHP ve PHPMyAdmin ile ilgili karşılaşabileceğiniz sorunlara
+ait çözümler.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;turkce-karakter-donusumu-sorunu&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#turkce-karakter-donusumu-sorunu&quot; aria-label=&quot;Anchor link for: turkce-karakter-donusumu-sorunu&quot;&gt;###&lt;&#x2F;a&gt;
+Türkçe Karakter Dönüşümü Sorunu&lt;&#x2F;h3&gt;
+&lt;p&gt;Laravel, Symfony veya diğer kütüphanelerde olduğu gibi kendi
+sisteminizde de oluşabilecek bir sorun. PHP
+karakterin büyük harf, küçük harf dönüşümü için sistem dilini kullanmakta.
+Bu sebeple Arch Linux sisteminize öncelikle &lt;code&gt;en_US.UTF-8&lt;&#x2F;code&gt; dilini
+eklemelisiniz. Bunun için &lt;code&gt;&#x2F;etc&#x2F;locale.gen&lt;&#x2F;code&gt; dosyasında yer alan aşağıdaki
+satırın yorum simgesini(#) kaldırın.&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;en_US.UTF-8 UTF-8
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Ardından bu dil dosyalarının oluşturulmasını sağlayın.&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;locale-gen
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Son olarak &lt;code&gt;LC_CTYPE&lt;&#x2F;code&gt; yani PHP’nin dönüşüm için kullandığı dili
+değiştirmeliyiz. Bunun için de &lt;code&gt;&#x2F;etc&#x2F;locale.conf&lt;&#x2F;code&gt; içerisine aşağıdaki
+satırı ekleyin.&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;LC_CTYPE=en_US.UTF-8
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Bu sorunun farkedilmesi ve çözümü ile ilgili yardımlarından dolayı Burak
+Karahan’a (&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;twitter.com&#x2F;mburakkarahan&quot;&gt;@mburakkarahan&lt;&#x2F;a&gt;) teşekkür
+ederim.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;bitis&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#bitis&quot; aria-label=&quot;Anchor link for: bitis&quot;&gt;##&lt;&#x2F;a&gt;
+Bitiş&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;strong&gt;LAMP Stack&lt;&#x2F;strong&gt; kurulumunu tamamladık. Dilerseniz geliştirme ortamınızı daha
+da iyi hale getirebilirsiniz. Makalede hata veya eksik varsa özür dilerim,
+bunları bana iletirseniz gerekli eklemeleri yapacağım. Teşekkürler.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;contributors&quot;&gt;&lt;a class=&quot;no-style&quot; href=&quot;#contributors&quot; aria-label=&quot;Anchor link for: contributors&quot;&gt;#&lt;&#x2F;a&gt;
+Contributors&lt;&#x2F;h1&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;Github&lt;&#x2F;th&gt;&lt;th&gt;Email&lt;&#x2F;th&gt;&lt;th&gt;Website&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;ahmetbarut&quot;&gt;ahmetbarut&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;&lt;td&gt;ahmetbarut588@gmail.com&lt;&#x2F;td&gt;&lt;td&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;ahmetbarut.net&quot;&gt;ahmetbarut.net&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;&#x2F;tbody&gt;&lt;&#x2F;table&gt;
+</content>
+        
+    </entry>
+</feed>

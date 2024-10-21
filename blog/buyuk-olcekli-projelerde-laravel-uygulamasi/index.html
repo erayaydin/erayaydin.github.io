@@ -1,0 +1,199 @@
+<!doctype html><html lang=en><head><meta charset=UTF-8><meta content="IE=edge" http-equiv=X-UA-Compatible><meta content="text/html; charset=UTF-8" http-equiv=content-type><meta content="width=device-width,initial-scale=1,user-scalable=no" name=viewport><meta content="index, follow" name=robots><title>Büyük Ölçekli Projelerde Laravel Uygulaması</title><meta content="Eray Aydın" name=author><meta content="Büyük ölçekli projerlerde Laravel üzerinde neler yapılabilir" name=description><link href=https://era.yayd.in/blog/buyuk-olcekli-projelerde-laravel-uygulamasi/ rel=canonical><link rel="shortcut icon" href=https://era.yayd.in/favicon.png type=image/x-icon><meta content=website property=og:type><meta content=https://era.yayd.in/blog/buyuk-olcekli-projelerde-laravel-uygulamasi/ property=og:url><meta content="Eray Aydın" property=og:site_name><meta content="Büyük Ölçekli Projelerde Laravel Uygulaması" property=og:title><meta content="Büyük ölçekli projerlerde Laravel üzerinde neler yapılabilir" property=og:description><link href=https://era.yayd.in/atom.xml rel=alternate title=RSS type=application/atom+xml><link href=https://era.yayd.in/app.css rel=stylesheet><style></style><body><header><nav><a href=/> /home </a><a href=/about/> /about </a><a href=/journal/> /journal </a><a class=active href=/blog/> /blog </a><a href=https://github.com/erayaydin/erayaydin.github.io> /download </a><div><input id=themeToggle style=display:none type=checkbox><label for=themeToggle><svg class=icons id=themeIcon><use href=https://era.yayd.in/icons.svg#lightMode></use></svg></label><audio id=themeSound><source src=https://era.yayd.in/click.ogg type=audio/ogg></audio></div></nav></header><main><div><a href=..>..</a>/<span class=accent-data>buyuk-olcekli-projelerde-laravel-uygulamasi</span></div><time datetime=2018-02-09T11:00:00>Published on: <span class=accent-data>2018-02-09T11:00:00</span></time><address rel=author>By <span class=accent-data>Eray Aydın</span></address><h1>Büyük Ölçekli Projelerde Laravel Uygulaması</h1><hr><blockquote><p>You are reading an article that is more than a year old. The content might be outdated.</blockquote><hr><h2 id=toc>Table of contents</h2><ul><li><a href=https://era.yayd.in/blog/buyuk-olcekli-projelerde-laravel-uygulamasi/#laravel-in-kendi-yapisi>Laravel’in Kendi Yapısı</a><li><a href=https://era.yayd.in/blog/buyuk-olcekli-projelerde-laravel-uygulamasi/#biraz-daha-serbest>Biraz Daha Serbest</a><li><a href=https://era.yayd.in/blog/buyuk-olcekli-projelerde-laravel-uygulamasi/#aklima-bir-seyler-geliyor-ama>Aklıma Bir Şeyler Geliyor Ama?</a><li><a href=https://era.yayd.in/blog/buyuk-olcekli-projelerde-laravel-uygulamasi/#bir-secenek-daha-var-o-da-domain-driven-design-mi-dersin>Bir Seçenek Daha Var O da “Domain Driven Design” Mı Dersin?</a><li><a href=https://era.yayd.in/blog/buyuk-olcekli-projelerde-laravel-uygulamasi/#sen-pala-vere-birak-sonuc-goster>Sen Pala Vere Bırak Sonuç Göster</a><li><a href=https://era.yayd.in/blog/buyuk-olcekli-projelerde-laravel-uygulamasi/#bitis>Bitiş</a></ul><hr><div class=page-content><p>Laravel Framework ile birçok proje geliştiriyoruz. Lakin büyük çaplı yani kalabalık projelerde Laravel üzerine geliştirmeler yapılması oldukça zor.<p>Birçok kesimden şu sözü duymuşsunuzdur: “<strong>Laravel kendi yapınızı uygulamanıza imkan vermiyor</strong>”. Lakin durum o şekilde değil. Tasarım desenleri ile profesyonel bir sistem geliştirdiğinizde <strong>Laravel</strong>’in aksine daha büyük imkan sağladığını görüyorsunuz. Diğer bir şekilde ifade etmek gerekirse, <strong>spagetti</strong> kodlamayla zaten <strong>tasarım desenlerine sahip</strong> bir yapı üzerine kendi yapınızı inşa etmek mümkün değil.<p>Lafı daha fazla uzatmadan konuya geçmek istiyorum yalnız şu hatırlatmayı yapmamda yarar var. Burada bahsedilen <strong>büyük ölçek</strong> 60-70’ten fazla <em>model</em> sınıflarının olması ve yapının bir çok küçük parçadan oluşmasıdır. Yaptığınız proje eğer <strong>küçük</strong> veya <strong>orta</strong> ölçekli ise Laravel’in kendi yapısının üzerine çıkmanıza gerek yok. Bu sizin <strong>üretkenliğinizi</strong> oldukça düşürecektir.<h1 id=laravel-in-kendi-yapisi><a aria-label="Anchor link for: laravel-in-kendi-yapisi" class=no-style href=#laravel-in-kendi-yapisi>#</a> Laravel’in Kendi Yapısı</h1><p>Büyük ölçekli yapıda kullanabileceğimiz desenlere geçmeden önce Laravel’in kendi yapısını tekrar gözden geçirelim. Aşağıdaki yapı <strong>Laravel 5.6</strong> sürümünden. Bu yapı hakkında kafanıza takılan bir kısım yoksa diğer konu başlığına hızlıca geçiş yapabilirsiniz.<pre class=language-bash data-lang=bash style=color:#c0c5ce;background-color:#2b303b><code class=language-bash data-lang=bash><span style=color:#96b5b4>.
+</span><span style=color:#bf616a>├──</span><span> app
+</span><span style=color:#bf616a>│</span><span>   ├── Broadcasting
+</span><span style=color:#bf616a>│</span><span>   ├── Console
+</span><span style=color:#bf616a>│</span><span>   ├── Events
+</span><span style=color:#bf616a>│</span><span>   ├── Exceptions
+</span><span style=color:#bf616a>│</span><span>   ├── Http
+</span><span style=color:#bf616a>│</span><span>   ├── Jobs
+</span><span style=color:#bf616a>│</span><span>   ├── Listeners
+</span><span style=color:#bf616a>│</span><span>   ├── Mail
+</span><span style=color:#bf616a>│</span><span>   ├── Notifications
+</span><span style=color:#bf616a>│</span><span>   ├── Policies
+</span><span style=color:#bf616a>│</span><span>   ├── Providers
+</span><span style=color:#bf616a>│</span><span>   ├── Rules
+</span><span style=color:#bf616a>│</span><span>   └── User.php
+</span><span style=color:#bf616a>├──</span><span> bootstrap
+</span><span style=color:#bf616a>│</span><span>   ├── app.php
+</span><span style=color:#bf616a>│</span><span>   └── cache
+</span><span style=color:#bf616a>├──</span><span> config
+</span><span style=color:#bf616a>├──</span><span> database
+</span><span style=color:#bf616a>│</span><span>   ├── factories
+</span><span style=color:#bf616a>│</span><span>   ├── migrations
+</span><span style=color:#bf616a>│</span><span>   └── seeds
+</span><span style=color:#bf616a>├──</span><span> public
+</span><span style=color:#bf616a>├──</span><span> resources
+</span><span style=color:#bf616a>│</span><span>   ├── assets
+</span><span style=color:#bf616a>│</span><span>   ├── lang
+</span><span style=color:#bf616a>│</span><span>   └── views
+</span><span style=color:#bf616a>├──</span><span> routes
+</span><span style=color:#bf616a>│</span><span>   ├── api.php
+</span><span style=color:#bf616a>│</span><span>   ├── channels.php
+</span><span style=color:#bf616a>│</span><span>   ├── console.php
+</span><span style=color:#bf616a>│</span><span>   └── web.php
+</span><span style=color:#bf616a>├──</span><span> storage
+</span><span style=color:#bf616a>├──</span><span> vendor 
+</span><span style=color:#bf616a>└──</span><span> tests
+</span></code></pre><p><strong>/app Dizini</strong><p>Burada belirtilen <code>app</code> klasörü uygulama kodlarımızın bulunduğu dizindir.<p><strong>/bootstrap Dizini</strong><p>Çatımızın asıl başlangıç noktasıdır. Laravel Framework’ün kendi yapısını başlattığı ve <em>cache</em> klasörünü oluşturduğu kısımdır.<p><strong>/config Dizini</strong><p>İsminden de anlaşıldığı gibi ayarların tutulduğu dizindir. Ayar bilgileri bu dizindeki dosyalardan elde edilmektedir. Gizli(Secret) bilgileri de <code>dotenv</code> aracılığıyla burada sisteme dahil edilmektedir.<p><strong>/database Dizini</strong><p>Veritabanı yapısı ile ilgili işlemlerin tutulduğu dizindir. <strong>migrations</strong>, <strong>factories</strong> ve <strong>seeds</strong> burada bulunmaktadır.<p><strong>/public Dizini</strong><p>Dış isteklerin yapıldığı başlangıç noktasıdır. Ek olarak isteklerde servis edilecek <strong>asset</strong> dosyaları (hazırlanmış <em>css</em>, <em>js</em>, <em>resim</em> dosyaları gibi) burada tutuyoruz.<p><strong>/resources Dizini</strong><p><code>resources</code> dizini <strong>presentation</strong> yani ön tarafta kullanıcıya göstereceğimiz verileri hazırladığımız kısımdır. <strong>views</strong>, <strong>derlenecek asset dosyaları</strong> ve dil dosyaları örneğin burada tutulur.<p><strong>/routes Dizini</strong><p><code>routes</code> dizini içerisinde herhangi bir ortamdan gelen isteğin nerede karşılık bulunduracağını belirtiriz. Burada ortamdan kasıt, <strong>web</strong> isteği olabildiği gibi <strong>websocket</strong> istekleri de olabilir.<p><strong>/storage Dizini</strong><p><code>storage</code> dizini içerisinde isminden de anlaşılabildiği gibi saklamak istediğimiz dosyaları tutmaktayız. Bunların içerisinde <strong>framework</strong> tarafından hazırlanan dosyalar(örneğin <em>log</em>) olduğu gibi kendimizin de tutmak istediği dosyalar(örneğin bir müzik sitesi için <em>müzik dosyaları</em>) da olabilir.<p><strong>/tests Dizini</strong><p>PHPUnit ile çalıştırmak istediğimiz testleri bu dizin içerisinde oluşturuyoruz.<p><strong>/vendor Dizini</strong><p>Composer bağımlılıklarımızın tutulduğu dizin.<p><strong>/app/Broadcasting Dizini</strong><p>Örneğin <strong>Websocket</strong> üzerinden yaptığımız gerçek zamanlı istekler/etkinlikler burada kontrol altında tutulmaktadır.<p><strong>/app/Console Dizini</strong><p>Artisan için oluşturduğunuz komutların tutulduğu dizindir. Bu komutlar tek seferlik işlemlerde kullanılabileceği gibi <strong>schedule</strong> hazırladığınız zamanlı görevler de olabilir.<p><strong>/app/Events Dizini</strong><p>Herhangi bir olay durumunda yaptırmak istediğiniz işlemleri tanımladığınız sınıfları tutan dizindir.<p><strong>/app/Exceptions Dizini</strong><p>Uygulamaya özel oluşturduğunuz hata sınıflarını oluşturduğunuz dizindir.<p><strong>/app/Http Dizini</strong><p>HTTP istekleriyle ilgili yapılması gerekenleri tutan dizindir. <strong>Controller</strong>, <strong>Middleware</strong> ve <strong>Requests</strong> burada tutulur.<p><strong>/app/Jobs Dizini</strong><p>Senkron veya Asenkron olarak tanımladığımız <strong>iş</strong>leri burada tutmaktayız.<p><strong>/app/Listeners Dizini</strong><p>Oluşturduğunuz <strong>Event</strong>ler sonucunda yapılması gereken işlemleri burada tanımlamaktasınız. Örneğin <code>UserLicenseFinished</code> etkinliği(event) sonucunda <code>TerminateUser</code> ve <code>SendTerminatedUserEmail</code> listenerlarını burada oluşturabilirsiniz.<p><strong>/app/Mail Dizini</strong><p>Uygulama tarafından gönderilecek e-postaları inşa edecek sınıfları bu dizinde tutmaktayız.<p><strong>/app/Notifications Dizini</strong><p>Çeşitli bildirim gönderme ortamları(SMS, E-Posta ve Slack gibi) için bildirimleri inşa ettiğimiz sınıfları oluşturduğumuz dizindir.<p><strong>/app/Policies Dizini</strong><p>Herhangi bir işlem için (Örneğin giriş veya api isteği) izin kontrol sınıflarını oluşturduğunuz dizindir.<p><strong>/app/Providers Dizini</strong><p><strong>ServiceProvider</strong>ları tanımladığınız dizindir.<p><strong>/app/Rules Dizini</strong><p>Validate etmek istediğiniz veriler için oluşturduğunuz sınıfları tutan dizindir.<h1 id=biraz-daha-serbest><a aria-label="Anchor link for: biraz-daha-serbest" class=no-style href=#biraz-daha-serbest>#</a> Biraz Daha Serbest</h1><p>Orta ölçekli bir projede bu yapının üzerine ufak değişiklikler elbetteki yapıyoruz. Örneğin <strong>Models</strong> isminde bir <strong>namespace</strong> üzerinde model sınıfları ayrı bir şekilde tutuyoruz. Ek olarak <strong>Repositories</strong> ve <strong>Services</strong> de ekliyoruz.<p><strong>Repository Pattern</strong><p>Repository desenini tek bir makalede incelemek haksızlık olacaktır. Temel anlamda <strong>veri üzerinde işlem yapan kısım</strong> ile <strong>veriye erişen kısmın</strong> ayrılması diyebiliriz.<p>Buradaki <strong>Services</strong> kısmı ise <strong>Repository</strong> ile haberleşen kısmın da <strong>uygulama katmanından</strong> ayıran kısımdır. Bir örnek ile ilerlemek daha iyi olacaktır.<pre class=language-php data-lang=php style=color:#c0c5ce;background-color:#2b303b><code class=language-php data-lang=php><span>namespace App/Repositories;
+</span><span>
+</span><span>interface UserInterface {
+</span><span>  public function getUserById($userId);
+</span><span>
+</span><span>  public function getUserByUsername($username);
+</span><span>}
+</span></code></pre><pre class=language-php data-lang=php style=color:#c0c5ce;background-color:#2b303b><code class=language-php data-lang=php><span>namespace App/Repositories;
+</span><span>
+</span><span>class UserRepository implements UserInterface {
+</span><span>  protected $model;
+</span><span>
+</span><span>  public function __construct(Model $model) {
+</span><span>    $this->model = $model;
+</span><span>  }
+</span><span>
+</span><span>  public function getUserById($userId) {
+</span><span>    return $this->model->find($userId);
+</span><span>  }
+</span><span>  
+</span><span>  public function getUserByUsername($username) {
+</span><span>    return $this->model->where('username', strtolower($username))->first();
+</span><span>  }
+</span><span>}
+</span></code></pre><pre class=language-php data-lang=php style=color:#c0c5ce;background-color:#2b303b><code class=language-php data-lang=php><span>namespace App/Services;
+</span><span>
+</span><span>class UserService {
+</span><span>  protected $repository;
+</span><span>
+</span><span>  public function __construct(UserInterface $repository){
+</span><span>    $this->repository = $repository;
+</span><span>  }
+</span><span>
+</span><span>  public function getUser($user) {
+</span><span>    if(is_numeric($user))
+</span><span>       return $this->repository->getUserById($user);
+</span><span>    else
+</span><span>       return $this->repository->getUserByUsername($user); 
+</span><span>  }
+</span><span>}
+</span></code></pre><p>Bu örnek yapıda <strong>Service</strong> ve <strong>Repository</strong> kullanmış olduk. (Yapının çalışması için iki yapı için de <strong>ServiceProvider</strong> sınıflarını hazırlamanız gerekmektedir.)<p>Bu yapıda hiçbir sorun yok. Oldukça organize ve güzel bir yapı çıkmış oluyor. Lakin belirttiğim gibi <strong>orta</strong> ölçekli proje için uygun olacaktır. <strong>Büyük</strong> ölçekli projede bu yapı hayat kurtarmayacaktır.<p>Örneğin bu yapının sonunda <strong>Models</strong> dizinimize bakalım:<pre class=language-bash data-lang=bash style=color:#c0c5ce;background-color:#2b303b><code class=language-bash data-lang=bash><span style=color:#96b5b4>.
+</span><span style=color:#bf616a>├──</span><span> AklimaBaskaModelGelmedi.php
+</span><span style=color:#bf616a>├──</span><span> AnotherAnotherModel.php
+</span><span style=color:#bf616a>├──</span><span> AnotherModel.php
+</span><span style=color:#bf616a>├──</span><span> Comment.php
+</span><span style=color:#bf616a>├──</span><span> Gallery.php
+</span><span style=color:#bf616a>├──</span><span> Like.php
+</span><span style=color:#bf616a>├──</span><span> Note.php
+</span><span style=color:#bf616a>├──</span><span> Photo.php
+</span><span style=color:#bf616a>├──</span><span> Profile.php
+</span><span style=color:#bf616a>├──</span><span> Transaction.php
+</span><span style=color:#bf616a>└──</span><span> User.php
+</span></code></pre><p>Uygulamamız üzerine eklediğimiz modüllerle bu Models dizini oldukça büyüyecektir. Bir alternatif olarak bu modülleri ayrı <strong>namespace</strong> üzerinde tutabilirsiniz. Lakin bir süre sonra bu da kurtarmayacaktır.<h1 id=aklima-bir-seyler-geliyor-ama><a aria-label="Anchor link for: aklima-bir-seyler-geliyor-ama" class=no-style href=#aklima-bir-seyler-geliyor-ama>#</a> Aklıma Bir Şeyler Geliyor Ama?</h1><p>Bu aşamada aklınıza gelen yol büyük ihtimal, “<strong>Hadi o zaman projeyi microservislere ayıralım</strong>” olacaktır. Lakin bu iş o kadar kolay değil. Oluşturduğumuz büyük ölçekli yapıyı küçük küçük parçalara ayırmak oldukça zahmetli olacaktır. Temel olarak uygulayacağınız yol şu olur büyük ihtimal; Bir parçayı al ufak bir mikroservis uygulaması haline getir (apayrı bir proje olmuş oldu) ve uygulama üzerindeki projede gelen isteği bu mikroservise yönlendir. Bütün bu uğraş sonucunda da kazandığınız (!) sorunlar:<ul><li>Herhangi bir değişiklikte hata yapmanız muhtemel<li>Yeni bir geliştirici anlamakta çok fazla zorlanacak ve ayrı ayrı parçalara bakmak zorunda kalacak.<li>Çok fazla dosya<li>Yeniden bir çözüm arayışı</ul><h1 id=bir-secenek-daha-var-o-da-domain-driven-design-mi-dersin><a aria-label="Anchor link for: bir-secenek-daha-var-o-da-domain-driven-design-mi-dersin" class=no-style href=#bir-secenek-daha-var-o-da-domain-driven-design-mi-dersin>#</a> Bir Seçenek Daha Var O da “Domain Driven Design” Mı Dersin?</h1><p>Elbette tek bir çözüm yolu yok. Yukarda bahsettiğim yapıları daha da geliştirebilir veya <strong>HMVC</strong> yapısına geçiş yapabilirsiniz. Her desenin <strong>+</strong> ve <strong>-</strong> leri var.<p>DDD’yi özetlemek gerekirse:<ul><li><strong>Application</strong> yani uygulama: Controller, Middleware, Route<li><strong>Domain</strong> yani ana işi yapan işlev: Model, Repository, Policy vs.<li><strong>Infrastructure</strong> yani servisler: Email, Notification, Logging vs.<li><strong>Interface</strong> yani görünüş, gözüken kısım: Views, Lang, Assets nam-ı diğer Resources</ul><p>Peki bu yapıda örnek Laravel dizini nasıl olabilir:<pre class=language-bash data-lang=bash style=color:#c0c5ce;background-color:#2b303b><code class=language-bash data-lang=bash><span style=color:#96b5b4>.
+</span><span style=color:#bf616a>├──</span><span> app 
+</span><span style=color:#bf616a>│</span><span>   ├── Account (Domain)
+</span><span style=color:#bf616a>│</span><span>   │   ├── AccessControlLists.php
+</span><span style=color:#bf616a>│</span><span>   │   ├── Auth.php
+</span><span style=color:#bf616a>│</span><span>   │   ├── Console
+</span><span style=color:#bf616a>│</span><span>   │   ├── Jobs
+</span><span style=color:#bf616a>│</span><span>   │   ├── Listeners
+</span><span style=color:#bf616a>│</span><span>   │   ├── Repositories
+</span><span style=color:#bf616a>│</span><span>   │   ├── Models
+</span><span style=color:#bf616a>│</span><span>   │   └── Validators
+</span><span style=color:#bf616a>│</span><span>   ├── Http (Application)
+</span><span style=color:#bf616a>│</span><span>   ├── Infrastructure
+</span><span style=color:#bf616a>│</span><span>   │   ├── Events
+</span><span style=color:#bf616a>│</span><span>   │   └── Exceptions
+</span><span style=color:#bf616a>│</span><span>   ├── Gallery (Domain)
+</span><span style=color:#bf616a>│</span><span>   └── Post (Domain)
+</span><span style=color:#bf616a>├──</span><span> bootstrap
+</span><span style=color:#bf616a>│</span><span>   ├── app.php
+</span><span style=color:#bf616a>│</span><span>   └── cache
+</span><span style=color:#bf616a>├──</span><span> config
+</span><span style=color:#bf616a>├──</span><span> database
+</span><span style=color:#bf616a>│</span><span>   ├── factories
+</span><span style=color:#bf616a>│</span><span>   ├── migrations
+</span><span style=color:#bf616a>│</span><span>   └── seeds
+</span><span style=color:#bf616a>├──</span><span> public
+</span><span style=color:#bf616a>├──</span><span> resources (Interface) 
+</span><span style=color:#bf616a>│</span><span>   ├── assets
+</span><span style=color:#bf616a>│</span><span>   ├── lang
+</span><span style=color:#bf616a>│</span><span>   └── views
+</span><span style=color:#bf616a>├──</span><span> routes
+</span><span style=color:#bf616a>│</span><span>   ├── api.php
+</span><span style=color:#bf616a>│</span><span>   ├── channels.php
+</span><span style=color:#bf616a>│</span><span>   ├── console.php
+</span><span style=color:#bf616a>│</span><span>   └── web.php
+</span><span style=color:#bf616a>├──</span><span> storage
+</span><span style=color:#bf616a>├──</span><span> vendor 
+</span><span style=color:#bf616a>└──</span><span> tests
+</span></code></pre><p>Fark edebileceğiniz üzere DDD’de sadece <strong>namespace</strong> eklemekten başka bir durum yok.<h1 id=sen-pala-vere-birak-sonuc-goster><a aria-label="Anchor link for: sen-pala-vere-birak-sonuc-goster" class=no-style href=#sen-pala-vere-birak-sonuc-goster>#</a> Sen Pala Vere Bırak Sonuç Göster</h1><p>Sonuç yapıyı göstermek istersek şöyle bir yapı uygun olacaktır:<pre class=language-bash data-lang=bash style=color:#c0c5ce;background-color:#2b303b><code class=language-bash data-lang=bash><span style=color:#96b5b4>.
+</span><span style=color:#bf616a>├──</span><span> app
+</span><span style=color:#bf616a>│</span><span>   ├── Account
+</span><span style=color:#bf616a>│</span><span>   │   ├── AccessControlLists.php
+</span><span style=color:#bf616a>│</span><span>   │   ├── Auth.php
+</span><span style=color:#bf616a>│</span><span>   │   ├── Console
+</span><span style=color:#bf616a>│</span><span>   │   ├── Events
+</span><span style=color:#bf616a>│</span><span>   │   ├── Exceptions
+</span><span style=color:#bf616a>│</span><span>   │   ├── Jobs
+</span><span style=color:#bf616a>│</span><span>   │   ├── Listeners
+</span><span style=color:#bf616a>│</span><span>   │   ├── Models
+</span><span style=color:#bf616a>│</span><span>   │   ├── Repositories
+</span><span style=color:#bf616a>│</span><span>   │   └── Validators
+</span><span style=color:#bf616a>│</span><span>   ├── Gallery
+</span><span style=color:#bf616a>│</span><span>   ├── Http
+</span><span style=color:#bf616a>│</span><span>   │   ├── Controllers
+</span><span style=color:#bf616a>│</span><span>   │   └── Middleware
+</span><span style=color:#bf616a>│</span><span>   ├── Post
+</span><span style=color:#bf616a>│</span><span>   └── Providers
+</span><span style=color:#bf616a>├──</span><span> bootstrap
+</span><span style=color:#bf616a>│</span><span>   ├── app.php
+</span><span style=color:#bf616a>│</span><span>   └── cache
+</span><span style=color:#bf616a>├──</span><span> config
+</span><span style=color:#bf616a>├──</span><span> database
+</span><span style=color:#bf616a>│</span><span>   ├── factories
+</span><span style=color:#bf616a>│</span><span>   ├── migrations
+</span><span style=color:#bf616a>│</span><span>   └── seeds
+</span><span style=color:#bf616a>├──</span><span> public
+</span><span style=color:#bf616a>├──</span><span> resources
+</span><span style=color:#bf616a>│</span><span>   ├── assets
+</span><span style=color:#bf616a>│</span><span>   ├── lang
+</span><span style=color:#bf616a>│</span><span>   └── views
+</span><span style=color:#bf616a>├──</span><span> routes
+</span><span style=color:#bf616a>│</span><span>   ├── api.php
+</span><span style=color:#bf616a>│</span><span>   ├── channels.php
+</span><span style=color:#bf616a>│</span><span>   ├── console.php
+</span><span style=color:#bf616a>│</span><span>   └── web.php
+</span><span style=color:#bf616a>├──</span><span> storage
+</span><span style=color:#bf616a>├──</span><span> vendor 
+</span><span style=color:#bf616a>└──</span><span> tests
+</span></code></pre><p>Elbette çok büyük ölçekte bir Laravel Uygulamasında bu yapı da yeterli olmayacaktır.<p>Şimdi bir senaryo kuralım. Projemizde <strong>Authentication</strong> kısmı <em>mikroservis</em> yapılması gerektiği ile ilgili bir karar alındı. Bu durumda bu yapıdaki bir projede tek yapılması gereken <code>Account</code> (domain) dizininin mikroservis olarak ayrılması. Komple bir değişiklik yapmaya gerek kalmadan sadece o modülü mikroservis çok rahat yapabiliriz. Çünkü domain dışındaki diğer tüm sınıflar <code>AccessControlLists</code> ve <code>Auth</code> sınıflarını biliyor ve kullanıyor. Bunları tutmak yeterli olacaktır. Mikroservisi hazırladıktan sonra ana projemizdeki dizin yapısı şu şekilde olacaktır:<pre class=language-bash data-lang=bash style=color:#c0c5ce;background-color:#2b303b><code class=language-bash data-lang=bash><span style=color:#96b5b4>.
+</span><span style=color:#bf616a>├──</span><span> app
+</span><span style=color:#bf616a>│</span><span>   ├── Account
+</span><span style=color:#bf616a>│</span><span>   │   ├── AccessControlLists.php
+</span><span style=color:#bf616a>│</span><span>   │   └── Auth.php
+</span><span style=color:#bf616a>│</span><span>   ├── Gallery
+</span><span style=color:#bf616a>│</span><span>   ├── Http
+</span><span style=color:#bf616a>│</span><span>   │   ├── Controllers
+</span><span style=color:#bf616a>│</span><span>   │   └── Middleware
+</span><span style=color:#bf616a>│</span><span>   ├── Post
+</span><span style=color:#bf616a>│</span><span>   └── Providers
+</span><span style=color:#bf616a>├──</span><span> bootstrap
+</span><span style=color:#bf616a>│</span><span>   ├── app.php
+</span><span style=color:#bf616a>│</span><span>   └── cache
+</span><span style=color:#bf616a>├──</span><span> config
+</span><span style=color:#bf616a>├──</span><span> database
+</span><span style=color:#bf616a>│</span><span>   ├── factories
+</span><span style=color:#bf616a>│</span><span>   ├── migrations
+</span><span style=color:#bf616a>│</span><span>   └── seeds
+</span><span style=color:#bf616a>├──</span><span> public
+</span><span style=color:#bf616a>├──</span><span> resources
+</span><span style=color:#bf616a>│</span><span>   ├── assets
+</span><span style=color:#bf616a>│</span><span>   ├── lang
+</span><span style=color:#bf616a>│</span><span>   └── views
+</span><span style=color:#bf616a>├──</span><span> routes
+</span><span style=color:#bf616a>│</span><span>   ├── api.php
+</span><span style=color:#bf616a>│</span><span>   ├── channels.php
+</span><span style=color:#bf616a>│</span><span>   ├── console.php
+</span><span style=color:#bf616a>│</span><span>   └── web.php
+</span><span style=color:#bf616a>├──</span><span> storage
+</span><span style=color:#bf616a>├──</span><span> vendor 
+</span><span style=color:#bf616a>└──</span><span> tests
+</span></code></pre><p>Gördüğünüz gibi <strong>uygulama kodlarımız</strong> içerisinde bir değişiklik yapmadan modül olarak ayırmış ve mikroservis haline getirmiş olduk. Buradaki <code>AccessControlLists</code> ve <code>Auth</code> mikroservisimizle haberleşecektir.<p>Dikkat edilmesi gereken kısım ise, bu gibi senaryolara sahip olabileceğimiz için <strong>Domain</strong> içerisindeki haberleşen <code>Service</code> sınıflarımızın temel veri türlerini kullanması gerektiğidir. Örneğin, <code>array</code>, <code>string</code>, <code>int</code> ve <code>boolean</code> gibi. Herhangi bir sınıf belirtmeniz ayırma işlemi sonucunda sorun çıkartacaktır. Çünkü o sınıfı tanımıyor ve bilmiyor olacaktır.<h1 id=bitis><a aria-label="Anchor link for: bitis" class=no-style href=#bitis>#</a> Bitiş</h1><p>Yazı içerisinde elbetteki yanlışlarım olmuş olabilir. Yazıyı düzenleyerek hataları gidererek daha iyi bir makale haline getirebiliriz. Eklenmesini istediğiniz kısımları da yine aynı şekilde düzenleyerek <strong>pull request</strong> atabilirsiniz.</div><br><a class=button href=https://github.com/erayaydin/zola-personal-blog/blob/main/content/blog/2018-02-09-buyuk-olcekli-laravel-uygulamasi.md>Contribute to this post</a><hr><script async crossorigin issue-term=pathname label=💬 repo=erayaydin/erayaydin.github.io src=https://utteranc.es/client.js theme=preferred-color-scheme></script></main><footer><hr><div><div><p>Built with <a rel="noopener noreferrer" href=https://www.getzola.org target=_blank>Zola</a>, theme inspired from <a rel="noopener noreferrer" href=https://github.com/Speyll/anemone target=_blank>anemone</a>.</div><div><a rel="noopener noreferrer" title="Subscribe via RSS for updates." class=no-style href=https://era.yayd.in/atom.xml target=_blank><svg class=icons><use href=https://era.yayd.in/icons.svg#rss></use></svg></a></div></div></footer><script defer src=https://era.yayd.in/app.js></script>

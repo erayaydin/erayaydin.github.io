@@ -1,0 +1,44 @@
+<!doctype html><html lang=en><head><meta charset=UTF-8><meta content="IE=edge" http-equiv=X-UA-Compatible><meta content="text/html; charset=UTF-8" http-equiv=content-type><meta content="width=device-width,initial-scale=1,user-scalable=no" name=viewport><meta content="index, follow" name=robots><title>Laravel - Hataları Viewde Gösterme</title><meta content="Eray Aydın" name=author><meta content="Laravel&amp#x27;de `withError()` ile veya _Request Validation_ sonucu döndürdüğünüz hataları göstermek için bu kodlardan birini kullanabilirsiniz" name=description><link href=https://era.yayd.in/blog/laravel-hatalari-viewde-gosterme/ rel=canonical><link rel="shortcut icon" href=https://era.yayd.in/favicon.png type=image/x-icon><meta content=website property=og:type><meta content=https://era.yayd.in/blog/laravel-hatalari-viewde-gosterme/ property=og:url><meta content="Eray Aydın" property=og:site_name><meta content="Laravel - Hataları Viewde Gösterme" property=og:title><meta content="Laravel&amp#x27;de `withError()` ile veya _Request Validation_ sonucu döndürdüğünüz hataları göstermek için bu kodlardan birini kullanabilirsiniz" property=og:description><link href=https://era.yayd.in/atom.xml rel=alternate title=RSS type=application/atom+xml><link href=https://era.yayd.in/app.css rel=stylesheet><style></style><body><header><nav><a href=/> /home </a><a href=/about/> /about </a><a href=/journal/> /journal </a><a class=active href=/blog/> /blog </a><a href=https://github.com/erayaydin/erayaydin.github.io> /download </a><div><input id=themeToggle style=display:none type=checkbox><label for=themeToggle><svg class=icons id=themeIcon><use href=https://era.yayd.in/icons.svg#lightMode></use></svg></label><audio id=themeSound><source src=https://era.yayd.in/click.ogg type=audio/ogg></audio></div></nav></header><main><div><a href=..>..</a>/<span class=accent-data>laravel-hatalari-viewde-gosterme</span></div><time datetime=2016-04-12T19:20:00>Published on: <span class=accent-data>2016-04-12T19:20:00</span></time><address rel=author>By <span class=accent-data>Eray Aydın</span></address><h1>Laravel - Hataları Viewde Gösterme</h1><hr><blockquote><p>You are reading an article that is more than a year old. The content might be outdated.</blockquote><hr><h2 id=toc>Table of contents</h2><ul></ul><hr><div class=page-content><p>Laravel’de <code>withError()</code> ile veya <em>Request Validation</em> sonucu döndürdüğünüz hataları göstermek için aşağıdaki kodu kullanabilirsiniz.<pre class=language-php data-lang=php style=color:#c0c5ce;background-color:#2b303b><code class=language-php data-lang=php><span>{% raw %}
+</span><span>@if($errors->has())
+</span><span>	@foreach ($errors->all() as $error)
+</span><span>		<</span><span style=color:#bf616a>div</span><span>>{{ $error }}&LT/</span><span style=color:#bf616a>div</span><span>>
+</span><span>	@endforeach
+</span><span>@endif
+</span><span>{% endraw %}
+</span></code></pre><p><strong>Bootstrap Framework</strong> kullanıyorsanız aşağıdaki <em>snippet</em>’i kullanabilirsiniz.<pre class=language-php data-lang=php style=color:#c0c5ce;background-color:#2b303b><code class=language-php data-lang=php><span>{% raw %}
+</span><span>@if($errors->has())
+</span><span>	<</span><span style=color:#bf616a>div </span><span style=color:#d08770>class</span><span>="</span><span style=color:#a3be8c>alert alert-danger</span><span>">
+</span><span>	@foreach ($errors->all() as $error)
+</span><span>		<</span><span style=color:#bf616a>p</span><span>>{{ $error }}&LT/</span><span style=color:#bf616a>p</span><span>>
+</span><span>	@endforeach
+</span><span>	&LT/</span><span style=color:#bf616a>div</span><span>>
+</span><span>@endif
+</span><span>{% endraw %}
+</span></code></pre><p><strong>Zurb Foundation Framework</strong> kullanıyorsanız aşağıdaki <em>snippet</em>’i kullanabilirsiniz.<pre class=language-php data-lang=php style=color:#c0c5ce;background-color:#2b303b><code class=language-php data-lang=php><span>{% raw %}
+</span><span>@if($errors->has())
+</span><span>	<</span><span style=color:#bf616a>div </span><span style=color:#d08770>class</span><span>="</span><span style=color:#a3be8c>callout alert</span><span>">
+</span><span>	@foreach ($errors->all() as $error)
+</span><span>		<</span><span style=color:#bf616a>p</span><span>>{{ $error }}&LT/</span><span style=color:#bf616a>p</span><span>>
+</span><span>	@endforeach
+</span><span>	&LT/</span><span style=color:#bf616a>div</span><span>>
+</span><span>@endif
+</span><span>{% endraw %}
+</span></code></pre><p><strong>Semantic UI</strong> kullanıyorsanız aşağıdaki <em>snippet</em>’i kullanabilirsiniz.<pre class=language-php data-lang=php style=color:#c0c5ce;background-color:#2b303b><code class=language-php data-lang=php><span>{% raw %}
+</span><span>@if($errors->has())
+</span><span>	<</span><span style=color:#bf616a>div </span><span style=color:#d08770>class</span><span>="</span><span style=color:#a3be8c>ui negative message</span><span>">
+</span><span>	@foreach ($errors->all() as $error)
+</span><span>		<</span><span style=color:#bf616a>p</span><span>>{{ $error }}&LT/</span><span style=color:#bf616a>p</span><span>>
+</span><span>	@endforeach
+</span><span>	&LT/</span><span style=color:#bf616a>div</span><span>>
+</span><span>@endif
+</span><span>{% endraw %}
+</span></code></pre><p><strong>UIKit</strong> kullanıyorsanız aşağıdaki <em>snippet</em>’i kullanabilirsiniz.<pre class=language-php data-lang=php style=color:#c0c5ce;background-color:#2b303b><code class=language-php data-lang=php><span>{% raw %}
+</span><span>@if($errors->has())
+</span><span><</span><span style=color:#bf616a>div </span><span style=color:#d08770>class</span><span>="</span><span style=color:#a3be8c>uk-alert uk-alert-danger</span><span>">
+</span><span>	@foreach ($errors->all() as $error)
+</span><span>		<</span><span style=color:#bf616a>p</span><span>>{{ $error }}&LT/</span><span style=color:#bf616a>p</span><span>>
+</span><span>	@endforeach
+</span><span>&LT/</span><span style=color:#bf616a>div</span><span>>
+</span><span>@endif
+</span><span>{% endraw %}
+</span></code></pre><p>Yukarıdaki snippetleri olduğu gibi kullanabilirsiniz.</div><br><a class=button href=https://github.com/erayaydin/zola-personal-blog/blob/main/content/blog/2016-04-12-laravel-hatalari-viewde-gosterme.md>Contribute to this post</a><hr><script async crossorigin issue-term=pathname label=💬 repo=erayaydin/erayaydin.github.io src=https://utteranc.es/client.js theme=preferred-color-scheme></script></main><footer><hr><div><div><p>Built with <a rel="noopener noreferrer" href=https://www.getzola.org target=_blank>Zola</a>, theme inspired from <a rel="noopener noreferrer" href=https://github.com/Speyll/anemone target=_blank>anemone</a>.</div><div><a rel="noopener noreferrer" title="Subscribe via RSS for updates." class=no-style href=https://era.yayd.in/atom.xml target=_blank><svg class=icons><use href=https://era.yayd.in/icons.svg#rss></use></svg></a></div></div></footer><script defer src=https://era.yayd.in/app.js></script>
