@@ -1,17 +1,11 @@
----
-layout: post
-title:  "Büyük Ölçekli Projelerde Laravel Uygulaması"
-description: Büyük ölçekli projerlerde Laravel üzerinde neler yapılabilir.
-date: 2018-02-09 11:00:00
-tags:
-  - php
-  - laravel
-categories:
-  - php
-  - laravel
-slug: buyuk-olcekli-projelerde-laravel-uygulamasi
----
-
++++
+title = "Büyük Ölçekli Projelerde Laravel Uygulaması"
+description = "Büyük ölçekli projerlerde Laravel üzerinde neler yapılabilir"
+date = "2018-02-09 11:00:00"
+slug = "buyuk-olcekli-projelerde-laravel-uygulamasi"
+tags = ["php", "laravel"]
+categories = ["php", "laravel"]
++++
 Laravel Framework ile birçok proje geliştiriyoruz. Lakin büyük çaplı yani 
 kalabalık projelerde Laravel üzerine geliştirmeler yapılması oldukça zor.
 

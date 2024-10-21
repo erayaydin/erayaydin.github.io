@@ -1,19 +1,11 @@
----
-layout: post
-title:  "Basit Bir SDL Projesi Oluşturma"
-description: SDL geliştirmeye başlamak için kullanabileceğimiz bir örnek SDL projesi
-date: 2015-09-25 17:52:00
-tags:
-  - cpp
-  - sdl2
-  - game-development
-categories:
-  - cpp
-  - sdl2
-  - game-development
-slug: basit-bir-sdl-projesi-olusturma
----
-
++++
+title = "Basit Bir SDL Projesi Oluşturma"
+description = "SDL geliştirmeye başlamak için kullanabileceğimiz bir örnek SDL projesi"
+date = "2015-09-25 17:52:00"
+slug = "basit-bir-sdl-projesi-olusturma"
+tags = ["cpp", "sdl2", "game-development"]
+categories = ["cpp", "sdl2", "game-development"]
++++
 Öncelikle C++ ile basit bir SDL kodu yazmamız gerekiyor.
 
 ```c++

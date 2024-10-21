@@ -1,17 +1,11 @@
----
-layout: post
-title:  "Pass ile Kendinize Özel Parola Yöneticinizi Yapın"
-description: Pass ile GnuPG ve Git kullanarak kendinize özel parola yöneticisi yapın.
-date: 2018-02-09 09:00:00
-tags:
-  - linux
-  - arch-linux
-categories:
-  - linux
-  - arch-linux
-slug: pass-kendinize-ozel-parola-yoneticisi
----
-
++++
+title = "Pass ile Kendinize Özel Parola Yöneticinizi Yapın"
+description = "Pass ile GnuPG ve Git kullanarak kendinize özel parola yöneticisi yapın"
+date = "2018-02-09 09:00:00"
+slug = "pass-kendinize-ozel-parola-yoneticisi"
+tags = ["linux", "arch-linux"]
+categories = ["linux", "arch-linux"]
++++
 # Pass Nedir?
 
 `pass` yazılımı komut arayüzünde çalışan basit bir parola yöneticisidir. `git` 

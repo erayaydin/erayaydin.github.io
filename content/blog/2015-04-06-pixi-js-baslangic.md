@@ -1,17 +1,11 @@
----
-layout: post
-title:  "Pixi.js - Başlangıç"
-description: Bu makale serisinde Pixi.js ile ilgili anlatımlar yer alacaktır.
-date:   2015-04-06 12:00:00
-tags:
-  - javascript
-  - game-development
-categories:
-  - javascript
-  - game-development
-slug: pixi-js-baslangic
----
-
++++
+title = "Pixi.js - Başlangıç"
+description = "Bu makale serisinde Pixi.js ile ilgili anlatımlar yer alacaktır"
+date = "2015-04-06 12:00:00"
+slug = "pixi-js-baslangic"
+tags = ["javascript", "game-development"]
+categories = ["javascript", "game-development"]
++++
 Bu makale serisinde Pixi.js ile ilgili anlatımlar yer alacaktır.
 
 ## Ortamın Hazırlanması

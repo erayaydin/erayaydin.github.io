@@ -1,26 +1,23 @@
----
-layout: post
-title:  "Geliştirme Ortamım"
-description: Hazırladığım geliştirme ortamı ile olabildiğince hafif ve hızlı bir ortam sağladım.
-date: 2016-05-21 19:22:00
-tags:
-  - linux
-categories:
-  - linux
-  - arch-linux
-slug: linux-gelistirme-ortamim
----
-
++++
+title = "Geliştirme Ortamım"
+description = "Hazırladığım geliştirme ortamı ile olabildiğince hafif ve hızlı bir ortam sağladım"
+date = "2016-05-21 19:22:00"
+slug = "linux-gelistirme-ortamim"
+tags = ["linux", "arch-linux"]
+categories = ["linux", "arch-linux"]
++++
 Bu yazıda hazırladığım geliştirme ortamını araçlar ve dağıtımla birlikte anlattım.
 
-![Empty Screen](/assets/images/posts/arch-linux-empty-screen.jpg)
+![Empty Screen](/post-images/arch-linux-empty-screen.jpg)
 
 ## TL;DR
 
-![ranger-irssi-mutt](/assets/images/posts/arch-linux-ranger-irssi-mutt.jpg)
+![ranger-irssi-mutt](/post-images/arch-linux-ranger-irssi-mutt.jpg)
 
 Eğer bütün yazıyı okumaya üşendiyseniz aşağıda özetlenmiş bir tablosu bulunmakta.
 
+| | |
+| --- | --- |
 | Dağıtım | **Arch Linux** |
 | Dosya Yöneticisi | **ranger** |
 | Window Manager | **i3** |

@@ -1,22 +1,11 @@
----
-published: true
-layout: post
-description: Arch Linux ve i3 için Backlight ayarlaması
-date: 2017-07-01T04:30:00.000Z
-tags:
-  - linux
-  - php
-  - mysql
-  - apache
-  - arch-linux
-  - phpmyadmin
-  - i3
-categories:
-  - linux
-  - arch-linux
-  - php
-slug: arch-backlight-i3
----
++++
+title = "Arch Linux ve i3 için Backlight Ayarlaması"
+description = "Arch Linux ve i3 için Backlight ayarlaması"
+date = "2017-07-01 04:30:00+00:00"
+slug = "arch-backlight-i3"
+tags = ["linux", "arch-linux", "i3"]
+categories = ["linux", "arch-linux", "i3"]
++++
 ## ACPI Test
 Backlight ayarlamasından önce backlightı kontrol eden driverı öğrenmeliyiz. Bunun için `/sys/class/backlight` klasöründen yararlanacağız.
 

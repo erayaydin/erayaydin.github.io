@@ -1,19 +1,11 @@
----
-published: true
-layout: post
-title:  "Django Kurulumu"
-description: Django kurulumu ve geliştirme ortamının hazırlanması.
-date: 2017-10-20 20:33:00
-tags:
-  - linux
-  - django
-  - python
-categories:
-  - python
-  - django
-slug: python-django-kurulumu
----
-
++++
+title = "Django Kurulumu"
+description = "Django kurulumu ve geliştirme ortamının hazırlanması"
+date = "2017-10-20 20:33:00"
+slug = "python-django-kurulumu"
+tags = ["linux", "django", "python"]
+categories = ["linux", "django", "python"]
++++
 # Django Kurulum
 
 Bu makale, `Django` kurulumu ve çalıştırılmasını kapsar.

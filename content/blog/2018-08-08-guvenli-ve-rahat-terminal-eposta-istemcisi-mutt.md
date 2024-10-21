@@ -1,17 +1,12 @@
----
-layout: post
-title:  "Mutt - Güvenli ve Rahat Terminal E-Posta İstemcisi"
-description: Terminal eposta istemcilerinden Mutt paketini tanittim ve pass 
-ile konfigürasyonunu yaptık
-date: 2018-08-08 20:18:00
-tags:
-  - linux
-  - arch-linux
-categories:
-  - linux
-  - arch-linux
-slug: mutt-terminal-eposta-istemcisi-pass
----
++++
+draft = true
+title = "Mutt - Güvenli ve Rahat Terminal E-Posta İstemcisi"
+description = "Terminal eposta istemcilerinden Mutt paketini tanittim ve pass ile konfigürasyonunu yaptık"
+date = 2018-08-08 20:18:00
+tags = ["linux", "arch-linux"]
+categories = ["linux", "arch-linux"]
+slug = "mutt-terminal-eposta-istemcisi-pass"
++++
 
 # Mutt Nedir?
 

@@ -1,21 +1,11 @@
----
-layout: post
-title:  "Kotlin ve jMonkeyEngine ile Oyun Geliştirme - Tanımlar"
-description: Bu serinin ilk yazısında, Kotlin ve jMonkeyEngine ile oyun geliştirmeye başlamadan önce tanmlara göz atacağız.
-date: 2020-03-22 05:01:53
-tags:
-  - game-development
-  - kotlin
-  - java
-  - jmonkeyengine
-categories:
-  - game-development
-  - kotlin
-  - java
-  - jmonkeyengine
-slug: kotlin-jmonkeyengine-oyun-gelistirme-tanimlar
----
-
++++
+title = "Kotlin ve jMonkeyEngine ile Oyun Geliştirme - Tanımlar"
+description = "Bu serinin ilk yazısında, Kotlin ve jMonkeyEngine ile oyun geliştirmeye başlamadan önce tanmlara göz atacağız"
+date = "2020-03-22 05:01:53"
+slug = "kotlin-jmonkeyengine-oyun-gelistirme-tanimlar"
+tags = ["game-development", "kotlin", "java", "jmonkeyengine"]
+categories = ["game-development", "kotlin", "java", "jmonkeyengine"]
++++
 # Kotlin ve jMonkeyEngine ile Oyun Geliştirme - Tanımlar
 Merhaba,
 Bu yazı serisi içerisinde **Kotlin** ve **jMonkeyEngine** ile oyun geliştirme yöntemine bakacağız. Seri içerisinde sorunuz olursa sormaktan çekinmeyin. Sorularınızı issue olarak Github üzerinden açabilirsiniz.

@@ -1,17 +1,11 @@
----
-layout: post
-title:  "Laravel - Elixir"
-description: Laravel **Elixir**, Gulp görevlerinizi kolay bir şekilde yönetmenizi sağlar. CSS ve Javascript derleyicileriyle birlikte test araçlarını da kullanmanıza imkan verir. Eğer daha önce Gulp ve asset yönetimi yaptıysanız Elixir işinize çok yarayacaktır.
-date: 2016-05-21 19:22:00
-tags:
-  - laravel
-  - php
-categories:
-  - laravel
-  - php
-slug: laravel-elixir
----
-
++++
+title = "Laravel - Elixir"
+description = "Laravel **Elixir**, Gulp görevlerinizi kolay bir şekilde yönetmenizi sağlar. CSS ve Javascript derleyicileriyle birlikte test araçlarını da kullanmanıza imkan verir"
+date = "2016-05-21 19:22:00"
+slug = "laravel-elixir"
+tags = ["php", "laravel"]
+categories = ["php", "laravel"]
++++
 Laravel **Elixir**, Gulp görevlerinizi kolay bir şekilde yönetmenizi sağlar. CSS ve Javascript derleyicileriyle birlikte test araçlarını da kullanmanıza imkan verir. Eğer daha önce Gulp ve asset yönetimi yaptıysanız Elixir işinize çok yarayacaktır.
 
 ## Kurulum

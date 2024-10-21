@@ -1,21 +1,11 @@
----
-layout: post
-title:  "Windows'a Apache, Mysql, PHP ve PHPMyAdmin Kurulumu"
-description: Apache, Mysql ve PHP'yi manuel olarak kurmak için bu makaleyi inceleyebilirsiniz.
-date: 2015-05-29 16:30:00
-tags:
-  - apache
-  - windows
-  - mysql
-  - php
-categories:
-  - apache
-  - windows
-  - mysql
-  - php
-slug: otomatik-apache-sanal-sunucu
----
-
++++
+title = "Windows'a Apache, Mysql, PHP ve PHPMyAdmin Kurulumu"
+description = "Apache, Mysql ve PHP'yi manuel olarak kurmak için bu makaleyi inceleyebilirsiniz"
+date = "2015-05-29 16:30:00"
+slug = "windows-apache-mysql-php-phpmyadmin-kurulumu"
+tags = ["apache", "windows", "mysql", "php"]
+categories = ["apache", "windows", "mysql", "php"]
++++
 Apache, Mysql ve PHP'yi manuel olarak kurmak için bu makaleyi inceleyebilirsiniz.
 
 > Windows 8.1 üzerinde test edilmiştir.

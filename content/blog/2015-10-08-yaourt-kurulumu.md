@@ -1,17 +1,11 @@
----
-layout: post
-title:  "Arch Linux - Yaourt Kurulumu"
-description: Arch User Repository-diğer adıyla AUR- binlerce paketi barındırmaktadır (Steam da dahil). AUR’dan paket kurulumu oldukça basit. Yaourt ile çok daha kolay paket kurulumu yapabilirsiniz.
-date: 2015-10-08 16:46:00
-tags:
-  - linux
-  - arch-linux
-categories:
-  - linux
-  - arch-linux
-slug: arch-linux-yaourt-kurulumu
----
-
++++
+title = "Arch Linux - Yaourt Kurulumu"
+description = "Arch User Repository-diğer adıyla AUR- binlerce paketi barındırmaktadır (Steam da dahil). AUR’dan paket kurulumu oldukça basit. Yaourt ile çok daha kolay paket kurulumu yapabilirsiniz"
+date = "2015-10-08 16:46:00"
+slug = "arch-linux-yaourt-kurulumu"
+tags = ["linux", "arch-linux"]
+categories = ["linux", "arch-linux"]
++++
 Arch User Repository-diğer adıyla AUR- binlerce paketi barındırmaktadır (Steam da
 dahil). AUR’dan paket kurulumu oldukça basit. Yaourt ile çok daha kolay paket kurulumu
 yapabilirsiniz.

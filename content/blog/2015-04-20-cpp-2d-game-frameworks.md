@@ -1,17 +1,11 @@
----
-layout: post
-title:  "C++ 2D Game Frameworks"
-description: Bu yazıda C++ 2D oyun kütüphaneleri hakkında bilgiler vereceğim. Avantajlarını ve eksikliklerini, artı ve eksi yönlerini öğrenebilirsiniz.
-date: 2015-04-20 12:00:00
-tags:
-  - cpp
-  - game-development
-categories:
-  - cpp
-  - game-development
-slug: cpp-2d-game-frameworks
----
-
++++
+title = "C++ 2D Game Frameworks"
+description = "Bu yazıda C++ 2D oyun kütüphaneleri hakkında bilgiler vereceğim. Avantajlarını ve eksikliklerini, artı ve eksi yönlerini öğrenebilirsiniz"
+date = "2015-04-20 12:00:00"
+slug = "cpp-2d-game-frameworks"
+tags = ["cpp", "game-development"]
+categories = ["cpp", "game-development"]
++++
 Bu yazıda C++ 2D oyun kütüphaneleri hakkında bilgiler vereceğim. Avantajlarını ve eksikliklerini, artı ve eksi yönlerini öğrenebilirsiniz.
 
 ## Oxygine

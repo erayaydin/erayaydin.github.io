@@ -1,17 +1,11 @@
----
-layout: post
-title:  "Windows için Virtual Host Alias Modülü"
-description: Daha önce paylaştığımız mod_vhost_alias'ın Windows ile ilgili ayarlaması.
-date: 2015-05-29 16:34:00
-tags:
-  - apache
-  - windows
-categories:
-  - apache
-  - windows
-slug: otomatik-apache-sanal-sunucu
----
-
++++
+title = "Windows için Virtual Host Alias Modülü"
+description = "Daha önce paylaştığımız mod_vhost_alias'ın Windows ile ilgili ayarlaması"
+date = "2015-05-29 16:34:00"
+slug = "windows-virtual-host-alias"
+tags = ["apache", "windows"]
+categories = ["apache", "windows"]
++++
 Daha önce paylaştığımız mod_vhost_alias'ın Windows ile ilgili ayarlaması.
 
 > Windows 8.1 üzerinde test edilmiştir.

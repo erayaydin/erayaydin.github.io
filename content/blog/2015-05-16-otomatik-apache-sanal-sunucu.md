@@ -1,17 +1,11 @@
----
-layout: post
-title:  "Otomatik Apache Sanal Sunucu"
-description: LAMP ortamında çalışırken sizin vaktinizi çalan en büyük şeylerden biri sanal sunucular. Hatta sırf bu işlemden kurtulmak için yazdığım scriptler de bulunmakta fakat dağıtımdan dağıtıma scripti düzenlemem gerekiyordu. Bu sorundan kurtulmak için ufak bir araştırma yaptım ve [şöyle](http://akrabat.com/automatic-apache-vhosts/) bir yararlı döküman buldum. Dökümanda Apache'nin  `mod_vhost_alias` modülünden bahsediliyor.
-date: 2015-05-16 03:47:00
-tags:
-  - linux
-  - apache
-categories:
-  - linux
-  - apache
-slug: otomatik-apache-sanal-sunucu
----
-
++++
+title = "Otomatik Apache Sanal Sunucu"
+description = "LAMP ortamında çalışırken sizin vaktinizi çalan en büyük şeylerden biri sanal sunucular. Hatta sırf bu işlemden kurtulmak için yazdığım scriptler de bulunmakta fakat dağıtımdan dağıtıma scripti düzenlemem gerekiyordu"
+date = "2015-05-16 03:47:00"
+slug = "otomatik-apache-sanal-sunucu"
+tags = ["linux", "apache"]
+categories = ["linux", "apache"]
++++
 LAMP ortamında çalışırken sizin vaktinizi çalan en büyük şeylerden biri sanal sunucular. Hatta sırf bu işlemden kurtulmak için yazdığım scriptler de bulunmakta fakat dağıtımdan dağıtıma scripti düzenlemem gerekiyordu. Bu sorundan kurtulmak için ufak bir araştırma yaptım ve [şöyle](http://akrabat.com/automatic-apache-vhosts/) bir yararlı döküman buldum. Dökümanda Apache'nin  `mod_vhost_alias` modülünden bahsediliyor.
 
 > Dökümanda işlemleri `Arch Linux`'a göre yaptım. Gerekli değişiklikleri kendi dağıtımınıza göre yapmalısınız.
