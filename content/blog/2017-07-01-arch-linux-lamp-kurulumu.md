@@ -3,6 +3,7 @@ title = "Arch Linux - LAMP Kurulumu"
 description = "Arch Linux için Apache, MySQL, PHP ve PHPMyAdmin kurulumu"
 date = "2017-07-01 01:00:00"
 slug = "arch-linux-lamp-kurulumu"
+[taxonomies]
 tags = ["linux", "php", "mysql", "apache", "arch-linux", "phpmyadmin"]
 categories = ["linux", "php", "mysql", "apache", "arch-linux", "phpmyadmin"]
 +++

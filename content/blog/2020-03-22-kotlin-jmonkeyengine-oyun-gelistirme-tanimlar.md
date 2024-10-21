@@ -3,6 +3,7 @@ title = "Kotlin ve jMonkeyEngine ile Oyun Geliştirme - Tanımlar"
 description = "Bu serinin ilk yazısında, Kotlin ve jMonkeyEngine ile oyun geliştirmeye başlamadan önce tanmlara göz atacağız"
 date = "2020-03-22 05:01:53"
 slug = "kotlin-jmonkeyengine-oyun-gelistirme-tanimlar"
+[taxonomies]
 tags = ["game-development", "kotlin", "java", "jmonkeyengine"]
 categories = ["game-development", "kotlin", "java", "jmonkeyengine"]
 +++

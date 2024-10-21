@@ -3,6 +3,7 @@ title = "Linux Mint - Ruby 2 Kurulumu"
 description = "Linux Mint dağıtımı için Ruby 2 kurulumu"
 date = "2016-01-14 02:26:00"
 slug = "linux-mint-ruby-2-kurulum"
+[taxonomies]
 tags = ["linux", "linux-mint", "ruby"]
 categories = ["linux", "linux-mint", "ruby"]
 +++

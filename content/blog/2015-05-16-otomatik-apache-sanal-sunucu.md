@@ -3,6 +3,7 @@ title = "Otomatik Apache Sanal Sunucu"
 description = "LAMP ortamında çalışırken sizin vaktinizi çalan en büyük şeylerden biri sanal sunucular. Hatta sırf bu işlemden kurtulmak için yazdığım scriptler de bulunmakta fakat dağıtımdan dağıtıma scripti düzenlemem gerekiyordu"
 date = "2015-05-16 03:47:00"
 slug = "otomatik-apache-sanal-sunucu"
+[taxonomies]
 tags = ["linux", "apache"]
 categories = ["linux", "apache"]
 +++

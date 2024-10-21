@@ -3,6 +3,7 @@ title = "Arch Linux - Yaourt Kurulumu"
 description = "Arch User Repository-diğer adıyla AUR- binlerce paketi barındırmaktadır (Steam da dahil). AUR’dan paket kurulumu oldukça basit. Yaourt ile çok daha kolay paket kurulumu yapabilirsiniz"
 date = "2015-10-08 16:46:00"
 slug = "arch-linux-yaourt-kurulumu"
+[taxonomies]
 tags = ["linux", "arch-linux"]
 categories = ["linux", "arch-linux"]
 +++

@@ -3,6 +3,7 @@ title = "Arch Linux ve i3 için Backlight Ayarlaması"
 description = "Arch Linux ve i3 için Backlight ayarlaması"
 date = "2017-07-01 04:30:00+00:00"
 slug = "arch-backlight-i3"
+[taxonomies]
 tags = ["linux", "arch-linux", "i3"]
 categories = ["linux", "arch-linux", "i3"]
 +++

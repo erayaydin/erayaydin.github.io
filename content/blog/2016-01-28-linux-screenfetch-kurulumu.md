@@ -3,6 +3,7 @@ title = "Linux - Screenfetch Kurulumu"
 description = "Linux dağıtımlarının tümü için Screenfetch kurulumu"
 date = "2016-01-28 16:04:00"
 slug = "linux-screenfetch-kurulumu"
+[taxonomies]
 tags = ["linux"]
 categories = ["linux"]
 +++

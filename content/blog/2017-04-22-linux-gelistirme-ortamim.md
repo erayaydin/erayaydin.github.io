@@ -3,6 +3,7 @@ title = "Geliştirme Ortamım"
 description = "Hazırladığım geliştirme ortamı ile olabildiğince hafif ve hızlı bir ortam sağladım"
 date = "2016-05-21 19:22:00"
 slug = "linux-gelistirme-ortamim"
+[taxonomies]
 tags = ["linux", "arch-linux"]
 categories = ["linux", "arch-linux"]
 +++

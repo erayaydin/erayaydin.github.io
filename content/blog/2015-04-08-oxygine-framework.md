@@ -3,6 +3,7 @@ title = "Linux Oxygine C++ Game Framework Kurulumu"
 description = "Linux ortamı için Oxygine C++ Game Framework'un kurulumu ile ilgili bir makaledir. Kurulum adımlarını takip ederek bir geliştirme ortamına sahip olacağız."
 date = "2015-04-08 12:00:00"
 slug = "oxygine-framework"
+[taxonomies]
 tags = ["cpp", "game-development"]
 +++
 Linux ortamı için Oxygine C++ Game Framework'un kurulumu ile ilgili bir makaledir. Kurulum adımlarını takip ederek bir geliştirme ortamına

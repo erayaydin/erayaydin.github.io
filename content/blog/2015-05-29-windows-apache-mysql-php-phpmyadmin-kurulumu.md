@@ -3,6 +3,7 @@ title = "Windows'a Apache, Mysql, PHP ve PHPMyAdmin Kurulumu"
 description = "Apache, Mysql ve PHP'yi manuel olarak kurmak için bu makaleyi inceleyebilirsiniz"
 date = "2015-05-29 16:30:00"
 slug = "windows-apache-mysql-php-phpmyadmin-kurulumu"
+[taxonomies]
 tags = ["apache", "windows", "mysql", "php"]
 categories = ["apache", "windows", "mysql", "php"]
 +++

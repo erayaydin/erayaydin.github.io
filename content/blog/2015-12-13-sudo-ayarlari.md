@@ -3,6 +3,7 @@ title = "Sudo Ayarları"
 description = "Sudo, yani \"kullanıcı yerine yapmak\", belirli kullanıcı veya gruplara root yetkisiyle komut gerçekleştirmesini sağlar"
 date = "2015-12-13 16:46:00"
 slug = "sudo-ayarlari"
+[taxonomies]
 tags = ["linux", "arch-linux"]
 categories = ["linux", "arch-linux"]
 +++

@@ -3,6 +3,7 @@ title = "Pixi.js - Başlangıç"
 description = "Bu makale serisinde Pixi.js ile ilgili anlatımlar yer alacaktır"
 date = "2015-04-06 12:00:00"
 slug = "pixi-js-baslangic"
+[taxonomies]
 tags = ["javascript", "game-development"]
 categories = ["javascript", "game-development"]
 +++

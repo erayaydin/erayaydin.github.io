@@ -3,6 +3,7 @@ title = "Pass ile Kendinize Özel Parola Yöneticinizi Yapın"
 description = "Pass ile GnuPG ve Git kullanarak kendinize özel parola yöneticisi yapın"
 date = "2018-02-09 09:00:00"
 slug = "pass-kendinize-ozel-parola-yoneticisi"
+[taxonomies]
 tags = ["linux", "arch-linux"]
 categories = ["linux", "arch-linux"]
 +++

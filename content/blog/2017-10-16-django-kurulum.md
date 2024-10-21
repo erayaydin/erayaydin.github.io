@@ -3,6 +3,7 @@ title = "Django Kurulumu"
 description = "Django kurulumu ve geliştirme ortamının hazırlanması"
 date = "2017-10-20 20:33:00"
 slug = "python-django-kurulumu"
+[taxonomies]
 tags = ["linux", "django", "python"]
 categories = ["linux", "django", "python"]
 +++

@@ -5,6 +5,10 @@ compile_sass = true
 build_search_index = true
 generate_feeds = true
 minify_html = true
+taxonomies = [
+  { name = "tags", feed = true},
+  { name = "categories", feed = true},
+]
 
 [markdown]
 highlight_code = true

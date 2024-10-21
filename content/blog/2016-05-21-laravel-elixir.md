@@ -3,6 +3,7 @@ title = "Laravel - Elixir"
 description = "Laravel **Elixir**, Gulp görevlerinizi kolay bir şekilde yönetmenizi sağlar. CSS ve Javascript derleyicileriyle birlikte test araçlarını da kullanmanıza imkan verir"
 date = "2016-05-21 19:22:00"
 slug = "laravel-elixir"
+[taxonomies]
 tags = ["php", "laravel"]
 categories = ["php", "laravel"]
 +++

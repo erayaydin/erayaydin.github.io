@@ -3,6 +3,7 @@ title = "Arch Linux - Ruby ve Jekyll Kurulumu"
 description = "Arch Linux dağıtımı için Ruby ve Jekyll kurulumu"
 date = "2015-09-24 01:58:00"
 slug = "arch-linux-ruby-jekyll-kurulumu"
+[taxonomies]
 tags = ["linux", "arch-linux"]
 categories = ["linux", "arch-linux"]
 +++

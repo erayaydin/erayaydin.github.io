@@ -3,6 +3,7 @@ title = "Büyük Ölçekli Projelerde Laravel Uygulaması"
 description = "Büyük ölçekli projerlerde Laravel üzerinde neler yapılabilir"
 date = "2018-02-09 11:00:00"
 slug = "buyuk-olcekli-projelerde-laravel-uygulamasi"
+[taxonomies]
 tags = ["php", "laravel"]
 categories = ["php", "laravel"]
 +++

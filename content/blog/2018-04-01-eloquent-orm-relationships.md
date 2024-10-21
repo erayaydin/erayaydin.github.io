@@ -3,9 +3,10 @@ draft = true
 title = "Eloquent ORM İlişkiler"
 description = "Eloquent ORM ile tanımlanan ilişki türleri hakkında şematik açıklama"
 date = "2018-04-01 19:00:00"
+slug = "eloquent-orm-relationships"
+[taxonomies]
 tags = ["laravel", "php", "eloquent"]
 categories = ["laravel", "php"]
-slug = "eloquent-orm-relationships"
 +++
 
 Laravel ile tanıdığımız *Eloquent ORM*'nin *5.5* versiyonu için _kopya kağıdı_ 
