@@ -7,6 +7,12 @@
 <time datetime="{{ page.date }}">Published on: <span class="accent-data">{{ page.date }}</span></time>
 <address rel="author">By <span class="accent-data">{{config.extra.author}}</span></address>
 <h1>{{ page.title }}</h1>
+{% if page.date | date(format="%Y") != now() | date(format="%Y") %}
+<hr>
+<blockquote>
+    <p>You are reading an article that is more than a year old. The content might be outdated.</p>
+</blockquote>
+{% endif %}
 <hr>
 <h2 id="toc">Table of contents</h2>
 <ul>
