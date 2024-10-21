@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div>
+    <a href="..">..</a>/<span class="accent-data">{{ page.slug }}</span>
+</div>
+<h1>{{ page.title }}</h1>
+<div class="page-content">
+{{ page.content | safe }}
+</div>
+<hr>
+<script src="https://utteranc.es/client.js"
+        repo="erayaydin/zola-personal-blog"
+        issue-term="pathname"
+        label="💬"
+        theme="preferred-color-scheme"
+        crossorigin="anonymous"
+        async>
+</script>
+{% endblock content %}
